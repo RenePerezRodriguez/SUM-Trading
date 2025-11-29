@@ -1,0 +1,91 @@
+# Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+# Specifies the build process for the backend.
+build:
+  # The command to install dependencies.
+  install: npm install
+  # The command to build the Next.js application.
+  run: npm run build
+
+# Specifies the runtime configuration for the backend.
+runConfig:
+  # Increase this value if you'd like to automatically spin up
+  # more instances in response to increased traffic.
+  maxInstances: 3
+  
+  # Minimum instances to keep warm (0 = scale to zero)
+  minInstances: 0
+  
+  # Memory allocation per instance
+  memory: 1GiB
+  
+  # CPU allocation per instance
+  cpu: 1
+  
+  # Environment variables for the runtime
+  env:
+    # ==========================================
+    # SCRAPTPRESS API (Copart Scraping Backend)
+    # ==========================================
+    - variable: SCRAPTPRESS_API_URL
+      value: https://scrap.sumtrading.us
+      availability:
+        - BUILD
+        - RUNTIME
+    
+    - variable: SCRAPTPRESS_API_KEY
+      value: a3f207ff5225d4fed2c8a7b331ffc0f3da0f1f106e113bd0840bf9c46cbbb35b
+      availability:
+        - BUILD
+        - RUNTIME
+    
+    # ==========================================
+    # FIREBASE ADMIN SDK (Server-side)
+    # ==========================================
+    # Service account JSON for Firebase Admin operations
+    - variable: FIREBASE_SERVICE_ACCOUNT_JSON
+      secret: FIREBASE_SERVICE_ACCOUNT_JSON
+      availability:
+        - RUNTIME
+    
+    # ==========================================
+    # STRIPE PAYMENT CONFIGURATION
+    # ==========================================
+    # Stripe publishable key (client-side, public)
+    - variable: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      value: pk_test_51SGPcIBh7oiw3HEvk74l9JgjyaIV2TqtPTp2JFiRLwlgrXShRnAcfVA5VyHXufzLrOYvTPI3A2u9TTYMr6R8FD2S00ZKiDMHjg
+      availability:
+        - BUILD
+        - RUNTIME
+    
+    # Stripe secret key (server-side, MUST be secret)
+    - variable: STRIPE_SECRET_KEY
+      secret: STRIPE_SECRET_KEY
+      availability:
+        - RUNTIME
+    
+    # Stripe webhook secret (server-side, MUST be secret)
+    - variable: STRIPE_WEBHOOK_SECRET
+      secret: STRIPE_WEBHOOK_SECRET
+      availability:
+        - RUNTIME
+    
+    # ==========================================
+    # AI / CHATBOT CONFIGURATION
+    # ==========================================
+    # Google Gemini API Key for chatbot functionality
+    - variable: GEMINI_API_KEY
+      value: AIzaSyCK-wRtUQI606fwuaqkpjcogVv6IV7vCms
+      availability:
+        - BUILD
+        - RUNTIME
+    
+    # ==========================================
+    # ANALYTICS
+    # ==========================================
+    - variable: NEXT_PUBLIC_DISABLE_ANALYTICS
+      value: "true"
+      availability:
+        - BUILD
+        - RUNTIME

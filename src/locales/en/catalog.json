@@ -1,0 +1,80 @@
+{
+  "car_catalog": {
+    "title": "Our Vehicle Catalog",
+    "description": "Explore our wide selection of available vehicles.",
+    "filter_make": "Filter by make...",
+    "all_makes": "All Makes",
+    "sort_by": "Sort by",
+    "price_asc": "Price: Low to High",
+    "price_desc": "Price: High to Low",
+    "year_desc": "Year: Newest First",
+    "no_results": "No vehicles found matching your criteria.",
+    "no_results_compare": "Add at least two cars to compare their features.",
+    "natural_search_placeholder": "Ex: 'red convertible for less than 50k'",
+    "save_search": "Save Search",
+    "view_details": "View Details",
+    "filters_title": "Filters",
+    "reset": "Clear",
+    "make_filter_title": "Make",
+    "type_filter_title": "Vehicle Type",
+    "price_range_title": "Price Range",
+    "year_range_title": "Year Range",
+    "list_view": "List View",
+    "grid_view": "Grid View",
+    "results": "results",
+    "active_filters": "Active Filters",
+    "clear_all": "Clear All",
+    "added_to_favorites": "Added to favorites",
+    "removed_from_favorites": "Removed from favorites",
+    "compare_title": "Compare",
+    "compare_button": "Compare",
+    "compare_modal_title": "Vehicle Comparison",
+    "compare_modal_desc": "Compare the specifications of selected vehicles.",
+    "add_to_compare": "Add to comparison",
+    "remove_from_compare": "Remove from comparison"
+  },
+  "search_page": {
+    "title": "Vehicle Search",
+    "description": "Explore results from our inventory and our partners' portals.",
+    "no_results_broker": "No results found on this portal for your search.",
+    "error_broker": "Could not get results from this portal. Please try again later.",
+    "copart_subtitle": "Partner Inventory",
+    "copart_title": "Search Auction Portals",
+    "copart_description": "Use the search bar to explore millions of vehicles directly from one of our main partners.",
+    "sum_subtitle": "Our Selection",
+    "sum_title": "SUM Trading Inventory",
+    "sum_description": "Vehicles selected and verified by our team, ready for you.",
+    "sum_tab_title": "SUM Trading Inventory",
+    "copart_tab_title": "Search USA Auctions",
+    "loading_title": "Searching auction portals...",
+    "loading_subtitle": "We are querying the inventory in real time.",
+    "loading_warning": "This may take up to a minute. Thank you for your patience.",
+    "no_query_title": "Perform a search",
+    "no_query_subtitle": "Enter a term in the search bar to see auction results."
+  },
+  "copart_card": {
+    "request_consultation": "Request Consultation"
+  },
+  "copart_consultation_bar": {
+    "title": "Consultation List:",
+    "cta_button": "Request Consultation",
+    "clear_all_aria": "Clear all items",
+    "added_title": "Vehicle Added",
+    "added_desc": "has been added to your consultation list."
+  },
+  "sum_consultation_bar": {
+    "title": "My Interests:",
+    "cta_button": "Request Info",
+    "clear_all_aria": "Clear all items",
+    "added_title": "Vehicle Added",
+    "added_desc": "has been added to your interest list."
+  },
+  "sum_interest_page": {
+    "title": "Confirm Your Interest",
+    "description": "You are about to express your interest in the following vehicles from our inventory. An advisor will contact you shortly.",
+    "vehicles_title": "Vehicles You're Interested In",
+    "next_step": "Upon confirmation, your request will be sent to our team and you will be redirected to WhatsApp to contact an advisor directly.",
+    "confirm_button": "Confirm Interest and Contact",
+    "whatsapp_message": "Hello! I'm interested in the following vehicles from the SUM Trading catalog: {vehicles}. I would like more information."
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "legal": {
+    "content": {
+      "terms": {
+        "title": "Terms of Service",
+        "last_updated": "Last updated: November 15, 2025",
+        "sections": [
+          {
+            "heading": "1. Acceptance of Terms",
+            "paragraphs": [
+              "By accessing and using our services, you accept and agree to comply with the terms and provisions of this agreement. Additionally, when using these particular services, you will be subject to any posted guidelines or rules applicable to such services. Any participation in this service will constitute acceptance of this agreement."
+            ]
+          },
+          {
+            "heading": "2. Service Description",
+            "paragraphs": [
+              "Our website provides a platform to search for and import vehicles from U.S. auctions. We act as intermediaries and facilitate the process from bidding to delivery. Our service is provided \"as is\" and we offer no warranties of any kind."
+            ]
+          },
+          {
+            "heading": "3. User Conduct",
+            "paragraphs": [
+              "You agree not to use the service for any illegal purpose or purpose prohibited by this clause. You agree not to use the service in any way that could damage the service, our company's business, or third parties. This includes, but is not limited to, the transmission of any material that is defamatory, offensive, or otherwise objectionable."
+            ]
+          },
+          {
+            "heading": "4. Disclaimer of Warranties",
+            "paragraphs": [
+              "The service is provided \"as is\" and \"as available\". We offer no warranties of any kind, express or implied, regarding the operation of our service, or the information, content, materials, or products included on this site. You expressly agree that use of the service is at your own risk."
+            ]
+          },
+          {
+            "heading": "5. Limitation of Liability",
+            "paragraphs": [
+              "In no event shall we be liable for indirect, incidental, special, consequential, or punitive damages resulting from the use or inability to use the service."
+            ]
+          }
+        ]
+      },
+      "coordinacion_arrastres": {
+        "title": "Towing Coordination",
+        "last_updated": "Last updated: November 24, 2025",
+        "sections": [
+          {
+            "heading": "1. Coordination Service",
+            "paragraphs": [
+              "SUM Trading offers towing coordination services for vehicle transportation from different locations in the United States to our yard in Brownsville, Texas.",
+              "We work with certified and insured carriers to ensure the safe transport of your vehicle."
+            ]
+          },
+          {
+            "heading": "2. Geographic Coverage",
+            "paragraphs": [
+              "Our service covers all states in the United States. Rates vary depending on distance, accessibility and vehicle conditions.",
+              "We offer real-time tracking throughout the entire transportation process."
+            ]
+          },
+          {
+            "heading": "3. Rates and Costs",
+            "paragraphs": [
+              "Towing rates are calculated based on:",
+              "• Distance from point of origin to Brownsville, TX",
+              "• Vehicle condition (operational or inoperable)",
+              "• Season and carrier availability",
+              "• Vehicle type and weight",
+              "All rates include basic transportation insurance."
+            ]
+          },
+          {
+            "heading": "4. Delivery Time",
+            "paragraphs": [
+              "Delivery time varies by location:",
+              "• Nearby states (TX, LA, OK): 1-3 days",
+              "• Southern and central states: 3-5 days",
+              "• Northern and western states: 5-10 days",
+              "• West Coast: 7-14 days"
+            ]
+          },
+          {
+            "heading": "5. Insurance and Liability",
+            "paragraphs": [
+              "All transports include basic insurance against damage during transport.",
+              "Customer may purchase additional insurance for greater coverage.",
+              "SUM Trading is not responsible for pre-existing or unreported damage prior to towing."
+            ]
+          },
+          {
+            "heading": "6. Coordination Process",
+            "paragraphs": [
+              "1. Customer provides exact vehicle location",
+              "2. We generate a detailed quote",
+              "3. Once approved, we coordinate with the carrier",
+              "4. Vehicle is picked up and transported",
+              "5. Customer is notified when vehicle arrives at our yard"
+            ]
+          }
+        ]
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "last_updated": "Last updated: November 24, 2025",
+        "sections": [
+          {
+            "heading": "1. Information We Collect",
+            "paragraphs": [
+              "We collect personal information that you provide directly to us when:",
+              "• Creating an account on our website",
+              "• Making a purchase or requesting our services",
+              "• Subscribing to our newsletter",
+              "• Contacting us through forms or email",
+              "This information may include: name, email address, phone number, postal address, payment information, and vehicle preferences."
+            ]
+          },
+          {
+            "heading": "2. Use of Information",
+            "paragraphs": [
+              "We use the collected information to:",
+              "• Process transactions and manage orders",
+              "• Provide customer service and technical support",
+              "• Send notifications about your order status",
+              "• Improve our services and user experience",
+              "• Comply with legal and regulatory obligations",
+              "• Send marketing communications (with your consent)"
+            ]
+          },
+          {
+            "heading": "3. Sharing Information",
+            "paragraphs": [
+              "We do not sell, rent, or share your personal information with third parties for marketing purposes without your explicit consent.",
+              "We may share your information with:",
+              "• Service providers who help us operate our business (payment processors, logistics companies)",
+              "• Government authorities when required by law",
+              "• Transportation companies and customs agents to complete the contracted service"
+            ]
+          },
+          {
+            "heading": "4. Data Security",
+            "paragraphs": [
+              "We implement technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+              "We use SSL encryption for financial transactions and secure data storage.",
+              "However, no method of transmission over the Internet is 100% secure, so we cannot guarantee absolute security."
+            ]
+          },
+          {
+            "heading": "5. Cookies and Similar Technologies",
+            "paragraphs": [
+              "We use cookies and similar technologies to:",
+              "• Maintain your active session and preferences",
+              "• Analyze website traffic",
+              "• Personalize content and ads",
+              "• Improve site functionality",
+              "You can control the use of cookies through your browser settings. For more information, see our Cookie Policy."
+            ]
+          },
+          {
+            "heading": "6. Your Rights",
+            "paragraphs": [
+              "You have the right to:",
+              "• Access your personal information",
+              "• Request correction of inaccurate data",
+              "• Request deletion of your data",
+              "• Object to the processing of your information",
+              "• Request data portability",
+              "• Withdraw your consent at any time",
+              "To exercise these rights, contact us through the channels indicated on our website."
+            ]
+          },
+          {
+            "heading": "7. Data Retention",
+            "paragraphs": [
+              "We retain your personal information only for as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required by law.",
+              "After completing a transaction, we maintain records for the time required by tax and legal regulations."
+            ]
+          },
+          {
+            "heading": "8. Changes to this Policy",
+            "paragraphs": [
+              "We reserve the right to update this Privacy Policy at any time. We will notify you of significant changes by posting the new policy on our website.",
+              "We recommend reviewing this page periodically to stay informed about how we protect your information."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "title": "Cookie Policy",
+        "last_updated": "Last updated: November 24, 2025",
+        "sections": [
+          {
+            "heading": "1. What are Cookies?",
+            "paragraphs": [
+              "Cookies are small text files that are stored on your device when you visit our website. They allow us to recognize your device and remember information about your visit.",
+              "Cookies can be 'persistent' (remain on your device) or 'session' (deleted when you close the browser)."
+            ]
+          },
+          {
+            "heading": "2. Types of Cookies We Use",
+            "paragraphs": [
+              "• Essential Cookies: Necessary for basic site functionality (login, shopping cart)",
+              "• Performance Cookies: Collect information about how you use the site (pages visited, errors)",
+              "• Functionality Cookies: Remember your preferences (language, settings)",
+              "• Advertising Cookies: Personalize ads according to your interests",
+              "• Analytics Cookies: Help us understand how visitors interact with our site"
+            ]
+          },
+          {
+            "heading": "3. Third-Party Cookies",
+            "paragraphs": [
+              "We use third-party services that may set cookies on your device:",
+              "• Google Analytics: For web traffic analysis",
+              "• Stripe: For secure payment processing",
+              "• Facebook/Meta Pixel: For targeted advertising",
+              "• Microsoft Clarity: For user behavior analysis",
+              "These third parties have their own privacy and cookie policies."
+            ]
+          },
+          {
+            "heading": "4. How to Manage Cookies",
+            "paragraphs": [
+              "You can control and/or delete cookies as you wish:",
+              "• Through your browser settings (Chrome, Firefox, Safari, Edge)",
+              "• Using our cookie consent banner when visiting the site",
+              "• Blocking specific third-party cookies",
+              "Please note that disabling cookies may affect website functionality."
+            ]
+          },
+          {
+            "heading": "5. Cookie Duration",
+            "paragraphs": [
+              "• Session Cookies: Automatically deleted when you close the browser",
+              "• Persistent Cookies:",
+              "  - Preference cookies: 1 year",
+              "  - Analytics cookies: 2 years",
+              "  - Advertising cookies: 90 days (may vary by provider)"
+            ]
+          },
+          {
+            "heading": "6. Consent",
+            "paragraphs": [
+              "By continuing to browse our website after viewing our cookie banner, you consent to the use of cookies as described in this policy.",
+              "You can change your cookie preferences at any time through the link in the footer of our site."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "sitemap_page": {
+    "title": "Sitemap",
+    "description": "Navigate our site using the links below.",
+    "main_pages": "Main Pages",
+    "legal_pages": "Legal Pages"
+  }
+}

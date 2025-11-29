@@ -1,0 +1,706 @@
+{
+  "Brownsville": {
+    "Texas": [
+      {
+        "ciudad": "ODESSA",
+        "precio": 900
+      },
+      {
+        "ciudad": "TAYLOR",
+        "precio": 550
+      },
+      {
+        "ciudad": "ANDREW",
+        "precio": 950
+      },
+      {
+        "ciudad": "TYLER",
+        "precio": 580
+      },
+      {
+        "ciudad": "AUSTIN NORT",
+        "precio": 520
+      },
+      {
+        "ciudad": "LUBBOCK",
+        "precio": 900
+      },
+      {
+        "ciudad": "ABELINE",
+        "precio": 800
+      },
+      {
+        "ciudad": "AMARILLO",
+        "precio": 900
+      },
+      {
+        "ciudad": "MERCEDES",
+        "precio": 270
+      },
+      {
+        "ciudad": "DALLAS FORT WORTH",
+        "precio": 550
+      },
+      {
+        "ciudad": "MCALLEN",
+        "precio": 250
+      },
+      {
+        "ciudad": "LONGVIEW",
+        "precio": 550
+      },
+      {
+        "ciudad": "HOUSTON",
+        "precio": 450
+      },
+      {
+        "ciudad": "CORPUS CHRISTI",
+        "precio": 350
+      },
+      {
+        "ciudad": "WACO",
+        "precio": 520
+      },
+      {
+        "ciudad": "AUSTIN",
+        "precio": 450
+      },
+      {
+        "ciudad": "LUFKIN",
+        "precio": 520
+      },
+      {
+        "ciudad": "SAN ANTONIO",
+        "precio": 450
+      }
+    ],
+    "Virginia": [
+      {
+        "ciudad": "HARRISONBURG",
+        "precio": 1250
+      },
+      {
+        "ciudad": "DANVILLE",
+        "precio": 1250
+      },
+      {
+        "ciudad": "FREDERICKSBURG",
+        "precio": 1250
+      },
+      {
+        "ciudad": "HAMPTON",
+        "precio": 1250
+      },
+      {
+        "ciudad": "RICHMOND",
+        "precio": 1250
+      },
+      {
+        "ciudad": "RICHMOND E",
+        "precio": 1250
+      },
+      {
+        "ciudad": "PULASKI",
+        "precio": 1250
+      },
+      {
+        "ciudad": "SUFFOLK",
+        "precio": 1250
+      },
+      {
+        "ciudad": "TIDEWATER",
+        "precio": 1250
+      }
+    ],
+    "Alabama": [
+      {
+        "ciudad": "MOBILE SOUTH",
+        "precio": 800
+      },
+      {
+        "ciudad": "MOBILE",
+        "precio": 750
+      },
+      {
+        "ciudad": "MONTGOMERY",
+        "precio": 800
+      },
+      {
+        "ciudad": "BIRMINGHAM",
+        "precio": 800
+      },
+      {
+        "ciudad": "TANNER",
+        "precio": 820
+      },
+      {
+        "ciudad": "DOTHAN",
+        "precio": 800
+      },
+      {
+        "ciudad": "HUNTSVILLE",
+        "precio": 820
+      }
+    ]
+  },
+  "Miami": {
+    "Texas": [
+      {
+        "ciudad": "ODESSA",
+        "precio": 1100
+      },
+      {
+        "ciudad": "TAYLOR",
+        "precio": 800
+      },
+      {
+        "ciudad": "ANDREW",
+        "precio": 950
+      },
+      {
+        "ciudad": "TYLER",
+        "precio": 800
+      },
+      {
+        "ciudad": "AUSTIN NORTH",
+        "precio": 800
+      },
+      {
+        "ciudad": "LUBBOCK",
+        "precio": 900
+      },
+      {
+        "ciudad": "ABELINE",
+        "precio": 1000
+      },
+      {
+        "ciudad": "AMARILLO",
+        "precio": 1300
+      },
+      {
+        "ciudad": "MERCEDES",
+        "precio": 900
+      },
+      {
+        "ciudad": "DALLAS FORT WORTH",
+        "precio": 850
+      },
+      {
+        "ciudad": "MCALLEN",
+        "precio": 900
+      },
+      {
+        "ciudad": "LONGVIEW",
+        "precio": 850
+      },
+      {
+        "ciudad": "HOUSTON",
+        "precio": 900
+      },
+      {
+        "ciudad": "CORPUS CHRISTI",
+        "precio": 850
+      },
+      {
+        "ciudad": "WACO",
+        "precio": 900
+      },
+      {
+        "ciudad": "AUSTIN",
+        "precio": 800
+      },
+      {
+        "ciudad": "LUFKIN",
+        "precio": 800
+      },
+      {
+        "ciudad": "SAN ANTONIO",
+        "precio": 800
+      },
+      {
+        "ciudad": "El Paso",
+        "precio": 1000
+      }
+    ],
+    "North Carolina": [
+      {
+        "ciudad": "Asheville - FLETCHER",
+        "precio": 700
+      },
+      {
+        "ciudad": "Charlotte - CHARLOTTE",
+        "precio": 600
+      },
+      {
+        "ciudad": "Charlotte - CONCORD",
+        "precio": 625
+      },
+      {
+        "ciudad": "China Grove - CHINA GROVE",
+        "precio": 600
+      },
+      {
+        "ciudad": "Concord - CONCORD",
+        "precio": 600
+      },
+      {
+        "ciudad": "Gastonia - GASTONIA, NC",
+        "precio": 635
+      },
+      {
+        "ciudad": "Greensboro - GRAHAM",
+        "precio": 600
+      },
+      {
+        "ciudad": "High Point - HIGH POINT",
+        "precio": 675
+      },
+      {
+        "ciudad": "Knightdale - KNIGHTDALE",
+        "precio": 625
+      },
+      {
+        "ciudad": "Lumberton - LUMBERTON",
+        "precio": 625
+      },
+      {
+        "ciudad": "Mebane - MEBANE",
+        "precio": 625
+      },
+      {
+        "ciudad": "Mebane Sublot - MEBANE",
+        "precio": 635
+      },
+      {
+        "ciudad": "Mocksville - MOCKSVILLE",
+        "precio": 635
+      },
+      {
+        "ciudad": "KENLY",
+        "precio": 650
+      },
+      {
+        "ciudad": "Off-Site Location - SANFORD",
+        "precio": 625
+      },
+      {
+        "ciudad": "Raleigh - CLAYTON",
+        "precio": 585
+      },
+      {
+        "ciudad": "Raleigh - DUNN",
+        "precio": 585
+      },
+      {
+        "ciudad": "Raleigh North - KNIGHDALE",
+        "precio": 625
+      },
+      {
+        "ciudad": "Statesville - STATESVILLE",
+        "precio": 675
+      },
+      {
+        "ciudad": "Wilmington - CASTLE HAYNE",
+        "precio": 710
+      },
+      {
+        "ciudad": "Wilmington - ST. PETERSBURG",
+        "precio": 700
+      }
+    ],
+    "Arizona": [
+      {
+        "ciudad": "Phoenix - PHOENIX",
+        "precio": 1145
+      },
+      {
+        "ciudad": "Tucson - TUCSON",
+        "precio": 1145
+      }
+    ],
+    "South Carolina": [
+      {
+        "ciudad": "Charleston - RAVENEL",
+        "precio": 550
+      },
+      {
+        "ciudad": "Columbia - GASTON",
+        "precio": 535
+      },
+      {
+        "ciudad": "Darlington - DARLINGTON",
+        "precio": 625
+      },
+      {
+        "ciudad": "Greenville - SIMPSONVILLE",
+        "precio": 585
+      },
+      {
+        "ciudad": "Lexington - LEXINGTON, SC",
+        "precio": 525
+      },
+      {
+        "ciudad": "North Charleston - HARLEYVILLE",
+        "precio": 575
+      },
+      {
+        "ciudad": "Spartanburg - SPARTANBURG",
+        "precio": 575
+      }
+    ],
+    "IOWA": [
+      {
+        "ciudad": "Davenport - DAVENPORT",
+        "precio": 1185
+      },
+      {
+        "ciudad": "Davenport - ELDRIDGE",
+        "precio": 1185
+      },
+      {
+        "ciudad": "Des Moines - DE SOTO",
+        "precio": 1175
+      }
+    ],
+    "Illinois": [
+      {
+        "ciudad": "Lincoln - LINCOLN",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Peoria - PEKIN",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Southern Illinois - ALORTON",
+        "precio": 875
+      },
+      {
+        "ciudad": "Southern Illinois - CAHOKIA\nHEIGHTS",
+        "precio": 875
+      },
+      {
+        "ciudad": "St. Louis - GRANITE CITY",
+        "precio": 875
+      },
+      {
+        "ciudad": "St. Louis, Il - CASEYVILLE",
+        "precio": 875
+      }
+    ]
+  },
+  "Delaware": {
+    "Connecticut": [
+      {
+        "ciudad": "Hartford - EAST WINDSOR",
+        "precio": 475
+      },
+      {
+        "ciudad": "Hartford - NEW BRITAIN",
+        "precio": 475
+      },
+      {
+        "ciudad": "Hartford  Sublot North 625 NEW BRITAIN",
+        "precio": 475
+      },
+      {
+        "ciudad": "Hartford - Sublot South 525 NEW BRITAIN",
+        "precio": 475
+      },
+      {
+        "ciudad": "Hartford Springfield - EAST GRAMBY",
+        "precio": 500
+      },
+      {
+        "ciudad": "Hartford-South - MIDDLETOWN",
+        "precio": 475
+      }
+    ],
+    "Illinois": [
+      {
+        "ciudad": "Chicago - MATTESON",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago North - EAST DUNDEE",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago North - ELGIN",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago South  CHICAGO HEIGHTS",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago South Sublot - CHICAGO Heights",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago West - AURORA",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago West Sublot MONTGOMERY",
+        "precio": 810
+      },
+      {
+        "ciudad": "Chicago-South - MARKHAM",
+        "precio": 810
+      },
+      {
+        "ciudad": "Wheeling - WHEELING",
+        "precio": 830
+      }
+    ],
+    "Rhode Island": [
+      {
+        "ciudad": "Exeter - EXETER",
+        "precio": 595
+      },
+      {
+        "ciudad": "Providence - RIVERSIDE",
+        "precio": 550
+      }
+    ],
+    "New Jersey": [
+      {
+        "ciudad": "Avenel New Jersey - AVENEL",
+        "precio": 370
+      },
+      {
+        "ciudad": "Central New Jersey -MORGANVILLE",
+        "precio": 370
+      },
+      {
+        "ciudad": "Glassboro East - GLASSBORO",
+        "precio": 335
+      },
+      {
+        "ciudad": "Glassboro West - GLASSBORO",
+        "precio": 335
+      },
+      {
+        "ciudad": "Manalapan - ENGLISHTOWN",
+        "precio": 380
+      },
+      {
+        "ciudad": "New Jersey - BORDENTOWN",
+        "precio": 460
+      },
+      {
+        "ciudad": "NY Metro Skyline - FAIRFIELD",
+        "precio": 600
+      },
+      {
+        "ciudad": "Port Murray - PORT MURRAY",
+        "precio": 475
+      },
+      {
+        "ciudad": "Sayreville - SAYREVILLE",
+        "precio": 450
+      },
+      {
+        "ciudad": "Somerville - HILLSBOROUGH",
+        "precio": 365
+      },
+      {
+        "ciudad": "Southern New Jersey TURNERSVILLE",
+        "precio": 330
+      },
+      {
+        "ciudad": "Trenton - Jobstown Sublot JOBSTOWN",
+        "precio": 425
+      },
+      {
+        "ciudad": "Trenton - WINDSOR",
+        "precio": 360
+      }
+    ],
+    "New Hampshire": [
+      {
+        "ciudad": "Candia - CANDIA",
+        "precio": 770
+      },
+      {
+        "ciudad": "Manchester - SALEM",
+        "precio": 670
+      }
+    ],
+    "Minnesota": [
+      {
+        "ciudad": "Elk River - ELK RIVER",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis - BLAINE",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis - MAPLE GROVE",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis - SAINT PAUL",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis North - HAM LAKE",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis South - RANDOLPH",
+        "precio": 1150
+      },
+      {
+        "ciudad": "Minneapolis Sublot - FRIDLEY",
+        "precio": 1150
+      },
+      {
+        "ciudad": "St. Cloud - AVON",
+        "precio": 1150
+      }
+    ]
+  },
+  "Houston": {
+    "Arkansas": [
+      {
+        "ciudad": "Fayetteville - LINCOLN",
+        "precio": 575
+      },
+      {
+        "ciudad": "Fayetteville - PRAIRIE GROVE",
+        "precio": 575
+      },
+      {
+        "ciudad": "Little Rock - CONWAY",
+        "precio": 500
+      },
+      {
+        "ciudad": "Little Rock - SCOTT",
+        "precio": 500
+      }
+    ],
+    "Arizona": [
+      {
+        "ciudad": "PHOENIX",
+        "precio": 850
+      },
+      {
+        "ciudad": "TUCSON",
+        "precio": 925
+      }
+    ],
+    "Texas": [
+      {
+        "ciudad": "ABANGARES",
+        "precio": 525
+      },
+      {
+        "ciudad": "Abilene - HAWLEY",
+        "precio": 525
+      },
+      {
+        "ciudad": "Amarillo - AMARILLO",
+        "precio": 620
+      },
+      {
+        "ciudad": "Andrews - ANDREWS",
+        "precio": 625
+      },
+      {
+        "ciudad": "Austin - DALE",
+        "precio": 425
+      },
+      {
+        "ciudad": "Austin - NEW BRAUNFELS",
+        "precio": 425
+      },
+      {
+        "ciudad": "Corpus Christi",
+        "precio": 350
+      },
+      {
+        "ciudad": "Dallas - GRAND PRAIRIE",
+        "precio": 450
+      },
+      {
+        "ciudad": "Dallas - WILMER",
+        "precio": 450
+      },
+      {
+        "ciudad": "Dallas/Ft Worth - GRAND PRAIRIE",
+        "precio": 450
+      },
+      {
+        "ciudad": "El Paso - ANTHONY",
+        "precio": 600
+      },
+      {
+        "ciudad": "El Paso - EL PASO",
+        "precio": 600
+      },
+      {
+        "ciudad": "Fort Worth North - JUSTIN",
+        "precio": 470
+      },
+      {
+        "ciudad": "Ft. Worth - HASLET",
+        "precio": 430
+      },
+      {
+        "ciudad": "Houston",
+        "precio": 250
+      },
+      {
+        "ciudad": "Houston East",
+        "precio": 250
+      },
+      {
+        "ciudad": "Houston South - ROSHARON",
+        "precio": 260
+      },
+      {
+        "ciudad": "Houston-North - HOUSTON",
+        "precio": 250
+      },
+      {
+        "ciudad": "Longview - LONGVIEW",
+        "precio": 425
+      },
+      {
+        "ciudad": "Lubbock - LUBBOCK",
+        "precio": 625
+      },
+      {
+        "ciudad": "Lufkin - LUFKIN",
+        "precio": 425
+      },
+      {
+        "ciudad": "McAllen - DONNA",
+        "precio": 450
+      },
+      {
+        "ciudad": "McAllen - MERCEDES",
+        "precio": 450
+      },
+      {
+        "ciudad": "Permian Basin - ODESSA",
+        "precio": 625
+      },
+      {
+        "ciudad": "San Antonio",
+        "precio": 350
+      },
+      {
+        "ciudad": "San Antonio-South - SAN ANTONIO",
+        "precio": 350
+      },
+      {
+        "ciudad": "Waco - TEMPLE",
+        "precio": 400
+      }
+    ]
+  }
+}

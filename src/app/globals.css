@@ -1,0 +1,156 @@
+
+@import 'react-phone-number-input/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* #EFF6EE - Mint Cream background */
+    --background: 120 33% 96%;
+    /* #2D3748 - Texto principal oscuro */
+    --foreground: 218 17% 24%;
+    --card: 120 33% 96%;
+    --card-foreground: 218 17% 24%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 17% 24%;
+    /* #ED231D - Red CMYK primary */
+    --primary: 1 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    /* #E2E8F0 - Slate 200 secondary - gris muy claro y suave */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 218 17% 24%;
+    --muted: 210 20% 95%;
+    /* #94A3B8 - Slate 400 - texto secundario legible */
+    --muted-foreground: 215 16% 65%;
+    /* #3F88C5 - Steel Blue accent */
+    --accent: 205 52% 51%;
+    --accent-foreground: 0 0% 100%;
+    /* #EE3631 - Vermilion destructive */
+    --destructive: 2 77% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    /* #3F88C5 - Steel Blue ring */
+    --ring: 205 52% 51%;
+    --radius: 0.5rem;
+    --chart-1: 1 83% 53%;
+    --chart-2: 205 52% 51%;
+    --chart-3: 214 32% 91%;
+    --chart-4: 2 77% 56%;
+    --chart-5: 120 33% 96%;
+  }
+
+  .dark {
+    /* #1A202C - Fondo oscuro */
+    --background: 216 28% 14%;
+    /* #F7FAFC - Texto claro */
+    --foreground: 210 20% 98%;
+    --card: 216 28% 14%;
+    --card-foreground: 210 20% 98%;
+    --popover: 216 28% 12%;
+    --popover-foreground: 210 20% 98%;
+    /* #ED231D - Red CMYK primary */
+    --primary: 1 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    /* #2D3748 - Secondary oscuro */
+    --secondary: 218 17% 24%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 216 28% 18%;
+    /* #CBD5E0 - Slate 300 para texto oscuro */
+    --muted-foreground: 214 20% 82%;
+    /* #3F88C5 - Steel Blue accent */
+    --accent: 205 52% 51%;
+    --accent-foreground: 0 0% 100%;
+    /* #EE3631 - Vermilion destructive */
+    --destructive: 2 77% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 17% 24%;
+    --input: 218 17% 24%;
+    /* #3F88C5 - Steel Blue ring */
+    --ring: 205 52% 51%;
+    --chart-1: 1 83% 53%;
+    --chart-2: 205 52% 51%;
+    --chart-3: 218 17% 24%;
+    --chart-4: 2 77% 56%;
+    --chart-5: 210 20% 98%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 640px) {
+    section {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  /* Custom selection color */
+  *::selection {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background) / 0.5);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--secondary));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+
+  .PhoneInputInput {
+    @apply flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+  }
+}
+
+@layer utilities {
+    @keyframes ken-burns {
+        0% {
+          transform: scale(1) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.1) translate(-2%, 2%);
+        }
+    }
+    .animate-ken-burns {
+        animation: ken-burns 20s ease-in-out infinite alternate;
+    }
+    
+    @keyframes gradient-shift {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+    }
+    .animate-gradient {
+        background-size: 200% auto;
+        animation: gradient-shift 4s ease infinite;
+    }
+    
+    .text-gradient {
+      @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    }
+}

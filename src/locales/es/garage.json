@@ -1,0 +1,9 @@
+{
+  "garage_page": {
+    "title": "Mi Garaje",
+    "description": "Aquí están todos los vehículos que has guardado como favoritos.",
+    "empty_title": "Tu garaje está vacío",
+    "empty_description": "Usa el icono del corazón en cualquier vehículo para guardarlo aquí.",
+    "empty_cta": "Explorar Catálogo"
+  }
+}

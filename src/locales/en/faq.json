@@ -1,0 +1,19 @@
+{
+  "faq_page": {
+    "meta_title": "Frequently Asked Questions",
+    "meta_description": "Find answers to common questions about buying, importing, and repairing vehicles with SUM Trading."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Have questions? We have answers. If you can't find what you're looking for, feel free to contact us.",
+    "search_placeholder": "Search question...",
+    "no_results": "We didn't find any questions matching your search.",
+    "whatsapp_cta": "Didn't find your answer?",
+    "whatsapp_button": "Ask on WhatsApp",
+    "whatsapp_message": "Hello! I have a question that I didn't find in the FAQ.",
+    "contact_cta": "Need more information?",
+    "contact_button": "Contact Us",
+    "lang": "en",
+    "categories": []
+  }
+}

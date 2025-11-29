@@ -1,0 +1,80 @@
+{
+  "car_catalog": {
+    "title": "Nuestro Catálogo de Vehículos",
+    "description": "Explora nuestra amplia selección de vehículos disponibles.",
+    "filter_make": "Filtrar por marca...",
+    "all_makes": "Todas las Marcas",
+    "sort_by": "Ordenar por",
+    "price_asc": "Precio: Menor a Mayor",
+    "price_desc": "Precio: Mayor a Menor",
+    "year_desc": "Año: Más Nuevos Primero",
+    "no_results": "No se encontraron vehículos que coincidan con tus criterios.",
+    "no_results_compare": "Añade al menos dos coches para comparar sus características.",
+    "natural_search_placeholder": "Ej: 'descapotable rojo por menos de 50k'",
+    "save_search": "Guardar Búsqueda",
+    "view_details": "Ver Detalles",
+    "filters_title": "Filtros",
+    "reset": "Limpiar",
+    "make_filter_title": "Marca",
+    "type_filter_title": "Tipo de Vehículo",
+    "price_range_title": "Rango de Precio",
+    "year_range_title": "Rango de Año",
+    "list_view": "Vista de Lista",
+    "grid_view": "Vista de Cuadrícula",
+    "results": "resultados",
+    "active_filters": "Filtros Activos",
+    "clear_all": "Limpiar Todo",
+    "added_to_favorites": "Añadido a favoritos",
+    "removed_from_favorites": "Eliminado de favoritos",
+    "compare_title": "Comparador",
+    "compare_button": "Comparar",
+    "compare_modal_title": "Comparativa de Vehículos",
+    "compare_modal_desc": "Compara las especificaciones de los vehículos seleccionados.",
+    "add_to_compare": "Añadir a la comparación",
+    "remove_from_compare": "Quitar de la comparación"
+  },
+  "search_page": {
+    "title": "Búsqueda de Vehículos",
+    "description": "Explora los resultados de nuestro inventario y de los portales de nuestros socios.",
+    "no_results_broker": "No se encontraron resultados en este portal para tu búsqueda.",
+    "error_broker": "No se pudieron obtener los resultados de este portal. Por favor, inténtalo más tarde.",
+    "copart_subtitle": "Inventario de Socios",
+    "copart_title": "Buscar en Portales de Subasta",
+    "copart_description": "Usa la barra de búsqueda para explorar millones de vehículos directamente de uno de nuestros socios principales.",
+    "sum_subtitle": "Nuestra Selección",
+    "sum_title": "Inventario de SUM Trading",
+    "sum_description": "Vehículos seleccionados y verificados por nuestro equipo, listos para ti.",
+    "sum_tab_title": "Inventario SUM Trading",
+    "copart_tab_title": "Buscar en Subastas USA",
+    "loading_title": "Buscando en portales de subastas...",
+    "loading_subtitle": "Estamos consultando el inventario en tiempo real.",
+    "loading_warning": "Esto puede tardar hasta un minuto. Gracias por tu paciencia.",
+    "no_query_title": "Realiza una búsqueda",
+    "no_query_subtitle": "Introduce un término en la barra de búsqueda para ver resultados de las subastas."
+  },
+  "copart_card": {
+    "request_consultation": "Solicitar Asesoría"
+  },
+  "copart_consultation_bar": {
+    "title": "Lista de Asesoría:",
+    "cta_button": "Solicitar Asesoría",
+    "clear_all_aria": "Limpiar todos los elementos",
+    "added_title": "Vehículo Añadido",
+    "added_desc": "ha sido añadido a tu lista de asesoría."
+  },
+  "sum_consultation_bar": {
+    "title": "Mis Intereses:",
+    "cta_button": "Solicitar Info",
+    "clear_all_aria": "Limpiar todos los elementos",
+    "added_title": "Vehículo Añadido",
+    "added_desc": "ha sido añadido a tu lista de intereses."
+  },
+  "sum_interest_page": {
+    "title": "Confirma tu Interés",
+    "description": "Estás a punto de expresar tu interés en los siguientes vehículos de nuestro inventario. Un asesor se pondrá en contacto contigo en breve.",
+    "vehicles_title": "Vehículos que te Interesan",
+    "next_step": "Al confirmar, tu solicitud se enviará a nuestro equipo y serás redirigido a WhatsApp para contactar directamente a un asesor.",
+    "confirm_button": "Confirmar Interés y Contactar",
+    "whatsapp_message": "¡Hola! Estoy interesado/a en los siguientes vehículos del catálogo de SUM Trading: {vehicles}. Me gustaría recibir más información."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "checkout": {
+    "copart": {
+      "title": "Copart Consultation Payment",
+      "subtitle": "Personalized Consultation Service",
+      "features": [
+        "Access to auctions with our broker license",
+        "3 AutoCheck reports included",
+        "Personalized advice on selection and bidding",
+        "Rate conservation if you don't win the auction"
+      ],
+      "pay_button": "Proceed to Payment",
+      "processing": "Processing payment..."
+    }
+  }
+}

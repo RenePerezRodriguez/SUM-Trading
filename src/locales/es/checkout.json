@@ -1,0 +1,16 @@
+{
+  "checkout": {
+    "copart": {
+      "title": "Pago de Asesoria Copart",
+      "subtitle": "Servicio de Asesoria Personalizada",
+      "features": [
+        "Acceso a subastas con nuestra licencia de broker",
+        "3 reportes de AutoCheck incluidos",
+        "Asesoria personalizada en la seleccion y puja",
+        "Conservacion de tarifa si no ganas la subasta"
+      ],
+      "pay_button": "Proceder al Pago",
+      "processing": "Procesando pago..."
+    }
+  }
+}

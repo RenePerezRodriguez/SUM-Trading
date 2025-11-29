@@ -1,0 +1,348 @@
+{
+  "admin_page": {
+    "title": "Admin Portal",
+    "description": "Manage website content and view analytics.",
+    "actions": {
+      "manage_vehicles": {
+        "title": "Manage Vehicles",
+        "description": "Add, edit, or remove vehicles from the catalog.",
+        "cta": "Go to Vehicles"
+      },
+      "manage_users": {
+        "title": "Manage Users",
+        "description": "View the list of registered users and manage their roles.",
+        "cta": "Go to Users"
+      },
+      "manage_leads": {
+        "title": "Client Leads",
+        "description": "Manage customers interested in vehicles from auctions and SUM Trading.",
+        "cta": "Go to Leads"
+      },
+      "view_analytics": {
+        "title": "Site Analytics",
+        "description": "View statistics on visits, sales, and popular searches.",
+        "cta": "View Analytics"
+      }
+    }
+  },
+  "add_vehicle_page": {
+    "title": "Add New Vehicle",
+    "description": "Fill in the details of the new vehicle to add it to the catalog.",
+    "back_button": "Back to Vehicles",
+    "sections": {
+      "basic_info": "Basic Information",
+      "specifications": "Specifications & Price",
+      "condition_report": "Condition Report",
+      "internal_notes": "Internal Notes (Admin)",
+      "publishing": "Publishing",
+      "media": "Media"
+    },
+    "buttons": {
+      "decode_vin": "Decode",
+      "generate_description": "Generate with AI"
+    },
+    "fields": {
+      "lotNumber": "Lot Number",
+      "highlights": "Highlights",
+      "estimatedRetailValue": "Estimated Retail Value",
+      "cylinders": "Cylinders",
+      "drive": "Drive",
+      "fuel": "Fuel",
+      "titleCode": "Title Code",
+      "images": "Vehicle Images",
+      "image_cta": "Click to upload an image",
+      "image_cta_multi": "Click to add images",
+      "image_size_note": "(Max size: 5MB)",
+      "video": "Inspection Video",
+      "video_cta": "Click to upload a video",
+      "video_size_note": "(Max size: 50MB)",
+      "make": "Make",
+      "model": "Model",
+      "year": "Year",
+      "price": "Price (USD)",
+      "mileage": "Mileage",
+      "description": "Description",
+      "horsepower": "Horsepower (HP)",
+      "engine": "Engine",
+      "color": "Color",
+      "transmission": "Transmission",
+      "isFeatured": "Featured Vehicle",
+      "isFeatured_desc": "Featured vehicles will appear on the homepage.",
+      "transmission_types": {
+        "automatic": "Automatic",
+        "manual": "Manual"
+      },
+      "type": "Vehicle Type",
+      "uploading_image": "Uploading images...",
+      "uploading_video": "Uploading video...",
+      "saving": "Saving...",
+      "save_button": "Save Vehicle",
+      "update_button": "Update Vehicle",
+      "vin": "VIN (Vehicle Identification Number)",
+      "vin_description": "The VIN will be decoded automatically after you finish typing.",
+      "engineStatus": "Engine Status",
+      "engineStatus_types": {
+        "runs_and_drives": "Runs and Drives",
+        "starts": "Starts",
+        "does_not_start": "Does Not Start"
+      },
+      "primaryDamage": "Primary Damage",
+      "secondaryDamage": "Secondary Damage",
+      "primaryDamage_types": {
+        "none": "None",
+        "front_end": "Front End",
+        "rear_end": "Rear End",
+        "side": "Side",
+        "all_over": "All Over",
+        "vandalism": "Vandalism",
+        "water_flood": "Water/Flood",
+        "hail": "Hail",
+        "mechanical": "Mechanical",
+        "other": "Other"
+      },
+      "titleType": "Title Type",
+      "damageDescription": "Damage Description (optional)",
+      "hasKeys": "Has Keys?",
+      "hasKeys_desc": "Indicates if the vehicle comes with keys.",
+      "titleType_types": {
+        "clean_title": "Clean Title",
+        "salvage_title": "Salvage Title",
+        "rebuilt_title": "Rebuilt Title",
+        "parts_only": "Parts Only",
+        "other": "Other"
+      },
+      "other_option": "Other (specify)",
+      "otherType_label": "Specify other vehicle type",
+      "otherTitleType_label": "Specify other title type",
+      "otherPrimaryDamage_label": "Specify other damage type",
+      "otherSecondaryDamage_label": "Specify other secondary damage",
+      "internalNotes_label": "Internal Notes",
+      "internalNotes_desc": "These notes will not be visible to clients.",
+      "provenance_country": "Country of Origin",
+      "provenance_city": "City of Origin"
+    },
+    "placeholders": {
+      "lotNumber": "e.g., 12345678",
+      "highlights": "e.g., Run and Drive, Low mileage",
+      "estimatedRetailValue": "e.g., 65000",
+      "cylinders": "e.g., 8",
+      "drive": "e.g., RWD, AWD",
+      "fuel": "Select a fuel type",
+      "titleCode": "e.g., MS - CERT OF TITLE-SALVAGED",
+      "make": "e.g., Ford",
+      "model": "e.g., Mustang",
+      "year": "e.g., 2023",
+      "price": "e.g., 50000",
+      "mileage": "e.g., 15000",
+      "description": "Describe the vehicle or let AI do it for you...",
+      "horsepower": "e.g., 350",
+      "engine": "e.g., 5.0L V8",
+      "color": "e.g., Red",
+      "transmission": "Select a transmission",
+      "type": "Select a type",
+      "titleType": "Select a title type",
+      "primaryDamage": "Select damage type",
+      "secondaryDamage": "Select damage type",
+      "vin": "17 characters...",
+      "damageDescription": "e.g., Minor dent on front bumper",
+      "engineStatus": "Select engine status",
+      "otherType": "e.g., Limousine",
+      "otherTitleType": "e.g., Export Title",
+      "otherPrimaryDamage": "e.g., Fire damage",
+      "otherSecondaryDamage": "e.g., Cosmetic damage",
+      "internalNotes": "e.g., Client interested, check before sale...",
+      "provenance_country": "e.g., USA",
+      "provenance_city": "e.g., Miami, FL"
+    },
+    "vin_modal": {
+      "title": "NHTSA API Data",
+      "description": "This is the raw response received from the server for the provided VIN.",
+      "sorted_data_tab": "Sorted Data",
+      "raw_data_tab": "Raw Data (JSON)",
+      "variable": "Variable",
+      "value": "Value",
+      "close_button": "Close",
+      "view_data_button": "View Data"
+    }
+  },
+  "edit_vehicle_page": {
+    "title": "Edit Vehicle",
+    "description": "Update the details of the vehicle.",
+    "not_found_title": "Vehicle Not Found",
+    "not_found_desc": "Could not find the vehicle you are looking for."
+  },
+  "delete_vehicle_dialog": {
+    "title": "Are you sure?",
+    "description": "This action cannot be undone. This will permanently delete the vehicle {make} {model} and its associated files.",
+    "cancel": "Cancel",
+    "confirm": "Delete",
+    "delete_success_title": "Vehicle Deleted",
+    "delete_success_desc": "{make} {model} has been successfully deleted.",
+    "delete_error_title": "Error Deleting Vehicle",
+    "delete_error_desc": "There was a problem deleting the vehicle. Please try again."
+  },
+  "admin_header": {
+    "go_to_home": "Go to Home",
+    "logout": "Logout",
+    "logout_success_title": "Logged Out",
+    "logout_success_desc": "You have been logged out successfully.",
+    "logout_error_title": "Logout Error",
+    "logout_error_desc": "Could not log out. Please try again."
+  },
+  "admin_layout": {
+    "access_denied_title": "Access Denied",
+    "access_denied_desc": "You do not have permission to access this section.",
+    "back_to_home": "Back to Home"
+  },
+  "admin_register_page": {
+    "title": "Create New Admin User",
+    "description": "This form creates a user with administrator privileges.",
+    "success_title": "Admin User Created",
+    "success_desc": "The new administrator account has been created successfully."
+  },
+  "admin_vehicles_page": {
+    "back_to_panel": "Back to Panel",
+    "add_vehicle": "Add Vehicle",
+    "filter_placeholder": "Filter by make...",
+    "delete_button": "Delete",
+    "delete_many_desc": "This will permanently delete {count} vehicles and all their associated files.",
+    "status_update_success_title": "Status Updated",
+    "status_update_success_desc": "The status of {make} {model} has been updated to {status}.",
+    "status_update_error_title": "Error Updating Status",
+    "status_update_error_desc": "Could not update vehicle status. Please try again.",
+    "firebase_not_available": "Firebase services are not available."
+  },
+  "admin_users_page": {
+    "back_to_panel": "Back to Panel",
+    "filter_placeholder": "Filter by email...",
+    "delete_button": "Delete",
+    "fetch_error_unknown": "An unknown error occurred while fetching users.",
+    "fetch_error_title": "Error Fetching Users",
+    "fetch_error_desc": "There was a problem retrieving the list of users.",
+    "server_error_title": "Server Error",
+    "role_change_error_title": "Error Changing Role",
+    "role_change_error_self": "You cannot change your own role.",
+    "role_change_success_title": "Role Updated",
+    "role_change_success_desc": "The role for {email} has been changed to {role}.",
+    "delete_error_title": "Error Deleting Users",
+    "delete_error_self": "You cannot delete your own account from this panel.",
+    "delete_error_unknown": "An unknown error occurred.",
+    "delete_success_title_one": "User Deleted",
+    "delete_success_title_many": "Users Deleted",
+    "delete_success_desc": "{count} user(s) have been deleted successfully.",
+    "delete_error_desc": "Failed to delete {count} user(s): {emails}",
+    "dialog_role": {
+      "title": "Confirm Role Change",
+      "description": "Are you sure you want to change the role of {email} to {role}?",
+      "confirm": "Confirm"
+    },
+    "dialog_delete": {
+      "title": "Confirm Deletion",
+      "description": "Are you sure you want to permanently delete {count} user(s)? This action cannot be undone.",
+      "confirm": "Confirm Deletion"
+    },
+    "dialog_cancel": "Cancel"
+  },
+  "admin_users_table": {
+    "open_menu": "Open menu",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "registration_date": "Registration Date",
+    "change_role": "Change Role",
+    "delete": "Delete",
+    "roles": {
+      "admin": "Admin",
+      "user": "User"
+    }
+  },
+  "admin_data_table": {
+    "selected_rows": "{selected} of {total} row(s) selected.",
+    "rows_per_page": "Rows per page",
+    "page_of": "Page {current} of {total}",
+    "first_page": "Go to first page",
+    "previous_page": "Go to previous page",
+    "next_page": "Go to next page",
+    "last_page": "Go to last page",
+    "clear_filters": "Clear",
+    "view": "View",
+    "toggle_columns": "Toggle columns",
+    "no_results": "No results.",
+    "select_all_aria": "Select all",
+    "select_row_aria": "Select row"
+  },
+  "admin_analytics_page": {
+    "title": "Site Analytics",
+    "description": "View live data from Microsoft Clarity.",
+    "back_to_panel": "Back to Admin Panel",
+    "view_in_clarity": "View in Clarity",
+    "error_title": "Error Loading Analytics",
+    "time_ranges": {
+      "last_24_hours": "Last 24 hours",
+      "last_48_hours": "Last 48 hours",
+      "last_72_hours": "Last 72 hours"
+    },
+    "dimensions": {
+      "os": "Operating System",
+      "browser": "Browser",
+      "device": "Device",
+      "country": "Country/Region",
+      "url": "URL",
+      "source": "Source"
+    },
+    "metrics": {
+      "Traffic": "Traffic Summary",
+      "DeadClick": "Dead Clicks",
+      "RageClick": "Rage Clicks",
+      "ExcessiveScroll": "Excessive Scrolls",
+      "ScriptError": "Script Errors"
+    },
+    "headers": {
+      "sessions": "Sessions",
+      "users": "Users",
+      "pages_per_session": "Pages/Session"
+    }
+  },
+  "admin_leads_page": {
+    "title": "Client Leads",
+    "description": "Manage customers who have requested consultation for auction and SUM Trading vehicles.",
+    "filter_placeholder": "Filter by name...",
+    "status_types": {
+      "active": "Active",
+      "in-progress": "In Progress",
+      "finished": "Finished"
+    },
+    "copart_leads_tab": "Auction Leads",
+    "sum_leads_tab": "SUM Trading Leads",
+    "active_leads_tab": "Active Leads",
+    "finished_leads_tab": "Finished Leads",
+    "whatsapp_message_copart": "Hello {name}, I'm contacting you from SUM Trading regarding your consultation request for Copart vehicles.",
+    "whatsapp_message_sum": "Hello {name}, I'm contacting you from SUM Trading regarding your interest in our vehicles."
+  },
+  "admin_storage_test": {
+    "title": "Server Auth Test",
+    "description": "This page helps verify that server-side actions are properly authenticated using session cookies.",
+    "back_to_panel": "Back to Admin Panel",
+    "card_title": "Auth Flow Test",
+    "step1_desc": "Step 1: Click the button below to get your user's auth token and create a secure session cookie on the server-side. This simulates the login process and authorizes your browser to make secure requests.",
+    "step2_desc": "Step 2: Now that you are authenticated with the server, you should be able to fetch data from protected endpoints. Click the button below to get all users.",
+    "verify_claims_button": "Verify Admin Claims & Create Session",
+    "verifying": "Verifying...",
+    "authenticating": "Authenticating...",
+    "token_claims_title": "Token Claims",
+    "load_users_button": "Fetch Users (Secure)",
+    "loading_users": "Loading users...",
+    "users_list_title": "Fetched Users",
+    "error_title": "Error",
+    "login_required": "You must be logged in to perform this action.",
+    "token_verified_title": "Session Created",
+    "token_verified_desc": "Your browser is now authenticated with the server.",
+    "verification_error_title": "Verification Failed",
+    "verification_error_desc": "Could not verify claims or create session.",
+    "permission_denied": "You do not have permission to perform this action.",
+    "fetch_users_error_title": "Error Fetching Users",
+    "fetch_users_error_unknown": "An unknown error occurred while fetching users.",
+    "access_denied_title": "Access Denied",
+    "no_admin_role": "Your account does not have the 'admin' role in its claims."
+  }
+}

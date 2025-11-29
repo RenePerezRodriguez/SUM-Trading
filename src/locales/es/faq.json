@@ -1,0 +1,164 @@
+{
+  "faq_page": {
+    "meta_title": "Preguntas Frecuentes",
+    "meta_description": "Encuentra respuestas a las dudas más comunes sobre la compra, importación y reparación de vehículos con SUM Trading."
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "description": "Tienes dudas? Tenemos respuestas. Si no encuentras lo que buscas, no dudes en contactarnos.",
+    "search_placeholder": "Buscar pregunta...",
+    "no_results": "No encontramos preguntas que coincidan con tu búsqueda.",
+    "whatsapp_cta": "¿No encontraste tu respuesta?",
+    "whatsapp_button": "Pregunta por WhatsApp",
+    "whatsapp_message": "¡Hola! Tengo una pregunta que no encontré en el FAQ.",
+    "contact_cta": "¿Necesitas más información?",
+    "contact_button": "Contáctanos",
+    "lang": "es",
+    "categories": [
+      {
+        "id": "proceso-compra",
+        "title": "Proceso de Compra",
+        "questions": [
+          {
+            "question": "¿Qué incluye su servicio 'llave en mano'?",
+            "answer": "<p>Nuestro servicio integral cubre todo el proceso de importación. Aquí te lo desglosamos:</p><ul><li><strong>Búsqueda y Asesoramiento:</strong> Te asesoramos y buscamos las mejores oportunidades.</li><li><strong>Compra y Representación:</strong> Te representamos en la subasta para conseguir el mejor precio.</li><li><strong>Logística y Transporte:</strong> Coordinamos el envío marítimo.</li><li><strong>Aduanas y Papeleo:</strong> Gestionamos toda la documentación de exportación e importación.</li><li><strong>Reparación y Entrega Final:</strong> Ofrecemos servicios de reparación y te entregamos el vehículo en tu país, listo para usar.</li></ul>"
+          },
+          {
+            "question": "¿Dónde puedo ver los vehículos disponibles?",
+            "answer": "<p>Somos brokers de los principales portales de subastas de EEUU. Puedes ver el inventario disponible directamente en nuestro buscador. Si encuentras un vehículo de tu interés, envíanoslo para iniciar el proceso de asesoría.</p>"
+          },
+          {
+            "question": "¿Cómo funciona el servicio de asesoría para subastas?",
+            "answer": "<p>Nuestro servicio de asesoría te permite participar en las subastas de EE. UU. usando nuestra licencia de broker, aunque tú no tengas una. El proceso es simple:</p><ol><li><strong>Activa el servicio:</strong> Pagas una única cuota de activación de $20 USD.</li><li><strong>Obtén asesoría:</strong> Un experto de SUM te contactará para analizar los vehículos que te interesan, verificar su historial con reportes de AutoCheck y definir una estrategia de puja.</li><li><strong>Participa en la subasta:</strong> Nosotros pujamos por ti hasta el límite que establezcas.</li><li><strong>Conserva tu cuota:</strong> Si no ganas la subasta, tu cuota de $20 USD se mantiene como crédito para un próximo intento, sin costo adicional.</li></ol>"
+          },
+          {
+            "question": "¿Puedo visitar el vehículo antes de comprarlo?",
+            "answer": "<p>Los vehículos están ubicados en patios de subasta en Estados Unidos, por lo que no es posible visitarlos físicamente antes de la compra. Sin embargo, ofrecemos:</p><ul><li><strong>Reportes detallados de AutoCheck</strong> con el historial completo del vehículo</li><li><strong>Fotos de alta calidad</strong> desde múltiples ángulos</li><li><strong>Descripción detallada de daños</strong> proporcionada por la subasta</li><li><strong>Asesoría personalizada</strong> de nuestros expertos para evaluar el estado del vehículo</li></ul>"
+          },
+          {
+            "question": "¿Qué pasa si el vehículo tiene más daños de los indicados?",
+            "answer": "<p>Si al recibir el vehículo en nuestro patio descubrimos daños no reportados en la subasta:</p><ol><li>Te notificamos inmediatamente con fotos y documentación</li><li>Te ofrecemos opciones: proceder con la compra con descuento, cancelar y recibir reembolso, o buscar otro vehículo</li><li>En caso de cancelación, conservas tu cuota de asesoría para tu próxima compra</li></ol><p>Nuestra prioridad es tu satisfacción y transparencia total.</p>"
+          },
+          {
+            "question": "¿Cuánto tiempo tengo para decidir si compro un vehículo?",
+            "answer": "<p>Una vez que identificas un vehículo de interés:</p><ul><li>Te proporcionamos la información completa en <strong>24 horas</strong></li><li>Tienes tiempo hasta la <strong>fecha de la subasta</strong> para decidir (generalmente 1-7 días)</li><li>Te recomendamos decidir con al menos <strong>24 horas de anticipación</strong> para preparar la estrategia de puja</li><li>Podemos hacer ofertas pre-subasta si el vendedor acepta ofertas anticipadas</li></ul>"
+          },
+          {
+            "question": "¿Puedo participar en múltiples subastas a la vez?",
+            "answer": "<p>¡Absolutamente! Con tu cuota de asesoría activa puedes:</p><ul><li>Participar en <strong>múltiples subastas simultáneamente</strong></li><li>Recibir asesoría para <strong>varios vehículos</strong> sin costo adicional</li><li>Obtener hasta <strong>3 reportes de AutoCheck incluidos</strong></li><li>Conservar tu cuota hasta ganar una subasta</li></ul><p>Solo pagas las tarifas de servicio cuando ganas la subasta.</p>"
+          }
+        ]
+      },
+      {
+        "id": "costos-pagos",
+        "title": "Costos y Pagos",
+        "questions": [
+          {
+            "question": "¿Cuáles son las tarifas y comisiones?",
+            "answer": "<p>Nuestras tarifas son transparentes y se estructuran según el valor del vehículo:</p><ul><li><strong>Cuota Inicial de $20 USD:</strong> Para activar el servicio de asesoría.</li><li><strong>Tarifa de Servicio Variable:</strong> Comienza en $200 USD para vehículos de hasta $3,999 y aumenta progresivamente. Por ejemplo, $400 para vehículos de $4,000 a $5,999.</li></ul><p>El costo del envío internacional y los impuestos de importación se cotizan por separado.</p>"
+          },
+          {
+            "question": "¿Qué métodos de pago aceptan?",
+            "answer": "<p>La cuota inicial de $20 USD para la asesoría se paga de forma segura en nuestro sitio web con tarjeta de crédito o débito a través de Stripe. Para otros pagos, aceptamos:</p><ul><li><strong>PayPal</strong> - Pago seguro internacional</li><li><strong>Criptomonedas</strong> - Bitcoin, Ethereum, USDT</li><li><strong>Transferencia bancaria</strong> - Internacional</li><li><strong>Depósito en banco americano</strong> - Para clientes en USA</li></ul>"
+          },
+          {
+            "question": "¿Hay costos ocultos además de las tarifas mencionadas?",
+            "answer": "<p>No hay costos ocultos. El costo total incluye:</p><ul><li><strong>Precio del vehículo en subasta</strong></li><li><strong>Tarifas de la casa de subasta</strong> (buyer's fee)</li><li><strong>Nuestra tarifa de servicio</strong> (según precio del vehículo)</li><li><strong>Transporte internacional</strong> (cotizado por separado)</li><li><strong>Impuestos de importación</strong> (según tu país)</li></ul><p>Te proporcionamos un <strong>desglose completo</strong> antes de proceder con cualquier compra.</p>"
+          },
+          {
+            "question": "¿Cuándo debo realizar los pagos?",
+            "answer": "<p>El proceso de pago se estructura así:</p><ol><li><strong>Cuota de asesoría ($20 USD):</strong> Al activar el servicio</li><li><strong>Depósito del vehículo:</strong> Dentro de 24-48 horas después de ganar la subasta</li><li><strong>Pago final del vehículo:</strong> Antes de que salga del patio de subasta</li><li><strong>Pago de transporte:</strong> Antes de iniciar el envío internacional</li><li><strong>Gastos de importación:</strong> Al momento del despacho aduanal en tu país</li></ol>"
+          },
+          {
+            "question": "¿Qué pasa si no puedo completar el pago?",
+            "answer": "<p>Si surgen problemas para completar el pago:</p><ul><li>Comunícate con nosotros <strong>inmediatamente</strong></li><li>Podemos coordinar <strong>extensiones de pago</strong> con la casa de subasta (sujeto a disponibilidad)</li><li>Si no puedes proceder, el depósito podría perderse según las políticas de la subasta</li><li>Te ayudamos a encontrar <strong>soluciones de financiamiento</strong> en algunos casos</li></ul><p><strong>Importante:</strong> Solo puja en subastas si estás seguro de poder completar el pago.</p>"
+          },
+          {
+            "question": "¿Ofrecen planes de financiamiento?",
+            "answer": "<p>Actualmente no ofrecemos financiamiento directo, pero podemos:</p><ul><li>Recomendarte instituciones financieras en tu país</li><li>Coordinar pagos en plazos cortos (evaluado caso por caso)</li><li>Aceptar pagos parciales durante el proceso de importación</li></ul><p>Contacta a nuestro equipo para explorar opciones según tu situación particular.</p>"
+          }
+        ]
+      },
+      {
+        "id": "logistica-importacion",
+        "title": "Logística e Importación",
+        "questions": [
+          {
+            "question": "¿Entregan en mi ciudad/país?",
+            "answer": "<p>Realizamos envíos internacionales a la mayoría de países de América Latina. Los destinos más comunes son:</p><ul><li><strong>México</strong> - Entrega puerta a puerta</li><li><strong>Colombia</strong> - Hasta puerto principal</li><li><strong>Ecuador</strong> - Hasta puerto principal</li><li><strong>Perú</strong> - Hasta puerto principal</li><li><strong>Chile</strong> - Hasta puerto principal</li></ul><p>Para otros países, contáctanos para verificar disponibilidad y costos.</p>"
+          },
+          {
+            "question": "¿Qué documentos necesito para la importación en mi país?",
+            "answer": "<p>Los documentos básicos que proporcionamos son:</p><ul><li><strong>Bill of Sale</strong> - Factura de compra</li><li><strong>Título del vehículo</strong> - Propiedad legal</li><li><strong>Conocimiento de embarque</strong> - Para transporte marítimo</li><li><strong>Factura comercial</strong> - Para aduanas</li></ul><p>Los requisitos adicionales varían por país. Te asesoramos según tu destino específico.</p>"
+          },
+          {
+            "question": "¿Cuánto tiempo tarda el proceso completo de importación?",
+            "answer": "<p>El tiempo total varía según el destino:</p><ul><li><strong>Compra en subasta:</strong> 1-7 días</li><li><strong>Llegada a nuestro patio:</strong> 3-7 días</li><li><strong>Reparaciones (si aplica):</strong> 1-4 semanas</li><li><strong>Transporte marítimo:</strong> 2-4 semanas</li><li><strong>Despacho aduanal:</strong> 3-7 días</li></ul><p><strong>Total estimado:</strong> 4-8 semanas desde la compra hasta la entrega final.</p>"
+          },
+          {
+            "question": "¿El vehículo llega asegurado?",
+            "answer": "<p>Sí, el vehículo está protegido durante todo el proceso:</p><ul><li><strong>En el patio de subasta:</strong> Seguro de la casa de subasta</li><li><strong>Transporte terrestre en USA:</strong> Seguro de transporte</li><li><strong>Transporte marítimo:</strong> Seguro marítimo internacional</li><li><strong>Durante reparaciones:</strong> Seguro de nuestro taller</li></ul><p>Puedes contratar cobertura adicional si lo deseas.</p>"
+          },
+          {
+            "question": "¿Qué pasa si el vehículo sufre daños durante el transporte?",
+            "answer": "<p>En el caso poco probable de daños durante el transporte:</p><ol><li>Documentamos los daños inmediatamente con fotos y reportes</li><li>Iniciamos el proceso de <strong>reclamación al seguro</strong></li><li>Te mantenemos informado en cada paso</li><li>El seguro cubre los daños según la póliza contratada</li></ol><p>Trabajamos con transportistas confiables para minimizar cualquier riesgo.</p>"
+          }
+        ]
+      },
+      {
+        "id": "reparaciones",
+        "title": "Reparaciones y Post-Venta",
+        "questions": [
+          {
+            "question": "¿Qué tipo de reparaciones pueden realizar?",
+            "answer": "<p>Nuestro taller en Texas puede realizar:</p><ul><li><strong>Reparación de carrocería</strong> - Abolladuras, rayones, reemplazo de paneles</li><li><strong>Mecánica general</strong> - Motor, transmisión, suspensión</li><li><strong>Sistema eléctrico</strong> - Electrónica y cableado</li><li><strong>Pintura profesional</strong> - Retoque o pintura completa</li><li><strong>Restauración de interiores</strong> - Tapicería y componentes</li></ul><p>Te proporcionamos una <strong>cotización detallada</strong> antes de iniciar cualquier reparación.</p>"
+          },
+          {
+            "question": "¿Puedo enviar el vehículo directamente sin reparaciones?",
+            "answer": "<p>¡Por supuesto! Puedes elegir:</p><ul><li><strong>Sin reparaciones:</strong> Enviamos el vehículo tal cual lo compraste</li><li><strong>Reparaciones básicas:</strong> Solo lo necesario para que funcione</li><li><strong>Reparaciones completas:</strong> Restauración total</li></ul><p>Tú decides qué nivel de trabajo deseas según tu presupuesto y planes para el vehículo.</p>"
+          },
+          {
+            "question": "¿Ofrecen garantía en las reparaciones?",
+            "answer": "<p>Sí, todas nuestras reparaciones incluyen:</p><ul><li><strong>Garantía de 30 días</strong> en mano de obra</li><li><strong>Garantía del fabricante</strong> en partes nuevas (varía según la marca)</li><li><strong>Documentación fotográfica</strong> del trabajo realizado</li><li><strong>Soporte post-entrega</strong> para cualquier consulta</li></ul><p>Usamos únicamente piezas de calidad y técnicos certificados.</p>"
+          },
+          {
+            "question": "¿Cuánto tiempo toman las reparaciones?",
+            "answer": "<p>El tiempo depende del tipo de reparación:</p><ul><li><strong>Reparaciones menores:</strong> 3-7 días</li><li><strong>Reparaciones moderadas:</strong> 1-2 semanas</li><li><strong>Reparaciones mayores:</strong> 2-4 semanas</li><li><strong>Restauración completa:</strong> 4-8 semanas</li></ul><p>Te proporcionamos un <strong>cronograma estimado</strong> y actualizaciones regulares durante el proceso.</p>"
+          }
+        ]
+      },
+      {
+        "id": "documentacion",
+        "title": "Documentación y Legalidad",
+        "questions": [
+          {
+            "question": "¿Qué es el AutoCheck y por qué es importante?",
+            "answer": "<p>AutoCheck es un reporte detallado del historial del vehículo que incluye:</p><ul><li><strong>Historial de accidentes</strong> - Incidentes reportados</li><li><strong>Historial de títulos</strong> - Salvage, rebuilt, clean, etc.</li><li><strong>Lectura de odómetro</strong> - Verificación de millaje</li><li><strong>Historial de servicio</strong> - Mantenimientos registrados</li><li><strong>Uso previo</strong> - Personal, rental, fleet, etc.</li></ul><p>Es esencial para tomar una decisión informada antes de pujar.</p>"
+          },
+          {
+            "question": "¿Qué significa que un vehículo tenga título salvage/rebuilt?",
+            "answer": "<p>Los tipos de título indican el historial del vehículo:</p><ul><li><strong>Clean Title:</strong> Sin historial de daños mayores</li><li><strong>Salvage Title:</strong> Declarado pérdida total por aseguradora, requiere reparación</li><li><strong>Rebuilt Title:</strong> Fue salvage, reparado e inspeccionado, puede circular</li><li><strong>Parts Only:</strong> Solo para repuestos, no puede circular</li></ul><p>Te asesoramos sobre qué tipos de título puedes legalizar en tu país.</p>"
+          },
+          {
+            "question": "¿Puedo legalizar cualquier vehículo en mi país?",
+            "answer": "<p>Las regulaciones varían por país:</p><ul><li><strong>México:</strong> Permite la mayoría de títulos con trámites especiales</li><li><strong>Colombia:</strong> Restricciones según año y tipo de título</li><li><strong>Ecuador:</strong> Normativa específica de importación</li><li><strong>Otros países:</strong> Consulta regulaciones locales</li></ul><p>Te asesoramos sobre la viabilidad de legalización antes de comprar.</p>"
+          }
+        ]
+      },
+      {
+        "id": "sobre-sum",
+        "title": "Sobre SUM Trading",
+        "questions": [
+          {
+            "question": "¿Dónde están ubicados?",
+            "answer": "<p>Tenemos presencia binacional para servirte mejor:</p><ul><li><strong>Brownsville, Texas (USA)</strong> - Patio principal de operaciones y taller</li><li><strong>Pachuca, México</strong> - Oficina administrativa y atención al cliente</li></ul><p>Esto nos permite ofrecer el mejor servicio tanto en la compra en USA como en la logística hacia Latinoamérica.</p>"
+          },
+          {
+            "question": "¿Cómo puedo estar seguro de que no es un fraude?",
+            "answer": "<p>Entendemos tu preocupación. SUM Trading opera desde 2018 con presencia pública tanto en México como en Estados Unidos. Garantías de confianza:</p><ul><li>✅ <strong>Licencia de Broker</strong> en casas de subasta estadounidenses</li><li>✅ <strong>Plataformas de pago seguras</strong> como Stripe</li><li>✅ <strong>Documentación oficial</strong> - Bill of Sale y Título del vehículo</li><li>✅ <strong>Presencia física</strong> verificable en USA y México</li><li>✅ <strong>Testimonios reales</strong> de clientes satisfechos</li><li>✅ <strong>Redes sociales activas</strong> con contenido regular</li></ul><p>Puedes visitarnos en persona o solicitar videollamada para conocer nuestras instalaciones.</p>"
+          }
+        ]
+      }
+    ]
+  }
+}

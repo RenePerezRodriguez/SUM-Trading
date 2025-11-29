@@ -1,0 +1,664 @@
+{
+  "alabama": {
+    "name": "Alabama",
+    "cities": [
+      {
+        "name": "BIRMINGHAM",
+        "price": 800
+      },
+      {
+        "name": "DOTHAN",
+        "price": 800
+      },
+      {
+        "name": "HUNTSVILLE",
+        "price": 820
+      },
+      {
+        "name": "MOBILE",
+        "price": 750
+      },
+      {
+        "name": "MOBILE SOUTH",
+        "price": 800
+      },
+      {
+        "name": "MONTGOMERY",
+        "price": 800
+      },
+      {
+        "name": "TANNER",
+        "price": 820
+      }
+    ]
+  },
+  "arizona": {
+    "name": "Arizona",
+    "cities": [
+      {
+        "name": "PHOENIX",
+        "price": 850
+      },
+      {
+        "name": "Phoenix - PHOENIX",
+        "price": 1145
+      },
+      {
+        "name": "TUCSON",
+        "price": 925
+      },
+      {
+        "name": "Tucson - TUCSON",
+        "price": 1145
+      }
+    ]
+  },
+  "arkansas": {
+    "name": "Arkansas",
+    "cities": [
+      {
+        "name": "Fayetteville - LINCOLN",
+        "price": 575
+      },
+      {
+        "name": "Fayetteville - PRAIRIE GROVE",
+        "price": 575
+      },
+      {
+        "name": "Little Rock - CONWAY",
+        "price": 500
+      },
+      {
+        "name": "Little Rock - SCOTT",
+        "price": 500
+      }
+    ]
+  },
+  "connecticut": {
+    "name": "Connecticut",
+    "cities": [
+      {
+        "name": "Hartford  Sublot North 625 NEW BRITAIN",
+        "price": 475
+      },
+      {
+        "name": "Hartford - EAST WINDSOR",
+        "price": 475
+      },
+      {
+        "name": "Hartford - NEW BRITAIN",
+        "price": 475
+      },
+      {
+        "name": "Hartford - Sublot South 525 NEW BRITAIN",
+        "price": 475
+      },
+      {
+        "name": "Hartford Springfield - EAST GRAMBY",
+        "price": 500
+      },
+      {
+        "name": "Hartford-South - MIDDLETOWN",
+        "price": 475
+      }
+    ]
+  },
+  "iowa": {
+    "name": "IOWA",
+    "cities": [
+      {
+        "name": "Davenport - DAVENPORT",
+        "price": 1185
+      },
+      {
+        "name": "Davenport - ELDRIDGE",
+        "price": 1185
+      },
+      {
+        "name": "Des Moines - DE SOTO",
+        "price": 1175
+      }
+    ]
+  },
+  "illinois": {
+    "name": "Illinois",
+    "cities": [
+      {
+        "name": "Chicago - MATTESON",
+        "price": 810
+      },
+      {
+        "name": "Chicago North - EAST DUNDEE",
+        "price": 810
+      },
+      {
+        "name": "Chicago North - ELGIN",
+        "price": 810
+      },
+      {
+        "name": "Chicago South  CHICAGO HEIGHTS",
+        "price": 810
+      },
+      {
+        "name": "Chicago South Sublot - CHICAGO Heights",
+        "price": 810
+      },
+      {
+        "name": "Chicago West - AURORA",
+        "price": 810
+      },
+      {
+        "name": "Chicago West Sublot MONTGOMERY",
+        "price": 810
+      },
+      {
+        "name": "Chicago-South - MARKHAM",
+        "price": 810
+      },
+      {
+        "name": "Lincoln - LINCOLN",
+        "price": 1150
+      },
+      {
+        "name": "Peoria - PEKIN",
+        "price": 1150
+      },
+      {
+        "name": "Southern Illinois - ALORTON",
+        "price": 875
+      },
+      {
+        "name": "Southern Illinois - CAHOKIA\nHEIGHTS",
+        "price": 875
+      },
+      {
+        "name": "St. Louis - GRANITE CITY",
+        "price": 875
+      },
+      {
+        "name": "St. Louis, Il - CASEYVILLE",
+        "price": 875
+      },
+      {
+        "name": "Wheeling - WHEELING",
+        "price": 830
+      }
+    ]
+  },
+  "minnesota": {
+    "name": "Minnesota",
+    "cities": [
+      {
+        "name": "Elk River - ELK RIVER",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis - BLAINE",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis - MAPLE GROVE",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis - SAINT PAUL",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis North - HAM LAKE",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis South - RANDOLPH",
+        "price": 1150
+      },
+      {
+        "name": "Minneapolis Sublot - FRIDLEY",
+        "price": 1150
+      },
+      {
+        "name": "St. Cloud - AVON",
+        "price": 1150
+      }
+    ]
+  },
+  "new_hampshire": {
+    "name": "New Hampshire",
+    "cities": [
+      {
+        "name": "Candia - CANDIA",
+        "price": 770
+      },
+      {
+        "name": "Manchester - SALEM",
+        "price": 670
+      }
+    ]
+  },
+  "new_jersey": {
+    "name": "New Jersey",
+    "cities": [
+      {
+        "name": "Avenel New Jersey - AVENEL",
+        "price": 370
+      },
+      {
+        "name": "Central New Jersey -MORGANVILLE",
+        "price": 370
+      },
+      {
+        "name": "Glassboro East - GLASSBORO",
+        "price": 335
+      },
+      {
+        "name": "Glassboro West - GLASSBORO",
+        "price": 335
+      },
+      {
+        "name": "Manalapan - ENGLISHTOWN",
+        "price": 380
+      },
+      {
+        "name": "NY Metro Skyline - FAIRFIELD",
+        "price": 600
+      },
+      {
+        "name": "New Jersey - BORDENTOWN",
+        "price": 460
+      },
+      {
+        "name": "Port Murray - PORT MURRAY",
+        "price": 475
+      },
+      {
+        "name": "Sayreville - SAYREVILLE",
+        "price": 450
+      },
+      {
+        "name": "Somerville - HILLSBOROUGH",
+        "price": 365
+      },
+      {
+        "name": "Southern New Jersey TURNERSVILLE",
+        "price": 330
+      },
+      {
+        "name": "Trenton - Jobstown Sublot JOBSTOWN",
+        "price": 425
+      },
+      {
+        "name": "Trenton - WINDSOR",
+        "price": 360
+      }
+    ]
+  },
+  "north_carolina": {
+    "name": "North Carolina",
+    "cities": [
+      {
+        "name": "Asheville - FLETCHER",
+        "price": 700
+      },
+      {
+        "name": "Charlotte - CHARLOTTE",
+        "price": 600
+      },
+      {
+        "name": "Charlotte - CONCORD",
+        "price": 625
+      },
+      {
+        "name": "China Grove - CHINA GROVE",
+        "price": 600
+      },
+      {
+        "name": "Concord - CONCORD",
+        "price": 600
+      },
+      {
+        "name": "Gastonia - GASTONIA, NC",
+        "price": 635
+      },
+      {
+        "name": "Greensboro - GRAHAM",
+        "price": 600
+      },
+      {
+        "name": "High Point - HIGH POINT",
+        "price": 675
+      },
+      {
+        "name": "KENLY",
+        "price": 650
+      },
+      {
+        "name": "Knightdale - KNIGHTDALE",
+        "price": 625
+      },
+      {
+        "name": "Lumberton - LUMBERTON",
+        "price": 625
+      },
+      {
+        "name": "Mebane - MEBANE",
+        "price": 625
+      },
+      {
+        "name": "Mebane Sublot - MEBANE",
+        "price": 635
+      },
+      {
+        "name": "Mocksville - MOCKSVILLE",
+        "price": 635
+      },
+      {
+        "name": "Off-Site Location - SANFORD",
+        "price": 625
+      },
+      {
+        "name": "Raleigh - CLAYTON",
+        "price": 585
+      },
+      {
+        "name": "Raleigh - DUNN",
+        "price": 585
+      },
+      {
+        "name": "Raleigh North - KNIGHDALE",
+        "price": 625
+      },
+      {
+        "name": "Statesville - STATESVILLE",
+        "price": 675
+      },
+      {
+        "name": "Wilmington - CASTLE HAYNE",
+        "price": 710
+      },
+      {
+        "name": "Wilmington - ST. PETERSBURG",
+        "price": 700
+      }
+    ]
+  },
+  "rhode_island": {
+    "name": "Rhode Island",
+    "cities": [
+      {
+        "name": "Exeter - EXETER",
+        "price": 595
+      },
+      {
+        "name": "Providence - RIVERSIDE",
+        "price": 550
+      }
+    ]
+  },
+  "south_carolina": {
+    "name": "South Carolina",
+    "cities": [
+      {
+        "name": "Charleston - RAVENEL",
+        "price": 550
+      },
+      {
+        "name": "Columbia - GASTON",
+        "price": 535
+      },
+      {
+        "name": "Darlington - DARLINGTON",
+        "price": 625
+      },
+      {
+        "name": "Greenville - SIMPSONVILLE",
+        "price": 585
+      },
+      {
+        "name": "Lexington - LEXINGTON, SC",
+        "price": 525
+      },
+      {
+        "name": "North Charleston - HARLEYVILLE",
+        "price": 575
+      },
+      {
+        "name": "Spartanburg - SPARTANBURG",
+        "price": 575
+      }
+    ]
+  },
+  "texas": {
+    "name": "Texas",
+    "cities": [
+      {
+        "name": "ABANGARES",
+        "price": 525
+      },
+      {
+        "name": "ABELINE",
+        "price": 800
+      },
+      {
+        "name": "AMARILLO",
+        "price": 900
+      },
+      {
+        "name": "ANDREW",
+        "price": 950
+      },
+      {
+        "name": "AUSTIN",
+        "price": 450
+      },
+      {
+        "name": "AUSTIN NORT",
+        "price": 520
+      },
+      {
+        "name": "AUSTIN NORTH",
+        "price": 800
+      },
+      {
+        "name": "Abilene - HAWLEY",
+        "price": 525
+      },
+      {
+        "name": "Amarillo - AMARILLO",
+        "price": 620
+      },
+      {
+        "name": "Andrews - ANDREWS",
+        "price": 625
+      },
+      {
+        "name": "Austin - DALE",
+        "price": 425
+      },
+      {
+        "name": "Austin - NEW BRAUNFELS",
+        "price": 425
+      },
+      {
+        "name": "CORPUS CHRISTI",
+        "price": 350
+      },
+      {
+        "name": "Corpus Christi",
+        "price": 350
+      },
+      {
+        "name": "DALLAS FORT WORTH",
+        "price": 550
+      },
+      {
+        "name": "Dallas - GRAND PRAIRIE",
+        "price": 450
+      },
+      {
+        "name": "Dallas - WILMER",
+        "price": 450
+      },
+      {
+        "name": "Dallas/Ft Worth - GRAND PRAIRIE",
+        "price": 450
+      },
+      {
+        "name": "El Paso",
+        "price": 1000
+      },
+      {
+        "name": "El Paso - ANTHONY",
+        "price": 600
+      },
+      {
+        "name": "El Paso - EL PASO",
+        "price": 600
+      },
+      {
+        "name": "Fort Worth North - JUSTIN",
+        "price": 470
+      },
+      {
+        "name": "Ft. Worth - HASLET",
+        "price": 430
+      },
+      {
+        "name": "HOUSTON",
+        "price": 450
+      },
+      {
+        "name": "Houston",
+        "price": 250
+      },
+      {
+        "name": "Houston East",
+        "price": 250
+      },
+      {
+        "name": "Houston South - ROSHARON",
+        "price": 260
+      },
+      {
+        "name": "Houston-North - HOUSTON",
+        "price": 250
+      },
+      {
+        "name": "LONGVIEW",
+        "price": 550
+      },
+      {
+        "name": "LUBBOCK",
+        "price": 900
+      },
+      {
+        "name": "LUFKIN",
+        "price": 520
+      },
+      {
+        "name": "Longview - LONGVIEW",
+        "price": 425
+      },
+      {
+        "name": "Lubbock - LUBBOCK",
+        "price": 625
+      },
+      {
+        "name": "Lufkin - LUFKIN",
+        "price": 425
+      },
+      {
+        "name": "MCALLEN",
+        "price": 250
+      },
+      {
+        "name": "MERCEDES",
+        "price": 270
+      },
+      {
+        "name": "McAllen - DONNA",
+        "price": 450
+      },
+      {
+        "name": "McAllen - MERCEDES",
+        "price": 450
+      },
+      {
+        "name": "ODESSA",
+        "price": 900
+      },
+      {
+        "name": "Permian Basin - ODESSA",
+        "price": 625
+      },
+      {
+        "name": "SAN ANTONIO",
+        "price": 450
+      },
+      {
+        "name": "San Antonio",
+        "price": 350
+      },
+      {
+        "name": "San Antonio-South - SAN ANTONIO",
+        "price": 350
+      },
+      {
+        "name": "TAYLOR",
+        "price": 550
+      },
+      {
+        "name": "TYLER",
+        "price": 580
+      },
+      {
+        "name": "WACO",
+        "price": 520
+      },
+      {
+        "name": "Waco - TEMPLE",
+        "price": 400
+      }
+    ]
+  },
+  "virginia": {
+    "name": "Virginia",
+    "cities": [
+      {
+        "name": "DANVILLE",
+        "price": 1250
+      },
+      {
+        "name": "FREDERICKSBURG",
+        "price": 1250
+      },
+      {
+        "name": "HAMPTON",
+        "price": 1250
+      },
+      {
+        "name": "HARRISONBURG",
+        "price": 1250
+      },
+      {
+        "name": "PULASKI",
+        "price": 1250
+      },
+      {
+        "name": "RICHMOND",
+        "price": 1250
+      },
+      {
+        "name": "RICHMOND E",
+        "price": 1250
+      },
+      {
+        "name": "SUFFOLK",
+        "price": 1250
+      },
+      {
+        "name": "TIDEWATER",
+        "price": 1250
+      }
+    ]
+  }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo Offline - Copart Search</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: #f3f4f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .details {
+      background: #f9fafb;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      margin: 20px 0;
+      text-align: left;
+      border-radius: 4px;
+    }
+
+    .details p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .btn-primary:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #374151;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+    }
+
+    .cached-content {
+      background: #ecfdf5;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .cached-content h3 {
+      color: #047857;
+      margin-bottom: 10px;
+    }
+
+    .cached-content p {
+      color: #065f46;
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      button {
+        min-width: unset;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📡</div>
+    
+    <h1>Sin conexión a internet</h1>
+    <p>Parece que no tienes conexión a internet. Algunas funciones no estarán disponibles.</p>
+    
+    <div class="details">
+      <p><strong>Estado:</strong> Offline</p>
+      <p><strong>Caché local:</strong> Disponible</p>
+      <p><strong>Datos guardados:</strong> Accesibles</p>
+    </div>
+
+    <div class="cached-content">
+      <h3>✅ Aún puedes ver:</h3>
+      <p>
+        • Búsquedas anteriores<br>
+        • Vehículos en favoritos<br>
+        • Historial de búsquedas<br>
+        • Filtros guardados
+      </p>
+    </div>
+
+    <div class="actions">
+      <button class="btn-secondary" onclick="location.reload()">
+        Reintentar conexión
+      </button>
+      <button class="btn-primary" onclick="goBack()">
+        Volver atrás
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      // Try to go back, or go to home
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '/';
+      }
+    }
+
+    // Check connection periodically
+    window.addEventListener('online', () => {
+      console.log('Conexión restaurada');
+      location.reload();
+    });
+
+    // Check initial connection status
+    if (navigator.onLine) {
+      // If we're online but on this page, it might be an old cached page
+      console.log('Online detected, checking actual connection...');
+    }
+  </script>
+</body>
+</html>

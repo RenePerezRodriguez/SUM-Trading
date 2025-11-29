@@ -1,0 +1,104 @@
+# Changelog
+
+All notable changes to SUM Trading Portal will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.0] - 2025-11-14
+
+### 🎉 Initial Production Release
+
+#### Added
+- ✨ **Multi-language Support** - Full English/Spanish (EN/ES) internationalization
+- 🔍 **Copart Integration** - Real-time vehicle search with ScraptPress API
+- 💳 **Stripe Payments** - Secure checkout with multiple payment methods
+- 👤 **User Authentication** - Firebase Auth (Email/Password + Google)
+- ⭐ **Favorites System** - Save and manage favorite vehicles
+- 🚘 **Virtual Garage** - Track purchased vehicles
+- 📱 **PWA Support** - Offline functionality, installable app
+- 🎨 **Modern UI** - shadcn/ui + Tailwind CSS + Framer Motion
+- 📊 **Analytics** - Google Analytics + Microsoft Clarity
+- 🔔 **Cookie Consent** - GDPR-compliant cookie management
+- 📧 **Contact Forms** - WhatsApp integration + email forms
+- 🎯 **SEO Optimization** - Dynamic sitemaps, robots.txt, meta tags
+- 🔐 **Security** - CORS, API validation, Stripe webhooks
+- 📈 **Performance** - 95+ Lighthouse score, optimized assets
+
+#### Project Structure
+- Next.js 16 with App Router
+- TypeScript 5.5 strict mode
+- Firebase Hosting deployment
+- Modular component architecture
+- Responsive design (mobile-first)
+
+#### Developer Experience
+- Turbopack dev server
+- ESLint + Prettier
+- TypeScript strict mode
+- Hot module replacement
+- Environment variable validation
+
+---
+
+## [1.1.0] - 2025-11-29
+
+### 🤖 AI Chatbot Enhancements
+
+#### Added
+- ✨ **Advanced Typing Indicator** - Animated dots with staggered bounce effect (replaces skeleton)
+- 📎 **File Upload System** - Image upload with preview (5MB limit, validation)
+- 🎤 **Voice Input** - Web Speech API integration for Spanish voice commands
+- 🌐 **Multi-language Detection** - Auto-detect ES/EN, responds in same language
+- 💬 **Dynamic Contextual Suggestions** - 6 categories with bilingual keywords
+- ⚡ **3-Level Cache System** - Instant responses (pre-cached + 1-hour cache)
+
+#### Fixed
+- 🔧 **Gemini Model Issues** - Switched to `gemini-2.5-pro` from preview models
+- 🔧 **Token Allocation** - Increased `maxOutputTokens` from 512 to 8192 (16x)
+- 🔧 **Thinking Token Overhead** - Added `systemInstruction` to prevent token waste
+- 🔧 **Language Detection** - Enhanced regex with 20+ Spanish keywords
+- 🔧 **Contextual Suggestions** - Now render as separate message (not inline)
+
+#### Technical Details
+- **Model**: gemini-2.5-pro (stable, production-ready)
+- **Max Tokens**: 8192 (was 512)
+- **Cache**: ServerCache with 1-hour TTL, 8 pre-cached responses
+- **Voice**: Web Speech API (es-ES)
+- **Upload**: FileReader API, base64 conversion
+- **Suggestions**: 6 categories (tarifas, proceso, contacto, servicio, importación, vehículo)
+
+#### Files Modified
+- `src/lib/gemini.ts` - Model upgrade + language detection
+- `src/components/chatbot/chatbot-widget.tsx` - All 6 advanced features
+- `src/app/api/chatbot/route.ts` - Cache integration
+- `src/lib/cache.ts` - Chatbot cache functions
+- `apphosting.yaml` - Added GEMINI_API_KEY secret
+
+---
+
+## [Unreleased]
+
+### Planned
+- 📧 Email notification system
+- 🤖 AI-powered vehicle recommendations
+- 🎯 Advanced filtering
+- 📱 React Native mobile app
+- 💰 PayPal + Crypto payment methods
+- 🏷️ Auction bidding system
+
+---
+
+## Version History
+
+### v1.0.0 (Nov 14, 2024)
+- Initial production release
+- Deployed to https://sumtrading.us
+- Full feature set complete
+- Performance optimized
+- Security hardened
+- Documentation complete
+
+---
+
+**Note:** For detailed commit history, see the [Git log](https://github.com/RenePerezRodriguez/SUM-Trading-repo/commits/main).

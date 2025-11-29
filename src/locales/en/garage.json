@@ -1,0 +1,9 @@
+{
+  "garage_page": {
+    "title": "My Garage",
+    "description": "Here are all the vehicles you have saved as favorites.",
+    "empty_title": "Your garage is empty",
+    "empty_description": "Use the heart icon on any vehicle to save it here.",
+    "empty_cta": "Explore Catalog"
+  }
+}
