@@ -4,10 +4,10 @@
     "title_part2": "with Professional Support from",
     "update_banner": "New: Now searching directly on US auction portals!",
     "typewriter_phrases": [
-      "Purchase, import, repair, and sale of auction vehicles.",
-      "Personalized advice and access to US auctions without a license.",
-      "Logistics, border crossing, and paperwork solutions.",
-      "Reliable, legal, and profitable solutions for your investment."
+      "Buy, import, repair, and sell auction vehicles.",
+      "Expert advice & access to US auctions without a license.",
+      "Logistics, customs, and documentation solutions.",
+      "Reliable, legal, and profitable investment solutions."
     ],
     "lifestyle_buttons": {},
     "search_placeholder": "Search by make, model, or keyword...",
@@ -18,8 +18,8 @@
     "popular_searches": "Popular Searches",
     "instant_results": "Instant Results",
     "cached_results": "These searches have instant results",
-    "dashboard_title": "Welcome to",
-    "dashboard_subtitle": "Your vehicle import center from US auctions",
+    "dashboard_title": "Your Direct Access to US Auto Auctions",
+    "dashboard_subtitle": "Buy at Copart, IAA, and Manheim without a dealer license. We handle importation and logistics.",
     "stats_title": "LIVE: The World's Largest Auction Marketplace",
     "stats": {
       "vehicles": "Global Daily Inventory",
@@ -94,5 +94,11 @@
         }
       }
     ]
+  },
+  "cta": {
+    "title": "Ready to Find Your Dream Car?",
+    "subtitle": "Start your search today with our expert assistance.",
+    "description": "Browse thousands of vehicles from top US auctions and get them delivered to your door.",
+    "button": "Contact Us Now"
   }
 }

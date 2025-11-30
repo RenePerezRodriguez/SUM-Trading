@@ -1,9 +1,23 @@
 {
   "metadata": {
     "title": "SUM Trading - USA Auction Vehicle Import | Copart, IAA, Manheim",
-    "description": "Import vehicles from Copart, IAA & Manheim auctions in the USA. Expert consulting, complete logistics, best prices. International USA-Latin America service. +1 (956) 747-6078"
+    "description": "Import vehicles from Copart, IAA & Manheim auctions in the USA. Expert consulting, complete logistics, best prices. International USA-Latin America service. +1 (956) 747-6078",
+    "login": "Login"
   },
-  "lang": "en-US",
+  "header": {
+    "certified_broker": "Certified Broker"
+  },
+  "footer": {
+    "about": "About Us",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "credits_prefix": "Designed by",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "coordinacion_arrastres": "Towing Coordination"
+  },
   "navigation": {
     "home": "Home",
     "catalog": "Catalog",
@@ -20,65 +34,7 @@
     "faq": "FAQ",
     "login": "Login",
     "register": "Register",
-    "profile": "My Profile",
-    "english": "English",
-    "spanish": "Spanish"
-  },
-  "header": {
-    "notifications": "Notifications",
-    "notifications_tooltip": "This feature is coming soon!"
-  },
-  "partners": {
-    "title": "Authorized Brokers for"
-  },
-  "cta": {
-    "title": "Have Questions?",
-    "subtitle": "Feel Free to Contact Us!",
-    "description": "Our team of experts is ready to assist you with any questions you may have about the import process, available vehicles, or our services.",
-    "button": "Contact Info"
-  },
-  "contact_info": {
-    "title": "Contact Information",
-    "email": {
-      "title": "Email",
-      "address": "info@sumtrading.us"
-    },
-    "phone": {
-      "title": "Phone",
-      "number": "+1 (956) 747-6078"
-    },
-    "address": {
-      "title": "Texas Office",
-      "location": "9675 Joe G Garza Sr Rd, Brownsville, TX 78521, United States"
-    },
-    "address_mexico": {
-      "title": "Mexico Office",
-      "location": "Blvd. Felipe Ángeles 710, Zona Plateada, 42084 Pachuca de Soto, Hidalgo, Mexico"
-    },
-    "hours": {
-      "title": "Business Hours",
-      "days": "Monday - Friday",
-      "time": "9:00 AM - 6:00 PM"
-    },
-    "social": {
-      "title": "Follow Us"
-    }
-  },
-  "footer": {
-    "about": "Your trusted partner for importing auction vehicles from the USA.",
-    "rights": "All rights reserved.",
-    "navigation": "Navigation",
-    "legal": "Legal",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy",
-    "social": "Social",
-    "contact": "Contact",
-    "credits_prefix": "Designed and developed by "
-  },
-  "status_types": {
-    "available": "Available",
-    "reserved": "Reserved",
-    "sold": "Sold"
+    "profile": "Profile"
   },
   "car_card": {
     "no_image": "No Image",
@@ -174,20 +130,6 @@
     "engine": "Engine",
     "transmission": "Transmission",
     "drive": "Drive",
-    "fuel": "Fuel",
-    "remove_from_comparison": "Remove from comparison",
-    "select_to_compare": "Select vehicles to compare",
-    "no_image": "No image",
-    "current_bid": "Current Bid",
-    "current_bid_approx": "Current bid (Approx.)",
-    "location": "Location",
-    "buy_now": "Buy It Now Price",
-    "retail_value": "Est. Retail Value"
-  },
-  "loading": {
-    "loading": "Loading...",
-    "loading_vehicle_info": "Loading vehicle information...",
-    "loading_details": "We are retrieving the details. This may take a few seconds.",
     "loading_favorites": "Loading favorites...",
     "searching_auctions": "Searching auction portals...",
     "analyzing_photos": "Analyzing photos and details...",
@@ -231,5 +173,8 @@
   },
   "video": {
     "engine_video": "Engine Video"
+  },
+  "partners": {
+    "title": "Trusted by Industry Leaders"
   }
 }

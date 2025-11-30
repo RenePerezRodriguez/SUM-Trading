@@ -15,7 +15,12 @@ const findImage = (id: string) => {
 };
 
 const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
-  const content = dict.cta;
+  const content = dict?.cta || {
+    title: 'Ready to Find Your Dream Car?',
+    subtitle: 'Start your search today with our expert assistance.',
+    description: 'Browse thousands of vehicles from top US auctions and get them delivered to your door.',
+    button: 'Contact Us Now'
+  };
 
   return (
     <motion.div
@@ -25,7 +30,7 @@ const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
@@ -33,7 +38,7 @@ const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
       >
         {content.title}
       </motion.h2>
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
@@ -41,7 +46,7 @@ const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
       >
         {content.subtitle}
       </motion.p>
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
@@ -66,34 +71,34 @@ const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
 };
 
 const CtaBackgroundImage = () => {
-    const ctaImage = findImage('cta-background');
-    return (
-        <div className="absolute inset-0 z-0">
-            <motion.div
-              initial={{ scale: 1 }}
-              whileInView={{ scale: 1.05 }}
-              transition={{ duration: 10, ease: "linear" }}
-              viewport={{ once: false }}
-              className="w-full h-full"
-            >
-              <Image
-                  src={ctaImage.url}
-                  alt="Car on a scenic road"
-                  fill
-                  className="object-cover"
-                  data-ai-hint={ctaImage.hint}
-                  sizes="100vw"
-                  priority={false}
-              />
-            </motion.div>
-            <div className="absolute inset-0 bg-black/40" />
-        </div>
-    );
+  const ctaImage = findImage('cta-background');
+  return (
+    <div className="absolute inset-0 z-0">
+      <motion.div
+        initial={{ scale: 1 }}
+        whileInView={{ scale: 1.05 }}
+        transition={{ duration: 10, ease: "linear" }}
+        viewport={{ once: false }}
+        className="w-full h-full"
+      >
+        <Image
+          src={ctaImage.url}
+          alt="Car on a scenic road"
+          fill
+          className="object-cover"
+          data-ai-hint={ctaImage.hint}
+          sizes="100vw"
+          priority={false}
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-black/40" />
+    </div>
+  );
 };
 
 export default function CtaSection({ dict, lang }: { dict: any; lang: string }) {
   return (
-    <section className="relative min-h-[400px] sm:min-h-[500px] lg:h-[600px] bg-background text-foreground overflow-hidden">
+    <section className="relative min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] bg-background text-foreground overflow-hidden">
       <CtaBackgroundImage />
       <div className="container relative z-10 flex items-center justify-center lg:justify-end h-full py-12 lg:py-0">
         <CtaContentCard dict={dict} lang={lang} />

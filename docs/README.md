@@ -282,14 +282,14 @@ Routes use `[lang]` dynamic segment:
 
 Translations in `src/locales/`:
 ```json
-// en.json
+// en/common.json
 {
   "home": {
     "title": "Welcome"
   }
 }
 
-// es.json
+// es/common.json
 {
   "home": {
     "title": "Bienvenido"

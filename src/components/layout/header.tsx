@@ -23,18 +23,18 @@ import {
 import Image from 'next/image';
 
 const partners = [
-  { 
-    name: 'Copart', 
+  {
+    name: 'Copart',
     logo: '/images/copart-logo.svg',
     href: 'https://www.copart.com/'
   },
-  { 
-    name: 'Manheim', 
+  {
+    name: 'Manheim',
     logo: 'https://mcom-header-footer.manheim.com/assets/common/OMIY_lockup.svg',
     href: 'https://site.manheim.com/en/locations.html'
   },
-  { 
-    name: 'IAA', 
+  {
+    name: 'IAA',
     logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2022/07/iaa-logo-freelogovectors.net_.png',
     href: 'https://www.iaai.com/'
   },
@@ -42,16 +42,16 @@ const partners = [
 
 const FlagSpain = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" className="w-5 h-auto rounded-sm">
-    <rect width="750" height="500" fill="#c60b1e"/>
-    <rect width="750" height="250" y="125" fill="#ffc400"/>
+    <rect width="750" height="500" fill="#c60b1e" />
+    <rect width="750" height="250" y="125" fill="#ffc400" />
   </svg>
 );
 
 const FlagUSA = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7410 3900" className="w-4 h-auto rounded-sm">
-    <path fill="#b22234" d="M0 0h7410v3900H0z"/>
-    <path fill="#fff" d="M0 300h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0z"/>
-    <path fill="#3c3b6e" d="M0 0h2964v2100H0z"/>
+    <path fill="#b22234" d="M0 0h7410v3900H0z" />
+    <path fill="#fff" d="M0 300h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0zm0 600h7410v300H0z" />
+    <path fill="#3c3b6e" d="M0 0h2964v2100H0z" />
   </svg>
 );
 
@@ -72,11 +72,11 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
   const [isCompact, setIsCompact] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
-  
+
   if (pathname.startsWith(`/${lang}/admin`)) {
     return null;
   }
-  
+
   const isHomePage = pathname === `/${lang}` || pathname === `/${i18n.defaultLocale}`;
 
   const { scrollYProgress } = useScroll();
@@ -95,9 +95,9 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
       setIsCompact(shouldCompact);
       lastScrollY.current = currentScrollY;
     };
-    
+
     handleScroll();
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -109,65 +109,65 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
     isScrolled ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border/40' : 'bg-transparent border-transparent',
     isCompact ? 'py-0' : 'py-0'
   );
-  
+
   const iconColorClass = cn(
-      'transition-colors',
-      isTransparent 
+    'transition-colors',
+    isTransparent
       ? 'text-white/90 hover:text-white'
       : 'text-foreground hover:text-primary'
   );
 
   return (
     <motion.header
-        className={headerClasses}
-        initial={{ y: 0 }}
-        animate={{ height: 'auto' }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className={headerClasses}
+      initial={{ y: 0 }}
+      animate={{ height: 'auto' }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
       {/* Top Bar - Trust & Contact */}
       <div className={cn(
-          "border-b text-xs py-1.5 hidden md:block transition-colors duration-300",
-          isScrolled ? "bg-black text-white border-transparent" : "bg-black/20 border-white/10 text-white/80"
+        "border-b text-xs py-1.5 hidden md:block transition-colors duration-300",
+        isScrolled ? "bg-black text-white border-transparent" : "bg-black/20 border-white/10 text-white/80"
       )}>
         <div className="container flex justify-between items-center">
-            <div className="flex items-center gap-4">
-                <span className="flex items-center gap-1.5">
-                    <Phone className="w-3 h-3" /> +1 (956) 747-6078
-                </span>
-                <span className="flex items-center gap-1.5">
-                    <Mail className="w-3 h-3" /> info@sumtrading.us
-                </span>
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5">
+              <Phone className="w-3 h-3" /> +1 (956) 747-6078
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Mail className="w-3 h-3" /> info@sumtrading.us
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className={cn("font-medium", "text-white/90")}>{dict?.header?.certified_broker}:</span>
+            <div className={cn("flex items-center gap-3 transition-all", "opacity-90")}>
+              {partners.map(p => (
+                <Image
+                  key={p.name}
+                  src={p.logo}
+                  alt={p.name}
+                  width={50}
+                  height={15}
+                  className={cn(
+                    "h-3 w-auto object-contain",
+                    (p.name !== 'Copart' && p.name !== 'IAA') && "brightness-0 invert"
+                  )}
+                />
+              ))}
             </div>
-            <div className="flex items-center gap-4">
-                <span className={cn("font-medium", "text-white/90")}>Broker Certificado:</span>
-                <div className={cn("flex items-center gap-3 transition-all", "opacity-90")}>
-                    {partners.map(p => (
-                        <Image 
-                          key={p.name} 
-                          src={p.logo} 
-                          alt={p.name} 
-                          width={50} 
-                          height={15} 
-                          className={cn(
-                            "h-3 w-auto object-contain",
-                            (p.name !== 'Copart' && p.name !== 'IAA') && "brightness-0 invert"
-                          )} 
-                        />
-                    ))}
-                </div>
-            </div>
+          </div>
         </div>
       </div>
 
       {/* Main Header Content */}
       <div className={cn(
-          "w-full transition-all duration-300",
-          isCompact ? 'py-2' : 'py-3 md:py-4'
+        "w-full transition-all duration-300",
+        isCompact ? 'py-2' : 'py-3 md:py-4'
       )}>
         {/* Row 1: Main Navigation */}
-        <motion.div 
+        <motion.div
           className="container"
-          animate={{ 
+          animate={{
             paddingTop: isCompact ? '0.25rem' : '0.5rem',
             paddingBottom: isCompact ? '0.25rem' : '0.5rem'
           }}
@@ -203,7 +203,6 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
 
             {/* Right: Partners + User */}
             <div className="flex items-center gap-3">
-              {/* Partners removed */}
 
               {/* Search Icon (Visible on Scroll) */}
               <motion.div
@@ -212,14 +211,12 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
                 style={{ overflow: 'hidden' }}
                 transition={{ duration: 0.3 }}
               >
-                 <Button variant="ghost" size="icon" asChild className={cn(isTransparent ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-accent")}>
-                    <Link href={`/${lang}/search`}>
-                        <Search className="h-5 w-5" />
-                    </Link>
-                 </Button>
+                <Button variant="ghost" size="icon" asChild className={cn(isTransparent ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-accent")}>
+                  <Link href={`/${lang}/search`}>
+                    <Search className="h-5 w-5" />
+                  </Link>
+                </Button>
               </motion.div>
-
-              {/* Contact Icons removed */}
 
 
               {/* Language Switcher */}
@@ -274,7 +271,7 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
             "border-t",
             isTransparent ? "border-white/10" : "border-border"
           )}
-          animate={{ 
+          animate={{
             height: isCompact ? 0 : 'auto',
             opacity: isCompact ? 0 : 1,
             paddingTop: isCompact ? 0 : '0.875rem',
@@ -298,9 +295,9 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
                   </Button>
                   <Button asChild size="default" className={cn(
                     'font-medium flex-1 md:flex-none',
-                    isTransparent 
-                    ? 'bg-white/10 text-white hover:bg-white/20 border border-white/30' 
-                    : 'bg-accent hover:bg-accent/90 text-white'
+                    isTransparent
+                      ? 'bg-white/10 text-white hover:bg-white/20 border border-white/30'
+                      : 'bg-accent hover:bg-accent/90 text-white'
                   )}>
                     <Link href={`/${lang}/contact`}>
                       {dict.navigation.contact}
@@ -311,7 +308,7 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
             </div>
           )}
         </motion.div>
-        
+
         {/* Progress Bar */}
         <motion.div className="h-0.5 bg-primary" style={{ scaleX }} />
       </div>

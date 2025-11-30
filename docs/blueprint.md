@@ -205,19 +205,6 @@ SUM-Trading-repo/
 │   ├── firebase/               # Firebase configuration
 │   │   ├── admin.ts           # Firebase Admin SDK
 │   │   └── client.ts          # Firebase Client SDK
-│   ├── hooks/                  # Custom React hooks
-│   ├── lib/                    # Utilities
-│   │   ├── i18n-config.ts    # Internationalization
-│   │   ├── utils.ts          # Helper functions
-│   │   └── stripe.ts         # Stripe utilities
-│   ├── locales/               # Translations
-│   │   ├── en.json           # English
-│   │   └── es.json           # Spanish
-│   └── types/                 # TypeScript types
-├── public/                     # Static assets
-│   ├── favicon/               # Favicon files
-│   ├── images/                # Images
-│   │   └── logos/            # Brand logos
 │   ├── manifest.json         # PWA manifest
 │   └── service-worker.ts     # Service worker
 ├── docs/                       # Documentation

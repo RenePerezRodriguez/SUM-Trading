@@ -349,89 +349,29 @@ Antes de considerar el despliegue completo:
 
 ---
 
-## ✅ Post-Despliegue
-
-### 1. Verificar Secrets Configurados
-
-```bash
-# Listar todos los secrets
-firebase apphosting:secrets:list
-
-# Deberías ver:
-# - GEMINI_API_KEY (para AI Chatbot)
-# - FIREBASE_SERVICE_ACCOUNT_JSON
-# - STRIPE_SECRET_KEY
-# - STRIPE_WEBHOOK_SECRET
-```
-
-### 2. Verificar Deploy en Consola
-
-1. Ve a Firebase Console > App Hosting > Rollouts
-2. Verifica que el último deploy esté en estado "DEPLOYED"
-3. Revisa los logs si hay errores
-
-### 3. Probar Funcionalidades Críticas
-
-#### a) Chatbot AI (Gemini)
-```bash
-# URL de prueba
-https://sumtrading.us
-
-# 1. Abre el chatbot (botón flotante)
-# 2. Envía mensaje de prueba: "Hola"
-# 3. Debe responder en < 3 segundos
-# 4. Verifica que NO hay error "GEMINI_API_KEY is required"
-```
-
-#### b) Búsqueda Copart
-```bash
-# URL de prueba
-https://sumtrading.us/es/copart?query=mazda
-
-# 1. Debe cargar resultados en < 5 segundos (cached)
-# 2. Verifica imágenes de vehículos
-# 3. Click en un vehículo → debe abrir detalle
-```
-
-#### c) Autenticación
-```bash
-# 1. Login con email/password
-# 2. Login con Google
-# 3. Registro nuevo usuario
-# 4. Reset password
-```
-
-#### d) Pagos Stripe (Modo TEST)
-```bash
-# URL de prueba
-https://sumtrading.us/es/checkout
-
-# Tarjeta de prueba: 4242 4242 4242 4242
-# Expiración: cualquier fecha futura
-# CVC: cualquier 3 dígitos
-
-# Verifica:
-# - Payment Intent se crea correctamente
-# - Webhook recibe confirmación
-# - Orden se guarda en Firestore
-```
-
-### 4. Monitoreo y Logs
-
-```bash
-# Ver logs en tiempo real
-firebase apphosting:logs --backend studio
-
-# O desde Firebase Console
-# App Hosting > studio > Logs
-```
-
-**Métricas a monitorear:**
-- Requests/segundo
-- Latencia promedio (< 500ms ideal)
-- Error rate (< 1%)
-- Memoria usage (< 80%)
-
 ---
 
 ## ⚙️ Configuración de apphosting.yaml
+
+```yaml
+runConfig:
+  maxInstances: 3
+  minInstances: 0
+  memory: 1GiB
+  cpu: 1
+  concurrency: 80
+environmentVariables:
+  - name: NEXT_PUBLIC_SITE_URL
+    value: https://sumtrading.us
+  - name: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: studio-6719476275-3891a
+secrets:
+  - variable: GEMINI_API_KEY
+    secret: GEMINI_API_KEY
+  - variable: STRIPE_SECRET_KEY
+    secret: STRIPE_SECRET_KEY
+  - variable: STRIPE_WEBHOOK_SECRET
+    secret: STRIPE_WEBHOOK_SECRET
+  - variable: FIREBASE_SERVICE_ACCOUNT_JSON
+    secret: FIREBASE_SERVICE_ACCOUNT_JSON
+```

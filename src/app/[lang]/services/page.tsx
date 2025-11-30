@@ -15,24 +15,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang);
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-    
+
     return {
-      title: dict.services_page.title,
-      description: dict.services_page.description,
-      keywords: ['servicios importación', 'arrastre vehículos', 'asesoría Copart', 'compra autos USA', 'logística importación', 'tarifas arrastre'],
-      alternates: {
-        canonical: `${baseUrl}/${lang}/services`,
-        languages: {
-          'en': `${baseUrl}/en/services`,
-          'es': `${baseUrl}/es/services`,
-        },
-      },
-      openGraph: {
         title: dict.services_page.title,
         description: dict.services_page.description,
-        url: `${baseUrl}/${lang}/services`,
-        type: 'website',
-      },
+        keywords: ['servicios importación', 'arrastre vehículos', 'asesoría Copart', 'compra autos USA', 'logística importación', 'tarifas arrastre'],
+        alternates: {
+            canonical: `${baseUrl}/${lang}/services`,
+            languages: {
+                'en': `${baseUrl}/en/services`,
+                'es': `${baseUrl}/es/services`,
+            },
+        },
+        openGraph: {
+            title: dict.services_page.title,
+            description: dict.services_page.description,
+            url: `${baseUrl}/${lang}/services`,
+            type: 'website',
+        },
     };
 }
 
@@ -122,54 +122,54 @@ export default async function ServicesPage({ params }: Props) {
 
     return (
         <>
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-        />
-        <div className="container mx-auto px-4 py-8 md:py-12 pt-24 md:pt-32">
-            <div className="max-w-4xl mx-auto">
-                <FadeIn className="text-center mb-12">
-                    <h1 className="text-4xl font-bold mb-4 font-headline">{services.title}</h1>
-                    <p className="text-xl text-muted-foreground">{services.description}</p>
-                </FadeIn>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+            />
+            <div className="container mx-auto px-4 py-8 md:py-12 pt-24 md:pt-32">
+                <div className="max-w-4xl mx-auto">
+                    <FadeIn className="text-center mb-12">
+                        <h1 className="text-4xl font-bold mb-4 font-headline">{services.title}</h1>
+                        <p className="text-xl text-muted-foreground">{services.description}</p>
+                    </FadeIn>
 
-                <StaggerContainer className="grid gap-6 md:grid-cols-3 mb-16">
-                    {servicesList.map((service, index) => {
-                        const Icon = service.icon;
-                        return (
-                            <FadeInItem key={index} className="h-full">
-                                <Link href={service.href} className="block h-full">
-                                    <Card className="h-full border border-border/50 bg-gradient-to-b from-background to-accent/5 hover:from-accent/10 hover:to-accent/5 hover:border-accent/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                                        <CardHeader>
-                                            <div className="flex items-center gap-4">
-                                                <div className="p-3 rounded-lg bg-accent/10">
-                                                    <Icon className="h-6 w-6 text-accent" />
+                    <StaggerContainer className="grid gap-6 md:grid-cols-3 mb-16">
+                        {servicesList.map((service, index) => {
+                            const Icon = service.icon;
+                            return (
+                                <FadeInItem key={index} className="h-full">
+                                    <Link href={service.href} className="block h-full">
+                                        <Card className="h-full border-gradient bg-gradient-to-b from-background to-accent/5 hover:to-accent/10 hover:shadow-lg active:scale-[0.98] cursor-pointer group">
+                                            <CardHeader>
+                                                <div className="flex items-center gap-4">
+                                                    <div className="p-3 rounded-lg bg-accent/10">
+                                                        <Icon className="h-6 w-6 text-accent" />
+                                                    </div>
+                                                    <CardTitle className="text-lg">{service.title}</CardTitle>
                                                 </div>
-                                                <CardTitle className="text-lg">{service.title}</CardTitle>
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <CardDescription className="text-base">
-                                                {service.description}
-                                            </CardDescription>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                            </FadeInItem>
-                        );
-                    })}
-                </StaggerContainer>
-            </div>
+                                            </CardHeader>
+                                            <CardContent>
+                                                <CardDescription className="text-base">
+                                                    {service.description}
+                                                </CardDescription>
+                                            </CardContent>
+                                        </Card>
+                                    </Link>
+                                </FadeInItem>
+                            );
+                        })}
+                    </StaggerContainer>
+                </div>
 
-            {/* Sección de Tarifas de Arrastre Avanzada */}
-            <FadeIn id="tarifas-arrastre" className="max-w-7xl mx-auto scroll-mt-24" delay={0.2}>
-                <TowingRatesAdvanced dict={dict} lang={lang} />
-            </FadeIn>
-        </div>
+                {/* Sección de Tarifas de Arrastre Avanzada */}
+                <FadeIn id="tarifas-arrastre" className="max-w-7xl mx-auto scroll-mt-24" delay={0.2}>
+                    <TowingRatesAdvanced dict={dict} lang={lang} />
+                </FadeIn>
+            </div>
         </>
     );
 }

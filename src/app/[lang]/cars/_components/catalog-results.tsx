@@ -30,10 +30,10 @@ const NoResults = ({ dict }: { dict: any }) => (
     </div>
 );
 
-export default function CatalogResults({ 
-    cars, 
-    dict, 
-    lang, 
+export default function CatalogResults({
+    cars,
+    dict,
+    lang,
     totalResults,
     onOpenFilters,
     ...props
@@ -41,16 +41,16 @@ export default function CatalogResults({
 
     return (
         <div>
-            <CatalogToolbar 
-                dict={dict} 
-                totalResults={totalResults} 
+            <CatalogToolbar
+                dict={dict}
+                totalResults={totalResults}
                 onOpenFilters={onOpenFilters}
-                {...props} 
+                {...props}
             />
 
             {totalResults > 0 ? (
-                <motion.div 
-                    layout 
+                <motion.div
+                    layout
                     className={cn("flex flex-col gap-3 md:gap-4", {
                         "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start gap-3 md:gap-4 lg:gap-6": props.viewMode === 'grid'
                     })}

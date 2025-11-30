@@ -13,16 +13,16 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 3
-  
+
   # Minimum instances to keep warm (0 = scale to zero)
   minInstances: 0
-  
+
   # Memory allocation per instance
   memory: 1GiB
-  
+
   # CPU allocation per instance
   cpu: 1
-  
+
   # Environment variables for the runtime
   env:
     # ==========================================
@@ -33,7 +33,7 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
-    
+
     - variable: SCRAPTPRESS_API_KEY
       value: a3f207ff5225d4fed2c8a7b331ffc0f3da0f1f106e113bd0840bf9c46cbbb35b
       availability:
@@ -48,7 +48,7 @@ runConfig:
       secret: FIREBASE_SERVICE_ACCOUNT_JSON
       availability:
         - RUNTIME
-    
+
     # ==========================================
     # STRIPE PAYMENT CONFIGURATION
     # ==========================================
@@ -58,19 +58,19 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
-    
+
     # Stripe secret key (server-side, MUST be secret)
     - variable: STRIPE_SECRET_KEY
       secret: STRIPE_SECRET_KEY
       availability:
         - RUNTIME
-    
+
     # Stripe webhook secret (server-side, MUST be secret)
     - variable: STRIPE_WEBHOOK_SECRET
       secret: STRIPE_WEBHOOK_SECRET
       availability:
         - RUNTIME
-    
+
     # ==========================================
     # AI / CHATBOT CONFIGURATION
     # ==========================================
@@ -80,7 +80,7 @@ runConfig:
       secret: GEMINI_API_KEY
       availability:
         - RUNTIME
-    
+
     # ==========================================
     # ANALYTICS
     # ==========================================
@@ -89,3 +89,6 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
+env:
+  - variable: GEMINI_API_KEY
+    secret: GEMINI_API_KEY

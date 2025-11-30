@@ -20,18 +20,7 @@
     "faq": "Preguntas Frecuentes",
     "login": "Iniciar Sesión",
     "register": "Registrarse",
-    "profile": "Mi Perfil",
-    "english": "Inglés",
-    "spanish": "Español"
-  },
-  "header": {
-    "notifications": "Notificaciones",
-    "notifications_tooltip": "¡Esta función estará disponible pronto!"
-  },
-  "partners": {
-    "title": "Brokers Autorizados de"
-  },
-  "cta": {
+    "profile": "Perfil",
     "title": "¿Tienes Preguntas?",
     "subtitle": "¡No Dudes en Contactarnos!",
     "description": "Nuestro equipo de expertos está listo para ayudarte con cualquier duda que tengas sobre el proceso de importación, los vehículos disponibles o nuestros servicios.",

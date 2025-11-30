@@ -1,4 +1,3 @@
-
 @import 'react-phone-number-input/style.css';
 
 @tailwind base;
@@ -22,8 +21,8 @@
     --secondary: 214 32% 91%;
     --secondary-foreground: 218 17% 24%;
     --muted: 210 20% 95%;
-    /* #94A3B8 - Slate 400 - texto secundario legible */
-    --muted-foreground: 215 16% 65%;
+    /* #64748B - Slate 500 - texto secundario más legible */
+    --muted-foreground: 215 16% 45%;
     /* #3F88C5 - Steel Blue accent */
     --accent: 205 52% 51%;
     --accent-foreground: 0 0% 100%;
@@ -82,13 +81,16 @@
   * {
     border-color: hsl(var(--border));
   }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+
   section {
     /* Removed default padding to avoid unwanted white spaces */
   }
+
   @media (min-width: 640px) {
     section {
       /* Removed default padding */
@@ -97,11 +99,14 @@
 
   /* Centralized Section Spacing */
   :root {
-    --section-spacing: 3rem; /* Mobile: 48px */
+    --section-spacing: 3rem;
+    /* Mobile: 48px */
   }
+
   @media (min-width: 768px) {
     :root {
-      --section-spacing: 5rem; /* Desktop: 80px */
+      --section-spacing: 5rem;
+      /* Desktop: 80px */
     }
   }
 
@@ -109,11 +114,11 @@
     padding-top: var(--section-spacing);
     padding-bottom: var(--section-spacing);
   }
-  
+
   .section-pt {
     padding-top: var(--section-spacing);
   }
-  
+
   .section-pb {
     padding-bottom: var(--section-spacing);
   }
@@ -129,13 +134,16 @@
     width: 8px;
     height: 8px;
   }
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--background) / 0.5);
   }
+
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--secondary));
     border-radius: 10px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--accent));
   }
@@ -146,32 +154,46 @@
 }
 
 @layer utilities {
-    @keyframes ken-burns {
-        0% {
-          transform: scale(1) translate(0, 0);
-        }
-        100% {
-          transform: scale(1.1) translate(-2%, 2%);
-        }
+  @keyframes ken-burns {
+    0% {
+      transform: scale(1) translate(0, 0);
     }
-    .animate-ken-burns {
-        animation: ken-burns 20s ease-in-out infinite alternate;
+
+    100% {
+      transform: scale(1.1) translate(-2%, 2%);
     }
-    
-    @keyframes gradient-shift {
-        0%, 100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+  }
+
+  .animate-ken-burns {
+    animation: ken-burns 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
     }
-    .animate-gradient {
-        background-size: 200% auto;
-        animation: gradient-shift 4s ease infinite;
+
+    50% {
+      background-position: 100% 50%;
     }
-    
-    .text-gradient {
-      @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
-    }
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    position: relative;
+    background: linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(to bottom right, hsl(var(--border)), hsl(var(--primary)/0.3)) border-box;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+  }
 }

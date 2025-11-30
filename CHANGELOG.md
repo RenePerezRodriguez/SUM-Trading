@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.1] - 2025-11-30
+
+### 🐛 Critical Bug Fixes & Stabilization
+
+#### Fixed
+- 🔧 **Client-Side Crashes** - Resolved `TypeError` in `PartnersSection`, `ServicesAndFeatured`, `CtaSection`, and `ContactPage` due to missing dictionary keys.
+- 🔧 **Localization** - Fixed hardcoded Spanish text in English version ("Certified Broker", "Towing Coordination").
+- 🔧 **JSON Integrity** - Repaired corrupted `common.json` and `home.json` files.
+- 🔧 **Broken Links** - Fixed Footer "Catalog" link pointing to 404 page.
+- 🔧 **UI Labels** - Added missing "Register" and "Profile" labels in User Dropdown.
+- 🔧 **Typewriter Animation** - Refined timing for smoother, less distracting effect (faster backspace, longer pause).
+
+#### Changed
+- 📝 **Documentation** - Updated `README.md` with correct locales structure and Gemini version.
+- 🧹 **Cleanup** - Removed temporary debugging scripts from root.
+
+---
+
 ## [1.2.0] - 2025-11-30
 
 ### 🎨 UX/UI Enhancements & Production Fixes

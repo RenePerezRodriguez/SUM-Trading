@@ -29,7 +29,20 @@
     "whatsapp_message": "Hello! I'd like to receive information about your services.",
     "quick_faq_title": "Frequently Asked Questions",
     "quick_faq_cta": "View all questions",
-    "quick_faqs": [],
+    "quick_faqs": [
+      {
+        "question": "How long does the import process take?",
+        "answer": "The complete process usually takes between 4 to 8 weeks, depending on the destination country and customs procedures."
+      },
+      {
+        "question": "What does the $20 USD advisory fee include?",
+        "answer": "It includes access to auctions with our broker license, 3 AutoCheck reports, personalized accompaniment, and fee retention if you don't win the auction."
+      },
+      {
+        "question": "What payment methods do you accept?",
+        "answer": "We accept credit/debit card via Stripe, PayPal, cryptocurrencies, bank transfers, and deposits in American banks."
+      }
+    ],
     "process_timeline": {
       "title": "What Happens Next?",
       "steps": [
@@ -83,6 +96,33 @@
           "flag": "🇺🇸"
         }
       ]
+    }
+  },
+  "contact_info": {
+    "title": "Contact Information",
+    "email": {
+      "title": "Email",
+      "address": "info@sumtrading.us"
+    },
+    "phone": {
+      "title": "Phone",
+      "number": "+1 (956) 747-6078"
+    },
+    "address": {
+      "title": "USA Office",
+      "location": "9675 Joe G Garza Sr Rd, Brownsville, TX 78521"
+    },
+    "address_mexico": {
+      "title": "Mexico Office",
+      "location": "Matamoros, Tamaulipas"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "days": "Mon-Fri",
+      "time": "9:00 AM - 6:00 PM CST"
+    },
+    "social": {
+      "title": "Follow Us"
     }
   }
 }

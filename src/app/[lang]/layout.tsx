@@ -16,6 +16,7 @@ import CopartConsultationBar from '@/app/[lang]/search/_components/copart-consul
 import { Skeleton } from '@/components/ui/skeleton';
 import { Analytics } from '@/components/analytics';
 import { Clarity } from '@/components/analytics/clarity';
+import Chatbot from '@/components/chatbot/chatbot';
 
 
 function AppContent({ children }: { children: React.ReactNode }) {
@@ -23,10 +24,10 @@ function AppContent({ children }: { children: React.ReactNode }) {
   const lang = params.lang as Locale;
   const pathname = usePathname();
   const [dict, setDict] = useState<any>(null);
-  
+
   useEffect(() => {
     if (lang) {
-        getDictionary(lang).then(setDict);
+      getDictionary(lang).then(setDict);
     }
   }, [lang]);
 
@@ -37,19 +38,19 @@ function AppContent({ children }: { children: React.ReactNode }) {
 
   if (!dict) {
     return (
-        <main className="flex-grow">
-             <div className="pt-16">
-                <Skeleton className="h-96 w-full" />
-                <div className="container py-12">
-                    <Skeleton className="h-10 w-1/2 mx-auto mb-6" />
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <Skeleton className="h-80 w-full" />
-                        <Skeleton className="h-80 w-full" />
-                        <Skeleton className="h-80 w-full" />
-                    </div>
-                </div>
+      <main className="flex-grow">
+        <div className="pt-16">
+          <Skeleton className="h-96 w-full" />
+          <div className="container py-12">
+            <Skeleton className="h-10 w-1/2 mx-auto mb-6" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Skeleton className="h-80 w-full" />
+              <Skeleton className="h-80 w-full" />
+              <Skeleton className="h-80 w-full" />
             </div>
-        </main>
+          </div>
+        </div>
+      </main>
     );
   }
 
@@ -60,7 +61,7 @@ function AppContent({ children }: { children: React.ReactNode }) {
       </Suspense>
       <Clarity />
       {!isAdminRoute && !isAuthRoute && <Header lang={lang} dict={dict} />}
-      <main className={`flex-grow ${headerHeight > 0 ? `pt-${headerHeight}`: ''}`}>{children}</main>
+      <main className={`flex-grow ${headerHeight > 0 ? `pt-${headerHeight}` : ''}`}>{children}</main>
       {!isAdminRoute && !isAuthRoute && (
         <>
           <ComparisonBar lang={lang} dict={dict} />
@@ -72,6 +73,7 @@ function AppContent({ children }: { children: React.ReactNode }) {
 
       <LanguageSwitcher lang={lang} />
       <AuthModal dict={dict} lang={lang} />
+      <Chatbot />
     </>
   );
 }

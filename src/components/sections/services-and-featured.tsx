@@ -35,7 +35,7 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const firestore = useFirestore();
-  
+
   const featuredQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     const carsCollection = collection(firestore, 'cars');
@@ -51,10 +51,10 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
       className="bg-gradient-to-b from-accent/5 to-background text-foreground relative overflow-hidden scroll-mt-24 section-py"
       ref={ref}
     >
-      
+
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          
+
           {/* Left: Destacados (Idea 6: Inverted Layout) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
                 <p className="font-semibold text-primary text-sm uppercase tracking-wider">
                   {dict.featuredCars.badge || 'Destacados'}
                 </p>
-                <Link 
+                <Link
                   href={`/${lang}/cars`}
                   className="text-sm text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
                 >
@@ -122,24 +122,24 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
                           {/* Info */}
                           <div className="flex-1 min-w-0 flex flex-col justify-between">
                             <div>
-                                <h3 className="font-bold text-base sm:text-lg mb-1 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                              <h3 className="font-bold text-base sm:text-lg mb-1 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
                                 {car.year} {car.make} {car.model}
-                                </h3>
-                                <div className="text-sm text-muted-foreground space-y-1 mb-2">
+                              </h3>
+                              <div className="text-sm text-muted-foreground space-y-1 mb-2">
                                 <p>{car.mileage?.toLocaleString() || '0'} km</p>
-                                </div>
+                              </div>
                             </div>
-                            
+
                             {/* Idea 18: Trust Badges */}
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="flex items-center gap-1 text-[10px] text-green-600 bg-green-100 px-1.5 py-0.5 rounded border border-green-200">
-                                    <ShieldCheck className="w-3 h-3" />
-                                    <span>Verificado</span>
-                                </div>
-                                <div className="flex items-center gap-1 text-[10px] text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded border border-blue-200">
-                                    <FileCheck className="w-3 h-3" />
-                                    <span>Título Limpio</span>
-                                </div>
+                              <div className="flex items-center gap-1 text-[10px] text-green-600 bg-green-100 px-1.5 py-0.5 rounded border border-green-200">
+                                <ShieldCheck className="w-3 h-3" />
+                                <span>Verificado</span>
+                              </div>
+                              <div className="flex items-center gap-1 text-[10px] text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded border border-blue-200">
+                                <FileCheck className="w-3 h-3" />
+                                <span>Título Limpio</span>
+                              </div>
                             </div>
 
                             <div className="flex items-center justify-between mt-auto">
@@ -197,31 +197,31 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
 
             {/* Idea 19: Mobile Accordion */}
             <div className="block md:hidden">
-                <Accordion type="single" collapsible defaultValue="item-0" className="space-y-4">
-                    {servicesContent.items.map((item: any, index: number) => {
-                        const Icon = ICONS[Object.keys(ICONS)[index]] || Search;
-                        const colors = STEP_COLORS[index % STEP_COLORS.length];
-                        return (
-                            <AccordionItem key={index} value={`item-${index}`} className="border-none">
-                                <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
-                                    <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
-                                        <div className="flex items-center gap-3 text-left">
-                                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white flex-shrink-0 ${colors.icon}`}>
-                                                <span className="font-bold text-sm">{index + 1}</span>
-                                            </div>
-                                            <span className={`font-bold text-base ${colors.text}`}>{item.title}</span>
-                                        </div>
-                                    </AccordionTrigger>
-                                    <AccordionContent className="px-4 pb-4 pt-0 text-muted-foreground">
-                                        <div className="pl-[44px]">
-                                            {item.description}
-                                        </div>
-                                    </AccordionContent>
-                                </div>
-                            </AccordionItem>
-                        );
-                    })}
-                </Accordion>
+              <Accordion type="single" collapsible defaultValue="item-0" className="space-y-4">
+                {servicesContent.items.map((item: any, index: number) => {
+                  const Icon = ICONS[Object.keys(ICONS)[index]] || Search;
+                  const colors = STEP_COLORS[index % STEP_COLORS.length];
+                  return (
+                    <AccordionItem key={index} value={`item-${index}`} className="border-none">
+                      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
+                        <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-muted/50">
+                          <div className="flex items-center gap-3 text-left">
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white flex-shrink-0 ${colors.icon}`}>
+                              <span className="font-bold text-sm">{index + 1}</span>
+                            </div>
+                            <span className={`font-bold text-base ${colors.text}`}>{item.title}</span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="px-4 pb-4 pt-0 text-muted-foreground">
+                          <div className="pl-[44px]">
+                            {item.description}
+                          </div>
+                        </AccordionContent>
+                      </div>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
             </div>
 
             {/* Desktop List */}
@@ -279,7 +279,7 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
                 className="bg-primary text-white hover:bg-primary/90 w-full sm:w-auto"
               >
                 <Link href={`/${lang}/contact`}>
-                  {dict.navigation.contact} <ArrowRight className="ml-2 h-5 w-5" />
+                  {dict?.navigation?.contact || 'Contact'} <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </motion.div>

@@ -14,6 +14,151 @@
     "contact_cta": "Need more information?",
     "contact_button": "Contact Us",
     "lang": "en",
-    "categories": []
+    "categories": [
+      {
+        "id": "buying-process",
+        "title": "Buying Process",
+        "questions": [
+          {
+            "question": "What does your 'turnkey' service include?",
+            "answer": "<p>Our comprehensive service covers the entire import process. Here is the breakdown:</p><ul><li><strong>Search and Advice:</strong> We advise you and look for the best opportunities.</li><li><strong>Purchase and Representation:</strong> We represent you at the auction to get the best price.</li><li><strong>Logistics and Transport:</strong> We coordinate maritime shipping.</li><li><strong>Customs and Paperwork:</strong> We manage all export and import documentation.</li><li><strong>Repair and Final Delivery:</strong> We offer repair services and deliver the vehicle to your country, ready to use.</li></ul>"
+          },
+          {
+            "question": "Where can I see available vehicles?",
+            "answer": "<p>We are brokers for the main US auction portals. You can see the available inventory directly in our search engine. If you find a vehicle of interest, send it to us to start the advisory process.</p>"
+          },
+          {
+            "question": "How does the auction advisory service work?",
+            "answer": "<p>Our advisory service allows you to participate in US auctions using our broker license, even if you don't have one. The process is simple:</p><ol><li><strong>Activate the service:</strong> You pay a one-time activation fee of $20 USD.</li><li><strong>Get advice:</strong> A SUM expert will contact you to analyze the vehicles you are interested in, verify their history with AutoCheck reports, and define a bidding strategy.</li><li><strong>Participate in the auction:</strong> We bid for you up to the limit you establish.</li><li><strong>Keep your fee:</strong> If you don't win the auction, your $20 USD fee remains as credit for a next attempt, at no additional cost.</li></ol>"
+          },
+          {
+            "question": "Can I visit the vehicle before buying it?",
+            "answer": "<p>Vehicles are located in auction yards in the United States, so it is not possible to physically visit them before purchase. However, we offer:</p><ul><li><strong>Detailed AutoCheck reports</strong> with the vehicle's complete history</li><li><strong>High-quality photos</strong> from multiple angles</li><li><strong>Detailed damage description</strong> provided by the auction</li><li><strong>Personalized advice</strong> from our experts to evaluate the vehicle's condition</li></ul>"
+          },
+          {
+            "question": "What happens if the vehicle has more damage than indicated?",
+            "answer": "<p>If upon receiving the vehicle in our yard we discover damage not reported in the auction:</p><ol><li>We notify you immediately with photos and documentation</li><li>We offer you options: proceed with the purchase with a discount, cancel and receive a refund, or look for another vehicle</li><li>In case of cancellation, you keep your advisory fee for your next purchase</li></ol><p>Our priority is your satisfaction and total transparency.</p>"
+          },
+          {
+            "question": "How much time do I have to decide if I buy a vehicle?",
+            "answer": "<p>Once you identify a vehicle of interest:</p><ul><li>We provide you with complete information within <strong>24 hours</strong></li><li>You have until the <strong>auction date</strong> to decide (usually 1-7 days)</li><li>We recommend deciding at least <strong>24 hours in advance</strong> to prepare the bidding strategy</li><li>We can make pre-auction offers if the seller accepts early offers</li></ul>"
+          },
+          {
+            "question": "Can I participate in multiple auctions at once?",
+            "answer": "<p>Absolutely! With your active advisory fee you can:</p><ul><li>Participate in <strong>multiple auctions simultaneously</strong></li><li>Receive advice for <strong>several vehicles</strong> at no additional cost</li><li>Get up to <strong>3 AutoCheck reports included</strong></li><li>Keep your fee until you win an auction</li></ul><p>You only pay service fees when you win the auction.</p>"
+          }
+        ]
+      },
+      {
+        "id": "costs-payments",
+        "title": "Costs and Payments",
+        "questions": [
+          {
+            "question": "What are the fees and commissions?",
+            "answer": "<p>Our fees are transparent and structured according to the vehicle's value:</p><ul><li><strong>Initial Fee of $20 USD:</strong> To activate the advisory service.</li><li><strong>Variable Service Fee:</strong> Starts at $200 USD for vehicles up to $3,999 and increases progressively. For example, $400 for vehicles from $4,000 to $5,999.</li></ul><p>International shipping cost and import taxes are quoted separately.</p>"
+          },
+          {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>The initial $20 USD fee for advisory is paid securely on our website with a credit or debit card via Stripe. For other payments, we accept:</p><ul><li><strong>PayPal</strong> - Secure international payment</li><li><strong>Cryptocurrencies</strong> - Bitcoin, Ethereum, USDT</li><li><strong>Bank Transfer</strong> - International</li><li><strong>US Bank Deposit</strong> - For clients in the USA</li></ul>"
+          },
+          {
+            "question": "Are there hidden costs besides the mentioned fees?",
+            "answer": "<p>There are no hidden costs. The total cost includes:</p><ul><li><strong>Vehicle price at auction</strong></li><li><strong>Auction house fees</strong> (buyer's fee)</li><li><strong>Our service fee</strong> (based on vehicle price)</li><li><strong>International transport</strong> (quoted separately)</li><li><strong>Import taxes</strong> (according to your country)</li></ul><p>We provide you with a <strong>complete breakdown</strong> before proceeding with any purchase.</p>"
+          },
+          {
+            "question": "When should I make the payments?",
+            "answer": "<p>The payment process is structured as follows:</p><ol><li><strong>Advisory fee ($20 USD):</strong> Upon activating the service</li><li><strong>Vehicle deposit:</strong> Within 24-48 hours after winning the auction</li><li><strong>Final vehicle payment:</strong> Before it leaves the auction yard</li><li><strong>Transport payment:</strong> Before starting international shipping</li><li><strong>Import expenses:</strong> At the time of customs clearance in your country</li></ol>"
+          },
+          {
+            "question": "What happens if I cannot complete the payment?",
+            "answer": "<p>If problems arise completing the payment:</p><ul><li>Contact us <strong>immediately</strong></li><li>We can coordinate <strong>payment extensions</strong> with the auction house (subject to availability)</li><li>If you cannot proceed, the deposit could be lost according to auction policies</li><li>We help you find <strong>financing solutions</strong> in some cases</li></ul><p><strong>Important:</strong> Only bid in auctions if you are sure you can complete the payment.</p>"
+          },
+          {
+            "question": "Do you offer financing plans?",
+            "answer": "<p>We currently do not offer direct financing, but we can:</p><ul><li>Recommend financial institutions in your country</li><li>Coordinate payments in short terms (evaluated case by case)</li><li>Accept partial payments during the import process</li></ul><p>Contact our team to explore options according to your particular situation.</p>"
+          }
+        ]
+      },
+      {
+        "id": "logistics-import",
+        "title": "Logistics and Import",
+        "questions": [
+          {
+            "question": "Do you deliver to my city/country?",
+            "answer": "<p>We ship internationally to most Latin American countries. The most common destinations are:</p><ul><li><strong>Mexico</strong> - Door to door delivery</li><li><strong>Colombia</strong> - To main port</li><li><strong>Ecuador</strong> - To main port</li><li><strong>Peru</strong> - To main port</li><li><strong>Chile</strong> - To main port</li></ul><p>For other countries, contact us to check availability and costs.</p>"
+          },
+          {
+            "question": "What documents do I need for importation in my country?",
+            "answer": "<p>The basic documents we provide are:</p><ul><li><strong>Bill of Sale</strong> - Purchase invoice</li><li><strong>Vehicle Title</strong> - Legal ownership</li><li><strong>Bill of Lading</strong> - For maritime transport</li><li><strong>Commercial Invoice</strong> - For customs</li></ul><p>Additional requirements vary by country. We advise you according to your specific destination.</p>"
+          },
+          {
+            "question": "How long does the entire import process take?",
+            "answer": "<p>The total time varies by destination:</p><ul><li><strong>Auction purchase:</strong> 1-7 days</li><li><strong>Arrival at our yard:</strong> 3-7 days</li><li><strong>Repairs (if applicable):</strong> 1-4 weeks</li><li><strong>Maritime transport:</strong> 2-4 weeks</li><li><strong>Customs clearance:</strong> 3-7 days</li></ul><p><strong>Estimated total:</strong> 4-8 weeks from purchase to final delivery.</p>"
+          },
+          {
+            "question": "Is the vehicle insured?",
+            "answer": "<p>Yes, the vehicle is protected throughout the process:</p><ul><li><strong>In the auction yard:</strong> Auction house insurance</li><li><strong>Inland transport in USA:</strong> Transport insurance</li><li><strong>Maritime transport:</strong> International marine insurance</li><li><strong>During repairs:</strong> Our workshop insurance</li></ul><p>You can purchase additional coverage if you wish.</p>"
+          },
+          {
+            "question": "What happens if the vehicle suffers damage during transport?",
+            "answer": "<p>In the unlikely event of damage during transport:</p><ol><li>We document the damage immediately with photos and reports</li><li>We initiate the <strong>insurance claim</strong> process</li><li>We keep you informed at every step</li><li>The insurance covers damages according to the contracted policy</li></ol><p>We work with reliable carriers to minimize any risk.</p>"
+          }
+        ]
+      },
+      {
+        "id": "repairs",
+        "title": "Repairs and Post-Sale",
+        "questions": [
+          {
+            "question": "What type of repairs can you perform?",
+            "answer": "<p>Our workshop in Texas can perform:</p><ul><li><strong>Body repair</strong> - Dents, scratches, panel replacement</li><li><strong>General mechanics</strong> - Engine, transmission, suspension</li><li><strong>Electrical system</strong> - Electronics and wiring</li><li><strong>Professional painting</strong> - Touch-up or full paint</li><li><strong>Interior restoration</strong> - Upholstery and components</li></ul><p>We provide you with a <strong>detailed quote</strong> before starting any repair.</p>"
+          },
+          {
+            "question": "Can I ship the vehicle directly without repairs?",
+            "answer": "<p>Of course! You can choose:</p><ul><li><strong>No repairs:</strong> We ship the vehicle as you bought it</li><li><strong>Basic repairs:</strong> Only what is necessary for it to run</li><li><strong>Complete repairs:</strong> Total restoration</li></ul><p>You decide what level of work you want according to your budget and plans for the vehicle.</p>"
+          },
+          {
+            "question": "Do you offer a warranty on repairs?",
+            "answer": "<p>Yes, all our repairs include:</p><ul><li><strong>30-day warranty</strong> on labor</li><li><strong>Manufacturer's warranty</strong> on new parts (varies by brand)</li><li><strong>Photographic documentation</strong> of the work performed</li><li><strong>Post-delivery support</strong> for any inquiries</li></ul><p>We use only quality parts and certified technicians.</p>"
+          },
+          {
+            "question": "How long do repairs take?",
+            "answer": "<p>Time depends on the type of repair:</p><ul><li><strong>Minor repairs:</strong> 3-7 days</li><li><strong>Moderate repairs:</strong> 1-2 weeks</li><li><strong>Major repairs:</strong> 2-4 weeks</li><li><strong>Complete restoration:</strong> 4-8 weeks</li></ul><p>We provide you with an <strong>estimated timeline</strong> and regular updates during the process.</p>"
+          }
+        ]
+      },
+      {
+        "id": "documentation",
+        "title": "Documentation and Legality",
+        "questions": [
+          {
+            "question": "What is AutoCheck and why is it important?",
+            "answer": "<p>AutoCheck is a detailed vehicle history report that includes:</p><ul><li><strong>Accident history</strong> - Reported incidents</li><li><strong>Title history</strong> - Salvage, rebuilt, clean, etc.</li><li><strong>Odometer reading</strong> - Mileage verification</li><li><strong>Service history</strong> - Registered maintenance</li><li><strong>Previous use</strong> - Personal, rental, fleet, etc.</li></ul><p>It is essential to make an informed decision before bidding.</p>"
+          },
+          {
+            "question": "What does it mean for a vehicle to have a salvage/rebuilt title?",
+            "answer": "<p>Title types indicate the vehicle's history:</p><ul><li><strong>Clean Title:</strong> No major damage history</li><li><strong>Salvage Title:</strong> Declared total loss by insurer, requires repair</li><li><strong>Rebuilt Title:</strong> Was salvage, repaired and inspected, can circulate</li><li><strong>Parts Only:</strong> Only for parts, cannot circulate</li></ul><p>We advise you on which title types you can legalize in your country.</p>"
+          },
+          {
+            "question": "Can I legalize any vehicle in my country?",
+            "answer": "<p>Regulations vary by country:</p><ul><li><strong>Mexico:</strong> Allows most titles with special procedures</li><li><strong>Colombia:</strong> Restrictions by year and title type</li><li><strong>Ecuador:</strong> Specific import regulations</li><li><strong>Other countries:</strong> Check local regulations</li></ul><p>We advise you on the viability of legalization before buying.</p>"
+          }
+        ]
+      },
+      {
+        "id": "about-sum",
+        "title": "About SUM Trading",
+        "questions": [
+          {
+            "question": "Where are you located?",
+            "answer": "<p>We have binational presence to serve you better:</p><ul><li><strong>Brownsville, Texas (USA)</strong> - Main operations yard and workshop</li><li><strong>Pachuca, Mexico</strong> - Administrative office and customer service</li></ul><p>This allows us to offer the best service both in purchasing in the USA and logistics to Latin America.</p>"
+          },
+          {
+            "question": "How can I be sure this is not a fraud?",
+            "answer": "<p>We understand your concern. SUM Trading has been operating since 2018 with public presence in both Mexico and the United States. Trust guarantees:</p><ul><li>✅ <strong>Broker License</strong> in US auction houses</li><li>✅ <strong>Secure payment platforms</strong> like Stripe</li><li>✅ <strong>Official documentation</strong> - Bill of Sale and Vehicle Title</li><li>✅ <strong>Verifiable physical presence</strong> in USA and Mexico</li><li>✅ <strong>Real testimonials</strong> from satisfied clients</li><li>✅ <strong>Active social media</strong> with regular content</li></ul><p>You can visit us in person or request a video call to see our facilities.</p>"
+          }
+        ]
+      }
+    ]
   }
 }

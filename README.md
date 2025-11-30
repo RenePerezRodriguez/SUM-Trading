@@ -56,7 +56,7 @@
 - Firebase App Hosting (deployment)
 - Stripe (payments)
 - ScraptPress API (Copart scraping - Cloud Run)
-- Google Gemini 2.5 Pro (AI chatbot)
+- Google Gemini 1.5 Flash (AI chatbot)
 
 **Dev Tools:**
 - TypeScript (type safety)
@@ -108,8 +108,14 @@ src/
 │   ├── utils.ts             # Utility functions
 │   └── stripe.ts            # Stripe utilities
 ├── locales/
-│   ├── en.json              # English translations
-│   └── es.json              # Spanish translations
+│   ├── en/                  # English translations (split by feature)
+│   │   ├── common.json
+│   │   ├── home.json
+│   │   └── ...
+│   └── es/                  # Spanish translations (split by feature)
+│       ├── common.json
+│       ├── home.json
+│       └── ...
 └── types/                   # TypeScript type definitions
 
 public/
@@ -290,7 +296,7 @@ See `.env.example` for the complete list with descriptions.
 
 ### Adding Translations
 
-1. Edit `src/locales/en.json` and `src/locales/es.json`
+1. Edit `src/locales/en/common.json`, `src/locales/en/home.json`, etc.
 2. Use in components:
    ```tsx
    import { getDictionary } from '@/lib/get-dictionary';

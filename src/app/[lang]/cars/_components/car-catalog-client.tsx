@@ -25,12 +25,12 @@ function CatalogSkeleton() {
   return (
     <div className="grid lg:grid-cols-[320px_1fr] lg:gap-8 items-start">
       <aside className="hidden lg:block">
-          <Skeleton className="h-[700px] w-full" />
+        <Skeleton className="h-[700px] w-full" />
       </aside>
       <main>
         <div className="text-center mb-12">
-            <Skeleton className="h-12 w-1/2 mx-auto" />
-            <Skeleton className="h-6 w-3/4 mx-auto mt-4" />
+          <Skeleton className="h-12 w-1/2 mx-auto" />
+          <Skeleton className="h-6 w-3/4 mx-auto mt-4" />
         </div>
         <div className="flex justify-between items-center mb-6 pb-4 border-b">
           <Skeleton className="h-6 w-24" />
@@ -41,7 +41,7 @@ function CatalogSkeleton() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start gap-6">
           {[...Array(6)].map((_, i) => (
-              <Skeleton key={i} className="h-96 w-full" />
+            <Skeleton key={i} className="h-96 w-full" />
           ))}
         </div>
       </main>
@@ -90,14 +90,14 @@ export default function CarCatalogClient({ dict, lang }: CarCatalogClientProps) 
     viewMode,
     setViewMode,
   } = useCarFilters(allCars || [], 9);
-  
+
   if (isLoading || !dict) {
-    return <div className="container py-8 md:py-12 pt-28 md:pt-44"><CatalogSkeleton /></div>;
+    return <div className="container py-8 md:py-12 pt-24 md:pt-32"><CatalogSkeleton /></div>;
   }
 
   const filtersComponent = (
     <div className="p-4">
-      <CarFilters 
+      <CarFilters
         dict={dict}
         makes={makes}
         types={types}
@@ -122,7 +122,7 @@ export default function CarCatalogClient({ dict, lang }: CarCatalogClientProps) 
   );
 
   return (
-    <div className="container py-8 md:py-12 pt-28 md:pt-44">
+    <div className="container py-8 md:py-12 pt-24 md:pt-32">
       {/* Enhanced Header Section */}
       <div className="text-center mb-12 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-semibold text-primary mb-6">
@@ -161,8 +161,8 @@ export default function CarCatalogClient({ dict, lang }: CarCatalogClientProps) 
               {filtersComponent}
             </SheetContent>
           </Sheet>
-          
-          <ActiveFilters 
+
+          <ActiveFilters
             filters={{
               make: selectedMake,
               types: selectedTypes,
@@ -178,7 +178,7 @@ export default function CarCatalogClient({ dict, lang }: CarCatalogClientProps) 
             dict={dict}
           />
 
-          <CatalogResults 
+          <CatalogResults
             cars={paginatedCars}
             dict={dict}
             lang={lang}
