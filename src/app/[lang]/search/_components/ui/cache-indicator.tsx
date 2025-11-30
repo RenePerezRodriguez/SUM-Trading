@@ -76,11 +76,11 @@ export function CacheIndicator({ isFromCache, cacheAge, onRefresh, isRefreshing 
         >
           {isFromCache ? (
             <Alert className="bg-blue-50 border-blue-200">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-3 flex-1">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+                <div className="flex items-start gap-3 flex-1 w-full">
                   <Zap className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <p className="font-semibold text-blue-900">⚡ Datos desde caché</p>
                       <TooltipProvider>
                         <Tooltip>
@@ -123,7 +123,7 @@ export function CacheIndicator({ isFromCache, cacheAge, onRefresh, isRefreshing 
                     disabled={isRefreshing}
                     size="sm"
                     variant="outline"
-                    className="ml-4 flex-shrink-0"
+                    className="w-full sm:w-auto sm:ml-4 flex-shrink-0"
                     title="Hacer una nueva búsqueda en Copart para obtener datos actuales"
                   >
                     <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />

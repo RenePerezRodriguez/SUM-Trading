@@ -76,21 +76,25 @@ export function PopularSearches({ lang, dict }: PopularSearchesProps) {
         <span className="text-sm text-muted-foreground font-medium">
           {dict.hero?.popular_searches || 'Búsquedas populares'}
         </span>
-        <Clock className="h-3 w-3 text-muted-foreground ml-1" />
-        <span className="text-xs text-muted-foreground">
-          {dict.hero?.instant_results || 'Resultados instantáneos'}
-        </span>
+        <div className="hidden sm:flex items-center gap-1 ml-1">
+            <Clock className="h-3 w-3 text-muted-foreground" />
+            <span className="text-xs text-muted-foreground">
+            {dict.hero?.instant_results || 'Resultados instantáneos'}
+            </span>
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
+      
+      {/* Mobile: Horizontal Scroll | Desktop: Wrap */}
+      <div className="flex overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:pb-0 sm:flex-wrap gap-2 scrollbar-none snap-x">
         {searches.map((search) => (
           <button
             key={search.query}
             onClick={() => handleSearchClick(search.query)}
-            className="group"
+            className="group flex-shrink-0 snap-start"
           >
             <Badge 
               variant="secondary" 
-              className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all duration-200 text-sm px-3 py-1.5 capitalize"
+              className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all duration-200 text-sm px-3 py-1.5 capitalize whitespace-nowrap"
             >
               {search.query}
               {search.searchCount > 1 && (
@@ -102,10 +106,21 @@ export function PopularSearches({ lang, dict }: PopularSearchesProps) {
           </button>
         ))}
       </div>
+      
       <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
         <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
         {dict.hero?.cached_results || 'Estas búsquedas tienen resultados al instante'}
       </p>
+      
+      <style jsx global>{`
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+      `}</style>
     </div>
   );
 }

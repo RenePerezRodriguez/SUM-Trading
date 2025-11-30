@@ -21,6 +21,7 @@ type CatalogResultsProps = {
     setCurrentPage: (page: number) => void;
     totalPages: number;
     totalResults: number;
+    onOpenFilters?: () => void;
 };
 
 const NoResults = ({ dict }: { dict: any }) => (
@@ -34,12 +35,18 @@ export default function CatalogResults({
     dict, 
     lang, 
     totalResults,
+    onOpenFilters,
     ...props
 }: CatalogResultsProps) {
 
     return (
         <div>
-            <CatalogToolbar dict={dict} totalResults={totalResults} {...props} />
+            <CatalogToolbar 
+                dict={dict} 
+                totalResults={totalResults} 
+                onOpenFilters={onOpenFilters}
+                {...props} 
+            />
 
             {totalResults > 0 ? (
                 <motion.div 

@@ -41,6 +41,8 @@ next-env.d.ts
 # Firebase
 /public/firebase-config.js
 firebase-service-account.json
+service-account.json
+*-firebase-adminsdk-*.json
 
 # Temporary files
 *.tmp
@@ -50,6 +52,9 @@ firebase-service-account.json
 *.old
 *.swp
 *~
+depcheck-report.json
+firebase-debug.log
+*-debug.log
 
 # IDE
 .vscode/*
@@ -60,6 +65,7 @@ firebase-service-account.json
 .idea/
 *.sublime-workspace
 *.sublime-project
+*.code-workspace
 
 # OS files
 .DS_Store

@@ -310,7 +310,8 @@
     "status_types": {
       "active": "Active",
       "in-progress": "In Progress",
-      "finished": "Finished"
+      "finished": "Finished",
+      "whatsapp-inquiry": "WhatsApp Inquiry"
     },
     "copart_leads_tab": "Auction Leads",
     "sum_leads_tab": "SUM Trading Leads",

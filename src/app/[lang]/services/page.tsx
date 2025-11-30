@@ -5,6 +5,7 @@ import { Truck, FileCheck, Car } from 'lucide-react';
 import TowingRatesAdvanced from '@/components/towing-rates-advanced';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { FadeIn, StaggerContainer, FadeInItem } from '@/components/animations/fade-in';
 
 type Props = {
     params: Promise<{ lang: Locale }>;
@@ -131,41 +132,43 @@ export default async function ServicesPage({ params }: Props) {
         />
         <div className="container mx-auto px-4 py-8 md:py-12 pt-24 md:pt-32">
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold mb-4">{services.title}</h1>
+                <FadeIn className="text-center mb-12">
+                    <h1 className="text-4xl font-bold mb-4 font-headline">{services.title}</h1>
                     <p className="text-xl text-muted-foreground">{services.description}</p>
-                </div>
+                </FadeIn>
 
-                <div className="grid gap-6 md:grid-cols-3 mb-16">
+                <StaggerContainer className="grid gap-6 md:grid-cols-3 mb-16">
                     {servicesList.map((service, index) => {
                         const Icon = service.icon;
                         return (
-                            <Link key={index} href={service.href} className="block">
-                                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full cursor-pointer hover:border-primary/50">
-                                    <CardHeader>
-                                        <div className="flex items-center gap-4">
-                                            <div className="p-3 rounded-lg bg-primary/10">
-                                                <Icon className="h-6 w-6 text-primary" />
+                            <FadeInItem key={index} className="h-full">
+                                <Link href={service.href} className="block h-full">
+                                    <Card className="h-full border border-border/50 bg-gradient-to-b from-background to-accent/5 hover:from-accent/10 hover:to-accent/5 hover:border-accent/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                                        <CardHeader>
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-3 rounded-lg bg-accent/10">
+                                                    <Icon className="h-6 w-6 text-accent" />
+                                                </div>
+                                                <CardTitle className="text-lg">{service.title}</CardTitle>
                                             </div>
-                                            <CardTitle>{service.title}</CardTitle>
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <CardDescription className="text-base">
-                                            {service.description}
-                                        </CardDescription>
-                                    </CardContent>
-                                </Card>
-                            </Link>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <CardDescription className="text-base">
+                                                {service.description}
+                                            </CardDescription>
+                                        </CardContent>
+                                    </Card>
+                                </Link>
+                            </FadeInItem>
                         );
                     })}
-                </div>
+                </StaggerContainer>
             </div>
 
             {/* Sección de Tarifas de Arrastre Avanzada */}
-            <div id="tarifas-arrastre" className="max-w-7xl mx-auto scroll-mt-24">
+            <FadeIn id="tarifas-arrastre" className="max-w-7xl mx-auto scroll-mt-24" delay={0.2}>
                 <TowingRatesAdvanced dict={dict} lang={lang} />
-            </div>
+            </FadeIn>
         </div>
         </>
     );

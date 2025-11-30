@@ -1,7 +1,7 @@
 {
   "apphosting": {
-    "backendId": "studio",
-    "rootDir": "/",
+    "backendId": "sumtrading-web",
+    "rootDir": ".",
     "ignore": [
       "node_modules",
       ".git",

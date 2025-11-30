@@ -156,6 +156,20 @@ export function CarCard({ car, lang, dict }: CarCardProps) {
               </Button>
           </div>
           <Badge variant="secondary" className="absolute top-3 left-3 z-10">{car.year}</Badge>
+          
+          {/* Highlight Badges */}
+          <div className="absolute bottom-2 left-2 z-10 flex flex-col gap-1">
+            {car.engineStatus === 'Runs and Drives' && (
+                <Badge className="bg-green-600 hover:bg-green-700 text-white border-none shadow-sm">
+                    Run & Drive
+                </Badge>
+            )}
+            {car.titleType === 'Clean Title' && (
+                <Badge className="bg-blue-600 hover:bg-blue-700 text-white border-none shadow-sm">
+                    Clean Title
+                </Badge>
+            )}
+          </div>
       </div>
       <CardContent className="p-3 flex-grow flex flex-col">
         <div className="flex-grow">

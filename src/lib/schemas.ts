@@ -100,7 +100,7 @@ export type SumLead = {
     id: string;
     userId: string;
     submissionDate: string;
-    status: 'active' | 'in-progress' | 'finished';
+    status: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry';
     vehicles: SumLeadVehicle[];
     user?: UserProfile;
 };

@@ -19,10 +19,12 @@ import {
     FileText,
     Info,
     Phone,
-    Filter
+    Filter,
+    ArrowRight
 } from 'lucide-react';
 import { geoCentroid } from 'd3-geo';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
@@ -203,34 +205,37 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
         <div className="space-y-8">
             {/* Header */}
             <div className="text-center space-y-4">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-headline">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline tracking-tight">
                     {dict.towing_rates?.title}
                 </h2>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                    Transporte terrestre desde <span className="font-semibold text-foreground">Miami, Houston, Delaware y Brownsville</span>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Transporte terrestre desde <span className="font-semibold text-primary">Miami, Houston, Delaware y Brownsville</span>
                 </p>
             </div>
 
-            {/* Calculadora Rápida */}
-            <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-transparent">
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Calculator className="w-5 h-5" />
-                        {lang === 'es' ? 'Calculadora Rápida de Costos' : 'Quick Cost Calculator'}
+            {/* Calculadora Rápida - Improved Design */}
+            <Card className="border-none shadow-xl bg-white dark:bg-card overflow-hidden relative">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+                <CardHeader className="pb-2">
+                    <CardTitle className="flex items-center gap-3 text-xl md:text-2xl">
+                        <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                            <Calculator className="w-6 h-6" />
+                        </div>
+                        {lang === 'es' ? 'Calculadora de Costos' : 'Cost Calculator'}
                     </CardTitle>
-                    <CardDescription>
-                        {lang === 'es' ? 'Selecciona el origen y tipo de vehículo para calcular el costo total' : 'Select origin and vehicle type to calculate total cost'}
+                    <CardDescription className="text-base">
+                        {lang === 'es' ? 'Cotiza el envío de tu vehículo al instante' : 'Quote your vehicle shipping instantly'}
                     </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <CardContent className="space-y-6 pt-6">
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">{lang === 'es' ? 'Estado' : 'State'}</label>
+                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Estado' : 'State'}</label>
                             <Select value={calcState} onValueChange={(val) => {
                                 setCalcState(val);
                                 setCalcCity('');
                             }}>
-                                <SelectTrigger>
+                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
                                     <SelectValue placeholder={lang === 'es' ? 'Seleccionar estado' : 'Select state'} />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -244,9 +249,9 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                         </div>
                         
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">{lang === 'es' ? 'Ciudad' : 'City'}</label>
+                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Ciudad' : 'City'}</label>
                             <Select value={calcCity} onValueChange={setCalcCity} disabled={!calcState}>
-                                <SelectTrigger>
+                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
                                     <SelectValue placeholder={lang === 'es' ? 'Seleccionar ciudad' : 'Select city'} />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -263,9 +268,9 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium">{lang === 'es' ? 'Tipo de Vehículo' : 'Vehicle Type'}</label>
+                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Tipo de Vehículo' : 'Vehicle Type'}</label>
                             <Select value={vehicleType} onValueChange={(val: any) => setVehicleType(val)}>
-                                <SelectTrigger>
+                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
                                     <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -278,31 +283,45 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                     </div>
 
                     {totalCost !== null && (
-                        <div className="flex items-center justify-between p-4 bg-background rounded-lg border-2 border-primary">
-                            <div>
-                                <p className="text-sm text-muted-foreground">{lang === 'es' ? 'Costo Total Estimado' : 'Estimated Total Cost'}</p>
-                                <p className="text-3xl font-bold text-primary">${totalCost} USD</p>
-                                {vehicleType !== 'sedan' && (
-                                    <p className="text-xs text-muted-foreground mt-1">
-                                        {lang === 'es' ? 'Base' : 'Base'}: ${totalCost - 100} + {lang === 'es' ? 'Adicional' : 'Additional'}: $100
-                                    </p>
-                                )}
+                        <div className="mt-6 p-6 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                                <Calculator className="w-24 h-24 text-primary" />
                             </div>
-                            <div className="flex gap-2">
-                                <Button size="sm" asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white">
-                                    <a href={`https://wa.me/19567476078?text=Hola, me interesa el servicio de arrastre desde ${calcCity}, ${calcState}`} target="_blank" rel="noopener noreferrer">
-                                        <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                                        </svg>
-                                        WhatsApp
-                                    </a>
-                                </Button>
-                                <Button variant="outline" size="sm" asChild className="md:hidden">
-                                    <a href="tel:+19567476078">
-                                        <Phone className="w-4 h-4 mr-2" />
-                                        {lang === 'es' ? 'Llamar' : 'Call'}
-                                    </a>
-                                </Button>
+                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                                <div>
+                                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
+                                        {lang === 'es' ? 'Costo Total Estimado' : 'Estimated Total Cost'}
+                                    </p>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+                                            ${totalCost}
+                                        </span>
+                                        <span className="text-xl font-medium text-muted-foreground">USD</span>
+                                    </div>
+                                    {vehicleType !== 'sedan' && (
+                                        <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground bg-background/50 px-3 py-1 rounded-full w-fit">
+                                            <span className="font-medium">{lang === 'es' ? 'Base' : 'Base'}: ${totalCost - 100}</span>
+                                            <span>+</span>
+                                            <span className="font-medium text-primary">{lang === 'es' ? 'Adicional' : 'Additional'}: $100</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                                    <Button size="lg" asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-lg shadow-green-500/20 w-full sm:w-auto">
+                                        <a href={`https://wa.me/19567476078?text=Hola, me interesa el servicio de arrastre desde ${calcCity}, ${calcState}`} target="_blank" rel="noopener noreferrer">
+                                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                            </svg>
+                                            {lang === 'es' ? 'Solicitar Ahora' : 'Request Now'}
+                                        </a>
+                                    </Button>
+                                    <Button variant="outline" size="lg" asChild className="w-full sm:w-auto border-primary/20 hover:bg-primary/5">
+                                        <a href="tel:+19567476078">
+                                            <Phone className="w-5 h-5 mr-2" />
+                                            {lang === 'es' ? 'Llamar' : 'Call'}
+                                        </a>
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -310,105 +329,86 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
             </Card>
 
             {/* Tabs: Mapa vs Tabla */}
-            <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v)}>
-                <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-6">
-                    <TabsList className="grid w-full sm:w-[280px] grid-cols-2">
-                        <TabsTrigger value="map" className="gap-2">
-                            <MapPin className="w-4 h-4" />
-                            {lang === 'es' ? 'Mapa' : 'Map'}
-                        </TabsTrigger>
-                        <TabsTrigger value="table" className="gap-2">
-                            <Filter className="w-4 h-4" />
-                            {lang === 'es' ? 'Tabla' : 'Table'}
-                        </TabsTrigger>
-                    </TabsList>
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+            >
+                <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v)} className="space-y-6">
+                    <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+                        <TabsList className="grid w-full lg:w-[320px] grid-cols-2 h-12 p-1 bg-muted/50">
+                            <TabsTrigger value="map" className="h-full gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-background data-[state=active]:shadow-sm">
+                                <MapPin className="w-4 h-4" />
+                                {lang === 'es' ? 'Mapa Interactivo' : 'Interactive Map'}
+                            </TabsTrigger>
+                            <TabsTrigger value="table" className="h-full gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-background data-[state=active]:shadow-sm">
+                                <Filter className="w-4 h-4" />
+                                {lang === 'es' ? 'Lista Detallada' : 'Detailed List'}
+                            </TabsTrigger>
+                        </TabsList>
 
-                    {activeView === 'table' && (
-                        <Card className="w-full border-accent/20 bg-gradient-to-br from-accent/5 to-transparent">
-                            <CardHeader className="pb-3">
-                                <CardTitle className="text-base flex items-center gap-2">
-                                    <Filter className="w-4 h-4 text-accent" />
-                                    {lang === 'es' ? 'Filtros de Búsqueda' : 'Search Filters'}
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-3">
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                    <div className="space-y-1.5">
-                                        <label className="text-xs font-medium text-muted-foreground">{lang === 'es' ? 'Buscar' : 'Search'}</label>
-                                        <div className="relative">
-                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                                            <Input
-                                                placeholder={lang === 'es' ? 'Estado o ciudad...' : 'State or city...'}
-                                                value={searchQuery}
-                                                onChange={(e) => {
-                                                    setSearchQuery(e.target.value);
-                                                    setCurrentPage(1);
-                                                }}
-                                                className="pl-9 h-9"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="space-y-1.5">
-                                        <label className="text-xs font-medium text-muted-foreground">{lang === 'es' ? 'Estado' : 'State'}</label>
-                                        <Select value={searchQuery || "ALL_STATES"} onValueChange={(val) => {
-                                            setSearchQuery(val === "ALL_STATES" ? "" : val);
+                        {activeView === 'table' && (
+                            <Card className="w-full lg:w-auto border-none shadow-none bg-transparent">
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    <div className="relative flex-1 sm:min-w-[240px]">
+                                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                                        <Input
+                                        placeholder={lang === 'es' ? 'Buscar estado o ciudad...' : 'Search state or city...'}
+                                        value={searchQuery}
+                                        onChange={(e) => {
+                                            setSearchQuery(e.target.value);
                                             setCurrentPage(1);
-                                        }}>
-                                            <SelectTrigger className="h-9">
-                                                <SelectValue placeholder={lang === 'es' ? 'Todos los estados' : 'All states'} />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="ALL_STATES">{lang === 'es' ? 'Todos los estados' : 'All states'}</SelectItem>
-                                                {Object.keys(towingRates).sort().map(state => (
-                                                    <SelectItem key={state} value={state}>
-                                                        {state}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                    <div className="space-y-1.5">
-                                        <label className="text-xs font-medium text-muted-foreground">{lang === 'es' ? 'Rango de Precio' : 'Price Range'}</label>
-                                        <Select value={priceFilter} onValueChange={(val) => {
-                                            setPriceFilter(val);
-                                            setCurrentPage(1);
-                                        }}>
-                                            <SelectTrigger className="h-9">
-                                                <SelectValue />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="all">{lang === 'es' ? 'Todos los precios' : 'All prices'}</SelectItem>
-                                                <SelectItem value="low">$200 - $400</SelectItem>
-                                                <SelectItem value="medium">$400 - $700</SelectItem>
-                                                <SelectItem value="high">$700 - $900</SelectItem>
-                                                <SelectItem value="very-high">$900+</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
+                                        }}
+                                        className="pl-9 h-12 bg-white dark:bg-card border-muted-foreground/20"
+                                    />
                                 </div>
-                            </CardContent>
+                                <Select value={priceFilter} onValueChange={(val) => {
+                                    setPriceFilter(val);
+                                    setCurrentPage(1);
+                                }}>
+                                    <SelectTrigger className="h-12 w-full sm:w-[180px] bg-white dark:bg-card border-muted-foreground/20">
+                                        <SelectValue placeholder={lang === 'es' ? 'Precio' : 'Price'} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="all">{lang === 'es' ? 'Todos los precios' : 'All prices'}</SelectItem>
+                                        <SelectItem value="low">$200 - $400</SelectItem>
+                                        <SelectItem value="medium">$400 - $700</SelectItem>
+                                        <SelectItem value="high">$700 - $900</SelectItem>
+                                        <SelectItem value="very-high">$900+</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
                         </Card>
                     )}
                 </div>
 
                 {/* Vista Mapa */}
-                <TabsContent value="map" className="mt-0">
+                <TabsContent value="map" className="mt-0 animate-in fade-in-50 slide-in-from-bottom-2 duration-500">
                     <div className="grid lg:grid-cols-3 gap-6">
-                        <Card className="lg:col-span-2 p-6">
-                            {/* Indicaciones */}
-                            <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                                <div className="flex items-start gap-2 text-sm text-blue-800 dark:text-blue-400">
-                                    <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                                    <div>
-                                        <p className="font-medium mb-1">{lang === 'es' ? 'Cómo usar el mapa:' : 'How to use the map:'}</p>
-                                        <ul className="space-y-1 text-xs">
-                                            <li>• <strong>{lang === 'es' ? 'Click en un estado' : 'Click on a state'}</strong> {lang === 'es' ? 'para ver todas sus ciudades y tarifas' : 'to see all its cities and rates'}</li>
-                                            <li>• <strong>{lang === 'es' ? 'Click nuevamente' : 'Click again'}</strong> {lang === 'es' ? 'en el mismo estado para deseleccionarlo' : 'on the same state to deselect it'}</li>
-                                            <li>• {lang === 'es' ? 'Los colores indican rangos de precio promedio por estado' : 'Colors indicate average price ranges by state'}</li>
-                                        </ul>
+                        <Card className="lg:col-span-2 p-1 border-none shadow-xl bg-white dark:bg-card overflow-hidden">
+                            <div className="p-6 bg-muted/10">
+                                {/* Indicaciones */}
+                                <div className="mb-6 p-4 bg-blue-50/50 dark:bg-blue-950/10 rounded-xl border border-blue-100 dark:border-blue-900/50 backdrop-blur-sm">
+                                    <div className="flex items-start gap-3 text-sm text-blue-700 dark:text-blue-300">
+                                        <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg shrink-0">
+                                            <Info className="w-4 h-4" />
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2 text-base">{lang === 'es' ? 'Guía del Mapa' : 'Map Guide'}</p>
+                                            <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm">
+                                                <li className="flex items-center gap-2">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                                    <span>{lang === 'es' ? 'Click para ver ciudades' : 'Click to see cities'}</span>
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                                    <span>{lang === 'es' ? 'Colores indican precio' : 'Colors show price'}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                             <ComposableMap projection="geoAlbersUsa">
                                 <Geographies geography={geoUrl}>
@@ -501,6 +501,7 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                     <span>$900+</span>
                                 </div>
                             </div>
+                            </div>
                         </Card>
 
                         <div className="space-y-4">
@@ -554,18 +555,29 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                 </TabsContent>
 
                 {/* Vista Tabla */}
-                <TabsContent value="table" className="mt-0">
+                <TabsContent value="table" className="mt-0 animate-in fade-in-50 slide-in-from-bottom-2 duration-500">
                     {/* Indicaciones para tabla */}
-                    <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                        <div className="flex items-start gap-2 text-sm text-blue-800 dark:text-blue-400">
-                            <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <div className="mb-6 p-4 bg-blue-50/50 dark:bg-blue-950/10 rounded-xl border border-blue-100 dark:border-blue-900/50 backdrop-blur-sm">
+                        <div className="flex items-start gap-3 text-sm text-blue-700 dark:text-blue-300">
+                            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg shrink-0">
+                                <Info className="w-4 h-4" />
+                            </div>
                             <div>
-                                <p className="font-medium mb-2">{lang === 'es' ? 'Transporte desde Miami, Houston, Delaware y Brownsville' : 'Transportation from Miami, Houston, Delaware and Brownsville'}</p>
-                                <p className="font-medium mb-1">{lang === 'es' ? 'Cómo usar la tabla:' : 'How to use the table:'}</p>
-                                <ul className="space-y-1 text-xs">
-                                    <li>• <strong>{lang === 'es' ? 'Busca' : 'Search'}</strong> {lang === 'es' ? 'por nombre de estado o ciudad en tiempo real' : 'by state or city name in real time'}</li>
-                                    <li>• <strong>{lang === 'es' ? 'Filtra' : 'Filter'}</strong> {lang === 'es' ? 'por estado o rango de precio' : 'by state or price range'}</li>
-                                    <li>• <strong>{lang === 'es' ? 'Ordena' : 'Sort'}</strong> {lang === 'es' ? 'haciendo click en los encabezados de columna' : 'by clicking on column headers'}</li>
+                                <p className="font-semibold mb-2 text-base">{lang === 'es' ? 'Guía de la Tabla' : 'Table Guide'}</p>
+                                <p className="mb-2 text-blue-600 dark:text-blue-400">{lang === 'es' ? 'Transporte desde Miami, Houston, Delaware y Brownsville' : 'Transportation from Miami, Houston, Delaware and Brownsville'}</p>
+                                <ul className="grid sm:grid-cols-3 gap-x-4 gap-y-2 text-xs sm:text-sm">
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                        <span>{lang === 'es' ? 'Búsqueda en tiempo real' : 'Real-time search'}</span>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                        <span>{lang === 'es' ? 'Filtros avanzados' : 'Advanced filters'}</span>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                        <span>{lang === 'es' ? 'Ordenamiento por columnas' : 'Sort by columns'}</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -676,8 +688,8 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
 
                             {/* Paginación */}
                             {totalPages > 1 && (
-                                <div className="flex items-center justify-between mt-4">
-                                    <p className="text-sm text-muted-foreground">
+                                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
+                                    <p className="text-sm text-muted-foreground text-center sm:text-left">
                                         {lang === 'es' ? 'Mostrando' : 'Showing'} {((currentPage - 1) * itemsPerPage) + 1} - {Math.min(currentPage * itemsPerPage, filteredCities.length)} {lang === 'es' ? 'de' : 'of'} {filteredCities.length} {lang === 'es' ? 'resultados' : 'results'}
                                     </p>
                                     <div className="flex gap-2">
@@ -686,8 +698,10 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                             size="sm"
                                             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                                             disabled={currentPage === 1}
+                                            className="px-2 sm:px-4"
                                         >
-                                            {lang === 'es' ? 'Anterior' : 'Previous'}
+                                            <span className="hidden sm:inline">{lang === 'es' ? 'Anterior' : 'Previous'}</span>
+                                            <span className="sm:hidden">←</span>
                                         </Button>
                                         <div className="flex items-center gap-1">
                                             {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -708,7 +722,7 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                                         variant={currentPage === pageNum ? 'default' : 'outline'}
                                                         size="sm"
                                                         onClick={() => setCurrentPage(pageNum)}
-                                                        className="w-9"
+                                                        className={`w-9 ${currentPage === pageNum ? 'bg-black hover:bg-black/90 text-white' : ''}`}
                                                     >
                                                         {pageNum}
                                                     </Button>
@@ -720,8 +734,10 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                             size="sm"
                                             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                                             disabled={currentPage === totalPages}
+                                            className="px-2 sm:px-4"
                                         >
-                                            {lang === 'es' ? 'Siguiente' : 'Next'}
+                                            <span className="hidden sm:inline">{lang === 'es' ? 'Siguiente' : 'Next'}</span>
+                                            <span className="sm:hidden">→</span>
                                         </Button>
                                     </div>
                                 </div>
@@ -730,41 +746,80 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                     </Card>
                 </TabsContent>
             </Tabs>
+            </motion.div>
 
             {/* CTAs */}
-            <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
-                <CardContent className="p-6">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div>
-                            <h3 className="font-semibold mb-1">¿Necesitas ayuda personalizada?</h3>
-                            <p className="text-sm text-muted-foreground">
-                                Nuestros asesores están listos para cotizar tu envío específico
-                            </p>
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="grid md:grid-cols-2 gap-6"
+            >
+                <Card className="bg-gradient-to-br from-primary/10 to-transparent border-primary/20 overflow-hidden relative group">
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <CardContent className="p-8 relative z-10">
+                        <div className="flex flex-col h-full justify-between gap-6">
+                            <div>
+                                <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
+                                    <Phone className="w-6 h-6 text-primary" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{lang === 'es' ? '¿Necesitas ayuda personalizada?' : 'Need personalized help?'}</h3>
+                                <p className="text-muted-foreground">
+                                    {lang === 'es' 
+                                        ? 'Nuestros asesores están listos para cotizar tu envío específico y resolver tus dudas.' 
+                                        : 'Our advisors are ready to quote your specific shipment and answer your questions.'}
+                                </p>
+                            </div>
+                            <div className="flex gap-3">
+                                <Button asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-lg shadow-green-500/20 flex-1">
+                                    <a href="https://wa.me/19567476078" target="_blank" rel="noopener noreferrer">
+                                        <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                        </svg>
+                                        WhatsApp
+                                    </a>
+                                </Button>
+                            </div>
                         </div>
-                        <div className="flex gap-2">
-                            <Button asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white">
-                                <a href="https://wa.me/19567476078" target="_blank" rel="noopener noreferrer">
-                                    <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                                    </svg>
-                                    WhatsApp
-                                </a>
-                            </Button>
-                            <Button variant="outline" asChild>
+                    </CardContent>
+                </Card>
+
+                <Card className="bg-card border-border/50 hover:border-primary/50 transition-colors duration-300">
+                    <CardContent className="p-8">
+                        <div className="flex flex-col h-full justify-between gap-6">
+                            <div>
+                                <div className="p-3 bg-secondary rounded-xl w-fit mb-4">
+                                    <FileText className="w-6 h-6 text-foreground" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{lang === 'es' ? 'Información Importante' : 'Important Information'}</h3>
+                                <p className="text-muted-foreground">
+                                    {lang === 'es' 
+                                        ? 'Consulta nuestras políticas de servicio, términos y condiciones para el transporte de vehículos.' 
+                                        : 'Check our service policies, terms and conditions for vehicle transportation.'}
+                                </p>
+                            </div>
+                            <Button variant="outline" asChild className="w-full border-primary/20 hover:bg-primary/5">
                                 <Link href={`/${lang}/coordinacion-arrastres`}>
-                                    <FileText className="w-4 h-4 mr-2" />
-                                    Políticas
+                                    {lang === 'es' ? 'Ver Políticas de Servicio' : 'View Service Policies'}
+                                    <ArrowRight className="w-4 h-4 ml-2" />
                                 </Link>
                             </Button>
                         </div>
-                    </div>
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
+            </motion.div>
 
             {/* Disclaimer */}
-            <p className="text-center text-sm text-muted-foreground">
+            <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="text-center text-xs text-muted-foreground/60 max-w-3xl mx-auto"
+            >
                 {dict.towing_rates?.disclaimer}
-            </p>
+            </motion.p>
         </div>
     );
 }

@@ -16,17 +16,28 @@ async function getCopartLeads(firestore: FirebaseFirestore.Firestore): Promise<U
     if (usersSnapshot.empty) return [];
 
     const leadsWithPurchasesPromises = usersSnapshot.docs.map(async (doc) => {
-        const lead = { id: doc.id, ...doc.data() } as UserProfile;
+        const data = doc.data();
+        // Basic sanitization of the user data
+        const lead = { id: doc.id, ...data } as UserProfile;
         
         if (lead.copartConsultation?.paymentId) {
-            const purchaseQuery = await firestore.collection('users').doc(lead.id).collection('purchases')
-                .where('paymentId', '==', lead.copartConsultation.paymentId)
-                .limit(1)
-                .get();
+            try {
+                const purchaseQuery = await firestore.collection('users').doc(lead.id).collection('purchases')
+                    .where('paymentId', '==', lead.copartConsultation.paymentId)
+                    .limit(1)
+                    .get();
 
-            if (!purchaseQuery.empty) {
-                const purchaseDoc = purchaseQuery.docs[0];
-                lead.copartConsultation.purchase = purchaseDoc.data() as any;
+                if (!purchaseQuery.empty) {
+                    const purchaseDoc = purchaseQuery.docs[0];
+                    // Sanitize purchase data immediately to avoid issues later
+                    const purchaseData = purchaseDoc.data();
+                    // Convert timestamps to dates or strings if needed, but JSON.stringify usually handles it.
+                    // We'll do a safe parse here to catch issues early.
+                    lead.copartConsultation.purchase = JSON.parse(JSON.stringify(purchaseData));
+                }
+            } catch (err) {
+                console.error(`Error fetching purchase for lead ${lead.id}:`, err);
+                // Don't fail the whole request, just leave purchase as undefined
             }
         }
         return lead;
@@ -40,14 +51,15 @@ async function getSumLeads(firestore: FirebaseFirestore.Firestore): Promise<SumL
     if (leadsSnapshot.empty) return [];
     
     const userIds = leadsSnapshot.docs.map(doc => doc.data().userId).filter(Boolean);
+    // Remove duplicates
+    const uniqueUserIds = [...new Set(userIds)];
     const users: Record<string, UserProfile> = {};
 
-    if (userIds.length > 0) {
+    if (uniqueUserIds.length > 0) {
         // Firestore 'in' queries are limited to 30 items.
-        // We need to chunk the userIds array if it's larger.
         const chunks: string[][] = [];
-        for (let i = 0; i < userIds.length; i += 30) {
-            chunks.push(userIds.slice(i, i + 30));
+        for (let i = 0; i < uniqueUserIds.length; i += 30) {
+            chunks.push(uniqueUserIds.slice(i, i + 30));
         }
 
         for (const chunk of chunks) {
@@ -84,9 +96,19 @@ export async function getLeads(idToken: string): Promise<{ success: boolean; dat
             getSumLeads(firestore)
         ]);
 
+        // Safe serialization helper
+        const safeSerialize = (data: any) => {
+            try {
+                return JSON.parse(JSON.stringify(data));
+            } catch (e) {
+                console.error("Serialization error:", e);
+                return [];
+            }
+        };
+
         const data = {
-            copartLeads: JSON.parse(JSON.stringify(copartLeads)),
-            sumLeads: JSON.parse(JSON.stringify(sumLeads)),
+            copartLeads: safeSerialize(copartLeads),
+            sumLeads: safeSerialize(sumLeads),
         };
 
         return { success: true, data };
@@ -97,7 +119,7 @@ export async function getLeads(idToken: string): Promise<{ success: boolean; dat
     }
 }
 
-export async function updateLeadStatus(idToken: string, leadId: string, status: 'active' | 'in-progress' | 'finished', type: 'copart' | 'sum'): Promise<{ success: boolean; error?: string }> {
+export async function updateLeadStatus(idToken: string, leadId: string, status: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry', type: 'copart' | 'sum'): Promise<{ success: boolean; error?: string }> {
     const { isAdmin, error: authError } = await verifyAdminFromToken(idToken);
     if (!isAdmin) {
         return { success: false, error: authError };

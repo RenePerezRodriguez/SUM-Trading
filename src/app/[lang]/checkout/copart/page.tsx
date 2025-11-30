@@ -20,6 +20,7 @@ import useCopartStore from '@/hooks/use-copart-store';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import useCopartConsultationStore from '@/hooks/use-copart-consultation-store';
 import { updateExistingPurchaseRecordAction } from './actions/update-existing-purchase-record-action';
+import { createCopartInquiryAction } from './actions/create-copart-inquiry-action';
 import { Button } from '@/components/ui/button';
 
 const InfoCard = ({ icon: Icon, title, description }: { icon: React.ElementType, title: string, description: string }) => (
@@ -59,6 +60,7 @@ function CopartCheckoutContent() {
     // We fetch userProfile directly to ensure we have the most up-to-date data.
     const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
     const [isProfileLoading, setIsProfileLoading] = useState(true);
+    const [isWhatsAppLoading, setIsWhatsAppLoading] = useState(false);
 
     useEffect(() => {
         getDictionary(lang).then(setDict);
@@ -133,7 +135,11 @@ router.replace(`/${lang}/auth/complete-profile`);
         }
 
         const handleActiveConsultation = (vehiclesForUpdate: NormalizedVehicle[]) => {
-            if (!user || !userProfile?.copartConsultation?.paymentId) return;
+            // Only auto-update if the consultation is fully active (paid)
+            const isPaid = userProfile?.copartConsultation?.paymentId && !userProfile.copartConsultation.paymentId.startsWith('inquiry_');
+            const isActiveStatus = userProfile?.copartConsultation?.status === 'active' || userProfile?.copartConsultation?.status === 'in-progress';
+            
+            if (!user || !isPaid || !isActiveStatus) return;
 
             startUpdatingTransition(async () => {
                 try {
@@ -164,7 +170,10 @@ router.replace(`/${lang}/auth/complete-profile`);
 
         fetchVehicleData()
             .then(fetchedVehicles => {
-                if (fetchedVehicles && userProfile?.copartConsultation?.paymentId) {
+                const isPaid = userProfile?.copartConsultation?.paymentId && !userProfile.copartConsultation.paymentId.startsWith('inquiry_');
+                const isActiveStatus = userProfile?.copartConsultation?.status === 'active' || userProfile?.copartConsultation?.status === 'in-progress';
+
+                if (fetchedVehicles && isPaid && isActiveStatus) {
                     handleActiveConsultation(fetchedVehicles);
                 } else {
                     setIsLoading(false);
@@ -221,7 +230,10 @@ router.replace(`/${lang}/auth/complete-profile`);
         return <div className="container py-12 pt-44 text-center">{t.redirecting}</div>
     }
 
-    if (userProfile.copartConsultation?.paymentId && vehicles.length > 0) {
+    const isPaid = userProfile.copartConsultation?.paymentId && !userProfile.copartConsultation.paymentId.startsWith('inquiry_');
+    const isActiveStatus = userProfile.copartConsultation?.status === 'active' || userProfile.copartConsultation?.status === 'in-progress';
+
+    if (isPaid && isActiveStatus && vehicles.length > 0) {
         return (
              <div className="container py-12 pt-44 text-center">
                 <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin" />
@@ -233,6 +245,27 @@ router.replace(`/${lang}/auth/complete-profile`);
     const whatsappNumber = dict.copart_checkout_page.advisor_phone.replace(/\D/g, '');
     const adviceMessage = t.advice_message.replace('{lots}', lotNumbers.join(', '));
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(adviceMessage)}`;
+
+    const handleWhatsAppClick = async () => {
+        if (!user) return;
+        setIsWhatsAppLoading(true);
+        try {
+            await createCopartInquiryAction({
+                userId: user.uid,
+                vehicles: vehicles.map(v => ({
+                    lotNumber: v.lot_number || 'N/A',
+                    vehicleTitle: v.title,
+                    vehicleUrl: v.url,
+                    imageUrl: v.imageUrl
+                }))
+            });
+            window.open(whatsappUrl, '_blank');
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsWhatsAppLoading(false);
+        }
+    };
 
     return (
         <div className="container py-12 pt-44">
@@ -299,15 +332,26 @@ router.replace(`/${lang}/auth/complete-profile`);
                                 <CardTitle>Opciones</CardTitle>
                              </CardHeader>
                              <CardContent className="flex flex-col gap-4">
-                                <Button asChild size="lg" className="w-full justify-start text-base">
-                                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                                        <MessageSquare className="mr-3 h-5 w-5" />
-                                        {t.want_advice_button}
-                                    </a>
+                                <Button 
+                                    onClick={handleWhatsAppClick} 
+                                    size="lg" 
+                                    className="w-full justify-start text-base whitespace-normal h-auto py-4"
+                                    disabled={isWhatsAppLoading}
+                                >
+                                    {isWhatsAppLoading ? (
+                                        <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                                    ) : (
+                                        <MessageSquare className="mr-3 h-5 w-5 flex-shrink-0" />
+                                    )}
+                                    <span className="text-left">{t.want_advice_button}</span>
                                 </Button>
-                                <Button onClick={() => setShowPaymentForm(true)} size="lg" className="w-full justify-start text-base">
-                                    <CreditCard className="mr-3 h-5 w-5" />
-                                    {t.want_to_pay_button}
+                                <Button 
+                                    onClick={() => setShowPaymentForm(true)} 
+                                    size="lg" 
+                                    className="w-full justify-start text-base whitespace-normal h-auto py-4"
+                                >
+                                    <CreditCard className="mr-3 h-5 w-5 flex-shrink-0" />
+                                    <span className="text-left">{t.want_to_pay_button}</span>
                                 </Button>
                              </CardContent>
                         </Card>

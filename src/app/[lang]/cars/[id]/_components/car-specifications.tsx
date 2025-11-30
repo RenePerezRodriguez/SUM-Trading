@@ -15,13 +15,13 @@ type CarSpecificationsProps = {
 };
 
 const SpecificationItem = ({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string | number | React.ReactNode }) => (
-    <div className="flex items-center gap-3 p-3 bg-secondary/30 rounded-lg">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary flex-shrink-0">
-        <Icon className="w-5 h-5"/>
+    <div className="flex flex-col p-4 border border-border/40 bg-background hover:bg-secondary/10 transition-colors">
+      <div className="flex items-center gap-2 mb-2 text-muted-foreground">
+        <Icon className="w-4 h-4 flex-shrink-0"/>
+        <span className="text-xs uppercase tracking-wider font-medium">{label}</span>
       </div>
-      <div>
-        <p className="text-sm text-muted-foreground">{label}</p>
-        <div className="font-semibold">{value || '-'}</div>
+      <div className="font-mono text-sm md:text-base font-semibold text-foreground break-words whitespace-normal">
+        {value || '-'}
       </div>
     </div>
   );
@@ -118,16 +118,17 @@ export default function CarSpecifications({ car, dict, lang }: CarSpecifications
   ];
 
   return (
-    <Card className="bg-secondary/50">
-      <CardHeader>
-        <CardTitle className="font-headline">{dict.car_details.specifications}</CardTitle>
-      </CardHeader>
-      <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {specifications.map(spec => (
-           spec.value && <SpecificationItem key={spec.label} icon={spec.icon} label={spec.label} value={spec.value} />
+    <div className="space-y-4">
+      <div className="flex items-center gap-2 mb-4">
+        <FileText className="w-5 h-5 text-primary" />
+        <h2 className="text-xl font-bold font-headline uppercase tracking-tight">Ficha Técnica</h2>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border/50 border border-border/50 overflow-hidden rounded-sm">
+        {specifications.map((spec, index) => (
+           spec.value && <SpecificationItem key={index} icon={spec.icon} label={spec.label} value={spec.value} />
         ))}
          {car.damageDescription && (
-            <div className="sm:col-span-2 lg:col-span-3">
+            <div className="col-span-2 md:col-span-3 lg:col-span-4">
               <SpecificationItem 
                   icon={AlertTriangle} 
                   label={t.damageDescription} 
@@ -135,7 +136,7 @@ export default function CarSpecifications({ car, dict, lang }: CarSpecifications
               />
             </div>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

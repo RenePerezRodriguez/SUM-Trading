@@ -31,7 +31,7 @@ function CopartImageGallery({ vehicle }: { vehicle: NormalizedVehicle }) {
     }
   
     return (
-      <div className="space-y-4 sticky top-28">
+      <div className="space-y-4 md:sticky md:top-28">
         <AnimatePresence mode="wait">
           <motion.div
             key={mainImage}
@@ -115,7 +115,7 @@ export default function CopartDetailsClient({ vehicle, lang, dict }: { vehicle: 
     };
 
     return (
-        <div className="container py-12 pt-44">
+        <div className="container py-8 pt-24 md:py-12 md:pt-44">
             <div className="mb-6">
                 <Button variant="outline" onClick={() => router.back()}>
                     <ArrowLeft className="mr-2 h-4 w-4" />
@@ -133,16 +133,16 @@ export default function CopartDetailsClient({ vehicle, lang, dict }: { vehicle: 
                         </h1>
                         {vehicle.make && vehicle.model && <p className="text-xl text-muted-foreground mt-1">{vehicle.make} {vehicle.model}</p>}
 
-                        <div className="flex justify-between items-center bg-secondary p-4 rounded-lg my-4">
-                            <div>
+                        <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 bg-secondary p-4 rounded-lg my-4">
+                            <div className="flex justify-between sm:block items-center">
                                 <p className="text-muted-foreground text-sm">{dict?.vehicle_comparator?.current_bid_approx || 'Current Bid (Approx.)'}</p>
-                                <p className="text-3xl font-bold text-primary text-right">
+                                <p className="text-3xl font-bold text-primary text-right sm:text-left">
                                     {formattedPrice}
                                 </p>
                             </div>
                             <Button 
                                 size="lg" 
-                                className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-7 font-bold" 
+                                className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-6 h-auto font-bold w-full sm:w-auto" 
                                 onClick={handleAddForConsultation}
                             >
                                 <MessageSquarePlus className="mr-2 h-5 w-5" />

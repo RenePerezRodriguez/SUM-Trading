@@ -113,7 +113,7 @@ export default function CarDetailPage() {
         type="application/ld+json" 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
     />
-    <div className="container py-12 pt-44">
+    <div className="container py-8 pt-24 md:py-12 md:pt-44">
         <div className="mb-6">
             <Button variant="outline" onClick={() => router.back()}>
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -126,7 +126,7 @@ export default function CarDetailPage() {
             </div>
             <div className="flex flex-col">
             <CarDetails car={car} />
-            <div className="mt-auto pt-8">
+            <div className="mt-8 space-y-6">
                 <CarPurchaseCard car={car} dict={dict} lang={lang} />
             </div>
             </div>

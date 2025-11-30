@@ -20,8 +20,8 @@ const CtaContentCard = ({ dict, lang }: { dict: any; lang: string }) => {
   return (
     <motion.div
       className="bg-primary text-primary-foreground p-6 sm:p-8 md:p-12 rounded-lg max-w-lg w-full shadow-xl"
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >

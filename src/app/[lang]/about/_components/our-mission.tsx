@@ -50,23 +50,39 @@ export default function OurMission({ dict }: { dict: any }) {
                 </motion.div>
             </motion.div>
 
-            {/* Video Section */}
+            {/* Video Section - Phone Mockup */}
             <motion.div 
-                className="relative w-full max-w-md mx-auto overflow-hidden rounded-xl shadow-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                className="relative w-full max-w-[320px] mx-auto"
+                initial={{ opacity: 0, y: 40, rotate: -2 }}
+                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
             >
-                <div className="relative aspect-[9/16] w-full">
-                    <iframe
-                        src="https://www.instagram.com/reel/DO9yvWVkeAc/embed"
-                        className="w-full h-full border-0"
-                        allowFullScreen
-                        scrolling="no"
-                        allow="encrypted-media"
-                    />
+                {/* Phone Bezel */}
+                <div className="relative rounded-[3rem] border-[8px] border-gray-900 bg-gray-900 shadow-2xl overflow-hidden">
+                    {/* Screen */}
+                    <div className="relative rounded-[2.5rem] overflow-hidden bg-black aspect-[9/19]">
+                        {/* Notch */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-gray-900 rounded-b-2xl z-20"></div>
+                        
+                        {/* Video Content */}
+                        <iframe
+                            src="https://www.instagram.com/reel/DO9yvWVkeAc/embed"
+                            className="w-full h-full border-0 object-cover scale-[1.02]" // Scale slightly to hide edges
+                            allowFullScreen
+                            scrolling="no"
+                            allow="encrypted-media"
+                        />
+                    </div>
+
+                    {/* Side Buttons (Decorative) */}
+                    <div className="absolute top-24 -right-3 h-16 w-1.5 bg-gray-800 rounded-r-md shadow-sm"></div>
+                    <div className="absolute top-24 -left-3 h-10 w-1.5 bg-gray-800 rounded-l-md shadow-sm"></div>
+                    <div className="absolute top-40 -left-3 h-16 w-1.5 bg-gray-800 rounded-l-md shadow-sm"></div>
                 </div>
+                
+                {/* Shadow/Reflection effect */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-black/30 blur-2xl rounded-full"></div>
             </motion.div>
         </div>
     );

@@ -78,42 +78,26 @@ export default async function Home({ params }: Props) {
       {/* Hero - Full bleed */}
       <HeroSection dict={dict} lang={lang} />
       
-      {/* Wave transition */}
-      <WaveDivider color="bg-muted/30" />
-      
-      {/* Tarifas - bg-muted/30 */}
-      <div className="bg-muted/30 -mt-20">
-        <div className="py-12 md:py-16">
+      {/* Partners (Brokers) - Trust Signal immediately after Hero */}
+      <PartnersSection dict={dict} />
+
+      {/* Featured Cars (Desire) */}
+      <ServicesAndFeatured dict={dict} lang={lang} />
+
+      {/* Tarifas (Transparency) - Clean White Background */}
+      <div className="bg-background section-py border-t border-gray-100">
+        <div>
           <div className="container">
             <TowingRatesAdvanced dict={dict} lang={lang} />
           </div>
         </div>
       </div>
       
-      {/* Featured Cars (¿Cómo funciona?) - bg-background con sombra sutil */}
-      <div className="bg-background shadow-sm">
-        <div className="py-8 md:py-12">
-          <ServicesAndFeatured dict={dict} lang={lang} />
-        </div>
-      </div>
-      
-      {/* Servicios - bg-muted/30 */}
-      <div className="bg-muted/30">
-        <div className="py-8 md:py-12">
-          <ServicesCards dict={dict} lang={lang} />
-        </div>
-      </div>
-      
-      {/* Partners (Brokers) - bg-background con sombra sutil */}
-      <div className="bg-background shadow-sm">
-        <PartnersSection dict={dict} />
-      </div>
-      
-      {/* Wave transition antes de CTA */}
-      <WaveDivider flip color="bg-primary" className="bg-background" />
-      
-      {/* CTA - bg-primary */}
-      <div className="bg-primary -mt-20">
+      {/* Servicios (How we help) */}
+      <ServicesCards dict={dict} lang={lang} />
+
+      {/* CTA - Clean White Background */}
+      <div className="bg-white border-t border-gray-100">
         <CtaSection dict={dict} lang={lang} />
       </div>
     </>

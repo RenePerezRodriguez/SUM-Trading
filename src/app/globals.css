@@ -34,7 +34,7 @@
     --input: 214 32% 91%;
     /* #3F88C5 - Steel Blue ring */
     --ring: 205 52% 51%;
-    --radius: 0.5rem;
+    --radius: 0.25rem;
     --chart-1: 1 83% 53%;
     --chart-2: 205 52% 51%;
     --chart-3: 214 32% 91%;
@@ -87,14 +87,35 @@
     color: hsl(var(--foreground));
   }
   section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    /* Removed default padding to avoid unwanted white spaces */
   }
   @media (min-width: 640px) {
     section {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      /* Removed default padding */
     }
+  }
+
+  /* Centralized Section Spacing */
+  :root {
+    --section-spacing: 3rem; /* Mobile: 48px */
+  }
+  @media (min-width: 768px) {
+    :root {
+      --section-spacing: 5rem; /* Desktop: 80px */
+    }
+  }
+
+  .section-py {
+    padding-top: var(--section-spacing);
+    padding-bottom: var(--section-spacing);
+  }
+  
+  .section-pt {
+    padding-top: var(--section-spacing);
+  }
+  
+  .section-pb {
+    padding-bottom: var(--section-spacing);
   }
 
   /* Custom selection color */

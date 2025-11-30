@@ -12,5 +12,79 @@
       "pay_button": "Proceed to Payment",
       "processing": "Processing payment..."
     }
+  },
+  "copart_checkout_page": {
+    "title": "Copart Consultation Request",
+    "description": "You are one step away from receiving expert advice for your selected vehicles.",
+    "vehicles_title": "Selected Vehicles",
+    "advice_message": "Hello, I am interested in receiving advice for the following Copart lots: {lots}",
+    "error_title": "Error",
+    "redirecting": "Redirecting...",
+    "advisor_phone": "+1 (956) 747-6078",
+    "lot_label": "Lot",
+    "view_on_portal": "View on Copart",
+    "want_advice_button": "I want advice via WhatsApp",
+    "want_to_pay_button": "Pay Consultation Now ($20 USD)",
+    "benefits_title": "Advisory Benefits",
+    "loading_vehicle_desc": "Loading vehicle information...",
+    "payment_error_default": "An unexpected error occurred.",
+    "payment_error_confirmation": "Error confirming payment.",
+    "consultation_success_desc": "Your consultation request has been created successfully.",
+    "lead_error": "Error creating consultation request.",
+    "payment_not_completed": "Payment was not completed.",
+    "pay_button": "Pay",
+    "loading_payment": "Loading payment gateway...",
+    "faq_title": "Frequently Asked Questions",
+    "benefits": [
+      {
+        "title": "Auction Access",
+        "description": "We bid for you with our certified broker license."
+      },
+      {
+        "title": "History Reports",
+        "description": "We include AutoCheck reports to verify vehicle history."
+      },
+      {
+        "title": "Bidding Strategy",
+        "description": "We advise you on the recommended maximum price based on historical data."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What happens after requesting advice?",
+        "answer": "An expert will contact you via WhatsApp to review the vehicles and coordinate the deposit."
+      },
+      {
+        "question": "Is the advisory fee refundable?",
+        "answer": "The advisory fee remains as credit if you don't win the auction, so you can try with another vehicle."
+      }
+    ]
+  },
+  "update_success_page": {
+    "title": "Vehicles Added!",
+    "description": "The new vehicles have been successfully added to your active consultation.",
+    "next_steps": "Your advisor has the updated information and will contact you soon.",
+    "continue_searching": "Continue Searching",
+    "go_home": "Go Home"
+  },
+  "checkout_success_page": {
+    "title": "Payment Successful!",
+    "description": "Your payment has been processed successfully.",
+    "order_summary": "Order Summary",
+    "payment_id": "Payment ID",
+    "items": "Items",
+    "total": "Total",
+    "next_steps_title": "Next Steps",
+    "step_1": "An advisor will review your request.",
+    "step_2": "We will contact you via WhatsApp.",
+    "step_3": "We will start the bidding process.",
+    "go_to_dashboard": "Go to Dashboard",
+    "go_home": "Go Home",
+    "whatsapp_message_consultation": "Hello, I just paid for my Copart consultation. I would like to start.",
+    "whatsapp_message_purchase": "Hello, I have made payment {paymentId} for the following items: {items}. I would like to coordinate delivery.",
+    "items_not_available": "Items not available",
+    "confirmation_email": "We have sent a confirmation email to your address.",
+    "continue_shopping": "Continue Shopping",
+    "notify_whatsapp": "Notify via WhatsApp"
   }
 }

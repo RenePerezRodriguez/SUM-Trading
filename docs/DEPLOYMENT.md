@@ -1,93 +1,144 @@
 # 🚀 Guía de Despliegue a Producción - Firebase App Hosting
 
+**Última actualización:** 2025-11-30
+
+## 📋 Índice
+
+1. [Checklist Pre-Despliegue](#checklist-pre-despliegue)
+2. [Configurar Secrets](#configurar-secrets)
+3. [Métodos de Despliegue](#métodos-de-despliegue)
+4. [Post-Despliegue](#post-despliegue)
+5. [Troubleshooting](#troubleshooting)
+
+---
+
 ## 📋 Checklist Pre-Despliegue
 
 ### 1. Variables de Entorno Configuradas
 - ✅ `.env.production` actualizado con todas las variables
 - ✅ `apphosting.yaml` configurado con secrets
+- ✅ Firebase CLI actualizado (`firebase --version` >= 14.4.0)
 
 ### 2. Secrets de Firebase (OBLIGATORIO)
 
 Antes de desplegar, debes crear los siguientes **secrets** en Firebase App Hosting:
 
-#### 🔐 Crear Secrets en Firebase Console
+---
 
-Ve a: **Firebase Console > App Hosting > Secrets**
+## 🔐 Configurar Secrets
 
-O usa Firebase CLI:
+### Método 1: CLI de Firebase (RECOMENDADO)
 
 ```bash
-# 1. FIREBASE_SERVICE_ACCOUNT_JSON
-firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON
+# 1. Instalar/actualizar Firebase CLI
+npm install -g firebase-tools
 
-# Cuando te pida el valor, pega el JSON completo de tu service account (una sola línea):
-# Ejemplo: {"type":"service_account","project_id":"tu-proyecto",...}
+# 2. Login
+firebase login
+
+# 3. Configurar secrets interactivamente
+firebase apphosting:secrets:set GEMINI_API_KEY --project studio-6719476275-3891a
+firebase apphosting:secrets:set STRIPE_SECRET_KEY --project studio-6719476275-3891a
+firebase apphosting:secrets:set STRIPE_WEBHOOK_SECRET --project studio-6719476275-3891a
+firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON --project studio-6719476275-3891a
+
+# 4. Dar permisos de acceso al backend (automático con CLI pero verifica)
+firebase apphosting:secrets:grantaccess GEMINI_API_KEY --backend studio
 ```
 
-```bash
-# 2. STRIPE_SECRET_KEY
-firebase apphosting:secrets:set STRIPE_SECRET_KEY
-
-# Pega tu Stripe Secret Key (TEST o LIVE)
-# TEST mode: sk_test_XXXXXXXXXXXXXXXXX
-# LIVE mode: sk_live_XXXXXXXXXXXXXXXXX
-# ⚠️ IMPORTANTE: Usa TEST para desarrollo, LIVE para producción
-```
+**Valores de los secrets:**
 
 ```bash
-# 3. STRIPE_WEBHOOK_SECRET
-firebase apphosting:secrets:set STRIPE_WEBHOOK_SECRET
+# GEMINI_API_KEY (AI Chatbot)
+AIzaSyCK-wRtUQI606fwuaqkpjcogVv6IV7vCms
 
-# Valor actual (placeholder - debes obtener el real):
+# STRIPE_SECRET_KEY (Pagos)
+# TEST: sk_test_51SGPcIBh7oiw3HEvk74l9Jgj...
+# LIVE: sk_live_XXXXXXXXXXXXXXXXX
+
+# STRIPE_WEBHOOK_SECRET
+# Obtener desde Stripe Dashboard > Developers > Webhooks
 whsec_your_webhook_secret_here
 
-# Para obtener el secret real:
-# 1. Ve a Stripe Dashboard > Developers > Webhooks
-# 2. Crea un endpoint: https://tu-dominio.com/api/webhook/stripe
-# 3. Selecciona eventos: payment_intent.succeeded, checkout.session.completed
-# 4. Copia el "Signing secret" que te da Stripe
+# FIREBASE_SERVICE_ACCOUNT_JSON
+# JSON completo de service account (una sola línea)
+
 ```
 
-### 3. Verificar Secrets Creados
+### Método 2: Firebase Console (Manual)
+
+1. Ve a [Firebase Console](https://console.firebase.google.com)
+2. Selecciona tu proyecto: `studio-6719476275-3891a`
+3. Ve a **App Hosting** > Tu backend `studio`
+4. Pestaña **Secrets** > **Add Secret**
+5. Agrega cada secret con su nombre y valor
+6. Luego otorga permisos:
+   ```bash
+   firebase apphosting:secrets:grantaccess GEMINI_API_KEY --backend studio
+   ```
+
+---
+
+## 🚀 Métodos de Despliegue
+
+### Opción 1: Deploy desde Código Local con CLI (NUEVO - Más Rápido)
 
 ```bash
-# Listar todos los secrets
-firebase apphosting:secrets:list
+# 1. Asegúrate de tener firebase.json configurado
+# Ya está configurado en tu proyecto:
+# {
+#   "apphosting": {
+#     "backendId": "studio",
+#     "rootDir": ".",
+#     "alwaysDeployFromSource": true
+#   }
+# }
 
-# Deberías ver:
-# - FIREBASE_SERVICE_ACCOUNT_JSON
-# - STRIPE_SECRET_KEY
-# - STRIPE_WEBHOOK_SECRET
+# 2. Deploy directo desde tu máquina local
+firebase deploy --only apphosting
+
+# Firebase subirá tu código local, compilará y desplegará
+# ¡No necesitas hacer git push!
 ```
 
-## 🚀 Despliegue
+**Ventajas:**
+- ⚡ Más rápido (no espera a GitHub)
+- 🔧 Pruebas rápidas sin commits
+- 🚀 Deploy desde cualquier rama local
 
-### Opción 1: Desde Firebase Console (Recomendado)
+### Opción 2: Deploy desde GitHub (CI/CD Automático)
 
 1. Ve a **Firebase Console > App Hosting**
 2. Conecta tu repositorio de GitHub si no lo has hecho
-3. Selecciona la rama: `recuperacion-home-limpia` (o la que quieras desplegar)
-4. Click en **Deploy**
+3. Selecciona la rama: `main` o `pruebas`
+4. Click en **Deploy** o habilita **Auto-deploy**
 5. Firebase automáticamente:
-   - Clona el repo
+   - Clona el repo desde GitHub
    - Ejecuta `npm install`
-   - Ejecuta `npm run build` (usa `.env.production`)
+   - Ejecuta `npm run build`
    - Despliega con las variables de `apphosting.yaml`
 
-### Opción 2: Desde CLI
+**Ventajas:**
+- 🔄 CI/CD automático al hacer push
+- 📝 Historial de deploys vinculado a commits
+- 👥 Colaboración en equipo
+
+### Opción 3: Rollout Manual desde CLI
 
 ```bash
-# Asegúrate de estar en la rama correcta
-git checkout recuperacion-home-limpia
+# Ver backends disponibles
+firebase apphosting:backends:list
 
-# Push a GitHub (Firebase App Hosting se sincroniza con GitHub)
-git push origin recuperacion-home-limpia
+# Ver rollouts recientes
+firebase apphosting:rollouts:list --backend studio
 
-# O despliega manualmente (no recomendado)
-firebase deploy --only apphosting
+# Crear nuevo rollout (no recomendado, usa deploy)
+# Este comando es solo para referencia
 ```
 
-## ⚙️ Configuración de apphosting.yaml
+---
+
+## ✅ Post-Despliegue
 
 Tu configuración actual:
 
@@ -125,124 +176,262 @@ memory: 4GiB
 cpu: 2
 ```
 
-## 🔍 Post-Despliegue
+---
 
-### 1. Verificar Variables de Entorno
+## 🔥 Troubleshooting
 
-```bash
-# Ver logs del despliegue
-firebase apphosting:logs
-
-# Buscar errores de variables faltantes
-# Común: "STRIPE_SECRET_KEY is not defined"
-```
-
-### 2. Probar Endpoints Críticos
-
-```bash
-# 1. Health check
-curl https://tu-dominio.com
-
-# 2. API de Copart (debe conectar a scrap.sumtrading.us)
-curl https://tu-dominio.com/api/copart-search?query=mazda
-
-# 3. Autenticación (debe conectar a Firebase)
-# Prueba login desde la UI
-
-# 4. Stripe (en modo TEST)
-# Prueba checkout con tarjeta de prueba: 4242 4242 4242 4242
-```
-
-### 3. Monitoreo
-
-**Firebase Console:**
-- App Hosting > Métricas → Ver requests, latencia, errores
-- App Hosting > Logs → Ver logs en tiempo real
-
-**Errores Comunes:**
+### Errores Comunes
 
 | Error | Causa | Solución |
 |-------|-------|----------|
-| `STRIPE_SECRET_KEY is not defined` | Secret no creado | Ejecutar `firebase apphosting:secrets:set STRIPE_SECRET_KEY` |
-| `FIREBASE_SERVICE_ACCOUNT_JSON is undefined` | Secret no creado | Ejecutar `firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON` |
-| `Failed to connect to scrap.sumtrading.us` | Backend down | Verificar Cloud Run backend |
-| `Memory limit exceeded` | Tráfico alto | Aumentar `memory: 2GiB` |
+| `GEMINI_API_KEY is required` | Secret no configurado | `firebase apphosting:secrets:set GEMINI_API_KEY` |
+| `STRIPE_SECRET_KEY is not defined` | Secret no creado | `firebase apphosting:secrets:set STRIPE_SECRET_KEY` |
+| `FIREBASE_SERVICE_ACCOUNT_JSON is undefined` | Secret falta | `firebase apphosting:secrets:set FIREBASE_SERVICE_ACCOUNT_JSON` |
+| `Failed to connect to scrap.sumtrading.us` | Backend ScraptPress down | Verificar Cloud Run: https://scrap.sumtrading.us |
+| `Memory limit exceeded` | Tráfico alto o leak | Aumentar `memory: 2GiB` en apphosting.yaml |
+| Chatbot no responde | API key inválida o límite excedido | Verificar Gemini API Console |
+| `Permission denied` en Admin | Usuario sin role admin | Ejecutar script: `npx tsx scripts/fix-admin-permissions.ts` |
 
-## 🔄 Rollback
-
-Si algo sale mal:
+### Comandos de Diagnóstico
 
 ```bash
-# Ver historial de despliegues
-firebase apphosting:rollouts:list
+# Verificar configuración de secrets
+firebase apphosting:secrets:list
 
-# Rollback a versión anterior
-firebase apphosting:rollouts:rollback <ROLLOUT_ID>
+# Ver logs en tiempo real
+firebase apphosting:logs --backend studio --tail
+
+# Ver backends disponibles
+firebase apphosting:backends:list
+
+# Ver historial de rollouts
+firebase apphosting:rollouts:list --backend studio
+
+# Verificar chatbot y Gemini
+npx tsx scripts/check-chatbot-env.ts
+
+# Arreglar permisos de admin
+npx tsx scripts/fix-admin-permissions.ts admin@sumtrading.us
 ```
 
-O desde Firebase Console:
-1. App Hosting > Rollouts
-2. Selecciona el deployment anterior
-3. Click "Promote to live"
+### Rollback de Emergency
 
-## 🎯 Checklist Final
+Si el deploy rompe producción:
 
-Antes de considerar el despliegue completo:
+```bash
+# Método 1: CLI
+firebase apphosting:rollouts:list --backend studio
+firebase apphosting:rollouts:rollback <ROLLOUT_ID>
 
-- [ ] Secrets creados en Firebase (3 secrets)
-- [ ] Build local exitoso (`npm run build`)
-- [ ] Variables de entorno verificadas
-- [ ] Stripe en modo TEST (cambiar a LIVE cuando estés listo)
-- [ ] Dominio personalizado configurado (opcional)
-- [ ] SSL/HTTPS funcionando
-- [ ] Analytics configurado (si quieres activarlo)
-- [ ] Webhook de Stripe configurado con la URL correcta
-- [ ] Pruebas de login/registro
-- [ ] Pruebas de búsqueda de Copart
-- [ ] Pruebas de checkout (modo TEST)
+# Método 2: Console
+# 1. Firebase Console > App Hosting > Rollouts
+# 2. Selecciona rollout anterior funcional
+# 3. Click "Promote to live"
+```
 
-## 📝 Notas Importantes
+### Logs Útiles
 
-### Diferencias entre .env.local y .env.production
+```bash
+# Ver errores solo
+firebase apphosting:logs --backend studio | grep "ERROR"
 
-- **`.env.local`**: Solo para desarrollo local (tu máquina)
-- **`.env.production`**: Para build de producción (Firebase App Hosting)
-- **`apphosting.yaml`**: Variables de runtime en Firebase (equivalente a Cloud Run `.env.yaml`)
+# Ver logs del chatbot
+firebase apphosting:logs --backend studio | grep "chatbot"
 
-### Secrets vs Variables Normales
-
-**Variables normales** (en `apphosting.yaml` con `value:`):
-- Son visibles en logs
-- OK para: URLs públicas, API keys no sensibles
-
-**Secrets** (en `apphosting.yaml` con `secret:`):
-- Encriptados, no visibles en logs
-- OBLIGATORIO para: API keys privadas, tokens, passwords
-
-### Stripe: TEST vs LIVE
-
-Actualmente tienes **keys de TEST** (`pk_test_*`, `sk_test_*`).
-
-**Para aceptar pagos reales:**
-1. Ve a Stripe Dashboard
-2. Cambia de "Test mode" a "Live mode"
-3. Obtén tus keys LIVE (`pk_live_*`, `sk_live_*)
-4. Actualiza los secrets:
-   ```bash
-   firebase apphosting:secrets:set STRIPE_SECRET_KEY
-   # Pega tu sk_live_* key
-   ```
-5. Actualiza `.env.production` con `pk_live_*`
-6. Redespliega
-
-## 🆘 Soporte
-
-Si tienes problemas:
-1. Revisa logs: `firebase apphosting:logs`
-2. Verifica secrets: `firebase apphosting:secrets:list`
-3. Chequea Cloud Run backend: https://scrap.sumtrading.us
-4. Revisa Firebase Console > App Hosting > Metrics
+# Ver logs de Stripe
+firebase apphosting:logs --backend studio | grep "stripe"
+```
 
 ---
 
-**Última actualización:** 2025-11-15
+## 🎯 Checklist Final de Producción
+
+Antes de considerar el despliegue completo:
+
+**Secrets & Configuración:**
+- [ ] `GEMINI_API_KEY` configurado y con permisos
+- [ ] `STRIPE_SECRET_KEY` configurado (TEST o LIVE)
+- [ ] `STRIPE_WEBHOOK_SECRET` configurado
+- [ ] `FIREBASE_SERVICE_ACCOUNT_JSON` configurado
+- [ ] `apphosting.yaml` tiene todos los secrets referenciados
+
+**Build & Deploy:**
+- [ ] Build local exitoso (`npm run build`)
+- [ ] Deploy exitoso sin errores
+- [ ] Rollout en estado "DEPLOYED"
+- [ ] No hay errores en logs
+
+**Funcionalidades:**
+- [ ] Chatbot AI responde correctamente
+- [ ] Búsqueda Copart funciona (< 5s)
+- [ ] Login/Registro/Reset password
+- [ ] Checkout Stripe funciona (modo TEST)
+- [ ] Admin panel accesible para admins
+
+**Seguridad:**
+- [ ] SSL/HTTPS funcionando
+- [ ] Secrets no expuestos en código
+- [ ] CORS configurado correctamente
+- [ ] Stripe webhook secret validado
+- [ ] Solo modo TEST hasta validar todo
+
+**Monitoreo:**
+- [ ] Analytics configurado (opcional)
+- [ ] Logs accesibles y sin errores críticos
+- [ ] Métricas de performance < 500ms latencia
+- [ ] Error rate < 1%
+
+**Stripe Production (cuando estés listo):**
+- [ ] Cambiar a keys LIVE (`pk_live_*`, `sk_live_*`)
+- [ ] Configurar webhook production
+- [ ] Actualizar secret: `firebase apphosting:secrets:set STRIPE_SECRET_KEY`
+- [ ] Redeploy
+
+---
+
+## 📝 Notas Importantes
+
+### Diferencias entre Entornos
+
+| Archivo | Uso | Ubicación |
+|---------|-----|-----------|
+| `.env.local` | Desarrollo local | Tu máquina (no en git) |
+| `.env.production` | Build production | Repo (valores no sensibles) |
+| `apphosting.yaml` | Runtime variables | Repo + Firebase secrets |
+| Firebase Secrets | Valores sensibles | Cloud Secret Manager |
+
+### Secrets vs Variables
+
+**Variables normales** (`value:` en apphosting.yaml):
+- ✅ URLs públicas
+- ✅ Configuración no sensible
+- ❌ API keys privadas
+
+**Secrets** (`secret:` en apphosting.yaml):
+- ✅ API keys privadas (Gemini, Stripe)
+- ✅ Service accounts JSON
+- ✅ Tokens y passwords
+- Encriptados en Cloud Secret Manager
+
+### Stripe Modes
+
+**TEST Mode** (actual):
+- Keys: `pk_test_*`, `sk_test_*`
+- Tarjeta prueba: 4242 4242 4242 4242
+- No cobra dinero real
+- Para desarrollo/QA
+
+**LIVE Mode** (producción):
+- Keys: `pk_live_*`, `sk_live_*`
+- Cobra dinero real
+- Requiere cuenta Stripe verificada
+- Cambiar cuando todo esté validado
+
+---
+
+## 🆘 Soporte
+
+**Documentación Adicional:**
+- [PRODUCTION-QUICK-FIX.md](../PRODUCTION-QUICK-FIX.md) - Guía rápida de fixes
+- [PRODUCTION-FIXES.md](./PRODUCTION-FIXES.md) - Soluciones detalladas
+- [Firebase App Hosting Docs](https://firebase.google.com/docs/app-hosting)
+
+**Troubleshooting:**
+1. Revisa logs: `firebase apphosting:logs --backend studio`
+2. Verifica secrets: `firebase apphosting:secrets:list`
+3. Ejecuta scripts de diagnóstico en `scripts/`
+4. Chequea backend: https://scrap.sumtrading.us
+5. Firebase Console > App Hosting > Metrics
+
+---
+
+**Última actualización:** 2025-11-30
+
+---
+
+## ✅ Post-Despliegue
+
+### 1. Verificar Secrets Configurados
+
+```bash
+# Listar todos los secrets
+firebase apphosting:secrets:list
+
+# Deberías ver:
+# - GEMINI_API_KEY (para AI Chatbot)
+# - FIREBASE_SERVICE_ACCOUNT_JSON
+# - STRIPE_SECRET_KEY
+# - STRIPE_WEBHOOK_SECRET
+```
+
+### 2. Verificar Deploy en Consola
+
+1. Ve a Firebase Console > App Hosting > Rollouts
+2. Verifica que el último deploy esté en estado "DEPLOYED"
+3. Revisa los logs si hay errores
+
+### 3. Probar Funcionalidades Críticas
+
+#### a) Chatbot AI (Gemini)
+```bash
+# URL de prueba
+https://sumtrading.us
+
+# 1. Abre el chatbot (botón flotante)
+# 2. Envía mensaje de prueba: "Hola"
+# 3. Debe responder en < 3 segundos
+# 4. Verifica que NO hay error "GEMINI_API_KEY is required"
+```
+
+#### b) Búsqueda Copart
+```bash
+# URL de prueba
+https://sumtrading.us/es/copart?query=mazda
+
+# 1. Debe cargar resultados en < 5 segundos (cached)
+# 2. Verifica imágenes de vehículos
+# 3. Click en un vehículo → debe abrir detalle
+```
+
+#### c) Autenticación
+```bash
+# 1. Login con email/password
+# 2. Login con Google
+# 3. Registro nuevo usuario
+# 4. Reset password
+```
+
+#### d) Pagos Stripe (Modo TEST)
+```bash
+# URL de prueba
+https://sumtrading.us/es/checkout
+
+# Tarjeta de prueba: 4242 4242 4242 4242
+# Expiración: cualquier fecha futura
+# CVC: cualquier 3 dígitos
+
+# Verifica:
+# - Payment Intent se crea correctamente
+# - Webhook recibe confirmación
+# - Orden se guarda en Firestore
+```
+
+### 4. Monitoreo y Logs
+
+```bash
+# Ver logs en tiempo real
+firebase apphosting:logs --backend studio
+
+# O desde Firebase Console
+# App Hosting > studio > Logs
+```
+
+**Métricas a monitorear:**
+- Requests/segundo
+- Latencia promedio (< 500ms ideal)
+- Error rate (< 1%)
+- Memoria usage (< 80%)
+
+---
+
+## ⚙️ Configuración de apphosting.yaml

@@ -6,6 +6,7 @@ import OurValues from './_components/our-values';
 import CtaSection from '@/components/sections/cta-section';
 import { Award, TrendingUp, Users2, Globe2 } from 'lucide-react';
 import type { Metadata } from 'next';
+import { FadeIn, StaggerContainer, FadeInItem } from '@/components/animations/fade-in';
 
 type Props = {
     params: Promise<{ lang: Locale }>;
@@ -91,37 +92,47 @@ export default async function AboutPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <div className="container pt-44 pb-12">
-                <PageHeader 
-                    title={content.title}
-                    description={content.description}
-                />
+                <FadeIn>
+                    <PageHeader 
+                        title={content.title}
+                        description={content.description}
+                    />
+                </FadeIn>
 
                 {/* Stats Section */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto">
+                <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 max-w-5xl mx-auto">
                     {stats.map((stat, index) => {
                         const Icon = stat.icon;
                         return (
-                            <div 
+                            <FadeInItem 
                                 key={index}
-                                className="group text-center p-6 rounded-xl border-2 border-border bg-background hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+                                className="h-full"
                             >
-                                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <Icon className="h-6 w-6 text-primary" />
+                                <div className="h-full group text-center p-6 rounded-xl border border-border/50 bg-gradient-to-b from-background to-accent/5 hover:from-accent/10 hover:to-accent/5 hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                                    <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <Icon className="h-6 w-6 text-accent" />
+                                    </div>
+                                    <div className="text-3xl font-bold text-foreground mb-1">
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-sm text-muted-foreground">
+                                        {stat.label}
+                                    </div>
                                 </div>
-                                <div className="text-3xl font-bold text-primary mb-1">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-muted-foreground">
-                                    {stat.label}
-                                </div>
-                            </div>
+                            </FadeInItem>
                         );
                     })}
-                </div>
+                </StaggerContainer>
 
-                <OurMission dict={content} />
+                <FadeIn delay={0.2}>
+                    <OurMission dict={content} />
+                </FadeIn>
             </div>
-            <OurValues dict={content} />
+            
+            <FadeIn>
+                <OurValues dict={content} />
+            </FadeIn>
+            
             <CtaSection dict={dict} lang={lang} />
         </>
     );

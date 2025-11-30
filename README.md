@@ -20,6 +20,7 @@
 - 🎨 **Modern UI** - shadcn/ui + Tailwind CSS + Framer Motion animations
 
 ### User Experience
+- 🤖 **AI Chatbot** - Intelligent assistant powered by Google Gemini 2.5 Pro with neuromarketing UX
 - ⭐ **Favorites System** - Save and manage favorite vehicles
 - 🚘 **Virtual Garage** - Track purchased vehicles and history
 - 💳 **Payment History** - Complete transaction records
@@ -55,6 +56,7 @@
 - Firebase App Hosting (deployment)
 - Stripe (payments)
 - ScraptPress API (Copart scraping - Cloud Run)
+- Google Gemini 2.5 Pro (AI chatbot)
 
 **Dev Tools:**
 - TypeScript (type safety)
@@ -172,7 +174,7 @@ public/
    # Site Configuration
    NEXT_PUBLIC_SITE_URL=https://sumtrading.us
    
-   # Analytics (Optional)
+   # AI Chatbot
    GEMINI_API_KEY=
    ```
 

@@ -31,13 +31,18 @@ export default function CopartConsultationBar({ lang, dict }: { lang: string, di
         setIsLoading(true);
         try {
             // Check if user has an active consultation. The userProfile from the hook is real-time.
-            if (userProfile?.copartConsultation?.paymentId) {
+            // Only consider it active if status is explicitly 'active' (paid) or 'in-progress' (paid & working).
+            // We filter out unpaid inquiries by checking paymentId prefix.
+            const isPaid = userProfile?.copartConsultation?.paymentId && !userProfile.copartConsultation.paymentId.startsWith('inquiry_');
+            const isActiveStatus = userProfile?.copartConsultation?.status === 'active' || userProfile?.copartConsultation?.status === 'in-progress';
+
+            if (isPaid && isActiveStatus) {
                 // Active lead exists, update it
                 const idToken = await user.getIdToken(true);
                 const result = await updateExistingPurchaseRecordAction({
                     idToken: idToken,
                     userId: user.uid,
-                    paymentId: userProfile.copartConsultation.paymentId,
+                    paymentId: userProfile.copartConsultation!.paymentId, // We know it exists
                     newVehicles: items.map(item => ({
                         lotNumber: item.lot_number || 'N/A',
                         vehicleTitle: item.title || 'N/A',

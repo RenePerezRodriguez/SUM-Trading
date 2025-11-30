@@ -22,7 +22,7 @@ export function PaginationControls({
   loadingPageNumber
 }: PaginationControlsProps) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center justify-center gap-2 w-full">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={prevDisabled}

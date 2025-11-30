@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 import { ChevronDownIcon } from 'lucide-react';
 
 interface ColumnsProps {
-    onStatusChange: (user: UserProfile, status: 'active' | 'in-progress' | 'finished') => void;
+    onStatusChange: (user: UserProfile, status: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry') => void;
     dict: any;
     lang: string;
 }
@@ -22,7 +22,8 @@ interface ColumnsProps {
 const statusConfig = {
     active: { variant: 'default' as const, className: 'bg-blue-500 hover:bg-blue-600' },
     'in-progress': { variant: 'secondary' as const, className: 'bg-yellow-500 hover:bg-yellow-600 text-black' },
-    finished: { variant: 'destructive' as const, className: 'bg-gray-500 hover:bg-gray-600' }
+    finished: { variant: 'destructive' as const, className: 'bg-gray-500 hover:bg-gray-600' },
+    'whatsapp-inquiry': { variant: 'secondary' as const, className: 'bg-green-100 text-green-700 hover:bg-green-200' }
 };
 
 export const copartColumns = ({ onStatusChange, dict, lang }: ColumnsProps): ColumnDef<UserProfile>[] => [
@@ -55,6 +56,22 @@ export const copartColumns = ({ onStatusChange, dict, lang }: ColumnsProps): Col
                 <Badge variant="outline">{itemCount}</Badge>
             </div>
         );
+    }
+  },
+  {
+    id: 'paymentStatus',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Pago" />
+    ),
+    cell: ({ row }) => {
+        const lead = row.original;
+        const paymentId = lead.copartConsultation?.paymentId;
+        const isPaid = paymentId && !paymentId.startsWith('inquiry_');
+        
+        if (isPaid) {
+            return <Badge className="bg-green-600 hover:bg-green-700">Pagado ($20)</Badge>;
+        }
+        return <Badge variant="secondary" className="bg-blue-100 text-blue-700 hover:bg-blue-200">WhatsApp (Sin Pagar)</Badge>;
     }
   },
   {

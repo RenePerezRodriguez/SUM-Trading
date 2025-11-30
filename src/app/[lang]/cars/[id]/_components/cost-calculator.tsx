@@ -74,19 +74,19 @@ export default function CostCalculator({ car, dict, lang }: CostCalculatorProps)
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
     >
-        <Card>
-        <CardHeader>
-            <CardTitle className="font-headline flex items-center gap-2">
+        <div className="border border-border bg-background shadow-sm">
+        <div className="p-6 border-b border-border bg-secondary/20">
+            <h3 className="font-headline text-lg font-bold flex items-center gap-2 uppercase tracking-tight">
                 <Calculator className="w-5 h-5 text-primary" />
                 {content.title}
-            </CardTitle>
-            <CardDescription>{content.description}</CardDescription>
-        </CardHeader>
-        <CardContent>
+            </h3>
+            <p className="text-sm text-muted-foreground mt-1">{content.description}</p>
+        </div>
+        <div className="p-6">
             <div className="mb-6">
-                <Label htmlFor="country-select">{content.select_country}</Label>
+                <Label htmlFor="country-select" className="text-xs uppercase tracking-wider text-muted-foreground mb-2 block">{content.select_country}</Label>
                 <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-                    <SelectTrigger id="country-select">
+                    <SelectTrigger id="country-select" className="rounded-sm border-border/60 bg-secondary/10 font-medium">
                         <SelectValue placeholder={content.select_country} />
                     </SelectTrigger>
                     <SelectContent>
@@ -114,8 +114,8 @@ export default function CostCalculator({ car, dict, lang }: CostCalculatorProps)
                 </TableFooter>
             </Table>
             <p className="text-xs text-muted-foreground mt-4">{content.disclaimer}</p>
-        </CardContent>
-        </Card>
+        </div>
+        </div>
     </motion.div>
   );
 }

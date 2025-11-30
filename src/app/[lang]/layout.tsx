@@ -11,10 +11,11 @@ import Footer from '@/components/layout/footer';
 import LanguageSwitcher from '@/components/layout/language-switcher';
 import AuthModal from '@/components/auth/auth-modal';
 import ComparisonBar from '@/app/[lang]/cars/_components/comparison-bar';
+import SumConsultationBar from '@/app/[lang]/_components/sum-consultation-bar';
+import CopartConsultationBar from '@/app/[lang]/search/_components/copart-consultation-bar';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Analytics } from '@/components/analytics';
 import { Clarity } from '@/components/analytics/clarity';
-import ChatbotWidget from '@/components/chatbot/chatbot-widget';
 
 
 function AppContent({ children }: { children: React.ReactNode }) {
@@ -63,7 +64,8 @@ function AppContent({ children }: { children: React.ReactNode }) {
       {!isAdminRoute && !isAuthRoute && (
         <>
           <ComparisonBar lang={lang} dict={dict} />
-          <ChatbotWidget />
+          <SumConsultationBar lang={lang} dict={dict} />
+          <CopartConsultationBar lang={lang} dict={dict} />
         </>
       )}
       {!isAdminRoute && !isAuthRoute && <Footer lang={lang} dict={dict} />}

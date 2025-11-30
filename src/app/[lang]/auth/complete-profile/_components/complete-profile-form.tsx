@@ -108,8 +108,13 @@ export default function CompleteProfileForm({ dict, lang }: { dict: any, lang: s
              // Check for a redirect URL, otherwise go to profile
              const redirectUrl = localStorage.getItem('redirectAfterProfileCompletion');
              localStorage.removeItem('redirectAfterProfileCompletion'); // Clean up
-             router.push(redirectUrl || `/${lang}/profile`);
-             router.refresh();
+             
+             // Use replace instead of push to avoid back button issues
+             if (redirectUrl) {
+                 router.replace(redirectUrl);
+             } else {
+                 router.replace(`/${lang}/profile`);
+             }
         } else {
             setServerError(result.error || t.error_title);
         }

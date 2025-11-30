@@ -5,6 +5,7 @@ import CtaSection from '@/components/sections/cta-section';
 import ProcessTimeline from './_components/process-timeline';
 import type { Metadata } from 'next';
 import { Shield, Clock, DollarSign, Award, Headphones, Globe } from 'lucide-react';
+import { FadeIn, StaggerContainer, FadeInItem } from '@/components/animations/fade-in';
 
 type Props = {
     params: Promise<{ lang: Locale }>;
@@ -112,35 +113,41 @@ export default async function HowItWorksPage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <div className="container py-12 pt-44">
-                <PageHeader 
-                    title={content.title}
-                    description={content.description}
-                />
+                <FadeIn>
+                    <PageHeader 
+                        title={content.title}
+                        description={content.description}
+                    />
+                </FadeIn>
 
                 {/* Benefits Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
+                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 max-w-6xl mx-auto">
                     {benefits.map((benefit, index) => {
                         const Icon = benefit.icon;
                         return (
-                            <div 
+                            <FadeInItem 
                                 key={index}
-                                className="group p-6 rounded-xl border-2 border-border bg-background hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+                                className="h-full"
                             >
-                                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <Icon className="h-6 w-6 text-primary" />
+                                <div className="h-full group p-6 rounded-xl border border-border/50 bg-gradient-to-b from-background to-accent/5 hover:from-accent/10 hover:to-accent/5 hover:border-accent/50 hover:shadow-lg transition-all duration-300">
+                                    <div className="h-12 w-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <Icon className="h-6 w-6 text-accent" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                                        {benefit.title}
+                                    </h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">
+                                        {benefit.description}
+                                    </p>
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                                    {benefit.title}
-                                </h3>
-                                <p className="text-muted-foreground text-sm leading-relaxed">
-                                    {benefit.description}
-                                </p>
-                            </div>
+                            </FadeInItem>
                         );
                     })}
-                </div>
+                </StaggerContainer>
 
-                <ProcessTimeline dict={content} />
+                <FadeIn delay={0.2}>
+                    <ProcessTimeline dict={content} />
+                </FadeIn>
             </div>
             <CtaSection dict={dict} lang={lang} />
         </>

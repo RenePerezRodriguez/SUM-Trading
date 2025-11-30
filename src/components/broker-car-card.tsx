@@ -169,7 +169,7 @@ export function BrokerCarCard({ car, lang, dict, prioritizeImage = false, query 
                 </div>
                 <div className="flex justify-between items-end mt-2 pt-3 border-t">
                     <div>
-                        <p className="text-xs text-muted-foreground">{dict.common.vehicle_comparator.current_bid}</p>
+                        <p className="text-xs text-muted-foreground">{dict.vehicle_comparator?.current_bid || 'Current Bid'}</p>
                         <p className="text-lg font-bold text-primary">{formattedPrice}</p>
                         {car.estimated_retail_value && (
                             <p className="text-xs text-green-600 font-medium">Est: ${car.estimated_retail_value.toLocaleString()}</p>

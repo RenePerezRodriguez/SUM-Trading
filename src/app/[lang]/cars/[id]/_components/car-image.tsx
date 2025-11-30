@@ -23,7 +23,7 @@ export default function CarImage({ car }: CarImageProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 md:sticky md:top-28">
       <AnimatePresence mode="wait">
         <motion.div
           key={mainImage.id}

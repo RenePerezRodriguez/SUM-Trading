@@ -310,7 +310,8 @@
     "status_types": {
       "active": "Activo",
       "in-progress": "En Progreso",
-      "finished": "Finalizado"
+      "finished": "Finalizado",
+      "whatsapp-inquiry": "Consulta WhatsApp"
     },
     "copart_leads_tab": "Leads de Subastas",
     "sum_leads_tab": "Leads de SUM Trading",

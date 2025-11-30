@@ -13,7 +13,7 @@ import { i18n } from '@/lib/i18n-config';
 import { NavBar } from './header/nav-bar';
 import { HeaderSearch } from './header/header-search';
 import { Button } from '../ui/button';
-import { Mail, Phone, Globe } from 'lucide-react';
+import { Mail, Phone, Globe, Search } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -105,8 +105,9 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
   const isTransparent = isHomePage && !isScrolled;
 
   const headerClasses = cn(
-    'fixed top-0 z-50 w-full transition-all duration-300',
-    isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-sm shadow-md'
+    'fixed top-0 z-40 w-full transition-all duration-300',
+    isScrolled ? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border/40' : 'bg-transparent border-transparent',
+    isCompact ? 'py-0' : 'py-0'
   );
   
   const iconColorClass = cn(
@@ -117,19 +118,58 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
   );
 
   return (
-    <>
-      <motion.header
+    <motion.header
         className={headerClasses}
         initial={{ y: 0 }}
-        animate={{ height: isCompact ? 'auto' : 'auto' }}
+        animate={{ height: 'auto' }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-      >
+    >
+      {/* Top Bar - Trust & Contact */}
+      <div className={cn(
+          "border-b text-xs py-1.5 hidden md:block transition-colors duration-300",
+          isScrolled ? "bg-black text-white border-transparent" : "bg-black/20 border-white/10 text-white/80"
+      )}>
+        <div className="container flex justify-between items-center">
+            <div className="flex items-center gap-4">
+                <span className="flex items-center gap-1.5">
+                    <Phone className="w-3 h-3" /> +1 (956) 747-6078
+                </span>
+                <span className="flex items-center gap-1.5">
+                    <Mail className="w-3 h-3" /> info@sumtrading.us
+                </span>
+            </div>
+            <div className="flex items-center gap-4">
+                <span className={cn("font-medium", "text-white/90")}>Broker Certificado:</span>
+                <div className={cn("flex items-center gap-3 transition-all", "opacity-90")}>
+                    {partners.map(p => (
+                        <Image 
+                          key={p.name} 
+                          src={p.logo} 
+                          alt={p.name} 
+                          width={50} 
+                          height={15} 
+                          className={cn(
+                            "h-3 w-auto object-contain",
+                            (p.name !== 'Copart' && p.name !== 'IAA') && "brightness-0 invert"
+                          )} 
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+      </div>
+
+      {/* Main Header Content */}
+      <div className={cn(
+          "w-full transition-all duration-300",
+          isCompact ? 'py-2' : 'py-3 md:py-4'
+      )}>
         {/* Row 1: Main Navigation */}
         <motion.div 
           className="container"
           animate={{ 
-            paddingTop: isCompact ? '0.5rem' : '0.75rem',
-            paddingBottom: isCompact ? '0.5rem' : '0.75rem'
+            paddingTop: isCompact ? '0.25rem' : '0.5rem',
+            paddingBottom: isCompact ? '0.25rem' : '0.5rem'
           }}
           transition={{ duration: 0.3 }}
         >
@@ -146,7 +186,7 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
                   transition={{ duration: 0.5 }}
                   animate={{ scale: isCompact ? 0.9 : 1 }}
                 >
-                  <Logo className={cn("transition-all", isCompact ? "h-7 w-7" : "h-8 w-8")} />
+                  <Logo className={cn("transition-all", isCompact ? "h-7 w-7" : "h-8 w-8", isTransparent ? "text-white" : "text-primary")} />
                 </motion.div>
                 <motion.span
                   className={cn(
@@ -163,67 +203,24 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
 
             {/* Right: Partners + User */}
             <div className="flex items-center gap-3">
-              {/* Partners */}
-              <motion.div 
-                className="hidden lg:flex items-center gap-3"
-                animate={{ opacity: isCompact ? 0 : 1, scale: isCompact ? 0.8 : 1 }}
+              {/* Partners removed */}
+
+              {/* Search Icon (Visible on Scroll) */}
+              <motion.div
+                animate={{ width: isCompact ? 'auto' : 0, opacity: isCompact ? 1 : 0, scale: isCompact ? 1 : 0.8 }}
+                initial={{ width: 0, opacity: 0, scale: 0.8 }}
+                style={{ overflow: 'hidden' }}
                 transition={{ duration: 0.3 }}
               >
-                {!isCompact && partners.map((partner) => (
-                  <Link
-                    key={partner.name}
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center transition-opacity hover:opacity-80"
-                    title={partner.name}
-                  >
-                    <Image
-                      src={partner.logo}
-                      alt={partner.name}
-                      height={18}
-                      width={55}
-                      className={cn(
-                        'object-contain',
-                        isTransparent && partner.name !== 'Copart' && 'brightness-0 invert'
-                      )}
-                      style={{ height: '18px', width: 'auto' }}
-                    />
-                  </Link>
-                ))}
+                 <Button variant="ghost" size="icon" asChild className={cn(isTransparent ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-accent")}>
+                    <Link href={`/${lang}/search`}>
+                        <Search className="h-5 w-5" />
+                    </Link>
+                 </Button>
               </motion.div>
 
-              {/* Contact Icons */}
-              <motion.div 
-                className="hidden md:flex items-center gap-2"
-                animate={{ opacity: isCompact ? 0 : 1 }}
-                transition={{ duration: 0.3 }}
-              >
-                {!isCompact && (
-                  <>
-                    <a
-                      href={`mailto:${dict.contact_info.email.address}`}
-                      className={cn(
-                        "flex items-center gap-1.5 text-xs transition-colors",
-                        isTransparent ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-primary"
-                      )}
-                      title={dict.contact_info.email.address}
-                    >
-                      <Mail className="w-4 h-4" />
-                    </a>
-                    <a
-                      href={`tel:${dict.contact_info.phone.number.replace(/\\\\D/g, '')}`}
-                      className={cn(
-                        "flex items-center gap-1.5 text-xs transition-colors",
-                        isTransparent ? "text-white/80 hover:text-white" : "text-muted-foreground hover:text-primary"
-                      )}
-                      title={dict.contact_info.phone.number}
-                    >
-                      <Phone className="w-4 h-4" />
-                    </a>
-                  </>
-                )}
-              </motion.div>
+              {/* Contact Icons removed */}
+
 
               {/* Language Switcher */}
               <DropdownMenu>
@@ -317,7 +314,7 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
         
         {/* Progress Bar */}
         <motion.div className="h-0.5 bg-primary" style={{ scaleX }} />
-      </motion.header>
-    </>
+      </div>
+    </motion.header>
   );
 }

@@ -154,7 +154,7 @@ export default function BrokerCarListItem({ car, lang, dict, prioritizeImage = f
                     </div>
 
                     {/* Footer Section */}
-                    <div className="flex items-end justify-between border-t pt-4 mt-auto">
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between border-t pt-4 mt-auto gap-4 sm:gap-0">
                         <div>
                             <p className="text-xs text-muted-foreground">{dict?.vehicle_comparator?.current_bid || 'Current Bid'}</p>
                             <p className="text-2xl font-bold text-primary">{formattedPrice}</p>
@@ -162,17 +162,18 @@ export default function BrokerCarListItem({ car, lang, dict, prioritizeImage = f
                                 <p className="text-xs text-green-600 font-medium">Est: ${car.estimated_retail_value.toLocaleString()}</p>
                             )}
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                             <Button onClick={handleToggleFavorite} size="sm" variant="outline" title={isFav ? "Remover de favoritos" : "Agregar a favoritos"}>
                                 <Heart className={cn("h-4 w-4", isFav ? "fill-red-500 text-red-500" : "text-gray-400")} />
                             </Button>
                             <Button onClick={handleShare} size="sm" variant="outline" title="Compartir">
                                 <Share2 className="mr-2 h-4 w-4" />
-                                Compartir
+                                <span className="hidden sm:inline">Compartir</span>
                             </Button>
                             <Button onClick={handleAddForConsultation} size="sm" variant="outline">
                                 <MessageSquarePlus className="mr-2 h-4 w-4" />
-                                Asesoría
+                                <span className="hidden sm:inline">Asesoría</span>
+                                <span className="sm:hidden">Consultar</span>
                             </Button>
                             <Button asChild size="sm">
                                 <Link href={detailUrl}>

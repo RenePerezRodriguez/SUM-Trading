@@ -53,7 +53,7 @@ export default function LeadsClient({ dict, lang }: { dict: any; lang: string })
     }
   }, [currentUser]);
 
-  const handleStatusChange = async (leadId: string, newStatus: 'active' | 'in-progress' | 'finished', type: 'copart' | 'sum') => {
+  const handleStatusChange = async (leadId: string, newStatus: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry', type: 'copart' | 'sum') => {
     if (!currentUser) return;
 
     try {

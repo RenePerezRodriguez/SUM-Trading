@@ -14,7 +14,7 @@ export type UserProfile = {
     copartConsultation?: {
         paymentId: string;
         activationDate: string;
-        status: 'active' | 'in-progress' | 'finished';
+        status: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry';
         purchase?: PurchaseRecord; // Added to hold related purchase data
     }
 };

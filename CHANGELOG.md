@@ -5,7 +5,53 @@ All notable changes to SUM Trading Portal will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-11-14
+---
+
+## [1.2.0] - 2025-11-30
+
+### 🎨 UX/UI Enhancements & Production Fixes
+
+#### Added
+- 🧠 **Neuromarketing Principles** - Applied to chatbot for emotional connection
+- 🎯 **Quick Replies System** - 2x2 grid with gradient backgrounds inside chat area
+- ✨ **Microinteractions** - Button animations (hover:rotate-12, scale-110, ping effects)
+- 📝 **Documentation Scripts** - Automated troubleshooting tools
+- 🔐 **Secrets Management** - Migrated API keys to Firebase Cloud Secret Manager
+
+#### Fixed
+- 🔧 **Chatbot UX** - Removed file upload and voice features, optimized for mobile
+- 🔧 **Social Networks** - Repositioned inline with header (smaller icons)
+- 🔧 **GEMINI_API_KEY** - Configured as secret instead of exposed value
+- 🔧 **Admin Permissions** - Added script to fix role assignments and custom claims
+
+#### Changed
+- 🎨 **Chatbot Empty State** - Enhanced with ping animation and gradient text
+- 🎨 **Quick Replies** - Moved from separate section to inside messages area (only when empty)
+- 🎨 **Input Field** - Removed emoji placeholder, cleaner design with gradient button
+- 🎨 **Character Counter** - Only visible when typing (< 300 chars warning)
+- 📦 **Deployment Method** - Added local source deploy (`firebase deploy --only apphosting`)
+
+#### Security
+- 🔐 **API Keys as Secrets** - All sensitive keys moved to Cloud Secret Manager
+- 🔐 **Admin Role Verification** - Enhanced with custom claims sync
+
+#### Technical Details
+- **Secrets**: Firebase App Hosting Cloud Secret Manager integration
+- **Scripts**: TypeScript diagnostic and fix scripts in `scripts/`
+- **Documentation**: Consolidated deployment and troubleshooting guides
+
+#### Files Added/Modified
+- `src/components/chatbot/chatbot-widget.tsx` - Neuromarketing UX redesign
+- `scripts/fix-admin-permissions.ts` - Automated admin role fix
+- `scripts/check-chatbot-env.ts` - Gemini API diagnostics
+- `docs/DEPLOYMENT.md` - Complete rewrite with new methods
+- `docs/PRODUCTION-FIXES.md` - Troubleshooting guide
+- `PRODUCTION-QUICK-FIX.md` - Quick reference guide
+- `apphosting.yaml` - GEMINI_API_KEY as secret
+
+---
+
+## [1.1.0] - 2025-11-29
 
 ### 🎉 Initial Production Release
 

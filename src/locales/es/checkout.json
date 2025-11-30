@@ -12,5 +12,79 @@
       "pay_button": "Proceder al Pago",
       "processing": "Procesando pago..."
     }
+  },
+  "copart_checkout_page": {
+    "title": "Solicitud de Asesoría Copart",
+    "description": "Estás a un paso de recibir asesoría experta para tus vehículos seleccionados.",
+    "vehicles_title": "Vehículos Seleccionados",
+    "advice_message": "Hola, estoy interesado en recibir asesoría para los siguientes lotes de Copart: {lots}",
+    "error_title": "Error",
+    "redirecting": "Redirigiendo...",
+    "advisor_phone": "+1 (956) 747-6078",
+    "lot_label": "Lote",
+    "view_on_portal": "Ver en Copart",
+    "want_advice_button": "Quiero Asesoría por WhatsApp",
+    "want_to_pay_button": "Pagar Asesoría Ahora ($20 USD)",
+    "benefits_title": "Beneficios de nuestra Asesoría",
+    "loading_vehicle_desc": "Cargando información de los vehículos...",
+    "payment_error_default": "Ocurrió un error inesperado.",
+    "payment_error_confirmation": "Error al confirmar el pago.",
+    "consultation_success_desc": "Tu solicitud de asesoría ha sido creada exitosamente.",
+    "lead_error": "Error al crear la solicitud de asesoría.",
+    "payment_not_completed": "El pago no se completó.",
+    "pay_button": "Pagar",
+    "loading_payment": "Cargando pasarela de pago...",
+    "faq_title": "Preguntas Frecuentes",
+    "benefits": [
+      {
+        "title": "Acceso a Subastas",
+        "description": "Pujamos por ti con nuestra licencia de broker certificada."
+      },
+      {
+        "title": "Reportes Históricos",
+        "description": "Incluimos reportes AutoCheck para verificar el historial del vehículo."
+      },
+      {
+        "title": "Estrategia de Puja",
+        "description": "Te asesoramos sobre el precio máximo recomendado basado en datos históricos."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "¿Qué sucede después de solicitar la asesoría?",
+        "answer": "Un experto te contactará vía WhatsApp para revisar los vehículos y coordinar el depósito."
+      },
+      {
+        "question": "¿El costo de la asesoría es reembolsable?",
+        "answer": "La cuota de asesoría se mantiene como crédito si no ganas la subasta, para que puedas intentar con otro vehículo."
+      }
+    ]
+  },
+    "update_success_page": {
+    "title": "¡Vehículos Añadidos!",
+    "description": "Los nuevos vehículos se han añadido correctamente a tu consulta activa.",
+    "next_steps": "Tu asesor ya tiene la información actualizada y te contactará pronto.",
+    "continue_searching": "Seguir Buscando",
+    "go_home": "Ir al Inicio"
+  },
+  "checkout_success_page": {
+    "title": "¡Pago Exitoso!",
+    "description": "Tu pago ha sido procesado correctamente.",
+    "order_summary": "Resumen de la Orden",
+    "payment_id": "ID de Pago",
+    "items": "Artículos",
+    "total": "Total",
+    "next_steps_title": "Próximos Pasos",
+    "step_1": "Un asesor revisará tu solicitud.",
+    "step_2": "Te contactaremos vía WhatsApp.",
+    "step_3": "Comenzaremos el proceso de puja.",
+    "go_to_dashboard": "Ir al Panel",
+    "go_home": "Ir al Inicio",
+    "whatsapp_message_consultation": "Hola, acabo de pagar mi asesoría de Copart. Me gustaría comenzar.",
+    "whatsapp_message_purchase": "Hola, he realizado el pago {paymentId} por los siguientes artículos: {items}. Me gustaría coordinar la entrega.",
+    "items_not_available": "Artículos no disponibles",
+    "confirmation_email": "Hemos enviado un correo de confirmación a tu email.",
+    "continue_shopping": "Seguir Comprando",
+    "notify_whatsapp": "Notificar por WhatsApp"
   }
 }

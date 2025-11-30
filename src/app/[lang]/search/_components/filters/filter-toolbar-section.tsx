@@ -22,15 +22,15 @@ export function FilterToolbarSection({
   totalLoadedVehicles,
 }: FilterToolbarSectionProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 p-4 rounded-xl border-2 border-border bg-secondary/20">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 p-4 rounded-xl border-2 border-border bg-secondary/20">
       {/* Counter with animated dot */}
-      <div className="flex items-center gap-2 w-full sm:w-auto">
+      <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-start">
         <div className="h-2 w-2 rounded-full bg-primary animate-pulse"></div>
         <VehiclesCounter totalLoaded={totalLoadedVehicles} />
       </div>
       
       {/* View controls and sort */}
-      <div className="flex items-center gap-3 w-full sm:w-auto">
+      <div className="flex flex-wrap items-center justify-center gap-3 w-full md:w-auto">
         <div className="flex items-center gap-1 p-1 rounded-lg bg-background border">
           <Button 
             variant={currentView === 'list' ? 'default' : 'ghost'} 

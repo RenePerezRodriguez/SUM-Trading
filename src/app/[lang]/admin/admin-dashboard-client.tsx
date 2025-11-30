@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useFirestore } from '@/firebase';
-import { collection, query, where, getDocs, getCountFromServer } from 'firebase/firestore';
+import { useUser } from '@/firebase';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Car, Users, BarChart2, MessageSquare, ArrowRight, Shield, Package, UserCheck, Inbox } from 'lucide-react';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n-config';
+import { getDashboardStats } from './actions';
+import { useToast } from '@/hooks/use-toast';
 
 const adminActions = [
     {
@@ -60,54 +61,39 @@ interface DashboardStats {
 }
 
 export default function AdminDashboardClient({ dict, lang }: { dict: any, lang: Locale }) {
-    const firestore = useFirestore();
+    const { user } = useUser();
+    const { toast } = useToast();
     const [stats, setStats] = useState<DashboardStats | null>(null);
     const [loading, setLoading] = useState(true);
     const content = dict.admin_page;
 
     useEffect(() => {
         const fetchStats = async () => {
-            if (!firestore) return;
+            if (!user) return;
 
             try {
-                // Get total vehicles count
-                const vehiclesRef = collection(firestore, 'vehicles');
-                const vehiclesSnapshot = await getDocs(vehiclesRef);
-                const totalVehicles = vehiclesSnapshot.size;
+                const idToken = await user.getIdToken();
+                const result = await getDashboardStats(idToken);
 
-                // Get total users count
-                const usersRef = collection(firestore, 'users');
-                const usersSnapshot = await getDocs(usersRef);
-                const totalUsers = usersSnapshot.size;
-
-                // Get active leads count (status: 'active' or 'in-progress')
-                const leadsRef = collection(firestore, 'copart-leads');
-                const leadsSnapshot = await getDocs(leadsRef);
-                const activeLeads = leadsSnapshot.docs.filter(doc => {
-                    const status = doc.data().status;
-                    return status === 'active' || status === 'in-progress';
-                }).length;
-
-                setStats({
-                    totalVehicles,
-                    totalUsers,
-                    activeLeads
-                });
+                if (result.success && result.data) {
+                    setStats(result.data);
+                } else {
+                    console.error('Error fetching stats:', result.error);
+                    toast({
+                        variant: 'destructive',
+                        title: 'Error',
+                        description: result.error || 'No se pudieron cargar las estadísticas.'
+                    });
+                }
             } catch (error) {
                 console.error('Error fetching dashboard stats:', error);
-                // Set stats to 0 on error
-                setStats({
-                    totalVehicles: 0,
-                    totalUsers: 0,
-                    activeLeads: 0
-                });
             } finally {
                 setLoading(false);
             }
         };
 
         fetchStats();
-    }, [firestore]);
+    }, [user, toast]);
 
     const quickStats = [
         {

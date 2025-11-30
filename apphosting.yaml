@@ -39,7 +39,7 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
-    
+
     # ==========================================
     # FIREBASE ADMIN SDK (Server-side)
     # ==========================================
@@ -75,10 +75,10 @@ runConfig:
     # AI / CHATBOT CONFIGURATION
     # ==========================================
     # Google Gemini API Key for chatbot functionality
+    # IMPORTANTE: En producción, configura esto como SECRET en Firebase Console
     - variable: GEMINI_API_KEY
-      value: AIzaSyCK-wRtUQI606fwuaqkpjcogVv6IV7vCms
+      secret: GEMINI_API_KEY
       availability:
-        - BUILD
         - RUNTIME
     
     # ==========================================

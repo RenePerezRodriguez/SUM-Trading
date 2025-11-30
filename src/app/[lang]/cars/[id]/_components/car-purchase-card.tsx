@@ -57,29 +57,33 @@ export default function CarPurchaseCard({ car, dict, lang }: CarPurchaseCardProp
   const statusLabel = dict.status_types[carStatus.toLowerCase() as keyof typeof dict.status_types] || carStatus;
 
   return (
-    <>
-      <div className="flex justify-between items-center bg-secondary p-4 rounded-lg mb-4">
+    <div className="border-2 border-dashed border-primary/30 bg-secondary/10 p-6 relative overflow-hidden">
+      <div className="absolute top-0 right-0 bg-primary/10 text-primary text-[10px] font-mono px-2 py-1 rounded-bl-sm">
+        REF: {car.id.slice(0, 8).toUpperCase()}
+      </div>
+      
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 mb-6 border-b border-border/60 pb-4">
         <div>
-            <p className="text-muted-foreground text-sm">Estado</p>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Estado del Lote</p>
             <Badge 
                 variant={carStatus === 'Sold' ? 'destructive' : carStatus === 'Reserved' ? 'secondary' : 'default'}
-                className={cn('text-base', carStatus === 'Available' && 'bg-primary text-primary-foreground')}
+                className={cn('text-sm font-bold rounded-sm px-3 py-1', carStatus === 'Available' && 'bg-primary text-primary-foreground')}
             >
                 {statusLabel}
             </Badge>
         </div>
-        <div>
-            <p className="text-muted-foreground text-sm text-right">{dict.car_details.price}</p>
-            <p className="text-3xl font-bold text-primary text-right">
+        <div className="text-left sm:text-right">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{dict.car_details.price}</p>
+            <p className="text-3xl md:text-4xl font-black text-primary font-headline tracking-tighter">
             {formattedPrice}
             </p>
         </div>
       </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
             <Button 
                 size="lg" 
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg py-7 font-bold" 
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground text-lg h-14 font-bold uppercase tracking-wide rounded-sm shadow-sm" 
                 onClick={handleAddToInterestList}
                 disabled={!isAvailable}
             >
@@ -91,11 +95,14 @@ export default function CarPurchaseCard({ car, dict, lang }: CarPurchaseCardProp
                 ) : (
                 <>
                     <Heart className="mr-2 h-5 w-5" />
-                    Me Interesa
+                    Me Interesa / Ofertar
                 </>
                 )}
             </Button>
+            <p className="text-xs text-center text-muted-foreground">
+                Al hacer clic, este vehículo se añadirá a tu lista de seguimiento.
+            </p>
         </div>
-    </>
+    </div>
   );
 }

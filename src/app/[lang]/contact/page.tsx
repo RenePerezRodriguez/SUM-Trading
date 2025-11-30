@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CheckCircle2, Clock, FileText, Rocket, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { FadeIn, StaggerContainer, FadeInItem } from '@/components/animations/fade-in';
 
 type Props = {
     params: Promise<{ lang: Locale }>;
@@ -116,14 +117,16 @@ export default async function ContactPage({ params }: Props) {
         }}
       />
     <div className="container py-8 md:py-12 pt-28 md:pt-44">
-      <PageHeader 
-        title={content.title}
-        description={content.description}
-      />
+      <FadeIn>
+        <PageHeader 
+            title={content.title}
+            description={content.description}
+        />
+      </FadeIn>
       
       {/* Process Timeline */}
       {content.process_timeline && (
-        <div className="max-w-6xl mx-auto mb-12">
+        <FadeIn className="max-w-6xl mx-auto mb-12" delay={0.1}>
           <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-primary/20">
             <CardHeader>
               <CardTitle className="font-headline text-center text-2xl">{content.process_timeline.title}</CardTitle>
@@ -170,12 +173,12 @@ export default async function ContactPage({ params }: Props) {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </FadeIn>
       )}
       
-      <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start max-w-6xl mx-auto">
-        <div className="order-2 md:order-1 space-y-6">
-            <Card className="transition-shadow duration-300 hover:shadow-lg">
+      <StaggerContainer className="grid md:grid-cols-2 gap-8 md:gap-16 items-start max-w-6xl mx-auto">
+        <FadeInItem className="order-2 md:order-1 space-y-6">
+            <Card className="transition-shadow duration-300 hover:shadow-lg border border-border/50 bg-gradient-to-b from-background to-accent/5">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{content.form_title}</CardTitle>
                 </CardHeader>
@@ -240,16 +243,16 @@ export default async function ContactPage({ params }: Props) {
                 </CardContent>
               </Card>
             )}
-        </div>
+        </FadeInItem>
         
-        <div className="order-1 md:order-2 space-y-6">
+        <FadeInItem className="order-1 md:order-2 space-y-6">
           <ContactInfo dict={dict} />
-        </div>
-      </div>
+        </FadeInItem>
+      </StaggerContainer>
       
       {/* Quick FAQ Section */}
-      <div className="max-w-6xl mx-auto mt-16">
-        <Card className="transition-shadow duration-300 hover:shadow-lg">
+      <FadeIn className="max-w-6xl mx-auto mt-16" delay={0.3}>
+        <Card className="transition-shadow duration-300 hover:shadow-lg border border-border/50 bg-gradient-to-b from-background to-accent/5">
           <CardHeader>
             <CardTitle className="font-headline text-2xl">{content.quick_faq_title}</CardTitle>
             <CardDescription>
@@ -281,7 +284,7 @@ export default async function ContactPage({ params }: Props) {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </FadeIn>
     </div>
     </>
   );

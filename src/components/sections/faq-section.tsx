@@ -14,6 +14,7 @@ import Link from 'next/link';
 import SectionHeader from './section-header';
 import { useState, useMemo } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { FadeIn, StaggerContainer, FadeInItem } from '@/components/animations/fade-in';
 
 const categoryIcons: Record<string, any> = {
   'proceso-compra': Car,
@@ -104,62 +105,64 @@ export default function FaqSection({ dict, lang }: { dict: any, lang: string }) 
 
       <div className="container relative z-10 py-12 sm:py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
-            <SectionHeader 
-                title={faqContent.title}
-                description={faqContent.description}
-            />
-
-            {/* Buscador */}
-            <div className="mb-8">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder={faqContent.search_placeholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 h-12 text-base"
+            <FadeIn>
+                <SectionHeader 
+                    title={faqContent.title}
+                    description={faqContent.description}
                 />
-              </div>
-              {searchQuery && (
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {filteredCategories.reduce((acc: number, cat: any) => acc + cat.questions.length, 0)} resultados encontrados
-                </p>
-              )}
-            </div>
 
-            {/* Tabs por categorías */}
-            <div className="mb-8">
-              <div className="w-full flex flex-wrap gap-2 bg-background p-2 border shadow-sm rounded-lg">
-                <button
-                  onClick={() => setActiveCategory('all')}
-                  className={`px-4 py-2 rounded-md font-semibold transition-all ${
-                    activeCategory === 'all'
-                      ? 'bg-primary text-primary-foreground'
-                      : 'hover:bg-secondary'
-                  }`}
-                >
-                  Todas ({totalQuestions})
-                </button>
-                {faqContent.categories.map((category: any) => {
-                  const IconComponent = categoryIcons[category.id];
-                  return (
+                {/* Buscador */}
+                <div className="mb-8">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input
+                      type="text"
+                      placeholder={faqContent.search_placeholder}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 h-12 text-base"
+                    />
+                  </div>
+                  {searchQuery && (
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      {filteredCategories.reduce((acc: number, cat: any) => acc + cat.questions.length, 0)} resultados encontrados
+                    </p>
+                  )}
+                </div>
+
+                {/* Tabs por categorías */}
+                <div className="mb-8">
+                  <div className="w-full flex flex-wrap gap-2 bg-background p-2 border shadow-sm rounded-lg">
                     <button
-                      key={category.id}
-                      onClick={() => setActiveCategory(category.id)}
-                      className={`px-4 py-2 rounded-md font-medium transition-all flex items-center gap-2 ${
-                        activeCategory === category.id
+                      onClick={() => setActiveCategory('all')}
+                      className={`px-4 py-2 rounded-md font-semibold transition-all ${
+                        activeCategory === 'all'
                           ? 'bg-primary text-primary-foreground'
                           : 'hover:bg-secondary'
                       }`}
                     >
-                      {IconComponent && <IconComponent className="h-4 w-4" />}
-                      {category.title} ({category.questions.length})
+                      Todas ({totalQuestions})
                     </button>
-                  );
-                })}
-              </div>
-            </div>
+                    {faqContent.categories.map((category: any) => {
+                      const IconComponent = categoryIcons[category.id];
+                      return (
+                        <button
+                          key={category.id}
+                          onClick={() => setActiveCategory(category.id)}
+                          className={`px-4 py-2 rounded-md font-medium transition-all flex items-center gap-2 ${
+                            activeCategory === category.id
+                              ? 'bg-primary text-primary-foreground'
+                              : 'hover:bg-secondary'
+                          }`}
+                        >
+                          {IconComponent && <IconComponent className="h-4 w-4" />}
+                          {category.title} ({category.questions.length})
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+            </FadeIn>
 
             {/* Resultados */}
             {filteredCategories.length === 0 ? (
@@ -177,16 +180,13 @@ export default function FaqSection({ dict, lang }: { dict: any, lang: string }) 
                 </Button>
               </div>
             ) : (
-              <div className="space-y-10">
+              <StaggerContainer className="space-y-10">
                 {filteredCategories.map((category: any, catIndex: number) => {
                   const IconComponent = categoryIcons[category.id];
                   return (
-                    <motion.div 
+                    <FadeInItem 
                       key={category.id} 
                       className="space-y-4"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: catIndex * 0.1 }}
                     >
                       <div className="flex items-center gap-3 pb-3 border-b-2 border-primary/20">
                         {IconComponent && (
@@ -206,7 +206,7 @@ export default function FaqSection({ dict, lang }: { dict: any, lang: string }) 
                           <AccordionItem 
                             key={`${category.id}-${index}`}
                             value={`${category.id}-${index}`} 
-                            className="border-2 rounded-lg bg-background shadow-sm transition-all hover:shadow-md hover:border-primary/30 has-[[data-state=open]]:shadow-lg has-[[data-state=open]]:border-primary"
+                            className="border border-border/50 rounded-lg bg-gradient-to-b from-background to-accent/5 shadow-sm transition-all hover:shadow-md hover:border-accent/50 has-[[data-state=open]]:shadow-lg has-[[data-state=open]]:border-accent"
                           >
                             <AccordionTrigger className="text-left font-semibold text-base sm:text-lg px-6 py-5 group hover:no-underline [&[data-state=open]]:text-primary">
                               <span className="flex-1 pr-4">{item.question}</span>
@@ -220,14 +220,14 @@ export default function FaqSection({ dict, lang }: { dict: any, lang: string }) 
                           </AccordionItem>
                         ))}
                       </Accordion>
-                    </motion.div>
+                    </FadeInItem>
                   );
                 })}
-              </div>
+              </StaggerContainer>
             )}
 
             {/* CTAs */}
-            <div className="mt-16 space-y-6">
+            <FadeIn delay={0.2} className="mt-16 space-y-6">
               <div className="bg-gradient-to-br from-[#25D366]/10 to-[#20BA5A]/10 border-2 border-[#25D366] rounded-xl p-8 text-center shadow-lg">
                 <MessageCircle className="h-12 w-12 text-[#25D366] mx-auto mb-4" />
                 <h4 className="text-2xl font-bold mb-2 text-foreground">{faqContent.whatsapp_cta}</h4>
@@ -254,7 +254,7 @@ export default function FaqSection({ dict, lang }: { dict: any, lang: string }) 
                   </Link>
                 </Button>
               </div>
-            </div>
+            </FadeIn>
         </div>
       </div>
     </section>

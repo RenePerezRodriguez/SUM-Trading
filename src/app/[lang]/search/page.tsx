@@ -282,9 +282,9 @@ function SearchPageContent() {
             <SearchBar initialQuery={query} dict={dict} onSearch={handleSearch} isSearching={isSearching} />
 
             <Tabs defaultValue="copart" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 max-w-lg mx-auto h-12 p-1 bg-secondary/50 border-2 border-border">
-                <TabsTrigger value="copart" className="font-semibold data-[state=active]:shadow-md">{t_search.copart_tab_title}</TabsTrigger>
-                <TabsTrigger value="sum" className="font-semibold data-[state=active]:shadow-md">{t_search.sum_tab_title}</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 max-w-lg mx-auto h-auto min-h-12 p-1 bg-secondary/50 border-2 border-border">
+                <TabsTrigger value="copart" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.copart_tab_title}</TabsTrigger>
+                <TabsTrigger value="sum" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.sum_tab_title}</TabsTrigger>
               </TabsList>
               <TabsContent value="copart" className="mt-6">
                 <p className="text-center text-muted-foreground mb-6">{t_search.copart_description}</p>

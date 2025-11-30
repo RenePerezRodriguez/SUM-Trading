@@ -25,6 +25,25 @@ import { Logo } from '../logo';
 import { useUser } from '@/firebase';
 import useAuthModalStore from '@/hooks/use-auth-modal-store';
 import { Input } from '@/components/ui/input';
+import Image from 'next/image';
+
+const partners = [
+  { 
+    name: 'Copart', 
+    logo: '/images/copart-logo.svg',
+    href: 'https://www.copart.com/'
+  },
+  { 
+    name: 'Manheim', 
+    logo: 'https://mcom-header-footer.manheim.com/assets/common/OMIY_lockup.svg',
+    href: 'https://site.manheim.com/en/locations.html'
+  },
+  { 
+    name: 'IAA', 
+    logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2022/07/iaa-logo-freelogovectors.net_.png',
+    href: 'https://www.iaai.com/'
+  },
+];
   
 const catalogItems = (lang: Locale, dict: any) => [
     {
@@ -211,6 +230,22 @@ export function MobileMenu({ lang, dict, iconColorClass }: MobileMenuProps) {
                     </Button>
                 </div>
             )}
+            
+            <div className="mt-6 pt-4 border-t">
+                <p className="text-xs text-muted-foreground mb-3 font-medium">Broker Certificado:</p>
+                <div className="flex items-center gap-4 opacity-80 grayscale hover:grayscale-0 transition-all">
+                    {partners.map(p => (
+                        <Image 
+                          key={p.name} 
+                          src={p.logo} 
+                          alt={p.name} 
+                          width={60} 
+                          height={20} 
+                          className="h-5 w-auto object-contain"
+                        />
+                    ))}
+                </div>
+            </div>
         </SheetFooter>
       </SheetContent>
     </Sheet>

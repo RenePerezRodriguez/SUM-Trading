@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 import { ChevronDownIcon } from 'lucide-react';
 
 interface ColumnsProps {
-    onStatusChange: (user: UserProfile, status: 'active' | 'in-progress' | 'finished') => void;
+    onStatusChange: (user: UserProfile, status: 'active' | 'in-progress' | 'finished' | 'whatsapp-inquiry') => void;
     dict: any;
     lang: string;
 }
@@ -22,7 +22,8 @@ interface ColumnsProps {
 const statusConfig = {
     active: { variant: 'default' as const, className: 'bg-blue-500 hover:bg-blue-600' },
     'in-progress': { variant: 'secondary' as const, className: 'bg-yellow-500 hover:bg-yellow-600 text-black' },
-    finished: { variant: 'destructive' as const, className: '' }
+    finished: { variant: 'destructive' as const, className: '' },
+    'whatsapp-inquiry': { variant: 'secondary' as const, className: 'bg-green-100 text-green-700 hover:bg-green-200' }
 };
 
 export const columns = ({ onStatusChange, dict, lang }: ColumnsProps): ColumnDef<UserProfile>[] => [
