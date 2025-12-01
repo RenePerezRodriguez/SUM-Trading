@@ -15,16 +15,20 @@ import {
     Calculator,
     ChevronDown,
     ChevronUp,
-    MessageCircle,
-    FileText,
     Info,
     Phone,
     Filter,
-    ArrowRight
+    CheckCircle2,
+    Truck,
+    Navigation
 } from 'lucide-react';
 import { geoCentroid } from 'd3-geo';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+    getDestinations,
+    getStatesByDestination,
+    getCitiesByState
+} from '@/lib/towing-data';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
 
@@ -59,6 +63,7 @@ const stateAbbreviations: Record<string, string> = {
 };
 
 export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; lang?: string }) {
+    const [selectedDestination, setSelectedDestination] = useState<string>('brownsville');
     const [selectedState, setSelectedState] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [priceFilter, setPriceFilter] = useState<string>('all');
@@ -77,20 +82,22 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
     // Construir datos desde dict
     const towingRates: TowingRatesData = useMemo(() => {
         const rates: TowingRatesData = {};
-        const statesData = dict.towing_rates?.states || {};
+        const states = getStatesByDestination(selectedDestination);
 
-        Object.keys(statesData).forEach(stateKey => {
-            const stateInfo = statesData[stateKey];
-            if (stateInfo.cities) {
-                rates[stateInfo.name] = {
-                    name: stateInfo.name,
-                    cities: stateInfo.cities
-                };
-            }
+        states.forEach(state => {
+            const cities = getCitiesByState(selectedDestination, state.id);
+            rates[state.name] = {
+                name: state.name,
+                cities: cities.map(c => ({
+                    name: c.name,
+                    price: c.price,
+                    origin: selectedDestination
+                }))
+            };
         });
 
         return rates;
-    }, [dict]);
+    }, [selectedDestination]);
 
     // Extraer todas las ciudades para tabla
     const allCities = useMemo(() => {
@@ -202,139 +209,210 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
     };
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-12">
             {/* Header */}
             <div className="text-center space-y-4">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline tracking-tight">
                     {dict.towing_rates?.title}
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Transporte terrestre desde <span className="font-semibold text-primary">Miami, Houston, Delaware y Brownsville</span>
+                    {lang === 'es' ? 'Sigue estos sencillos pasos para cotizar tu envío' : 'Follow these simple steps to quote your shipment'}
                 </p>
             </div>
 
-            {/* Calculadora Rápida - Improved Design */}
-            <Card className="border-none shadow-xl bg-white dark:bg-card overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
-                <CardHeader className="pb-2">
-                    <CardTitle className="flex items-center gap-3 text-xl md:text-2xl">
-                        <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                            <Calculator className="w-6 h-6" />
-                        </div>
-                        {lang === 'es' ? 'Calculadora de Costos' : 'Cost Calculator'}
-                    </CardTitle>
-                    <CardDescription className="text-base">
-                        {lang === 'es' ? 'Cotiza el envío de tu vehículo al instante' : 'Quote your vehicle shipping instantly'}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6 pt-6">
-                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Estado' : 'State'}</label>
-                            <Select value={calcState} onValueChange={(val) => {
-                                setCalcState(val);
-                                setCalcCity('');
-                            }}>
-                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
-                                    <SelectValue placeholder={lang === 'es' ? 'Seleccionar estado' : 'Select state'} />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {Object.keys(towingRates).sort().map(state => (
-                                        <SelectItem key={state} value={state}>
-                                            {state}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Ciudad' : 'City'}</label>
-                            <Select value={calcCity} onValueChange={setCalcCity} disabled={!calcState}>
-                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
-                                    <SelectValue placeholder={lang === 'es' ? 'Seleccionar ciudad' : 'Select city'} />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {calcState && towingRates[calcState]?.cities
-                                        .filter(c => c.price)
-                                        .map(city => (
-                                            <SelectItem key={city.name} value={city.name}>
-                                                {city.name} - ${city.price}
-                                            </SelectItem>
-                                        ))
-                                    }
-                                </SelectContent>
-                            </Select>
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Tipo de Vehículo' : 'Vehicle Type'}</label>
-                            <Select value={vehicleType} onValueChange={(val: any) => setVehicleType(val)}>
-                                <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
-                                    <SelectValue />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="sedan">{lang === 'es' ? 'Sedan (Base)' : 'Sedan (Base)'}</SelectItem>
-                                    <SelectItem value="sublete">{lang === 'es' ? 'Sublete (+$100)' : 'Sublete (+$100)'}</SelectItem>
-                                    <SelectItem value="pickup">{lang === 'es' ? 'Pickup/SUV 3 filas (+$100)' : 'Pickup/SUV 3 rows (+$100)'}</SelectItem>
-                                </SelectContent>
-                            </Select>
-                        </div>
+            {/* STEP 1: DESTINATION */}
+            <section className="space-y-6">
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold text-xl shadow-lg">
+                        1
                     </div>
+                    <h3 className="text-2xl font-bold text-foreground">
+                        {lang === 'es' ? '¿A dónde quieres enviar el vehículo?' : 'Where do you want to ship the vehicle?'}
+                    </h3>
+                </div>
 
-                    {totalCost !== null && (
-                        <div className="mt-6 p-6 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <Calculator className="w-24 h-24 text-primary" />
-                            </div>
-                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                                <div>
-                                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
-                                        {lang === 'es' ? 'Costo Total Estimado' : 'Estimated Total Cost'}
-                                    </p>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
-                                            ${totalCost}
-                                        </span>
-                                        <span className="text-xl font-medium text-muted-foreground">USD</span>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {getDestinations().map(dest => {
+                        const isSelected = selectedDestination === dest.id;
+                        return (
+                            <div
+                                key={dest.id}
+                                onClick={() => {
+                                    setSelectedDestination(dest.id);
+                                    setSelectedState(null);
+                                    setCalcState('');
+                                    setCalcCity('');
+                                }}
+                                className={`
+                                    relative cursor-pointer group rounded-xl border-2 transition-all duration-300 overflow-hidden
+                                    ${isSelected
+                                        ? 'border-primary bg-primary/5 shadow-lg scale-[1.02]'
+                                        : 'border-muted hover:border-primary/50 hover:bg-muted/30'
+                                    }
+                                `}
+                            >
+                                <div className="p-6 flex flex-col items-center justify-center text-center gap-3 h-full min-h-[140px]">
+                                    <div className={`
+                                        p-3 rounded-full transition-colors duration-300
+                                        ${isSelected ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary'}
+                                    `}>
+                                        <MapPin className="w-6 h-6" />
                                     </div>
-                                    {vehicleType !== 'sedan' && (
-                                        <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground bg-background/50 px-3 py-1 rounded-full w-fit">
-                                            <span className="font-medium">{lang === 'es' ? 'Base' : 'Base'}: ${totalCost - 100}</span>
-                                            <span>+</span>
-                                            <span className="font-medium text-primary">{lang === 'es' ? 'Adicional' : 'Additional'}: $100</span>
+                                    <span className={`font-bold text-lg ${isSelected ? 'text-primary' : 'text-foreground'}`}>
+                                        {dest.label}
+                                    </span>
+                                    {isSelected && (
+                                        <div className="absolute top-3 right-3 text-primary animate-in zoom-in duration-300">
+                                            <CheckCircle2 className="w-5 h-5" />
                                         </div>
                                     )}
                                 </div>
-                                <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                                    <Button size="lg" asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-lg shadow-green-500/20 w-full sm:w-auto">
-                                        <a href={`https://wa.me/19567476078?text=Hola, me interesa el servicio de arrastre desde ${calcCity}, ${calcState}`} target="_blank" rel="noopener noreferrer">
-                                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                                            </svg>
-                                            {lang === 'es' ? 'Solicitar Ahora' : 'Request Now'}
-                                        </a>
-                                    </Button>
-                                    <Button variant="outline" size="lg" asChild className="w-full sm:w-auto border-primary/20 hover:bg-primary/5">
-                                        <a href="tel:+19567476078">
-                                            <Phone className="w-5 h-5 mr-2" />
-                                            {lang === 'es' ? 'Llamar' : 'Call'}
-                                        </a>
-                                    </Button>
+                            </div>
+                        );
+                    })}
+                </div>
+            </section>
+
+            {/* STEP 2: QUOTE & EXPLORE */}
+            <section className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold text-xl shadow-lg">
+                        2
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground">
+                        {lang === 'es' ? 'Cotiza tu envío' : 'Quote your shipment'}
+                    </h3>
+                </div>
+
+                {/* Calculadora Rápida */}
+                <Card className="border-none shadow-xl bg-white dark:bg-card overflow-hidden relative mb-12">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+                    <CardHeader className="pb-2 bg-muted/10">
+                        <div className="flex items-center justify-between">
+                            <CardTitle className="flex items-center gap-3 text-xl md:text-2xl">
+                                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                                    <Calculator className="w-6 h-6" />
                                 </div>
+                                {lang === 'es' ? 'Calculadora de Costos' : 'Cost Calculator'}
+                            </CardTitle>
+                            <Badge variant="outline" className="text-sm px-3 py-1 border-primary/20 text-primary bg-primary/5">
+                                <Truck className="w-3 h-3 mr-2" />
+                                {lang === 'es' ? 'Destino: ' : 'Destination: '}
+                                <span className="font-bold ml-1 uppercase">{getDestinations().find(d => d.id === selectedDestination)?.label}</span>
+                            </Badge>
+                        </div>
+                    </CardHeader>
+                    <CardContent className="space-y-6 pt-6">
+                        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Estado' : 'State'}</label>
+                                <Select value={calcState} onValueChange={(val) => {
+                                    setCalcState(val);
+                                    setCalcCity('');
+                                }}>
+                                    <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
+                                        <SelectValue placeholder={lang === 'es' ? 'Seleccionar estado' : 'Select state'} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {Object.keys(towingRates).sort().map(state => (
+                                            <SelectItem key={state} value={state}>
+                                                {state}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Ciudad' : 'City'}</label>
+                                <Select value={calcCity} onValueChange={setCalcCity} disabled={!calcState}>
+                                    <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
+                                        <SelectValue placeholder={lang === 'es' ? 'Seleccionar ciudad' : 'Select city'} />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {calcState && towingRates[calcState]?.cities
+                                            .filter(c => c.price)
+                                            .map(city => (
+                                                <SelectItem key={city.name} value={city.name}>
+                                                    {city.name} - ${city.price}
+                                                </SelectItem>
+                                            ))
+                                        }
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">{lang === 'es' ? 'Tipo de Vehículo' : 'Vehicle Type'}</label>
+                                <Select value={vehicleType} onValueChange={(val: any) => setVehicleType(val)}>
+                                    <SelectTrigger className="h-12 bg-muted/30 border-muted-foreground/20 focus:ring-primary">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="sedan">{lang === 'es' ? 'Sedan (Base)' : 'Sedan (Base)'}</SelectItem>
+                                        <SelectItem value="sublete">{lang === 'es' ? 'Sublete (+$100)' : 'Sublete (+$100)'}</SelectItem>
+                                        <SelectItem value="pickup">{lang === 'es' ? 'Pickup/SUV 3 filas (+$100)' : 'Pickup/SUV 3 rows (+$100)'}</SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </div>
                         </div>
-                    )}
-                </CardContent>
-            </Card>
 
-            {/* Tabs: Mapa vs Tabla */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-            >
+                        <AnimatePresence>
+                            {totalCost !== null && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="mt-6 p-6 bg-primary/5 rounded-xl border border-primary/20 relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-10">
+                                            <Calculator className="w-24 h-24 text-primary" />
+                                        </div>
+                                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                                            <div>
+                                                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-1">
+                                                    {lang === 'es' ? 'Costo Total Estimado' : 'Estimated Total Cost'}
+                                                </p>
+                                                <div className="flex items-baseline gap-2">
+                                                    <span className="text-4xl md:text-5xl font-bold text-primary tracking-tight">
+                                                        ${totalCost}
+                                                    </span>
+                                                    <span className="text-xl font-medium text-muted-foreground">USD</span>
+                                                </div>
+                                                {vehicleType !== 'sedan' && (
+                                                    <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground bg-background/50 px-3 py-1 rounded-full w-fit">
+                                                        <span className="font-medium">{lang === 'es' ? 'Base' : 'Base'}: ${totalCost - 100}</span>
+                                                        <span>+</span>
+                                                        <span className="font-medium text-primary">{lang === 'es' ? 'Adicional' : 'Additional'}: $100</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                                                <Button size="lg" asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-lg shadow-green-500/20 w-full sm:w-auto">
+                                                    <a href={`https://wa.me/19567476078?text=Hola, me interesa el servicio de arrastre desde ${calcCity}, ${calcState} hacia ${getDestinations().find(d => d.id === selectedDestination)?.label}`} target="_blank" rel="noopener noreferrer">
+                                                        <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                                                        </svg>
+                                                        {lang === 'es' ? 'Solicitar Ahora' : 'Request Now'}
+                                                    </a>
+                                                </Button>
+                                                <Button variant="outline" size="lg" asChild className="w-full sm:w-auto border-primary/20 hover:bg-primary/5">
+                                                    <a href="tel:+19567476078">
+                                                        <Phone className="w-5 h-5 mr-2" />
+                                                        {lang === 'es' ? 'Llamar' : 'Call'}
+                                                    </a>
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </CardContent>
+                </Card>
+
+                {/* Tabs: Mapa vs Tabla */}
                 <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v)} className="space-y-6">
                     <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
                         <TabsList className="grid w-full lg:w-[320px] grid-cols-2 h-12 p-1 bg-muted/50">
@@ -544,7 +622,8 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                             <p className="text-sm">Haz click en cualquier estado coloreado para ver sus tarifas de arrastre</p>
                                         </div>
                                     )}
-                                </Card>                            <Card className="p-4 bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800">
+                                </Card>
+                                <Card className="p-4 bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800">
                                     <p className="text-sm text-amber-800 dark:text-amber-400 font-medium flex gap-2">
                                         <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
                                         Pickups + SUV (3 Filas): +$100 USD adicional
@@ -746,7 +825,7 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                         </Card>
                     </TabsContent>
                 </Tabs>
-            </motion.div>
+            </section>
 
             {/* CTAs */}
             <motion.div
@@ -771,55 +850,41 @@ export default function TowingRatesAdvanced({ dict, lang = 'es' }: { dict: any; 
                                         : 'Our advisors are ready to quote your specific shipment and answer your questions.'}
                                 </p>
                             </div>
-                            <div className="flex gap-3">
-                                <Button asChild className="bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-lg shadow-green-500/20 flex-1">
-                                    <a href="https://wa.me/19567476078" target="_blank" rel="noopener noreferrer">
-                                        <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                                        </svg>
-                                        WhatsApp
-                                    </a>
-                                </Button>
-                            </div>
+                            <Button asChild className="w-full">
+                                <a href="tel:+19567476078">
+                                    <Phone className="w-4 h-4 mr-2" />
+                                    {lang === 'es' ? 'Llamar ahora' : 'Call now'}
+                                </a>
+                            </Button>
                         </div>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-card border-border/50 hover:border-primary/50 transition-colors duration-300">
-                    <CardContent className="p-8">
+                <Card className="bg-gradient-to-br from-blue-500/10 to-transparent border-blue-500/20 overflow-hidden relative group">
+                    <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <CardContent className="p-8 relative z-10">
                         <div className="flex flex-col h-full justify-between gap-6">
                             <div>
-                                <div className="p-3 bg-secondary rounded-xl w-fit mb-4">
-                                    <FileText className="w-6 h-6 text-foreground" />
+                                <div className="p-3 bg-blue-500/10 rounded-xl w-fit mb-4">
+                                    <Navigation className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">{lang === 'es' ? 'Información Importante' : 'Important Information'}</h3>
+                                <h3 className="text-xl font-bold mb-2">{lang === 'es' ? 'Visítanos en Brownsville' : 'Visit us in Brownsville'}</h3>
                                 <p className="text-muted-foreground">
                                     {lang === 'es'
-                                        ? 'Consulta nuestras políticas de servicio, términos y condiciones para el transporte de vehículos.'
-                                        : 'Check our service policies, terms and conditions for vehicle transportation.'}
+                                        ? 'Nuestra oficina principal está ubicada estratégicamente para atenderte mejor.'
+                                        : 'Our main office is strategically located to serve you better.'}
                                 </p>
                             </div>
-                            <Button variant="outline" asChild className="w-full border-primary/20 hover:bg-primary/5">
-                                <Link href={`/${lang}/coordinacion-arrastres`}>
-                                    {lang === 'es' ? 'Ver Políticas de Servicio' : 'View Service Policies'}
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
+                            <Button asChild variant="outline" className="w-full border-blue-500/20 hover:bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                                <a href="https://maps.google.com/?q=SUM+Trading+Brownsville" target="_blank" rel="noopener noreferrer">
+                                    <MapPin className="w-4 h-4 mr-2" />
+                                    {lang === 'es' ? 'Ver ubicación' : 'Get directions'}
+                                </a>
                             </Button>
                         </div>
                     </CardContent>
                 </Card>
             </motion.div>
-
-            {/* Disclaimer */}
-            <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-center text-xs text-muted-foreground/60 max-w-3xl mx-auto"
-            >
-                {dict.towing_rates?.disclaimer}
-            </motion.p>
         </div>
     );
 }

@@ -8,135 +8,13 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { FileText, Info } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import {
+    getDestinations,
+    getStatesByDestination,
+    getCitiesByState
+} from '@/lib/towing-data';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
-
-// Tarifas por estado basadas en el Excel EXACTO
-const towingRates: Record<string, { cities: Array<{ name: string; price: number }> }> = {
-    Arkansas: {
-        cities: [
-            { name: 'Fayetteville - LINCOLN', price: 575 },
-            { name: 'Fayetteville - PRAIRIE GROVE', price: 575 },
-            { name: 'Little Rock - CONWAY', price: 500 },
-            { name: 'Little Rock - SCOTT', price: 500 },
-        ]
-    },
-    Arizona: {
-        cities: [
-            { name: 'Phoenix', price: 850 },
-            { name: 'Tucson', price: 925 },
-        ]
-    },
-    Texas: {
-        cities: [
-            { name: 'Abilene', price: 525 },
-            { name: 'Amarillo', price: 625 },
-            { name: 'Andrews', price: 625 },
-            { name: 'Austin', price: 425 },
-            { name: 'Corpus Christi', price: 350 },
-            { name: 'Dallas - GRAND PRAIRIE', price: 450 },
-            { name: 'Dallas - WILMER', price: 450 },
-            { name: 'Dallas/Ft Worth', price: 450 },
-            { name: 'El Paso - ANTHONY', price: 600 },
-            { name: 'El Paso - EL PASO', price: 600 },
-            { name: 'Fort Worth North - JUSTIN', price: 470 },
-            { name: 'Ft. Worth - HASLET', price: 430 },
-            { name: 'Houston', price: 250 },
-            { name: 'Houston East', price: 250 },
-            { name: 'Houston South - ROSHARON', price: 260 },
-            { name: 'Houston-North - HOUSTON', price: 250 },
-            { name: 'Longview', price: 425 },
-            { name: 'Lubbock', price: 625 },
-            { name: 'Lufkin', price: 425 },
-            { name: 'McAllen - DONNA', price: 450 },
-            { name: 'McAllen - MERCEDES', price: 450 },
-            { name: 'Permian Basin - ODESSA', price: 625 },
-            { name: 'San Antonio', price: 350 },
-            { name: 'San Antonio South', price: 350 },
-            { name: 'Waco - TEMPLE', price: 400 },
-        ]
-    },
-    Idaho: {
-        cities: [
-            { name: 'Boise - MERIDIAN', price: 1250 },
-            { name: 'Boise - NAMPA', price: 1225 },
-        ]
-    },
-    Iowa: {
-        cities: [
-            { name: 'DAVENPORT', price: 1050 },
-            { name: 'Davenport - ELDRIDGE', price: 1050 },
-            { name: 'Des Moines - DE SOTO', price: 850 },
-            { name: 'Des Moines - DES MOINES', price: 850 },
-        ]
-    },
-    Kansas: {
-        cities: [
-            { name: 'Kansas City', price: 750 },
-            { name: 'Kansas City Sublot', price: 725 },
-            { name: 'Wichita - PARK CITY', price: 700 },
-            { name: 'Wichita - WICHITA', price: 700 },
-        ]
-    },
-    Louisiana: {
-        cities: [
-            { name: 'Baton Rouge - LIVINGSTON', price: 500 },
-            { name: 'Lafayette - LAFAYETTE', price: 450 },
-            { name: 'New Orleans - COVINGTON', price: 525 },
-            { name: 'New Orleans - NEW ORLEANS', price: 525 },
-            { name: 'Shreveport - GREENWOOD', price: 475 },
-            { name: 'Shreveport - SHREVEPORT', price: 475 },
-        ]
-    },
-    Missouri: {
-        cities: [
-            { name: 'Bridgeton Sublot', price: 845 },
-            { name: 'Columbia', price: 850 },
-            { name: 'Kansas City - ODESSA', price: 850 },
-            { name: 'Sikeston', price: 825 },
-            { name: 'Springfield - ROGERSVILLE', price: 850 },
-            { name: 'Springfield - SPRINGFIELD', price: 850 },
-            { name: 'Springfield Sub Lot', price: 900 },
-            { name: 'St Louis - Dunn Sublot', price: 875 },
-            { name: 'St Louis - BRIDGETON', price: 845 },
-        ]
-    },
-    Illinois: {
-        cities: [
-            { name: 'Lincoln', price: 1200 },
-            { name: 'Peoria', price: 1200 },
-            { name: 'Southern Illinois - ALORTON', price: 700 },
-            { name: 'St Louis - GRANITE CITY', price: 750 },
-            { name: 'Wheeling', price: 975 },
-        ]
-    },
-    Colorado: {
-        cities: [
-            { name: 'Colorado Springs', price: 870 },
-            { name: 'Denver - BRIGHTON', price: 845 },
-            { name: 'Denver - DENVER', price: 845 },
-            { name: 'Denver East - COMMERCE CITY', price: 900 },
-        ]
-    },
-    'New Mexico': {
-        cities: [
-            { name: 'Albuquerque', price: 770 },
-        ]
-    },
-    Oklahoma: {
-        cities: [
-            { name: 'Moore Sublot', price: 630 },
-            { name: 'Portland Sublot', price: 630 },
-            { name: 'Tulsa', price: 630 },
-        ]
-    },
-    Nebraska: {
-        cities: [
-            { name: 'Lincoln', price: 900 },
-            { name: 'Omaha', price: 885 },
-        ]
-    }
-};
 
 const stateAbbreviations: Record<string, string> = {
     'Alabama': 'AL',
@@ -189,14 +67,6 @@ const stateAbbreviations: Record<string, string> = {
     'Wyoming': 'WY'
 };
 
-// Obtener precio promedio por estado
-const getAveragePrice = (state: string): number => {
-    const stateData = towingRates[state];
-    if (!stateData) return 0;
-    const total = stateData.cities.reduce((sum, city) => sum + city.price, 0);
-    return Math.round(total / stateData.cities.length);
-};
-
 // Colores basados en precio
 const getPriceColor = (price: number): string => {
     if (price === 0) return '#e5e7eb'; // gray-200
@@ -207,9 +77,13 @@ const getPriceColor = (price: number): string => {
 };
 
 export default function TowingRatesMap({ dict }: { dict?: any }) {
+    const [selectedDestination, setSelectedDestination] = useState<string>('brownsville');
     const [selectedState, setSelectedState] = useState<string | null>(null);
     const pathname = usePathname();
     const lang = pathname.split('/')[1];
+
+    // Get states for the selected destination
+    const statesData = getStatesByDestination(selectedDestination);
 
     // Fallback texts if dict is not provided or missing keys
     const t = {
@@ -237,6 +111,23 @@ export default function TowingRatesMap({ dict }: { dict?: any }) {
                         {t.description}
                     </p>
 
+                    {/* Destination Selector */}
+                    <div className="flex justify-center gap-4 mb-8 flex-wrap">
+                        {getDestinations().map(dest => (
+                            <Button
+                                key={dest.id}
+                                variant={selectedDestination === dest.id ? "default" : "outline"}
+                                onClick={() => {
+                                    setSelectedDestination(dest.id);
+                                    setSelectedState(null);
+                                }}
+                                className={`min-w-[120px] capitalize ${selectedDestination === dest.id ? 'bg-primary text-primary-foreground' : ''}`}
+                            >
+                                {dest.label}
+                            </Button>
+                        ))}
+                    </div>
+
                     {/* Botón a Políticas */}
                     <Button asChild variant="outline" className="gap-2">
                         <Link href={`/${lang}/coordinacion-arrastres`}>
@@ -255,7 +146,15 @@ export default function TowingRatesMap({ dict }: { dict?: any }) {
                                     <>
                                         {geographies.map((geo) => {
                                             const stateName = geo.properties.name;
-                                            const avgPrice = getAveragePrice(stateName);
+                                            // Find state ID from name
+                                            const stateEntry = statesData.find(s => s.name === stateName);
+                                            let avgPrice = 0;
+                                            if (stateEntry) {
+                                                const cities = getCitiesByState(selectedDestination, stateEntry.id);
+                                                if (cities.length) {
+                                                    avgPrice = Math.round(cities.reduce((sum: number, c: any) => sum + c.price, 0) / cities.length);
+                                                }
+                                            }
                                             const isSelected = selectedState === stateName;
 
                                             return (
@@ -291,7 +190,15 @@ export default function TowingRatesMap({ dict }: { dict?: any }) {
                                             const centroid = geoCentroid(geo);
                                             const stateName = geo.properties.name;
                                             const abbr = stateAbbreviations[stateName];
-                                            const avgPrice = getAveragePrice(stateName);
+
+                                            const stateEntry = statesData.find(s => s.name === stateName);
+                                            let avgPrice = 0;
+                                            if (stateEntry) {
+                                                const cities = getCitiesByState(selectedDestination, stateEntry.id);
+                                                if (cities.length) {
+                                                    avgPrice = Math.round(cities.reduce((sum: number, c: any) => sum + c.price, 0) / cities.length);
+                                                }
+                                            }
 
                                             // Only show label if we have a price for it
                                             if (!abbr || avgPrice === 0) return null;
@@ -339,37 +246,50 @@ export default function TowingRatesMap({ dict }: { dict?: any }) {
                     {/* Información del estado seleccionado */}
                     <div className="flex flex-col gap-4">
                         <Card className="p-6 flex-1">
-                            {selectedState && towingRates[selectedState] ? (
-                                <div className="h-full flex flex-col">
-                                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                                        {selectedState}
-                                        <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-0.5 rounded">
-                                            {stateAbbreviations[selectedState]}
-                                        </span>
-                                    </h3>
-                                    <div className="space-y-2 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
-                                        {towingRates[selectedState].cities.map((city) => (
-                                            <div key={city.name} className="flex justify-between items-center py-2 border-b last:border-0">
-                                                <span className="text-sm">{city.name}</span>
-                                                <span className="font-semibold text-primary">${city.price}</span>
+                            {(() => {
+                                const stateEntry = selectedState ? statesData.find(s => s.name === selectedState) : null;
+
+                                if (stateEntry) {
+                                    const cities = getCitiesByState(selectedDestination, stateEntry.id);
+
+                                    return (
+                                        <div className="h-full flex flex-col">
+                                            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                                                {selectedState}
+                                                <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                                                    {stateAbbreviations[selectedState!]}
+                                                </span>
+                                            </h3>
+                                            <div className="space-y-2 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
+                                                {cities.map((city) => (
+                                                    <div key={city.name} className="flex justify-between items-center py-2 border-b last:border-0">
+                                                        <span className="text-sm">{city.name}</span>
+                                                        <span className="font-semibold text-primary">${city.price}</span>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
-                                    </div>
-                                    <div className="mt-auto pt-4 border-t">
-                                        <div className="flex justify-between items-center">
-                                            <span className="font-semibold">{t.average}:</span>
-                                            <span className="text-lg font-bold text-primary">
-                                                ${getAveragePrice(selectedState)}
-                                            </span>
+                                            <div className="mt-auto pt-4 border-t">
+                                                <div className="flex justify-between items-center">
+                                                    <span className="font-semibold">{t.average}:</span>
+                                                    <span className="text-lg font-bold text-primary">
+                                                        {cities.length > 0
+                                                            ? `$${Math.round(cities.reduce((sum, c) => sum + c.price, 0) / cities.length)}`
+                                                            : '$0'
+                                                        }
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground py-12">
-                                    <Info className="w-12 h-12 mb-4 opacity-20" />
-                                    <p>{t.hover_prompt}</p>
-                                </div>
-                            )}
+                                    );
+                                } else {
+                                    return (
+                                        <div className="h-full flex flex-col items-center justify-center text-center text-muted-foreground py-12">
+                                            <Info className="w-12 h-12 mb-4 opacity-20" />
+                                            <p>{t.hover_prompt}</p>
+                                        </div>
+                                    );
+                                }
+                            })()}
                         </Card>
 
                         {/* Nota de recargo */}
