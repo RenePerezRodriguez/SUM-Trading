@@ -2,7 +2,7 @@ const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, '../docs/arrastre/Tarifas_Arrastre_2025-noviembre.xlsx');
+const filePath = path.join(__dirname, '../docs/arrastre/Tarifas Arrastre 2025-diciembre.xlsx');
 const outputPath = path.join(__dirname, '../docs/arrastre/extracted-data.json');
 
 try {

@@ -56,9 +56,12 @@ try {
                 if (!state || state === 'Tarifas Terrestres' || state === 'Estado ') continue;
 
                 // Clean up data
-                const cleanState = String(state).trim();
+                let cleanState = String(state).trim();
                 const cleanCity = String(city).trim();
                 const cleanPrice = Number(price);
+
+                // Fix typos
+                if (cleanState === 'North Calorina') cleanState = 'North Carolina';
 
                 if (!cleanState || !cleanCity || isNaN(cleanPrice)) continue;
 

@@ -283,8 +283,8 @@
           }
         ]
       },
-      "north_calorina": {
-        "name": "North Calorina",
+      "north_carolina": {
+        "name": "North Carolina",
         "cities": [
           {
             "name": "RALEIGH",
@@ -1458,15 +1458,6 @@
       }
     },
     "houston": {
-      "alabama": {
-        "name": "Alabama",
-        "cities": [
-          {
-            "name": "null",
-            "price": 0
-          }
-        ]
-      },
       "arkansas": {
         "name": "Arkansas",
         "cities": [
@@ -1614,12 +1605,32 @@
           }
         ]
       },
-      "mississippi": {
-        "name": "Mississippi",
+      "alabama": {
+        "name": "Alabama",
         "cities": [
           {
-            "name": "null",
-            "price": 0
+            "name": "Montgomery",
+            "price": 850
+          },
+          {
+            "name": "Birmimham",
+            "price": 850
+          },
+          {
+            "name": "Mobile",
+            "price": 800
+          },
+          {
+            "name": "Tanner",
+            "price": 850
+          },
+          {
+            "name": "Dotham",
+            "price": 850
+          },
+          {
+            "name": "Huntsville",
+            "price": 850
           }
         ]
       },
@@ -1752,12 +1763,24 @@
           }
         ]
       },
-      "california": {
-        "name": "California",
+      "mississippi": {
+        "name": "Mississippi",
         "cities": [
           {
-            "name": "null",
-            "price": 0
+            "name": "Jackson",
+            "price": 950
+          },
+          {
+            "name": "GulfCoast",
+            "price": 950
+          },
+          {
+            "name": "Hattieburg",
+            "price": 950
+          },
+          {
+            "name": "Greanada",
+            "price": 950
           }
         ]
       },
@@ -1843,6 +1866,60 @@
           {
             "name": "Omaha - SPRINGFIELD",
             "price": 885
+          }
+        ]
+      },
+      "california": {
+        "name": "California",
+        "cities": [
+          {
+            "name": "Sacramento",
+            "price": 2500
+          },
+          {
+            "name": "Martinez",
+            "price": 2500
+          },
+          {
+            "name": "East Bay",
+            "price": 2500
+          },
+          {
+            "name": "San Bernardino",
+            "price": 2500
+          },
+          {
+            "name": "Rancho Cucamonga",
+            "price": 2500
+          },
+          {
+            "name": "Mentone",
+            "price": 2500
+          },
+          {
+            "name": "Riverside",
+            "price": 2500
+          }
+        ]
+      },
+      "oregon": {
+        "name": "Oregon",
+        "cities": [
+          {
+            "name": "Portland",
+            "price": 2800
+          },
+          {
+            "name": "Salem",
+            "price": 2700
+          },
+          {
+            "name": "Eugene",
+            "price": 2700
+          },
+          {
+            "name": "Woodburn",
+            "price": 2700
           }
         ]
       }
