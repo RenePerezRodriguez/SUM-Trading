@@ -57,7 +57,7 @@
     "libphonenumber-js": "latest",
     "lucide-react": "latest",
     "negotiator": "latest",
-    "next": "latest",
+    "next": "16.0.7",
     "patch-package": "latest",
     "react": "19.2.1",
     "react-day-picker": "^9.11.3",
