@@ -91,5 +91,9 @@
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "5.5.3"
+  },
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
   }
 }
