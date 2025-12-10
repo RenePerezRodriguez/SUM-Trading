@@ -39,7 +39,7 @@ interface ScraptPressResponse {
 interface SearchResponse {
   success: boolean;
   vehicles: any[];
-  pagination: { 
+  pagination: {
     hasMore: boolean; // ¿Hay más páginas disponibles?
     currentPage: number;
     totalAvailable?: number; // Total conocido
@@ -80,8 +80,8 @@ export async function GET(request: NextRequest) {
 
     console.log(`[API] Searching: query="${searchQuery}", page=${page}, limit=${limit}, forceRefresh=${forceRefresh}`);
 
-    // Build URL for INTELLIGENT ScraptPress endpoint with dynamic limit
-    const url = new URL('/api/search/intelligent', SCRAPTPRESS_API_URL);
+    // Build URL for v3.2 ScraptPress endpoint with dynamic limit
+    const url = new URL('/api/search/vehicles', SCRAPTPRESS_API_URL);
     url.searchParams.set('query', searchQuery);
     url.searchParams.set('page', page);
     url.searchParams.set('limit', limit); // ✅ Pasar limit al backend
@@ -102,11 +102,11 @@ export async function GET(request: NextRequest) {
 
     const data: ScraptPressResponse = await response.json();
     console.log(`[API] Results: ${data.returned} vehicles (limit=${data.limit}), source=${data.source}, cached=${data.cached}, hasMore=${data.hasMore}`);
-    
+
     if (data.batch) {
       console.log(`[API] Batch info: batch=${data.batch.number}, page ${data.batch.currentPageInBatch}/${data.batch.totalPagesInBatch} in batch`);
     }
-    
+
     if (data.prefetch?.recommended) {
       console.log(`[API] Background scraping recommended for batch ${data.prefetch.nextBatch}`);
     }
@@ -144,7 +144,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('[API] Error:', error);
     return NextResponse.json(
-      { 
+      {
         success: false,
         error: error instanceof Error ? error.message : 'Internal server error',
         vehicles: [],

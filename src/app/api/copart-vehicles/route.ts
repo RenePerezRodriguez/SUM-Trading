@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     }
 
     const lotNumbers = lotsString.split(',').map(lot => lot.trim()).filter(Boolean);
-    
+
     if (lotNumbers.length === 0) {
       return NextResponse.json({ message: 'No valid lot numbers provided' }, { status: 400 });
     }
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     // Fetch all vehicles in parallel
     const vehiclePromises = lotNumbers.map(async (lot) => {
       try {
-        const url = new URL('/api/search/intelligent', SCRAPTPRESS_API_URL);
+        const url = new URL('/api/search/vehicles', SCRAPTPRESS_API_URL);
         url.searchParams.set('query', lot);
         url.searchParams.set('page', '1');
 
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
         }
 
         const data = await response.json();
-        
+
         // Return the first vehicle that matches the lot number
         const vehicle = data.vehicles?.find((v: any) => v.lot_number === lot);
         return vehicle || null;
@@ -74,7 +74,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('[API] Error:', error);
     return NextResponse.json(
-      { 
+      {
         error: error instanceof Error ? error.message : 'Internal server error',
       },
       { status: 500 }

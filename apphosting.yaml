@@ -75,6 +75,10 @@ runConfig:
     # AI / CHATBOT CONFIGURATION
     # ==========================================
     # Google Gemini API Key for chatbot functionality
+    # ==========================================
+    # AI / CHATBOT CONFIGURATION
+    # ==========================================
+    # Google Gemini API Key for chatbot functionality
     # IMPORTANTE: En producción, configura esto como SECRET en Firebase Console
     - variable: GEMINI_API_KEY
       secret: GEMINI_API_KEY
@@ -89,6 +93,3 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
-env:
-  - variable: GEMINI_API_KEY
-    secret: GEMINI_API_KEY
