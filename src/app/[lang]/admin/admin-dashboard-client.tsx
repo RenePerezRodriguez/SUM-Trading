@@ -178,7 +178,7 @@ export default function AdminDashboardClient({ dict, lang }: { dict: any, lang: 
                     };
                     const Icon = action.icon;
                     return (
-                        <Card key={action.key} className="flex flex-col border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl group bg-background">
+                        <Card key={action.key} id={`nav-${action.key.replace(/_/g, '-')}`} className="flex flex-col border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-xl group bg-background">
                             <CardHeader>
                                 <div className="flex items-center gap-4">
                                     <div className={`flex h-16 w-16 items-center justify-center rounded-xl border-2 ${action.color} group-hover:scale-110 transition-transform duration-300`}>

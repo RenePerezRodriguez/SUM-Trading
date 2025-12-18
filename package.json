@@ -50,11 +50,14 @@
     "cmdk": "latest",
     "d3-geo": "^3.1.1",
     "date-fns": "latest",
+    "driver.js": "^1.4.0",
     "embla-carousel-react": "^8.6.0",
     "firebase": "12.7.0",
     "firebase-admin": "13.6.0",
     "framer-motion": "latest",
     "google-auth-library": "10.5.0",
+    "html2canvas-pro": "^1.6.0",
+    "jspdf": "^3.0.4",
     "libphonenumber-js": "latest",
     "lucide-react": "latest",
     "negotiator": "latest",
@@ -100,6 +103,12 @@
       "react": "19.2.3",
       "react-dom": "19.2.3",
       "d3-color@<3.1.0": ">=3.1.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@firebase/util",
+      "core-js",
+      "protobufjs",
+      "sharp"
+    ]
   }
 }

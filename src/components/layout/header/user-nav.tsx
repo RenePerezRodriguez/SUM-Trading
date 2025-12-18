@@ -30,10 +30,10 @@ export function UserNav({ dict, lang, isTransparent }: { dict: any, lang: string
   const { toast } = useToast();
   const router = useRouter();
   const { openModal } = useAuthModalStore();
-  
+
   const userDocRef = useMemoFirebase(() => {
-      if (!firestore || !user) return null;
-      return doc(firestore, 'users', user.uid);
+    if (!firestore || !user) return null;
+    return doc(firestore, 'users', user.uid);
   }, [firestore, user]);
 
   const { data: userProfile, isLoading: isProfileLoading } = useDoc<UserProfile>(userDocRef);
@@ -67,31 +67,31 @@ export function UserNav({ dict, lang, isTransparent }: { dict: any, lang: string
   if (!user || user.isAnonymous) {
     return (
       <div className="hidden md:flex items-center gap-1 sm:gap-2">
-         <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => openModal('login')}
-            className={cn(
-             'transition-colors',
-             isTransparent 
-             ? 'text-white/90 hover:bg-white/10 hover:text-white' 
-             : 'text-foreground hover:bg-accent hover:text-primary'
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => openModal('login')}
+          className={cn(
+            'transition-colors',
+            isTransparent
+              ? 'text-white/90 hover:bg-white/10 hover:text-white'
+              : 'text-foreground hover:bg-accent hover:text-primary'
           )}>
-            <LogIn className="mr-2 h-4 w-4" />
-            {dict.navigation.login}
-          </Button>
-          <Button 
-            size="sm" 
-            onClick={() => openModal('register')}
-            className={cn(
-                'transition-colors',
-                isTransparent 
-                ? 'bg-white/10 text-white hover:bg-white/20' 
-                : 'bg-primary text-primary-foreground hover:bg-primary/90'
-            )}
-          >
-            {dict.navigation.register}
-            </Button>
+          <LogIn className="mr-2 h-4 w-4" />
+          {dict.navigation.login}
+        </Button>
+        <Button
+          size="sm"
+          onClick={() => openModal('register')}
+          className={cn(
+            'transition-colors',
+            isTransparent
+              ? 'bg-white/10 text-white hover:bg-white/20'
+              : 'bg-primary text-primary-foreground hover:bg-primary/90'
+          )}
+        >
+          {dict.navigation.register}
+        </Button>
       </div>
     );
   }
@@ -117,52 +117,65 @@ export function UserNav({ dict, lang, isTransparent }: { dict: any, lang: string
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <Link href={`/${lang}/profile`}>
-                <User className="mr-2 h-4 w-4" />
-                <span>{dict.navigation.profile}</span>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <Link href={`/${lang}/garage`}>
-                <Star className="mr-2 h-4 w-4" />
-                <span>{dict.garage_page.title}</span>
-              </Link>
-            </DropdownMenuItem>
-            {isAdmin && (
+
+          {/* Admin gets simplified menu */}
+          {isAdmin ? (
+            <>
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link href={`/${lang}/admin`}>
+                  <LayoutGrid className="mr-2 h-4 w-4" />
+                  <span>{dict.user_nav.admin_panel}</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>{dict.user_nav.logout}</span>
+              </DropdownMenuItem>
+            </>
+          ) : (
+            <>
+              {/* Regular user menu */}
+              <DropdownMenuGroup>
                 <DropdownMenuItem asChild className="cursor-pointer">
-                    <Link href={`/${lang}/admin`}>
-                        <LayoutGrid className="mr-2 h-4 w-4" />
-                        <span>{dict.user_nav.admin_panel}</span>
-                    </Link>
+                  <Link href={`/${lang}/profile`}>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>{dict.navigation.profile}</span>
+                  </Link>
                 </DropdownMenuItem>
-            )}
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <Link href={`/${lang}/purchases`}>
-                <CreditCard className="mr-2 h-4 w-4" />
-                <span>{dict.purchases_page.title}</span>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild className="cursor-pointer">
-                <Link href={`/${lang}/profile/settings`}>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link href={`/${lang}/garage`}>
+                    <Star className="mr-2 h-4 w-4" />
+                    <span>{dict.garage_page.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link href={`/${lang}/purchases`}>
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    <span>{dict.purchases_page.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link href={`/${lang}/profile/settings`}>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>{dict.profile_page.cards.account_settings.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild className="cursor-pointer">
+                <Link href={`/${lang}/contact`}>
+                  <LifeBuoy className="mr-2 h-4 w-4" />
+                  <span>{dict.purchases_page.support}</span>
                 </Link>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-           <DropdownMenuItem asChild className="cursor-pointer">
-            <Link href={`/${lang}/contact`}>
-              <LifeBuoy className="mr-2 h-4 w-4" />
-              <span>{dict.purchases_page.support}</span>
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>{dict.user_nav.logout}</span>
-          </DropdownMenuItem>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>{dict.user_nav.logout}</span>
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

@@ -40,7 +40,14 @@ export function getSdks(firebaseApp: FirebaseApp) {
     auth: getAuth(firebaseApp),
     firestore: getFirestore(firebaseApp),
     storage: getStorage(firebaseApp),
-    analytics: typeof window !== 'undefined' ? getAnalytics(firebaseApp) : null,
+    analytics: typeof window !== 'undefined' ? (() => {
+      try {
+        return getAnalytics(firebaseApp);
+      } catch (e) {
+        console.warn('Analytics initialization failed (likely due to adblocker or localhost restriction):', e);
+        return null;
+      }
+    })() : null,
   };
 }
 
