@@ -1,0 +1,106 @@
+{
+  "placeholderImages": [
+    {
+      "id": "car-1",
+      "description": "Red sports car on a road",
+      "imageUrl": "https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxyZWQlMjBjYXJ8ZW58MHx8fHwxNzU4OTI5NDUzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red car"
+    },
+    {
+      "id": "car-2",
+      "description": "Blue modern SUV",
+      "imageUrl": "https://images.unsplash.com/photo-1615836494670-706aa6af4974?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxibHVlJTIwc3V2fGVufDB8fHx8MTc1ODkxMDAxNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blue suv"
+    },
+    {
+      "id": "car-3",
+      "description": "Black luxury sedan",
+      "imageUrl": "https://images.unsplash.com/photo-1734299388217-2ebc605ef43f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxibGFjayUyMHNlZGFufGVufDB8fHx8MTc1ODg4NDE2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "black sedan"
+    },
+    {
+      "id": "car-4",
+      "description": "White vintage convertible",
+      "imageUrl": "https://images.unsplash.com/photo-1707078655935-e46ddb02fd97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3aGl0ZSUyMGNvbnZlcnRpYmxlfGVufDB8fHx8MTc1ODkzNTkxMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "white convertible"
+    },
+    {
+      "id": "car-5",
+      "description": "Silver compact car",
+      "imageUrl": "https://images.unsplash.com/photo-1564586556570-8f833560167b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c2lsdmVyJTIwY2FyfGVufDB8fHx8MTc1ODkxNjk5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "silver car"
+    },
+    {
+      "id": "car-6",
+      "description": "Gray pickup truck",
+      "imageUrl": "https://images.unsplash.com/photo-1594786330071-364c6b5b6353?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxncmF5JTIwdHJ1Y2t8ZW58MHx8fHwxNzU4OTU2NjM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gray truck"
+    },
+    {
+      "id": "car-7",
+      "description": "Yellow sports car on track",
+      "imageUrl": "https://images.unsplash.com/photo-1614699188247-3ddb1f0213790?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx5ZWxsb3clMjBjYXJ8ZW58MHx8fHwxNzU4ODg2NjE0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "yellow car"
+    },
+    {
+      "id": "car-8",
+      "description": "Green electric car",
+      "imageUrl": "https://images.unsplash.com/photo-1696890508799-3129eb821a5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyaXZpYW4lMjBjYXJ8ZW58MHx8fHwxNzU5MDk4NDY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green car"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Portrait of a smiling woman",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc1ODg2Nzc5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "avatar-2",
+      "description": "Portrait of a man with glasses",
+      "imageUrl": "https://images.unsplash.com/photo-1583195763986-0231686dcd43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg5NTE1NDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "avatar-3",
+      "description": "Portrait of a person outdoors",
+      "imageUrl": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NTg5MDE5MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "road-background",
+      "description": "Winding road through a forest.",
+      "imageUrl": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyb2FkJTIwZm9yZXN0fGVufDB8fHx8MTc2MTc1MDAwMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "winding road"
+    },
+    {
+      "id": "cta-background",
+      "description": "Classic car on a street",
+      "imageUrl": "https://images.unsplash.com/photo-1490902931801-d6f80ca94fe4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8Y2FyfGVufDB8fHx8MTc1OTAwNDAzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sports car"
+    },
+    {
+      "id": "about-us-hero",
+      "description": "Mechanics working on a classic car.",
+      "imageUrl": "https://images.unsplash.com/photo-1543465077-db45d34b88a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8Y2Fyc3xlbnwwfHx8fDE3NjE2MTY2Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mechanic workshop"
+    },
+    {
+      "id": "modal-search",
+      "description": "Man looking at computer screen with code.",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d1469488?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNDE5ODJ8MHwxfHNlYXJjaHw0fHxwcm9ncmFtbWluZ3xlbnwwfHx8fDE3NjE3NDY5MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analysis"
+    },
+    {
+      "id": "modal-repair",
+      "description": "Mechanic working under a car on a lift.",
+      "imageUrl": "https://images.unsplash.com/photo-1566080512433-8b2a3632c0f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXIlMjByZXBhaXJ8ZW58MHx8fHwxNzYxNzQ2OTY0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "car repair"
+    },
+    {
+      "id": "modal-logistics",
+      "description": "Container ship at a port.",
+      "imageUrl": "https://images.unsplash.com/photo-1579737877222-a74070a2f42a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNDE5ODJ8MHwxfHNlYXJjaHw1fHxsb2dpc3RpY3N8ZW58MHx8fHwxNzYxNzQ3MDAxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logistics port"
+    }
+  ]
+}

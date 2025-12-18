@@ -1,0 +1,29 @@
+{
+  "car_details": {
+    "buy_now": "Buy Now",
+    "specifications": "Specifications",
+    "year": "Year",
+    "make": "Make",
+    "model": "Model",
+    "price": "Price",
+    "mileage": "Mileage",
+    "engine": "Engine",
+    "horsepower": "Horsepower",
+    "transmission": "Transmission",
+    "color": "Color",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "cost_calculator": {
+    "title": "Estimated Cost Calculator",
+    "description": "Get an idea of the total cost delivered to destination for this vehicle.",
+    "select_country": "Select Destination Country",
+    "car_price": "Vehicle Price",
+    "commission": "SUM Trading Commission",
+    "transport": "Logistics and Transport",
+    "import_taxes": "Taxes and Tariffs",
+    "management_fees": "Management and Processing",
+    "total_title": "Estimated Total",
+    "disclaimer": "This is an estimate. Final costs may vary depending on auction price, shipping rates and taxes."
+  }
+}

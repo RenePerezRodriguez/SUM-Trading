@@ -1,0 +1,104 @@
+{
+  "hero": {
+    "title_part1": "Invest in American Cars",
+    "title_part2": "with Professional Support from",
+    "update_banner": "New: Now searching directly on US auction portals!",
+    "typewriter_phrases": [
+      "Buy, import, repair, and sell auction vehicles.",
+      "Expert advice & access to US auctions without a license.",
+      "Logistics, customs, and documentation solutions.",
+      "Reliable, legal, and profitable investment solutions."
+    ],
+    "lifestyle_buttons": {},
+    "search_placeholder": "Search by make, model, or keyword...",
+    "search_button": "Search",
+    "search_disclaimer": "Search our inventory and partner auction portals.",
+    "search_lead_title": "Find your ideal vehicle at U.S. auctions",
+    "original_search_lead_title": "Get Your Towing Quote - From Auction to Your Destination",
+    "popular_searches": "Popular Searches",
+    "instant_results": "Instant Results",
+    "cached_results": "These searches have instant results",
+    "dashboard_title": "Your Direct Access to US Auto Auctions",
+    "dashboard_subtitle": "Buy at Copart, IAA, and Manheim without a dealer license. We handle importation and logistics.",
+    "stats_title": "LIVE: The World's Largest Auction Marketplace",
+    "stats": {
+      "vehicles": "Global Daily Inventory",
+      "daily_auctions": "Vehicles Sold/Day",
+      "locations": "USA Facilities",
+      "updated": "Updated",
+      "source_label": "Source",
+      "source_text": "Deep Research with Gemini Pro 3",
+      "source_url": "#copart-research-sources"
+    },
+    "right_panel": {
+      "car_of_the_day": "Car of the Day",
+      "my_garage": "My Garage",
+      "no_cars_available": "No cars available at the moment.",
+      "power": "Power",
+      "mileage": "Mileage",
+      "engine": "Engine",
+      "transmission": "Transmission",
+      "see_another": "See Another",
+      "loading": "Loading...",
+      "login_prompt_title": "Access Your Garage",
+      "login_prompt_desc": "Log in to see your favorite vehicles.",
+      "loading_garage": "Loading your garage...",
+      "empty_garage_title": "Your Garage is Empty",
+      "empty_garage_desc": "Use the heart icon on any vehicle to save it here."
+    }
+  },
+  "featuredCars": {
+    "title": "Our Featured Selection",
+    "description": "A curated selection of our best current opportunities and most popular vehicles.",
+    "cta": "View Full Catalog"
+  },
+  "services": {
+    "journey_title": "Your journey with us",
+    "title": "How does it work?",
+    "main_description": "We simplify the entire process of importing vehicles from US auctions. From search to delivery in your country.",
+    "items": [
+      {
+        "title": "Search and Selection",
+        "description": "Explore an expert-curated inventory or tell us what you're looking for. We provide access to US auctions even if you don't have a license.",
+        "trustPoints": [
+          {
+            "icon": "Search",
+            "text": "Access to exclusive auctions"
+          },
+          {
+            "icon": "FileCheck",
+            "text": "Verified vehicle history"
+          }
+        ],
+        "modal": {
+          "title": "Deep Dive into Search and Selection",
+          "description": "<p>Our access to the most exclusive auctions in the USA (Copart, IAAI, Manheim) allows us to find vehicles that are not available on the open market.</p><ul><li>We use data analysis tools to predict market value and identify the best opportunities.</li><li>You provide your criteria (model, year, condition, budget), and our team of experts handles the active search, pre-inspection of histories, and presentation of the best options.</li><li>We also offer access to auctions without a license.</li></ul>"
+        }
+      },
+      {
+        "title": "Logistics & Final Management",
+        "description": "We coordinate logistics, importation, and registration to deliver the car to you, ready to be driven.",
+        "trustPoints": [
+          {
+            "icon": "Ship",
+            "text": "International shipping managed"
+          },
+          {
+            "icon": "MapPin",
+            "text": "Real-time tracking"
+          }
+        ],
+        "modal": {
+          "title": "Logistics and Final Management Details",
+          "description": "<p>Once the vehicle is ready, we coordinate the transport to the port of departure. We handle the entire customs process, both for export and import.</p><ul><li>We work with trusted logistics partners and keep you informed with real-time tracking.</li><li>We manage the registration process so you receive your vehicle ready to enjoy.</li></ul>"
+        }
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Find Your Dream Car?",
+    "subtitle": "Start your search today with our expert assistance.",
+    "description": "Browse thousands of vehicles from top US auctions and get them delivered to your door.",
+    "button": "Contact Us Now"
+  }
+}

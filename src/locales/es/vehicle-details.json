@@ -1,0 +1,29 @@
+{
+  "car_details": {
+    "buy_now": "Comprar Ahora",
+    "specifications": "Especificaciones",
+    "year": "Año",
+    "make": "Marca",
+    "model": "Modelo",
+    "price": "Precio",
+    "mileage": "Kilometraje",
+    "engine": "Motor",
+    "horsepower": "Potencia",
+    "transmission": "Transmisión",
+    "color": "Color",
+    "yes": "Sí",
+    "no": "No"
+  },
+  "cost_calculator": {
+    "title": "Calculadora de Costo Estimado",
+    "description": "Obtén una idea del costo total puesto en destino para este vehículo.",
+    "select_country": "Selecciona País de Destino",
+    "car_price": "Precio del Vehículo",
+    "commission": "Comisión SUM Trading",
+    "transport": "Logística y Transporte",
+    "import_taxes": "Impuestos y Aranceles",
+    "management_fees": "Gestoría y Trámites",
+    "total_title": "Total Estimado",
+    "disclaimer": "Esto es una estimación. Los costos finales pueden variar según el precio de subasta, tarifas de envío e impuestos."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "purchases_page": {
+    "title": "My Purchases",
+    "description": "Here you have a history of all vehicles and services you have purchased through SUM Trading.",
+    "empty_title": "You don't have purchases yet",
+    "empty_description": "Your purchase history will appear here once you complete a transaction.",
+    "empty_cta": "Explore Catalog",
+    "total_paid": "Total Paid",
+    "purchase_date": "Purchase Date",
+    "support": "Support",
+    "invoice_link": "View Invoice",
+    "pdf_link": "Download PDF",
+    "consultation_service_title": "Advisory Service",
+    "consultation_service_desc": "Activation of personalized vehicle advisory service."
+  }
+}

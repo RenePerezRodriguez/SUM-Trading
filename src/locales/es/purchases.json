@@ -1,0 +1,16 @@
+{
+  "purchases_page": {
+    "title": "Mis Compras",
+    "description": "Aquí tienes un historial de todos los vehículos y servicios que has adquirido a través de SUM Trading.",
+    "empty_title": "Aún no tienes compras",
+    "empty_description": "Tu historial de compras aparecerá aquí once que completes una transacción.",
+    "empty_cta": "Explorar Catálogo",
+    "total_paid": "Total Pagado",
+    "purchase_date": "Fecha de Compra",
+    "support": "Soporte",
+    "invoice_link": "Ver Factura",
+    "pdf_link": "Descargar PDF",
+    "consultation_service_title": "Servicio de Asesoría",
+    "consultation_service_desc": "Activación del servicio de asesoría personalizada para vehículos."
+  }
+}

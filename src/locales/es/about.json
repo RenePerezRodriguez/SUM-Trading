@@ -1,0 +1,90 @@
+{
+  "about_page": {
+    "title": "Sobre Nosotros",
+    "description": "Descubre la historia, el equipo y la pasión detrás de SUM Trading & Repair.",
+    "mission_title": "Misión de SUM Trading",
+    "mission_text": "Brindar a nuestros clientes la oportunidad de comprar vehículos en subastas de Estados Unidos con total seguridad y confianza, ofreciendo asesoría, verificación técnica y acompañamiento integral durante todo el proceso, desde la selección hasta la entrega del auto en su país de destino.",
+    "vision_title": "Visión de SUM Trading",
+    "vision_text": "Ser la empresa líder en Latinoamérica en compra segura de autos en subastas de EE. UU., reconocida por su transparencia, respaldo y compromiso con la satisfaction de cada cliente.",
+    "values_title": "Valores de SUM Trading",
+    "values_description": "Nuestros principios guían cada decisión que tomamos y cada interacción que tenemos.",
+    "values": [
+      {
+        "icon": "Handshake",
+        "title": "Transparencia",
+        "description": "Creemos que cada cliente merece claridad total en los costos, procesos y condiciones de su compra. Nada oculto, sin letras pequeñas."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Confianza",
+        "description": "Acompañamos a nuestros clientes en cada paso del proceso para que se sientan seguros al invertir su dinero, incluso a la distancia."
+      },
+      {
+        "icon": "ClipboardCheck",
+        "title": "Responsabilidad",
+        "description": "Asumimos cada gestión con compromiso y profesionalismo, cuidando que todo se realice de manera legal y segura."
+      },
+      {
+        "icon": "Users",
+        "title": "Respaldo",
+        "description": "No vendemos solo autos, ofrecemos acompañamiento real: verificamos el historial, asesoramos en la compra y gestionamos la entrega."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Innovación",
+        "description": "Usamos herramientas digitales y alianzas estratégicas para hacer el proceso más ágil, accesible y confiable."
+      },
+      {
+        "icon": "Goal",
+        "title": "Orientación al cliente",
+        "description": "Nos enfocamos en ayudar a que cada persona tome decisiones inteligentes de inversión, adaptadas a su presupuesto y objetivos."
+      }
+    ]
+  },
+  "how_it_works_page": {
+    "title": "Cómo Funciona Nuestro Proceso",
+    "description": "Desde la búsqueda hasta la entrega, hacemos que importar tu coche sea un proceso sencillo y transparente. Aquí te lo mostramos paso a paso.",
+    "steps": [
+      {
+        "step_label": "Paso 1",
+        "icon": "Search",
+        "title": "Búsqueda y Selección",
+        "description": "Dinos qué buscas o explora nuestra selección curada. Analizamos el mercado y el historial de los vehículos para presentarte las mejores opciones.",
+        "modal_title": "Detalles de la Búsqueda y Selección",
+        "modal_description": "<p>Nuestro acceso a las subastas más importantes de EE. UU. (Copart, IAAI, Manheim) nos permite encontrar vehículos que no están en el mercado abierto.</p><ul><li>Usamos herramientas de análisis de datos para prever el valor de mercado e identificar las mejores oportunidades.</li><li>Tú nos das tus criterios (modelo, año, condición, presupuesto) y nuestro equipo de expertos se encarga de la búsqueda activa, la pre-inspección de historiales y la presentación de las mejores opciones.</li><li>También ofrecemos acceso a subastas sin necesidad de que tengas una licencia de broker.</li></ul>"
+      },
+      {
+        "step_label": "Paso 2",
+        "icon": "CreditCard",
+        "title": "Compra y Reparación",
+        "description": "Te representamos en la subasta y nos encargamos de cualquier reparación o preparación necesaria en nuestro taller de Brownsville.",
+        "modal_title": "Compra Segura y Reparación Profesional",
+        "modal_description": "<p>La seguridad es nuestra prioridad. Gestionamos todas las transacciones a través de plataformas seguras.</p><ul><li>Una vez comprado, nuestro taller en Brownsville, TX, está disponible para cualquier reparación o preparación mecánica, asegurando que tu vehículo esté en óptimas condiciones antes de ser importado.</li><li>Manejamos todo el proceso de puja de forma segura, estableciendo contigo un límite máximo de oferta de antemano.</li></ul>"
+      },
+      {
+        "step_label": "Paso 3",
+        "icon": "Truck",
+        "title": "Logística Nacional e Internacional",
+        "description": "Gestionamos el transporte terrestre en EE. UU. y el proceso de envío marítimo a Latinoamérica, asegurando su protección en todo momento.",
+        "modal_title": "Transporte Terrestre y Marítimo",
+        "modal_description": "<p>Una vez el vehículo está listo, coordinamos el transporte hasta el puerto de salida. Nos encargamos de todo el proceso de aduanas, tanto de exportación como de importación.</p><ul><li>Trabajamos con socios logísticos de confianza y te mantenemos informado con seguimiento en tiempo real.</li><li>Gestionamos el proceso de matriculación para que recibas tu vehículo listo para disfrutar.</li></ul>"
+      },
+      {
+        "step_label": "Paso 4",
+        "icon": "FileText",
+        "title": "Aduanas e Importación",
+        "description": "Nuestro equipo de expertos se encarga de todos los trámites aduaneros, el pago de aranceles y la documentación necesaria para importar tu vehículo legalmente.",
+        "modal_title": "Gestión Aduanera sin Complicaciones",
+        "modal_description": "Esta es una de las partes más complejas del proceso, y nosotros nos encargamos al 100%. Nuestros agentes aduanales, con amplia experiencia, se ocupan de la declaración, el pago de impuestos (como el IVA y aranceles específicos) y la verificación de normativas ambientales y de seguridad del país de destino. Nos aseguramos de que todo esté en regla para evitar retrasos o problemas legales."
+      },
+      {
+        "step_label": "Paso 5",
+        "icon": "PackageCheck",
+        "title": "Entrega Final",
+        "description": "Te entregamos el coche en tu país. Si lo deseas, también podemos gestionar el trámite de matriculación final para que esté listo para que lo conduzcas.",
+        "modal_title": "Tu Coche, Listo para Disfrutar",
+        "modal_description": "Una vez liberado de aduanas, coordinamos el transporte final a tu país. Te entregamos el coche junto con toda su documentación original y papeles de importación. Adicionalmente, ofrecemos un servicio 'llave en mano' donde también podemos gestionar la matriculación local, primera revisión técnica y expedición de placas, para que solo tengas que preocuparte de disfrutar tu nuevo coche."
+      }
+    ]
+  }
+}

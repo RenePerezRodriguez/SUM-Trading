@@ -1,0 +1,90 @@
+{
+  "about_page": {
+    "title": "About Us",
+    "description": "Discover the history, team and passion behind SUM Trading & Repair.",
+    "mission_title": "SUM Trading Mission",
+    "mission_text": "To provide our customers with the opportunity to buy vehicles at United States auctions with total security and confidence, offering advice, technical verification and comprehensive support throughout the entire process, from selection to delivery of the car in their destination country.",
+    "vision_title": "SUM Trading Vision",
+    "vision_text": "To be the leading company in Latin America in safe car purchases at U.S. auctions, recognized for its transparency, support and commitment to the satisfaction of each client.",
+    "values_title": "SUM Trading Values",
+    "values_description": "Our principles guide every decision we make and every interaction we have.",
+    "values": [
+      {
+        "icon": "Handshake",
+        "title": "Transparency",
+        "description": "We believe every customer deserves total clarity on costs, processes and conditions of their purchase. Nothing hidden, no fine print."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Trust",
+        "description": "We accompany our customers every step of the way so they feel secure investing their money, even from a distance."
+      },
+      {
+        "icon": "ClipboardCheck",
+        "title": "Responsibility",
+        "description": "We assume every transaction with commitment and professionalism, ensuring everything is done legally and safely."
+      },
+      {
+        "icon": "Users",
+        "title": "Support",
+        "description": "We don't just sell cars, we offer real support: we verify the history, advise on the purchase and manage delivery."
+      },
+      {
+        "icon": "Lightbulb",
+        "title": "Innovation",
+        "description": "We use digital tools and strategic alliances to make the process more agile, accessible and reliable."
+      },
+      {
+        "icon": "Goal",
+        "title": "Customer Focus",
+        "description": "We focus on helping each person make smart investment decisions, tailored to their budget and goals."
+      }
+    ]
+  },
+  "how_it_works_page": {
+    "title": "How Our Process Works",
+    "description": "From search to delivery, we make importing your car a simple and transparent process. Here we show you step by step.",
+    "steps": [
+      {
+        "step_label": "Step 1",
+        "icon": "Search",
+        "title": "Search and Selection",
+        "description": "Tell us what you're looking for or explore our curated selection. We analyze the market and vehicle history to present you with the best options.",
+        "modal_title": "Search and Selection Details",
+        "modal_description": "<p>Our access to the most important U.S. auctions (Copart, IAAI, Manheim) allows us to find vehicles that are not on the open market.</p><ul><li>We use data analysis tools to predict market value and identify the best opportunities.</li><li>You give us your criteria (model, year, condition, budget) and our team of experts handles the active search, pre-inspection of histories and presentation of the best options.</li><li>We also offer access to auctions without you needing a broker's license.</li></ul>"
+      },
+      {
+        "step_label": "Step 2",
+        "icon": "CreditCard",
+        "title": "Purchase and Repair",
+        "description": "We represent you at the auction and handle any necessary repairs or preparations at our Brownsville workshop.",
+        "modal_title": "Secure Purchase and Professional Repair",
+        "modal_description": "<p>Security is our priority. We manage all transactions through secure platforms.</p><ul><li>Once purchased, our workshop in Brownsville, TX, is available for any mechanical repair or preparation, ensuring your vehicle is in optimal condition before being imported.</li><li>We handle the entire bidding process securely, establishing a maximum bid limit with you beforehand.</li></ul>"
+      },
+      {
+        "step_label": "Step 3",
+        "icon": "Truck",
+        "title": "Domestic and International Logistics",
+        "description": "We manage ground transportation in the U.S. and the maritime shipping process to Latin America, ensuring its protection at all times.",
+        "modal_title": "Ground and Maritime Transportation",
+        "modal_description": "<p>Once the vehicle is ready, we coordinate transportation to the departure port. We handle the entire customs process, both export and import.</p><ul><li>We work with trusted logistics partners and keep you informed with real-time tracking.</li><li>We manage the registration process so you receive your vehicle ready to enjoy.</li></ul>"
+      },
+      {
+        "step_label": "Step 4",
+        "icon": "FileText",
+        "title": "Customs and Import",
+        "description": "Our team of experts handles all customs procedures, duty payments and documentation necessary to legally import your vehicle.",
+        "modal_title": "Hassle-Free Customs Management",
+        "modal_description": "This is one of the most complex parts of the process, and we handle it 100%. Our customs agents, with extensive experience, handle the declaration, tax payment (such as VAT and specific tariffs) and verification of environmental and safety regulations of the destination country. We ensure everything is in order to avoid delays or legal problems."
+      },
+      {
+        "step_label": "Step 5",
+        "icon": "PackageCheck",
+        "title": "Final Delivery",
+        "description": "We deliver the car to your country. If you wish, we can also manage the final registration process so it's ready for you to drive.",
+        "modal_title": "Your Car, Ready to Enjoy",
+        "modal_description": "Once released from customs, we coordinate the final transportation to your country. We deliver the car along with all its original documentation and import papers. Additionally, we offer a 'turnkey' service where we can also manage local registration, first technical inspection and license plate issuance, so you only have to worry about enjoying your new car."
+      }
+    ]
+  }
+}

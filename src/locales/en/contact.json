@@ -1,0 +1,128 @@
+{
+  "contact_page": {
+    "title": "Get in Touch",
+    "description": "Fill out the form or use the contact information. We'll respond shortly.",
+    "form_title": "Send Us a Message",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phone_placeholder": "+1 123 456 7890",
+    "subject": "Subject",
+    "subject_placeholder": "Select a reason",
+    "subject_options": {
+      "general": "General inquiry",
+      "auction_advisory": "Auction advisory",
+      "quote": "Request quote",
+      "post_sale": "Post-sale support",
+      "import_process": "Import process",
+      "other": "Other"
+    },
+    "message": "Message",
+    "message_placeholder": "Tell us how we can help you...",
+    "chars_remaining": "characters remaining",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "success_desc": "We'll respond within 24 hours.",
+    "error": "There was an error. Please try again.",
+    "whatsapp_button": "Contact via WhatsApp",
+    "whatsapp_message": "Hello! I'd like to receive information about your services.",
+    "quick_faq_title": "Frequently Asked Questions",
+    "quick_faq_cta": "View all questions",
+    "quick_faqs": [
+      {
+        "question": "How long does the import process take?",
+        "answer": "The complete process usually takes between 4 to 8 weeks, depending on the destination country and customs procedures."
+      },
+      {
+        "question": "What does the $20 USD advisory fee include?",
+        "answer": "It includes access to auctions with our broker license, 3 AutoCheck reports, personalized accompaniment, and fee retention if you don't win the auction."
+      },
+      {
+        "question": "What payment methods do you accept?",
+        "answer": "We accept credit/debit card via Stripe, PayPal, cryptocurrencies, bank transfers, and deposits in American banks."
+      }
+    ],
+    "process_timeline": {
+      "title": "What Happens Next?",
+      "steps": [
+        {
+          "label": "Step 1",
+          "title": "We Receive Your Message",
+          "time": "Immediate"
+        },
+        {
+          "label": "Step 2",
+          "title": "We Respond",
+          "time": "< 24 hours"
+        },
+        {
+          "label": "Step 3",
+          "title": "Detailed Quote",
+          "time": "1-2 days"
+        },
+        {
+          "label": "Step 4",
+          "title": "Let's Start!",
+          "time": "At your pace"
+        }
+      ]
+    },
+    "chat_widget": {
+      "coming_soon": "Coming Soon",
+      "title": "Live Chat",
+      "subtitle": "Instant answers"
+    },
+    "smart_suggestions": {
+      "general": "💡 Tip: Tell us about your project or specific need",
+      "auction_advisory": "💡 Tip: Include the vehicle link or lot number you're interested in",
+      "quote": "💡 Tip: Mention: model, year, condition and your destination country",
+      "post_sale": "💡 Tip: Provide your order number or vehicle VIN",
+      "import_process": "💡 Tip: Indicate your country and the type of vehicle you want to import",
+      "other": "💡 Tip: Be specific so we can help you better"
+    },
+    "language_support": {
+      "title": "Service in Your Language",
+      "description": "Our team speaks:",
+      "languages": [
+        {
+          "code": "es",
+          "name": "Español",
+          "flag": "🇪🇸"
+        },
+        {
+          "code": "en",
+          "name": "English",
+          "flag": "🇺🇸"
+        }
+      ]
+    }
+  },
+  "contact_info": {
+    "title": "Contact Information",
+    "email": {
+      "title": "Email",
+      "address": "info@sumtrading.us"
+    },
+    "phone": {
+      "title": "Phone",
+      "number": "+1 (956) 747-6078"
+    },
+    "address": {
+      "title": "USA Office",
+      "location": "9675 Joe G Garza Sr Rd, Brownsville, TX 78521"
+    },
+    "address_mexico": {
+      "title": "Mexico Office",
+      "location": "Matamoros, Tamaulipas"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "days": "Mon-Fri",
+      "time": "9:00 AM - 6:00 PM CST"
+    },
+    "social": {
+      "title": "Follow Us"
+    }
+  }
+}

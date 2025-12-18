@@ -1,0 +1,180 @@
+{
+  "metadata": {
+    "title": "Buy Salvage Cars from Copart & IAA Auctions | SUM Trading USA",
+    "description": "Buy salvage cars, clean title vehicles from Copart, IAA & Manheim auctions. Best prices on auction cars for sale. Export to Mexico, Latin America. Licensed dealer. Free quote +1 (956) 747-6078",
+    "login": "Login"
+  },
+  "header": {
+    "certified_broker": "Certified Broker"
+  },
+  "footer": {
+    "about": "About Us",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "credits_prefix": "Designed by",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "coordinacion_arrastres": "Towing Coordination"
+  },
+  "navigation": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "sum_trading_catalog": "SUM Trading",
+    "copart_catalog": "USA Auctions",
+    "coming_soon": "coming soon",
+    "contact": "Contact",
+    "checkout": "Checkout",
+    "cookies": "Cookie Policy",
+    "sitemap": "Sitemap",
+    "about": "About Us",
+    "how_it_works": "How It Works",
+    "services": "Services",
+    "faq": "FAQ",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile"
+  },
+  "car_card": {
+    "no_image": "No Image",
+    "views": "Views",
+    "add_to_favorites_aria": "Add to favorites",
+    "remove_from_favorites_aria": "Remove from favorites",
+    "add_to_comparison_aria": "Add to comparison",
+    "remove_from_comparison_aria": "Remove from comparison"
+  },
+  "mobile_menu": {
+    "open_menu": "Open main menu"
+  },
+  "user_nav": {
+    "admin_panel": "Admin Panel",
+    "logout": "Logout",
+    "user_alt": "User",
+    "logout_success_title": "Logged Out",
+    "logout_success_desc": "You have been logged out successfully.",
+    "logout_error_title": "Logout Error",
+    "logout_error_desc": "Could not log out. Please try again."
+  },
+  "validation": {
+    "name_required": "Name must be at least 2 characters.",
+    "email_invalid": "Please enter a valid email address.",
+    "phone_invalid": "Please enter a valid phone number.",
+    "subject_required": "Please select a subject.",
+    "message_short": "Message must be at least 10 characters.",
+    "make_required": "Make is required.",
+    "model_required": "Model is required.",
+    "vin_invalid": "VIN must be 17 characters.",
+    "year_invalid": "Invalid year.",
+    "price_positive": "Price must be a positive number.",
+    "description_short": "Description is too short.",
+    "mileage_positive": "Mileage must be a positive number.",
+    "engine_required": "Engine is required.",
+    "horsepower_low": "Horsepower is too low.",
+    "transmission_required": "Transmission is required.",
+    "color_required": "Color is required.",
+    "image_required": "At least one image is required.",
+    "image_size": "Image must be less than 5MB.",
+    "video_size": "Video must be less than 50MB.",
+    "titleType_required": "Title type is required.",
+    "other_required": "Please specify the value."
+  },
+  "toast": {
+    "image_upload_error_title": "Image Upload Error",
+    "video_upload_error_title": "Video Upload Error",
+    "upload_error_desc": "There was a problem uploading the file. Please try again.",
+    "add_success_title": "Vehicle Added",
+    "add_success_desc": "{make} {model} has been added to the catalog.",
+    "add_error_title": "Error Adding Vehicle",
+    "add_error_desc": "There was a problem saving the vehicle. Please try again.",
+    "update_success_title": "Vehicle Updated",
+    "update_success_desc": "{make} {model} has been updated successfully.",
+    "update_error_title": "Error Updating Vehicle",
+    "update_error_desc": "There was a problem updating the vehicle. Please try again.",
+    "vin_decode_success_title": "VIN Decoded",
+    "vin_decode_error_title": "VIN Decode Error",
+    "vin_decode_error_desc": "Could not retrieve information for that VIN. Please fill in the fields manually.",
+    "description_generate_success_title": "Description generated",
+    "description_generate_error_title": "Error generating description",
+    "description_generate_error_desc": "Could not generate description. Please try again.",
+    "description_generate_error_desc_fields": "Please fill in make, model, and year first."
+  },
+  "social_fab": {
+    "whatsapp_message": "Hello! I am interested in your services and would like to receive more information."
+  },
+  "cookie_consent": {
+    "title": "Cookie Consent",
+    "message": "We use cookies to improve your experience. Read our",
+    "privacy_link": "privacy policy",
+    "privacy_link_suffix": "for more information.",
+    "reject_all": "Reject All",
+    "customize": "Customize",
+    "accept_all": "Accept All",
+    "customize_title": "Customize Cookies",
+    "necessary": "Necessary",
+    "necessary_desc": "Required for functionality",
+    "analytics": "Analytics",
+    "analytics_desc": "Helps improve the service",
+    "marketing": "Marketing",
+    "marketing_desc": "Personalized content",
+    "close": "Close",
+    "save_preferences": "Save Preferences"
+  },
+  "vehicle_comparator": {
+    "title": "Vehicle Comparator",
+    "select_vehicles": "Select vehicles:",
+    "price": "Price",
+    "year": "Year",
+    "mileage": "Miles",
+    "primary_damage": "Primary damage",
+    "engine": "Engine",
+    "transmission": "Transmission",
+    "drive": "Drive",
+    "loading_favorites": "Loading favorites...",
+    "searching_auctions": "Searching auction portals...",
+    "analyzing_photos": "Analyzing photos and details...",
+    "loading_page": "Loading page {page}...",
+    "estimated_time": "Estimated time: ~5 minutes",
+    "first_search_time": "First search: ~4-5 minutes",
+    "first_search_desc": "We are analyzing 100 vehicles with photos and complete details from Copart Auctions.",
+    "fetching_vehicles": "Fetching vehicles from Copart...",
+    "may_take_seconds": "This may take a few seconds."
+  },
+  "search": {
+    "no_results": "No vehicles found matching",
+    "no_vehicles_page": "No vehicles on this page",
+    "try_previous_page": "Try navigating to a previous page",
+    "page_status": "Page status:"
+  },
+  "share": {
+    "share_vehicle": "Check out this auction vehicle",
+    "share_whatsapp": "Share on WhatsApp",
+    "send_contacts": "Send to your contacts",
+    "share_email": "Share via Email",
+    "open_email_client": "Open your email client"
+  },
+  "payment": {
+    "updating_consultation": "Updating your active consultation...",
+    "consultation_found": "Active consultation found. Redirecting...",
+    "payment_error": "Payment Error"
+  },
+  "favorites": {
+    "no_favorites_title": "You have no favorites yet",
+    "no_favorites_empty": "Your garage is empty"
+  },
+  "accessibility": {
+    "sr_only_more_pages": "More pages",
+    "sr_only_previous_slide": "Previous slide",
+    "sr_only_next_slide": "Next slide",
+    "sr_only_change_language": "Change language",
+    "sr_only_toggle_password": "Toggle password visibility",
+    "sr_only_open_menu": "Open menu",
+    "sr_only_image_preview": "Image preview"
+  },
+  "video": {
+    "engine_video": "Engine Video"
+  },
+  "partners": {
+    "title": "Trusted by Industry Leaders"
+  }
+}

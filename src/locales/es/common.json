@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "title": "Comprar Autos Subasta USA | Copart, IAA, Manheim | SUM Trading",
+    "description": "Compra autos de subasta en Estados Unidos. Importamos vehículos Copart, IAA y Manheim a México, Bolivia, Latinoamérica. Autos salvage, título limpio. Cotización gratis +1 (956) 747-6078"
+  },
+  "lang": "es-ES",
+  "navigation": {
+    "home": "Inicio",
+    "catalog": "Catálogo",
+    "sum_trading_catalog": "SUM Trading",
+    "copart_catalog": "Subastas USA",
+    "coming_soon": "próximamente",
+    "contact": "Contacto",
+    "checkout": "Pagar",
+    "cookies": "Política de Cookies",
+    "sitemap": "Mapa del Sitio",
+    "about": "Nosotros",
+    "how_it_works": "Cómo Funciona",
+    "services": "Servicios",
+    "faq": "Preguntas Frecuentes",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "profile": "Perfil",
+    "title": "¿Tienes Preguntas?",
+    "subtitle": "¡No Dudes en Contactarnos!",
+    "description": "Nuestro equipo de expertos está listo para ayudarte con cualquier duda que tengas sobre el proceso de importación, los vehículos disponibles o nuestros servicios.",
+    "button": "Contactar"
+  },
+  "contact_info": {
+    "title": "Información de Contacto",
+    "email": {
+      "title": "Correo Electrónico",
+      "address": "info@sumtrading.us"
+    },
+    "phone": {
+      "title": "Teléfono",
+      "number": "+1 (956) 747-6078"
+    },
+    "address": {
+      "title": "Oficina Texas",
+      "location": "9675 Joe G Garza Sr Rd, Brownsville, TX 78521, Estados Unidos"
+    },
+    "address_mexico": {
+      "title": "Oficina México",
+      "location": "Blvd. Felipe Ángeles 710, Zona Plateada, 42084 Pachuca de Soto, Hidalgo, México"
+    },
+    "hours": {
+      "title": "Horario de Atención",
+      "days": "Lunes - Viernes",
+      "time": "9:00 AM - 6:00 PM"
+    },
+    "social": {
+      "title": "Síguenos"
+    }
+  },
+  "footer": {
+    "about": "Tu socio de confianza para la importación de vehículos de subasta desde EEUU.",
+    "rights": "Todos los derechos reservados.",
+    "navigation": "Navegación",
+    "legal": "Legal",
+    "terms": "Términos de Servicio",
+    "privacy": "Política de Privacidad",
+    "social": "Social",
+    "contact": "Contacto",
+    "credits_prefix": "Diseñado y desarrollado por "
+  },
+  "status_types": {
+    "available": "Disponible",
+    "reserved": "Reservado",
+    "sold": "Vendido"
+  },
+  "car_card": {
+    "no_image": "Sin Imagen",
+    "views": "Vistas",
+    "add_to_favorites_aria": "Añadir a favoritos",
+    "remove_from_favorites_aria": "Quitar de favoritos",
+    "add_to_comparison_aria": "Añadir a la comparación",
+    "remove_from_comparison_aria": "Quitar de la comparación"
+  },
+  "mobile_menu": {
+    "open_menu": "Abrir menú principal"
+  },
+  "user_nav": {
+    "admin_panel": "Panel de Admin",
+    "logout": "Cerrar Sesión",
+    "user_alt": "Usuario",
+    "logout_success_title": "Sesión Cerrada",
+    "logout_success_desc": "Has cerrado sesión correctamente.",
+    "logout_error_title": "Error al Cerrar Sesión",
+    "logout_error_desc": "No se pudo cerrar la sesión. Inténtalo de nuevo."
+  },
+  "validation": {
+    "name_required": "El nombre debe tener al menos 2 caracteres.",
+    "email_invalid": "Por favor, introduce una dirección de correo válida.",
+    "phone_invalid": "Por favor, introduce un número de teléfono válido.",
+    "subject_required": "Por favor, selecciona un asunto.",
+    "message_short": "El mensaje debe tener al menos 10 caracteres.",
+    "make_required": "La marca es obligatoria.",
+    "model_required": "El modelo es obligatorio.",
+    "vin_invalid": "El VIN debe tener 17 caracteres.",
+    "year_invalid": "Año inválido.",
+    "price_positive": "El precio debe ser positivo.",
+    "description_short": "La descripción es muy corta.",
+    "mileage_positive": "El kilometraje debe ser positivo.",
+    "engine_required": "El motor es obligatorio.",
+    "horsepower_low": "La potencia es muy baja.",
+    "transmission_required": "La transmisión es obligatoria.",
+    "color_required": "El color es obligatorio.",
+    "image_required": "Se requiere al menos una imagen.",
+    "image_size": "La imagen debe ser menor a 5MB.",
+    "video_size": "El video debe ser menor a 50MB.",
+    "titleType_required": "El tipo de título es obligatorio.",
+    "other_required": "Por favor, especifica el valor."
+  },
+  "toast": {
+    "image_upload_error_title": "Error al subir imagen",
+    "video_upload_error_title": "Error al subir video",
+    "upload_error_desc": "Hubo un problema al subir el archivo. Inténtalo de nuevo.",
+    "add_success_title": "Vehículo añadido",
+    "add_success_desc": "{make} {model} ha sido añadido al catálogo.",
+    "add_error_title": "Error al añadir vehículo",
+    "add_error_desc": "Hubo un problema al guardar el vehículo. Inténtalo de nuevo.",
+    "update_success_title": "Vehículo Actualizado",
+    "update_success_desc": "{make} {model} ha sido actualizado correctamente.",
+    "update_error_title": "Error al Actualizar Vehículo",
+    "update_error_desc": "Hubo un problema al actualizar el vehículo. Inténtalo de nuevo.",
+    "vin_decode_success_title": "VIN Decodificado",
+    "vin_decode_error_title": "Error al Decodificar VIN",
+    "vin_decode_error_desc": "No se pudo obtener información para ese VIN. Por favor, rellena los campos manualmente.",
+    "description_generate_success_title": "Descripción generada",
+    "description_generate_error_title": "Error al generar descripción",
+    "description_generate_error_desc": "No se pudo generar la descripción. Inténtalo de nuevo.",
+    "description_generate_error_desc_fields": "Por favor, rellena los campos de marca, modelo y año primero."
+  },
+  "social_fab": {
+    "whatsapp_message": "¡Hola! Estoy interesado/a en sus servicios y me gustaría recibir más información."
+  },
+  "cookie_consent": {
+    "title": "Consentimiento de Cookies",
+    "message": "Utilizamos cookies para mejorar tu experiencia. Lee nuestra",
+    "privacy_link": "política de privacidad",
+    "privacy_link_suffix": "para más información.",
+    "reject_all": "Rechazar",
+    "customize": "Personalizar",
+    "accept_all": "Aceptar Todo",
+    "customize_title": "Personalizar Cookies",
+    "necessary": "Necesarias",
+    "necessary_desc": "Requeridas para el funcionamiento",
+    "analytics": "Analytics",
+    "analytics_desc": "Ayuda a mejorar el servicio",
+    "marketing": "Marketing",
+    "marketing_desc": "Contenido personalizado",
+    "close": "Cerrar",
+    "save_preferences": "Guardar Preferencias"
+  },
+  "vehicle_comparator": {
+    "title": "Comparador de Vehículos",
+    "select_vehicles": "Selecciona vehículos:",
+    "price": "Precio",
+    "year": "Año",
+    "mileage": "Millas",
+    "primary_damage": "Daño principal",
+    "engine": "Motor",
+    "transmission": "Transmisión",
+    "drive": "Tracción",
+    "fuel": "Combustible",
+    "remove_from_comparison": "Remover de comparación",
+    "select_to_compare": "Selecciona vehículos para comparar",
+    "no_image": "Sin imagen",
+    "current_bid": "Puja Actual",
+    "current_bid_approx": "Puja actual (Aprox.)",
+    "location": "Ubicación",
+    "buy_now": "Precio Compra Directa",
+    "retail_value": "Valor Retail Est."
+  },
+  "loading": {
+    "loading": "Cargando...",
+    "loading_vehicle_info": "Cargando información del vehículo...",
+    "loading_details": "Estamos recuperando los detalles. Esto puede tardar unos segundos.",
+    "loading_favorites": "Cargando favoritos...",
+    "searching_auctions": "Buscando en portales de subastas...",
+    "analyzing_photos": "Analizando fotos y detalles...",
+    "loading_page": "Cargando página {page}...",
+    "estimated_time": "Tiempo estimado: ~5 minutos",
+    "first_search_time": "Primera búsqueda: ~4-5 minutos",
+    "first_search_desc": "Estamos analizando 100 vehículos con fotos y detalles completos desde Copart Auctions.",
+    "fetching_vehicles": "Trayendo vehículos desde Copart...",
+    "may_take_seconds": "Esto puede tardar unos segundos."
+  },
+  "search": {
+    "no_results": "No se encontraron vehículos que coincidan con",
+    "no_vehicles_page": "No hay vehículos en esta página",
+    "try_previous_page": "Intenta navegar a una página anterior",
+    "page_status": "Estado de páginas:"
+  },
+  "share": {
+    "share_vehicle": "Mira este vehículo en subasta",
+    "share_whatsapp": "Compartir en WhatsApp",
+    "send_contacts": "Enviar a tus contactos",
+    "share_email": "Compartir por Email",
+    "open_email_client": "Abrir tu cliente de email"
+  },
+  "payment": {
+    "updating_consultation": "Actualizando tu consulta activa...",
+    "consultation_found": "Consulta activa encontrada. Redirigiendo...",
+    "payment_error": "Error de Pago"
+  },
+  "favorites": {
+    "no_favorites_title": "No tienes favoritos aún",
+    "no_favorites_empty": "Tu garaje está vacío"
+  },
+  "accessibility": {
+    "sr_only_more_pages": "Más páginas",
+    "sr_only_previous_slide": "Diapositiva anterior",
+    "sr_only_next_slide": "Siguiente diapositiva",
+    "sr_only_change_language": "Cambiar idioma",
+    "sr_only_toggle_password": "Alternar visibilidad de contraseña",
+    "sr_only_open_menu": "Abrir menú",
+    "sr_only_image_preview": "Vista previa de la imagen"
+  },
+  "video": {
+    "engine_video": "Video del Motor"
+  }
+}

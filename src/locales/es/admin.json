@@ -1,0 +1,349 @@
+{
+  "admin_page": {
+    "title": "Portal de Administración",
+    "description": "Gestiona el contenido del sitio web y visualiza las analíticas.",
+    "actions": {
+      "manage_vehicles": {
+        "title": "Gestionar Vehículos",
+        "description": "Añadir, editar o eliminar vehículos del catálogo.",
+        "cta": "Ir a Vehículos"
+      },
+      "manage_users": {
+        "title": "Gestionar Usuarios",
+        "description": "Ver la lista de usuarios registrados y gestionar sus roles.",
+        "cta": "Ir a Usuarios"
+      },
+      "manage_leads": {
+        "title": "Leads de Clientes",
+        "description": "Gestionar clientes interesados en vehículos de subastas y de SUM Trading.",
+        "cta": "Ir a Leads"
+      },
+      "view_analytics": {
+        "title": "Analíticas del Sitio",
+        "description": "Visualizar estadísticas de visitas, ventas y búsquedas populares.",
+        "cta": "Ver Analíticas"
+      }
+    }
+  },
+  "add_vehicle_page": {
+    "title": "Añadir Nuevo Vehículo",
+    "description": "Rellena los detalles del nuevo vehículo para añadirlo al catálogo.",
+    "back_button": "Volver a Vehículos",
+    "sections": {
+      "basic_info": "Información Básica",
+      "specifications": "Especificaciones y Precio",
+      "condition_report": "Reporte de Condición",
+      "internal_notes": "Notas Internas (Admin)",
+      "publishing": "Publicación",
+      "media": "Multimedia"
+    },
+    "buttons": {
+      "decode_vin": "Decodificar",
+      "generate_description": "Generar con IA"
+    },
+    "fields": {
+      "lotNumber": "Número de Lote",
+      "highlights": "Aspectos Destacados",
+      "estimatedRetailValue": "Valor de Venta Estimado",
+      "cylinders": "Cilindros",
+      "drive": "Tracción",
+      "fuel": "Combustible",
+      "titleCode": "Código de Título",
+      "images": "Imágenes del Vehículo",
+      "image_cta": "Haz clic para subir una imagen",
+      "image_cta_multi": "Haz clic para añadir imágenes",
+      "image_size_note": "(Tamaño máx: 5MB)",
+      "video": "Video de Inspección",
+      "video_cta": "Haz clic para subir un video",
+      "video_size_note": "(Tamaño máx: 50MB)",
+      "make": "Marca",
+      "model": "Modelo",
+      "year": "Año",
+      "price": "Precio (USD)",
+      "mileage": "Kilometraje",
+      "description": "Descripción",
+      "horsepower": "Potencia (HP)",
+      "engine": "Motor",
+      "color": "Color",
+      "transmission": "Transmisión",
+      "isFeatured": "Vehículo Destacado",
+      "isFeatured_desc": "Los vehículos destacados aparecerán en la página de inicio.",
+      "transmission_types": {
+        "automatic": "Automática",
+        "manual": "Manual"
+      },
+      "type": "Tipo de Vehículo",
+      "uploading_image": "Subiendo imágenes...",
+      "uploading_video": "Subiendo video...",
+      "saving": "Guardando...",
+      "save_button": "Guardar Vehículo",
+      "update_button": "Actualizar Vehículo",
+      "vin": "VIN (Número de Identificación Vehicular)",
+      "vin_description": "El VIN se decodificará automáticamente al terminar de escribir.",
+      "engineStatus": "Estado del Motor",
+      "engineStatus_types": {
+        "runs_and_drives": "Arranca y se conduce",
+        "starts": "Arranca",
+        "does_not_start": "No arranca"
+      },
+      "primaryDamage": "Daño Principal",
+      "secondaryDamage": "Daño Secundario",
+      "primaryDamage_types": {
+        "none": "Ninguno",
+        "front_end": "Parte delantera",
+        "rear_end": "Parte trasera",
+        "side": "Lateral",
+        "all_over": "Por todos lados",
+        "vandalism": "Vandalismo",
+        "water_flood": "Daño por agua/inundación",
+        "hail": "Granizo",
+        "mechanical": "Mecánico",
+        "other": "Otro"
+      },
+      "titleType": "Tipo de Título",
+      "damageDescription": "Descripción de Daños (opcional)",
+      "hasKeys": "¿Tiene Llaves?",
+      "hasKeys_desc": "Indica si el vehículo se entrega con llaves.",
+      "titleType_types": {
+        "clean_title": "Título Limpio",
+        "salvage_title": "Título de Salvamento",
+        "rebuilt_title": "Título Reconstruido",
+        "parts_only": "Solo para Partes",
+        "other": "Otro"
+      },
+      "other_option": "Otro (especificar)",
+      "otherType_label": "Especificar otro tipo de vehículo",
+      "otherTitleType_label": "Especificar otro tipo de título",
+      "otherPrimaryDamage_label": "Especificar otro tipo de daño",
+      "otherSecondaryDamage_label": "Especificar otro daño secundario",
+      "internalNotes_label": "Notas Internas",
+      "internalNotes_desc": "Estas notas no serán visibles para los clientes.",
+      "provenance_country": "País de Origen",
+      "provenance_city": "Ciudad de Origen"
+    },
+    "placeholders": {
+      "lotNumber": "Ej: 12345678",
+      "highlights": "Ej: Run and Drive, Bajo kilometraje",
+      "estimatedRetailValue": "Ej: 65000",
+      "cylinders": "Ej: 8",
+      "drive": "Ej: RWD, AWD",
+      "fuel": "Selecciona un tipo de combustible",
+      "titleCode": "Ej: MS - CERT OF TITLE-SALVAGED",
+      "make": "Ej: Ford",
+      "model": "Ej: Mustang",
+      "year": "Ej: 2023",
+      "price": "Ej: 50000",
+      "mileage": "Ej: 15000",
+      "description": "Describe el vehículo o deja que la IA lo haga por ti...",
+      "horsepower": "Ej: 350",
+      "engine": "Ej: 5.0L V8",
+      "color": "Ej: Rojo",
+      "transmission": "Selecciona una transmisión",
+      "type": "Selecciona un tipo",
+      "titleType": "Selecciona el tipo de título",
+      "primaryDamage": "Selecciona el tipo de daño",
+      "secondaryDamage": "Selecciona el tipo de daño",
+      "vin": "17 caracteres...",
+      "damageDescription": "Ej: Abolladura leve en parachoques delantero",
+      "engineStatus": "Selecciona el estado del motor",
+      "otherType": "Ej: Limusina",
+      "otherTitleType": "Ej: Título de exportación",
+      "otherPrimaryDamage": "Ej: Daño por fuego",
+      "otherSecondaryDamage": "Ej: Daño cosmético",
+      "internalNotes": "Ej: Cliente interesado, verificar antes de la venta...",
+      "provenance_country": "Ej: EEUU",
+      "provenance_city": "Ej: Miami, FL"
+    },
+    "vin_modal": {
+      "title": "Datos de la API de NHTSA",
+      "description": "Esta es la respuesta recibida del servidor para el VIN proporcionado.",
+      "sorted_data_tab": "Datos Ordenados",
+      "raw_data_tab": "Datos Crudos (JSON)",
+      "variable": "Variable",
+      "value": "Valor",
+      "close_button": "Cerrar",
+      "view_data_button": "Ver Datos"
+    }
+  },
+  "edit_vehicle_page": {
+    "title": "Editar Vehículo",
+    "description": "Actualiza los detalles del vehículo.",
+    "not_found_title": "Vehículo no encontrado",
+    "not_found_desc": "No se pudo encontrar el vehículo que estás buscando."
+  },
+  "delete_vehicle_dialog": {
+    "title": "¿Estás seguro?",
+    "description": "Esta acción no se puede deshacer. Esto eliminará permanentemente el vehículo {make} {model} y sus archivos asociados.",
+    "cancel": "Cancelar",
+    "confirm": "Eliminar",
+    "delete_success_title": "Vehículo Eliminado",
+    "delete_success_desc": "El vehículo {make} {model} ha sido eliminado correctamente.",
+    "delete_error_title": "Error al Eliminar Vehículo",
+    "delete_error_desc": "Hubo un problema al eliminar el vehículo. Por favor, inténtalo de nuevo."
+  },
+  "admin_header": {
+    "go_to_home": "Ir al Inicio",
+    "logout": "Cerrar Sesión",
+    "logout_success_title": "Sesión Cerrada",
+    "logout_success_desc": "Has cerrado sesión correctamente.",
+    "logout_error_title": "Error al Cerrar Sesión",
+    "logout_error_desc": "No se pudo cerrar la sesión. Inténtalo de nuevo."
+  },
+  "admin_layout": {
+    "access_denied_title": "Acceso Denegado",
+    "access_denied_desc": "No tienes permisos para acceder a esta sección.",
+    "back_to_home": "Volver al Inicio"
+  },
+  "admin_register_page": {
+    "title": "Crear Nuevo Usuario Administrador",
+    "description": "Este formulario crea un usuario con privilegios de administrador.",
+    "success_title": "Usuario Administrador Creado",
+    "success_desc": "La nueva cuenta de administrador ha sido creada con éxito."
+  },
+  "admin_vehicles_page": {
+    "back_to_panel": "Volver al Panel",
+    "add_vehicle": "Añadir Vehículo",
+    "filter_placeholder": "Filtrar por marca...",
+    "delete_button": "Eliminar",
+    "delete_many_desc": "Esto eliminará permanentemente {count} vehículos y todos sus archivos asociados.",
+    "status_update_success_title": "Estado Actualizado",
+    "status_update_success_desc": "El estado de {make} {model} ha sido actualizado a {status}.",
+    "status_update_error_title": "Error al Actualizar Estado",
+    "status_update_error_desc": "No se pudo actualizar el estado del vehículo. Inténtalo de nuevo.",
+    "firebase_not_available": "Los servicios de Firebase no están disponibles."
+  },
+  "admin_users_page": {
+    "back_to_panel": "Volver al Panel",
+    "filter_placeholder": "Filtrar por correo...",
+    "delete_button": "Eliminar",
+    "fetch_error_unknown": "Ocurrió un error desconocido al obtener los usuarios.",
+    "fetch_error_title": "Error al Obtener Usuarios",
+    "fetch_error_desc": "Hubo un problema al recuperar la lista de usuarios.",
+    "server_error_title": "Error del Servidor",
+    "role_change_error_title": "Error al Cambiar Rol",
+    "role_change_error_self": "No puedes cambiar tu propio rol.",
+    "role_change_success_title": "Rol Actualizado",
+    "role_change_success_desc": "El rol de {email} ha sido cambiado a {role}.",
+    "delete_error_title": "Error al Eliminar Usuarios",
+    "delete_error_self": "No puedes eliminar tu propia cuenta desde este panel.",
+    "delete_error_unknown": "Ocurrió un error desconocido.",
+    "delete_success_title_one": "Usuario Eliminado",
+    "delete_success_title_many": "Usuarios Eliminados",
+    "delete_success_desc": "{count} usuario(s) han sido eliminados correctamente.",
+    "delete_error_desc": "Fallo al eliminar {count} usuario(s): {emails}",
+    "dialog_role": {
+      "title": "Confirmar Cambio de Rol",
+      "description": "¿Estás seguro de que quieres cambiar el rol de {email} a {role}?",
+      "confirm": "Confirmar"
+    },
+    "dialog_delete": {
+      "title": "Confirmar Eliminación",
+      "description": "¿Estás seguro de que quieres eliminar permanentemente a {count} usuario(s)? Esta acción no se puede deshacer.",
+      "confirm": "Confirmar Eliminación"
+    },
+    "dialog_cancel": "Cancelar"
+  },
+  "admin_users_table": {
+    "open_menu": "Abrir menú",
+    "name": "Nombre",
+    "email": "Correo",
+    "role": "Rol",
+    "registration_date": "Fecha de Registro",
+    "change_role": "Cambiar Rol",
+    "delete": "Eliminar",
+    "roles": {
+      "admin": "Admin",
+      "user": "Usuario"
+    }
+  },
+  "admin_data_table": {
+    "selected_rows": "{selected} de {total} fila(s) seleccionadas.",
+    "rows_per_page": "Filas por página",
+    "page_of": "Página {current} de {total}",
+    "first_page": "Ir a la primera página",
+    "previous_page": "Ir a la página anterior",
+    "next_page": "Ir a la página siguiente",
+    "last_page": "Ir a la última página",
+    "clear_filters": "Limpiar",
+    "view": "Vista",
+    "toggle_columns": "Alternar columnas",
+    "no_results": "Sin resultados.",
+    "select_all_aria": "Seleccionar todo",
+    "select_row_aria": "Seleccionar fila"
+  },
+  "admin_analytics_page": {
+    "title": "Analíticas del Sitio",
+    "description": "Visualiza datos en vivo desde Microsoft Clarity.",
+    "back_to_panel": "Volver al Panel de Admin",
+    "view_in_clarity": "Ver en Clarity",
+    "error_title": "Error al Cargar Analíticas",
+    "time_ranges": {
+      "last_24_hours": "Últimas 24 horas",
+      "last_48_hours": "Últimas 48 horas",
+      "last_72_hours": "Últimas 72 horas"
+    },
+    "dimensions": {
+      "os": "Sistema Operativo",
+      "browser": "Navegador",
+      "device": "Dispositivo",
+      "country": "País/Región",
+      "url": "URL",
+      "source": "Fuente"
+    },
+    "metrics": {
+      "Traffic": "Resumen de Tráfico",
+      "DeadClick": "Clics Muertos",
+      "RageClick": "Clics de Furia",
+      "ExcessiveScroll": "Scroll Excesivo",
+      "ScriptError": "Errores de Script"
+    },
+    "headers": {
+      "sessions": "Sesiones",
+      "users": "Usuarios",
+      "pages_per_session": "Páginas/Sesión"
+    }
+  },
+  "admin_leads_page": {
+    "title": "Leads de Clientes",
+    "description": "Gestiona los clientes que han solicitado asesoría para vehículos de subastas y de SUM Trading.",
+    "filter_placeholder": "Filtrar por nombre...",
+    "status_types": {
+      "active": "Activo",
+      "in-progress": "En Progreso",
+      "finished": "Finalizado",
+      "whatsapp-inquiry": "Consulta WhatsApp"
+    },
+    "copart_leads_tab": "Leads de Subastas",
+    "sum_leads_tab": "Leads de SUM Trading",
+    "active_leads_tab": "Leads Activos",
+    "finished_leads_tab": "Leads Finalizados",
+    "whatsapp_message_copart": "Hola {name}, te contacto de parte de SUM Trading sobre tu consulta de asesoría para vehículos de Copart.",
+    "whatsapp_message_sum": "Hola {name}, te contacto de parte de SUM Trading sobre tu interés en nuestros vehículos."
+  },
+  "admin_storage_test": {
+    "title": "Prueba de Autenticación del Servidor",
+    "description": "Esta página ayuda a verificar que las acciones del lado del servidor se autentican correctamente mediante cookies de sesión.",
+    "back_to_panel": "Volver al Panel de Admin",
+    "card_title": "Prueba de Flujo de Autenticación",
+    "step1_desc": "Paso 1: Haz clic en el botón de abajo para obtener el token de autenticación de tu usuario y crear una cookie de sesión segura en el lado del servidor. Esto simula el proceso de inicio de sesión y autoriza a tu navegador a realizar solicitudes seguras.",
+    "step2_desc": "Paso 2: Ahora que estás autenticado en el servidor, deberías poder obtener datos de puntos finales protegidos. Haz clic en el botón de abajo para obtener todos los usuarios.",
+    "verify_claims_button": "Verificar Permisos de Admin y Crear Sesión",
+    "verifying": "Verificando...",
+    "authenticating": "Autenticando...",
+    "token_claims_title": "Permisos del Token (Claims)",
+    "load_users_button": "Obtener Usuarios (Seguro)",
+    "loading_users": "Cargando usuarios...",
+    "users_list_title": "Usuarios Obtenidos",
+    "error_title": "Error",
+    "login_required": "Debes iniciar sesión para realizar esta acción.",
+    "token_verified_title": "Sesión Creada",
+    "token_verified_desc": "Tu navegador ahora está autenticado con el servidor.",
+    "verification_error_title": "Fallo en la Verificación",
+    "verification_error_desc": "No se pudieron verificar los permisos o crear la sesión.",
+    "permission_denied": "No tienes permiso para realizar esta acción.",
+    "fetch_users_error_title": "Error al Obtener Usuarios",
+    "fetch_users_error_unknown": "Ocurrió un error desconocido al obtener los usuarios.",
+    "access_denied_title": "Acceso Denegado",
+    "no_admin_role": "Tu cuenta no tiene el rol de 'admin' en sus permisos."
+  }
+}

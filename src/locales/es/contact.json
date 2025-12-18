@@ -1,0 +1,101 @@
+{
+  "contact_page": {
+    "title": "Ponte en Contacto",
+    "description": "Rellena el formulario o utiliza los datos de contacto. Te responderemos en breve.",
+    "form_title": "Envíanos un Mensaje",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "phone_placeholder": "+52 123 456 7890",
+    "subject": "Asunto",
+    "subject_placeholder": "Selecciona un motivo",
+    "subject_options": {
+      "general": "Consulta general",
+      "auction_advisory": "Asesoría de subasta",
+      "quote": "Solicitar cotización",
+      "post_sale": "Soporte post-venta",
+      "import_process": "Proceso de importación",
+      "other": "Otro"
+    },
+    "message": "Mensaje",
+    "message_placeholder": "Cuéntanos en qué podemos ayudarte...",
+    "chars_remaining": "caracteres restantes",
+    "submit": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado con éxito!",
+    "success_desc": "Te responderemos en menos de 24 horas.",
+    "error": "Hubo un error. Por favor, inténtalo de nuevo.",
+    "whatsapp_button": "Contactar por WhatsApp",
+    "whatsapp_message": "¡Hola! Me gustaría recibir información sobre sus servicios.",
+    "quick_faq_title": "Preguntas Frecuentes",
+    "quick_faq_cta": "Ver todas las preguntas",
+    "quick_faqs": [
+      {
+        "question": "¿Cuánto tarda el proceso de importación?",
+        "answer": "El proceso completo suele tomar entre 4 a 8 semanas, dependiendo del país de destino y los trámites aduaneros."
+      },
+      {
+        "question": "¿Qué incluye la tarifa de asesoría de $20 USD?",
+        "answer": "Incluye acceso a subastas con nuestra licencia de broker, 3 reportes de AutoCheck, acompañamiento personalizado y conservación de tarifa si no ganas la subasta."
+      },
+      {
+        "question": "¿Qué métodos de pago aceptan?",
+        "answer": "Aceptamos tarjeta de crédito/débito vía Stripe, PayPal, criptomonedas, transferencias bancarias y depósitos en banco americano."
+      }
+    ],
+    "process_timeline": {
+      "title": "¿Qué Sucede Después?",
+      "steps": [
+        {
+          "label": "Paso 1",
+          "title": "Recibimos tu Mensaje",
+          "time": "Inmediato"
+        },
+        {
+          "label": "Paso 2",
+          "title": "Te Respondemos",
+          "time": "< 24 horas"
+        },
+        {
+          "label": "Paso 3",
+          "title": "Cotización Detallada",
+          "time": "1-2 días"
+        },
+        {
+          "label": "Paso 4",
+          "title": "¡Iniciamos!",
+          "time": "A tu ritmo"
+        }
+      ]
+    },
+    "chat_widget": {
+      "coming_soon": "Próximamente",
+      "title": "Chat en Vivo",
+      "subtitle": "Respuestas instantáneas"
+    },
+    "smart_suggestions": {
+      "general": "💡 Tip: Cuéntanos sobre tu proyecto o necesidad específica",
+      "auction_advisory": "💡 Tip: Incluye el enlace del vehículo o número de lote que te interesa",
+      "quote": "💡 Tip: Menciona: modelo, año, condición y tu país de destino",
+      "post_sale": "💡 Tip: Proporciona tu número de pedido o VIN del vehículo",
+      "import_process": "💡 Tip: Indica tu país y el tipo de vehículo que deseas importar",
+      "other": "💡 Tip: Sé específico para que podamos ayudarte mejor"
+    },
+    "language_support": {
+      "title": "Atención en tu Idioma",
+      "description": "Nuestro equipo habla:",
+      "languages": [
+        {
+          "code": "es",
+          "name": "Español",
+          "flag": "🇪🇸"
+        },
+        {
+          "code": "en",
+          "name": "English",
+          "flag": "🇺🇸"
+        }
+      ]
+    }
+  }
+}

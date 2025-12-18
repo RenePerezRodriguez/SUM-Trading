@@ -1,0 +1,98 @@
+
+{
+  "hero": {
+    "title_part1": "Invierte en Vehículos Americanos",
+    "title_part2": "con el Respaldo Profesional de",
+    "update_banner": "¡Nuevo: Ahora buscando directo en los portales de subastas de EE. UU.!",
+    "typewriter_phrases": [
+      "Compra, importación, reparación y venta de vehículos de subasta.",
+      "Asesoría personalizada y acceso a subastas de EE.UU. sin licencia.",
+      "Soluciones de logística, cruce fronterizo y trámites.",
+      "Soluciones confiables, legales y rentables para tu inversión."
+    ],
+    "lifestyle_buttons": {},
+    "search_placeholder": "Busca por marca, modelo o palabra clave...",
+    "search_button": "Buscar",
+    "search_disclaimer": "Busca en nuestro inventario y en los principales portales de subastas de EE. UU.",
+    "search_lead_title": "Encuentra tu vehículo ideal en subastas de EE.UU.",
+    "popular_searches": "Búsquedas populares",
+    "instant_results": "Resultados al instante",
+    "cached_results": "Estas búsquedas tienen resultados al instante",
+    "dashboard_title": "Tu acceso directo a las subastas de autos en USA",
+    "dashboard_subtitle": "Compra en Copart, IAA y Manheim sin licencia de dealer. Nosotros nos encargamos de la importación y logística.",
+    "stats_title": "EN VIVO: El Mercado de Subastas Más Grande del Mundo",
+    "stats": {
+      "vehicles": "Inventario Diario Global",
+      "daily_auctions": "Vehículos Vendidos/Día",
+      "locations": "Instalaciones en USA",
+      "updated": "Actualizado",
+      "source_label": "Fuente",
+      "source_text": "Deep Research con Gemini Pro 3",
+      "source_url": "#copart-research-sources"
+    },
+    "right_panel": {
+      "car_of_the_day": "Coche del Día",
+      "my_garage": "Mi Garaje",
+      "no_cars_available": "No hay coches disponibles en este momento.",
+      "power": "Potencia",
+      "mileage": "Kilometraje",
+      "engine": "Motor",
+      "transmission": "Transmisión",
+      "see_another": "Ver Otro",
+      "loading": "Cargando...",
+      "login_prompt_title": "Accede a Tu Garaje",
+      "login_prompt_desc": "Inicia sesión para ver tus vehículos favoritos.",
+      "loading_garage": "Cargando tu garaje...",
+      "empty_garage_title": "Tu Garaje está Vacío",
+      "empty_garage_desc": "Usa el icono del corazón en cualquier vehículo para guardarlo aquí."
+    }
+  },
+  "featuredCars": {
+    "title": "Nuestra Selección Destacada",
+    "description": "Selección de nuestros expertos. Las mejores oportunidades del mercado actual.",
+    "cta": "Ver Catálogo Completo"
+  },
+  "services": {
+    "journey_title": "Tu viaje con nosotros",
+    "title": "¿Cómo funciona?",
+    "main_description": "Desde la búsqueda hasta tu país, simplificamos el proceso de importación de vehículos de subastas en EEUU.",
+    "items": [
+      {
+        "title": "Búsqueda y Selección",
+        "description": "Explora un inventario curado por expertos o dinos qué buscas. Ofrecemos acceso a subastas de EE.UU. aunque no tengas licencia.",
+        "trustPoints": [
+          {
+            "icon": "Search",
+            "text": "Acceso a subastas exclusivas"
+          },
+          {
+            "icon": "FileCheck",
+            "text": "Historial del vehículo verificado"
+          }
+        ],
+        "modal": {
+          "title": "Búsqueda y Selección a Fondo",
+          "description": "<p>Nuestro acceso a las subastas más importantes (Copart, IAAI, Manheim) nos permite encontrar vehículos que no están en el mercado abierto.</p><ul><li>Usamos herramientas de análisis de datos para prever el valor de mercado e identificar las mejores oportunidades.</li><li>Tú nos das tus criterios (modelo, año, presupuesto) y nuestro equipo se encarga de la búsqueda activa, la pre-inspección de historiales y la presentación de las mejores opciones.</li><li>Te ofrecemos acceso a las subastas aunque no tengas una licencia de broker.</li></ul>"
+        }
+      },
+      {
+        "title": "Logística y Gestión Final",
+        "description": "Coordinamos la logística, importación y matriculación para entregarte el coche listo para rodar.",
+        "trustPoints": [
+          {
+            "icon": "Ship",
+            "text": "Envío internacional gestionado"
+          },
+          {
+            "icon": "MapPin",
+            "text": "Seguimiento en tiempo real"
+          }
+        ],
+        "modal": {
+          "title": "Logística y Entrega sin Complicaciones",
+          "description": "<p>Una vez el vehículo está listo, coordinamos el transporte hasta el puerto de salida. Nos encargamos de todo el proceso de aduanas, tanto de exportación como de importación.</p><ul><li>Trabajamos con socios logísticos de confianza y te mantenemos informado con seguimiento en tiempo real.</li><li>Gestionamos el proceso de matriculación para que recibas tu vehículo listo para disfrutar.</li></ul>"
+        }
+      }
+    ]
+  }
+}

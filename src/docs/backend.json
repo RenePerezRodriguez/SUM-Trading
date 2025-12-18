@@ -1,0 +1,231 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores public information about a user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The user's unique ID, same as their Auth UID." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "names": { "type": "string", "description": "The user's first name(s)." },
+        "firstLastName": { "type": "string", "description": "The user's primary last name." },
+        "secondLastName": { "type": "string", "description": "The user's optional second last name." },
+        "registrationDate": { "type": "string", "format": "date-time", "description": "The ISO date when the user registered." },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "The user's role in the system." },
+        "favoriteCarIds": {
+          "type": "array",
+          "description": "A list of car IDs that the user has marked as favorites.",
+          "items": { "type": "string" }
+        },
+        "phoneNumber": {
+            "type": "string",
+            "description": "The user's phone number."
+        },
+        "country": {
+            "type": "string",
+            "description": "The user's country of residence."
+        },
+        "copartConsultation": {
+          "type": "object",
+          "description": "Information about the user's active Copart consultation service.",
+          "properties": {
+            "paymentId": {
+              "type": "string",
+              "description": "The Stripe Payment ID that activated the service."
+            },
+            "activationDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The date the service was activated."
+            },
+            "status": {
+                "type": "string",
+                "enum": ["active", "in-progress", "finished"],
+                "description": "The current status of the consultation service."
+            }
+          }
+        }
+      },
+      "required": ["id", "email", "names", "firstLastName", "registrationDate", "role", "phoneNumber", "country"]
+    },
+    "Car": {
+      "title": "Car",
+      "type": "object",
+      "description": "Represents a car available for purchase on the SUM Trading portal.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the car." },
+        "lotNumber": { "type": "string", "description": "The lot number from the auction." },
+        "vin": { "type": "string", "description": "Vehicle Identification Number (17 characters)." },
+        "make": { "type": "string", "description": "The make of the car (e.g., Ford, Toyota)." },
+        "model": { "type": "string", "description": "The model of the car (e.g., Mustang, Corolla)." },
+        "year": { "type": "number", "description": "The year the car was manufactured." },
+        "price": { "type": "number", "description": "The price of the car." },
+        "estimatedRetailValue": { "type": "number", "description": "Estimated retail value of the car." },
+        "description": { "type": "string", "description": "A detailed description of the car." },
+        "highlights": { "type": "string", "description": "Short highlights about the vehicle, e.g., 'Run and Drive'." },
+        "mileage": { "type": "number", "description": "The mileage of the car." },
+        "mileageUnit": { "type": "string", "enum": ["mi", "km"], "description": "The unit for mileage (miles or kilometers)." },
+        "engine": { "type": "string", "description": "The engine specification." },
+        "cylinders": { "type": "number", "description": "Number of cylinders in the engine." },
+        "horsepower": { "type": "number", "description": "The horsepower of the car." },
+        "transmission": { "type": "string", "enum": ["Automatic", "Manual"], "description": "The transmission type." },
+        "drive": { "type": "string", "description": "The drive type of the car (e.g., FWD, RWD, AWD)." },
+        "fuel": { "type": "string", "enum": ["Gas", "Diesel", "Electric", "Hybrid"], "description": "The fuel type of the car." },
+        "color": { "type": "string", "description": "The color of the car." },
+        "type": { "type": "string", "enum": ["Sport", "SUV", "Sedan", "Classic", "Truck", "Convertible", "Other"], "description": "The type/category of the car." },
+        "otherType": { "type": "string", "description": "Custom car type if 'Other' is selected." },
+        "status": { "type": "string", "enum": ["Available", "Reserved", "Sold"], "description": "The current sales status of the vehicle." },
+        "provenance": {
+          "type": "object",
+          "description": "The country and city where the vehicle is located.",
+          "properties": {
+            "country": { "type": "string", "description": "Country of origin." },
+            "city": { "type": "string", "description": "City of origin." }
+          },
+          "required": ["country", "city"]
+        },
+        "images": {
+            "type": "array",
+            "description": "A list of images for the car, hosted on Firebase Storage. The first image is the main one.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "description": "The unique ID of the image file in Firebase Storage." },
+                    "url": { "type": "string", "format": "uri", "description": "The public URL of the image." },
+                    "hint": { "type": "string", "description": "A hint for AI image search, e.g., 'red sportscar'." }
+                },
+                "required": ["id", "url"]
+            }
+        },
+        "video": {
+            "type": "object",
+            "description": "Video information for the car, hosted on Firebase Storage.",
+            "properties": {
+              "id": { "type": "string", "description": "The unique ID of the video file in Firebase Storage." },
+              "url": { "type": "string", "format": "uri", "description": "The public URL of the video." }
+            }
+        },
+        "isFeatured": { "type": "boolean", "description": "Indicates whether the car is featured on the homepage." },
+        "titleCode": { "type": "string", "description": "The full title code from the auction (e.g., MS - CERT OF TITLE-SALVAGED)." },
+        "titleType": { "type": "string", "enum": ["Clean Title", "Salvage Title", "Rebuilt Title", "Parts Only", "Other"], "description": "The legal status of the vehicle's title." },
+        "otherTitleType": { "type": "string", "description": "Custom title type if 'Other' is selected." },
+        "damageDescription": { "type": "string", "description": "A specific description of any damage to the vehicle." },
+        "primaryDamage": { "type": "string", "enum": ["None", "Front End", "Rear End", "Side", "All Over", "Vandalism", "Water/Flood", "Hail", "Mechanical", "Other"], "description": "The primary type of damage to the vehicle." },
+        "otherPrimaryDamage": { "type": "string", "description": "Custom primary damage type if 'Other' is selected." },
+        "secondaryDamage": { "type": "string", "enum": ["None", "Front End", "Rear End", "Side", "All Over", "Vandalism", "Water/Flood", "Hail", "Mechanical", "Other"], "description": "The secondary type of damage to the vehicle." },
+        "otherSecondaryDamage": { "type": "string", "description": "Custom secondary damage type if 'Other' is selected." },
+        "engineStatus": { "type": "string", "enum": ["Runs and Drives", "Starts", "Does Not Start"], "description": "The operational status of the engine." },
+        "hasKeys": { "type": "boolean", "description": "Indicates if the vehicle comes with keys." },
+        "internalNotes": { "type": "string", "description": "Internal notes for admin use only, not visible to the public." }
+      },
+      "required": ["id", "vin", "make", "model", "year", "price", "description", "mileage", "mileageUnit", "engine", "horsepower", "transmission", "color", "type", "images", "isFeatured", "titleType", "hasKeys", "engineStatus", "primaryDamage", "status", "provenance"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "type": "object",
+      "description": "Represents a customer testimonial displayed on the website.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the testimonial." },
+        "author": { "type": "string", "description": "The name of the testimonial's author." },
+        "content": { "type": "string", "description": "The text content of the testimonial." },
+        "rating": { "type": "number", "description": "The rating given by the customer (e.g., 1-5 stars)." },
+        "date": { "type": "string", "format": "date-time", "description": "The date when the testimonial was submitted." }
+      },
+      "required": ["id", "author", "content", "rating", "date"]
+    },
+    "ContactFormEntry": {
+      "title": "ContactFormEntry",
+      "type": "object",
+      "description": "Represents a submission from the contact form.",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the contact form entry." },
+        "name": { "type": "string", "description": "The name of the person submitting the form." },
+        "email": { "type": "string", "format": "email", "description": "The email address of the person submitting the form." },
+        "message": { "type": "string", "description": "The message content from the form submission." },
+        "submissionDate": { "type": "string", "format": "date-time", "description": "The date and time when the form was submitted." }
+      },
+      "required": ["id", "name", "email", "message", "submissionDate"]
+    },
+    "Purchase": {
+      "title": "Purchase Record",
+      "description": "Represents a completed purchase by a user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the purchase record." },
+        "userId": { "type": "string", "description": "The ID of the user who made the purchase." },
+        "purchaseDate": { "type": "string", "format": "date-time", "description": "The ISO date when the purchase was made." },
+        "total": { "type": "number", "description": "The total amount paid for the purchase." },
+        "paymentId": { "type": "string", "description": "The ID from the payment processor (e.g., Stripe)." },
+        "purchaseType": {
+          "type": "string",
+          "enum": ["Car Purchase", "Copart Consultation"],
+          "description": "The type of purchase made."
+        },
+        "items": {
+          "type": "array",
+          "description": "A list of items included in the purchase, which could be cars or services.",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": ["id", "userId", "purchaseDate", "total", "paymentId", "purchaseType", "items"]
+    },
+    "CopartCacheEntry": {
+      "title": "Copart Cache Entry",
+      "description": "Stores cached search results from the Copart auction portal.",
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "number",
+          "description": "The Unix timestamp (in milliseconds) when the cache entry was created."
+        },
+        "results": {
+          "type": "array",
+          "description": "The array of normalized vehicle data from the search.",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": ["timestamp", "results"]
+    }
+  },
+  "auth": {
+    "providers": ["password", "google.com", "facebook.com"]
+  },
+  "firestore": {
+    "collections": [
+      {
+        "path": "/users/{userId}",
+        "schema": { "$ref": "#/entities/UserProfile" },
+        "description": "Stores public profiles for all registered users."
+      },
+      {
+        "path": "/users/{userId}/purchases/{purchaseId}",
+        "schema": { "$ref": "#/entities/Purchase" },
+        "description": "Stores the purchase history for each user."
+      },
+      {
+        "path": "/cars/{carId}",
+        "schema": { "$ref": "#/entities/Car" },
+        "description": "Stores car details for the SUM Trading portal."
+      },
+      {
+        "path": "/testimonials/{testimonialId}",
+        "schema": { "$ref": "#/entities/Testimonial" },
+        "description": "Stores customer testimonials for display on the website."
+      },
+      {
+        "path": "/contact_form_entries/{contactFormEntryId}",
+        "schema": { "$ref": "#/entities/ContactFormEntry" },
+        "description": "Stores contact form submissions from the website."
+      },
+      {
+        "path": "/copart_cache/{queryId}",
+        "schema": { "$ref": "#/entities/CopartCacheEntry" },
+        "description": "Stores cached search results from Copart to reduce API calls."
+      }
+    ]
+  }
+}

@@ -1,0 +1,902 @@
+{
+  "services_page": {
+    "title": "Nuestros Servicios",
+    "description": "Ofrecemos soluciones completas para la importación y mantenimiento de vehículos desde Estados Unidos.",
+    "repair_title": "Taller Mecánico",
+    "repair_desc": "Reparación y mantenimiento de vehículos en nuestro taller de Brownsville, Texas. Preparamos tu vehículo antes de la importación.",
+    "towing_title": "Servicio de Arrastre",
+    "towing_desc": "Coordinamos el transporte terrestre de vehículos desde subastas en todo Estados Unidos hasta nuestro patio.",
+    "auction_title": "Asesoría de Subastas Copart",
+    "auction_desc": "Te representamos en subastas de Copart con nuestra licencia de broker. Incluye verificación de historial y reportes AutoCheck.",
+    "sum_cars_title": "Compra de Autos SUM",
+    "sum_cars_desc": "Adquiere vehículos del inventario de SUM Trading. Autos seleccionados, reparados y listos para importar con garantía.",
+    "import_title": "Importación Completa",
+    "import_desc": "Gestionamos todos los trámites aduaneros, pago de aranceles y documentación necesaria para importar legalmente tu vehículo.",
+    "logistics_title": "Logística Internacional",
+    "logistics_desc": "Transporte marítimo a Latinoamérica con seguimiento en tiempo real y entrega puerta a puerta.",
+    "consultation_title": "Consultoría Personalizada",
+    "consultation_desc": "Asesoramiento experto en selección de vehículos, análisis de mercado y optimización de costos de importación."
+  },
+  "towing_rates": {
+    "title": "Tarifas de Arrastre por Estado 2025",
+    "description": "Consulta nuestras tarifas de transporte terrestre desde diferentes ubicaciones en Estados Unidos (Miami, Houston, Delaware y Brownsville)",
+    "hover_prompt": "Pasa el cursor sobre un estado para ver las tarifas",
+    "disclaimer": "* Las tarifas pueden variar según condiciones climáticas, temporada alta, cierres de carreteras o aumento de combustible.",
+    "calculator": {
+      "title": "Calculadora Rápida de Costos",
+      "description": "Selecciona el origen y tipo de vehículo para calcular el costo total",
+      "state_label": "Estado",
+      "state_placeholder": "Seleccionar estado",
+      "city_label": "Ciudad",
+      "city_placeholder": "Seleccionar ciudad",
+      "vehicle_label": "Tipo de Vehículo",
+      "vehicle_sedan": "Sedan (Base)",
+      "vehicle_sublete": "Sublete (+$100)",
+      "vehicle_pickup": "Pickup/SUV 3 filas (+$100)",
+      "total_label": "Costo Total Estimado",
+      "base_note": "Base: ${base} + Adicional: $100",
+      "whatsapp_button": "WhatsApp",
+      "call_button": "Llamar"
+    },
+    "table": {
+      "search_placeholder": "Buscar estado o ciudad...",
+      "state_filter_label": "Estado",
+      "state_filter_all": "Todos los estados",
+      "price_filter_label": "Rango de Precio",
+      "filter_all": "Todos los precios",
+      "filter_low": "$200 - $400",
+      "filter_medium": "$400 - $700",
+      "filter_high": "$700 - $900",
+      "filter_very_high": "$900+",
+      "state_column": "Estado",
+      "city_column": "Ciudad",
+      "destination_column": "Destino",
+      "price_column": "Precio",
+      "no_results": "No se encontraron resultados",
+      "showing": "Mostrando {start} - {end} de {total} resultados",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "transport_info": "Transporte desde Miami, Houston, Delaware y Brownsville",
+      "how_to_use_title": "Cómo usar la tabla:",
+      "how_to_search": "Busca por nombre de estado o ciudad en tiempo real",
+      "how_to_filter": "Filtra por estado o rango de precio",
+      "how_to_sort": "Ordena haciendo click en los encabezados de columna"
+    },
+    "view": {
+      "map": "Mapa",
+      "table": "Tabla"
+    },
+    "cta": {
+      "title": "¿Necesitas ayuda personalizada?",
+      "description": "Nuestros asesores están listos para cotizar tu envío específico",
+      "policies_button": "Políticas"
+    },
+    "map": {
+      "click_prompt": "Haz clic en un estado para ver las tarifas",
+      "average": "Promedio"
+    },
+    "note": "Pickups + SUV (3 Filas): +$100 USD adicional",
+    "vehicle_types": {
+      "sedan": "Sedan",
+      "sublete": "Sublete",
+      "pickup": "Pickup + USV 3 Filas"
+    },
+    "vehicle_rates": {
+      "sedan": "100.00 USD",
+      "sublete": "100.00 USD Adicional",
+      "pickup": "100.00 USD Adicional"
+    },
+    "states": {
+      "alabama": {
+        "name": "Alabama",
+        "cities": [
+          {
+            "name": "BIRMINGHAM",
+            "price": 800,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "DOTHAN",
+            "price": 800,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "HUNTSVILLE",
+            "price": 820,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "MOBILE",
+            "price": 750,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "MOBILE SOUTH",
+            "price": 800,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "MONTGOMERY",
+            "price": 800,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "TANNER",
+            "price": 820,
+            "origin": "Brownsville"
+          }
+        ]
+      },
+      "arizona": {
+        "name": "Arizona",
+        "cities": [
+          {
+            "name": "PHOENIX",
+            "price": 850,
+            "origin": "Houston"
+          },
+          {
+            "name": "Phoenix - PHOENIX",
+            "price": 1145,
+            "origin": "Miami"
+          },
+          {
+            "name": "TUCSON",
+            "price": 925,
+            "origin": "Houston"
+          },
+          {
+            "name": "Tucson - TUCSON",
+            "price": 1145,
+            "origin": "Miami"
+          }
+        ]
+      },
+      "arkansas": {
+        "name": "Arkansas",
+        "cities": [
+          {
+            "name": "Fayetteville - LINCOLN",
+            "price": 575,
+            "origin": "Houston"
+          },
+          {
+            "name": "Fayetteville - PRAIRIE GROVE",
+            "price": 575,
+            "origin": "Houston"
+          },
+          {
+            "name": "Little Rock - CONWAY",
+            "price": 500,
+            "origin": "Houston"
+          },
+          {
+            "name": "Little Rock - SCOTT",
+            "price": 500,
+            "origin": "Houston"
+          }
+        ]
+      },
+      "connecticut": {
+        "name": "Connecticut",
+        "cities": [
+          {
+            "name": "Hartford  Sublot North 625 NEW BRITAIN",
+            "price": 475,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Hartford - EAST WINDSOR",
+            "price": 475,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Hartford - NEW BRITAIN",
+            "price": 475,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Hartford - Sublot South 525 NEW BRITAIN",
+            "price": 475,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Hartford Springfield - EAST GRAMBY",
+            "price": 500,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Hartford-South - MIDDLETOWN",
+            "price": 475,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "iowa": {
+        "name": "IOWA",
+        "cities": [
+          {
+            "name": "Davenport - DAVENPORT",
+            "price": 1185,
+            "origin": "Miami"
+          },
+          {
+            "name": "Davenport - ELDRIDGE",
+            "price": 1185,
+            "origin": "Miami"
+          },
+          {
+            "name": "Des Moines - DE SOTO",
+            "price": 1175,
+            "origin": "Miami"
+          }
+        ]
+      },
+      "illinois": {
+        "name": "Illinois",
+        "cities": [
+          {
+            "name": "Chicago - MATTESON",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago North - EAST DUNDEE",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago North - ELGIN",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago South  CHICAGO HEIGHTS",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago South Sublot - CHICAGO Heights",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago West - AURORA",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago West Sublot MONTGOMERY",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Chicago-South - MARKHAM",
+            "price": 810,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Lincoln - LINCOLN",
+            "price": 1150,
+            "origin": "Miami"
+          },
+          {
+            "name": "Peoria - PEKIN",
+            "price": 1150,
+            "origin": "Miami"
+          },
+          {
+            "name": "Southern Illinois - ALORTON",
+            "price": 875,
+            "origin": "Miami"
+          },
+          {
+            "name": "Southern Illinois - CAHOKIA\nHEIGHTS",
+            "price": 875,
+            "origin": "Miami"
+          },
+          {
+            "name": "St. Louis - GRANITE CITY",
+            "price": 875,
+            "origin": "Miami"
+          },
+          {
+            "name": "St. Louis, Il - CASEYVILLE",
+            "price": 875,
+            "origin": "Miami"
+          },
+          {
+            "name": "Wheeling - WHEELING",
+            "price": 830,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "minnesota": {
+        "name": "Minnesota",
+        "cities": [
+          {
+            "name": "Elk River - ELK RIVER",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis - BLAINE",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis - MAPLE GROVE",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis - SAINT PAUL",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis North - HAM LAKE",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis South - RANDOLPH",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Minneapolis Sublot - FRIDLEY",
+            "price": 1150,
+            "origin": "Delaware"
+          },
+          {
+            "name": "St. Cloud - AVON",
+            "price": 1150,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "new_hampshire": {
+        "name": "New Hampshire",
+        "cities": [
+          {
+            "name": "Candia - CANDIA",
+            "price": 770,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Manchester - SALEM",
+            "price": 670,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "new_jersey": {
+        "name": "New Jersey",
+        "cities": [
+          {
+            "name": "Avenel New Jersey - AVENEL",
+            "price": 370,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Central New Jersey -MORGANVILLE",
+            "price": 370,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Glassboro East - GLASSBORO",
+            "price": 335,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Glassboro West - GLASSBORO",
+            "price": 335,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Manalapan - ENGLISHTOWN",
+            "price": 380,
+            "origin": "Delaware"
+          },
+          {
+            "name": "NY Metro Skyline - FAIRFIELD",
+            "price": 600,
+            "origin": "Delaware"
+          },
+          {
+            "name": "New Jersey - BORDENTOWN",
+            "price": 460,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Port Murray - PORT MURRAY",
+            "price": 475,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Sayreville - SAYREVILLE",
+            "price": 450,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Somerville - HILLSBOROUGH",
+            "price": 365,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Southern New Jersey TURNERSVILLE",
+            "price": 330,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Trenton - Jobstown Sublot JOBSTOWN",
+            "price": 425,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Trenton - WINDSOR",
+            "price": 360,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "north_carolina": {
+        "name": "North Carolina",
+        "cities": [
+          {
+            "name": "Asheville - FLETCHER",
+            "price": 700,
+            "origin": "Miami"
+          },
+          {
+            "name": "Charlotte - CHARLOTTE",
+            "price": 600,
+            "origin": "Miami"
+          },
+          {
+            "name": "Charlotte - CONCORD",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "China Grove - CHINA GROVE",
+            "price": 600,
+            "origin": "Miami"
+          },
+          {
+            "name": "Concord - CONCORD",
+            "price": 600,
+            "origin": "Miami"
+          },
+          {
+            "name": "Gastonia - GASTONIA, NC",
+            "price": 635,
+            "origin": "Miami"
+          },
+          {
+            "name": "Greensboro - GRAHAM",
+            "price": 600,
+            "origin": "Miami"
+          },
+          {
+            "name": "High Point - HIGH POINT",
+            "price": 675,
+            "origin": "Miami"
+          },
+          {
+            "name": "KENLY",
+            "price": 650,
+            "origin": "Miami"
+          },
+          {
+            "name": "Knightdale - KNIGHTDALE",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Lumberton - LUMBERTON",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Mebane - MEBANE",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Mebane Sublot - MEBANE",
+            "price": 635,
+            "origin": "Miami"
+          },
+          {
+            "name": "Mocksville - MOCKSVILLE",
+            "price": 635,
+            "origin": "Miami"
+          },
+          {
+            "name": "Off-Site Location - SANFORD",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Raleigh - CLAYTON",
+            "price": 585,
+            "origin": "Miami"
+          },
+          {
+            "name": "Raleigh - DUNN",
+            "price": 585,
+            "origin": "Miami"
+          },
+          {
+            "name": "Raleigh North - KNIGHDALE",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Statesville - STATESVILLE",
+            "price": 675,
+            "origin": "Miami"
+          },
+          {
+            "name": "Wilmington - CASTLE HAYNE",
+            "price": 710,
+            "origin": "Miami"
+          },
+          {
+            "name": "Wilmington - ST. PETERSBURG",
+            "price": 700,
+            "origin": "Miami"
+          }
+        ]
+      },
+      "rhode_island": {
+        "name": "Rhode Island",
+        "cities": [
+          {
+            "name": "Exeter - EXETER",
+            "price": 595,
+            "origin": "Delaware"
+          },
+          {
+            "name": "Providence - RIVERSIDE",
+            "price": 550,
+            "origin": "Delaware"
+          }
+        ]
+      },
+      "south_carolina": {
+        "name": "South Carolina",
+        "cities": [
+          {
+            "name": "Charleston - RAVENEL",
+            "price": 550,
+            "origin": "Miami"
+          },
+          {
+            "name": "Columbia - GASTON",
+            "price": 535,
+            "origin": "Miami"
+          },
+          {
+            "name": "Darlington - DARLINGTON",
+            "price": 625,
+            "origin": "Miami"
+          },
+          {
+            "name": "Greenville - SIMPSONVILLE",
+            "price": 585,
+            "origin": "Miami"
+          },
+          {
+            "name": "Lexington - LEXINGTON, SC",
+            "price": 525,
+            "origin": "Miami"
+          },
+          {
+            "name": "North Charleston - HARLEYVILLE",
+            "price": 575,
+            "origin": "Miami"
+          },
+          {
+            "name": "Spartanburg - SPARTANBURG",
+            "price": 575,
+            "origin": "Miami"
+          }
+        ]
+      },
+      "texas": {
+        "name": "Texas",
+        "cities": [
+          {
+            "name": "ABANGARES",
+            "price": 525,
+            "origin": "Houston"
+          },
+          {
+            "name": "ABELINE",
+            "price": 800,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "AMARILLO",
+            "price": 900,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "ANDREW",
+            "price": 950,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "AUSTIN",
+            "price": 450,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "AUSTIN NORT",
+            "price": 520,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "AUSTIN NORTH",
+            "price": 800,
+            "origin": "Miami"
+          },
+          {
+            "name": "Abilene - HAWLEY",
+            "price": 525,
+            "origin": "Houston"
+          },
+          {
+            "name": "Amarillo - AMARILLO",
+            "price": 620,
+            "origin": "Houston"
+          },
+          {
+            "name": "Andrews - ANDREWS",
+            "price": 625,
+            "origin": "Houston"
+          },
+          {
+            "name": "Austin - DALE",
+            "price": 425,
+            "origin": "Houston"
+          },
+          {
+            "name": "Austin - NEW BRAUNFELS",
+            "price": 425,
+            "origin": "Houston"
+          },
+          {
+            "name": "CORPUS CHRISTI",
+            "price": 350,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Corpus Christi",
+            "price": 350,
+            "origin": "Houston"
+          },
+          {
+            "name": "DALLAS FORT WORTH",
+            "price": 550,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Dallas - GRAND PRAIRIE",
+            "price": 450,
+            "origin": "Houston"
+          },
+          {
+            "name": "Dallas - WILMER",
+            "price": 450,
+            "origin": "Houston"
+          },
+          {
+            "name": "Dallas/Ft Worth - GRAND PRAIRIE",
+            "price": 450,
+            "origin": "Houston"
+          },
+          {
+            "name": "El Paso",
+            "price": 1000,
+            "origin": "Miami"
+          },
+          {
+            "name": "El Paso - ANTHONY",
+            "price": 600,
+            "origin": "Houston"
+          },
+          {
+            "name": "El Paso - EL PASO",
+            "price": 600,
+            "origin": "Houston"
+          },
+          {
+            "name": "Fort Worth North - JUSTIN",
+            "price": 470,
+            "origin": "Houston"
+          },
+          {
+            "name": "Ft. Worth - HASLET",
+            "price": 430,
+            "origin": "Houston"
+          },
+          {
+            "name": "HOUSTON",
+            "price": 450,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Houston",
+            "price": 250,
+            "origin": "Houston"
+          },
+          {
+            "name": "Houston East",
+            "price": 250,
+            "origin": "Houston"
+          },
+          {
+            "name": "Houston South - ROSHARON",
+            "price": 260,
+            "origin": "Houston"
+          },
+          {
+            "name": "Houston-North - HOUSTON",
+            "price": 250,
+            "origin": "Houston"
+          },
+          {
+            "name": "LONGVIEW",
+            "price": 550,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "LUBBOCK",
+            "price": 900,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "LUFKIN",
+            "price": 520,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Longview - LONGVIEW",
+            "price": 425,
+            "origin": "Houston"
+          },
+          {
+            "name": "Lubbock - LUBBOCK",
+            "price": 625,
+            "origin": "Houston"
+          },
+          {
+            "name": "Lufkin - LUFKIN",
+            "price": 425,
+            "origin": "Houston"
+          },
+          {
+            "name": "MCALLEN",
+            "price": 250,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "MERCEDES",
+            "price": 270,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "McAllen - DONNA",
+            "price": 450,
+            "origin": "Houston"
+          },
+          {
+            "name": "McAllen - MERCEDES",
+            "price": 450,
+            "origin": "Houston"
+          },
+          {
+            "name": "ODESSA",
+            "price": 900,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Permian Basin - ODESSA",
+            "price": 625,
+            "origin": "Houston"
+          },
+          {
+            "name": "SAN ANTONIO",
+            "price": 450,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "San Antonio",
+            "price": 350,
+            "origin": "Houston"
+          },
+          {
+            "name": "San Antonio-South - SAN ANTONIO",
+            "price": 350,
+            "origin": "Houston"
+          },
+          {
+            "name": "TAYLOR",
+            "price": 550,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "TYLER",
+            "price": 580,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "WACO",
+            "price": 520,
+            "origin": "Brownsville, Miami"
+          },
+          {
+            "name": "Waco - TEMPLE",
+            "price": 400,
+            "origin": "Houston"
+          }
+        ]
+      },
+      "virginia": {
+        "name": "Virginia",
+        "cities": [
+          {
+            "name": "DANVILLE",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "FREDERICKSBURG",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "HAMPTON",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "HARRISONBURG",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "PULASKI",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "RICHMOND",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "RICHMOND E",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "SUFFOLK",
+            "price": 1250,
+            "origin": "Brownsville"
+          },
+          {
+            "name": "TIDEWATER",
+            "price": 1250,
+            "origin": "Brownsville"
+          }
+        ]
+      }
+    }
+  }
+}

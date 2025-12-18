@@ -1,0 +1,27 @@
+
+[
+  {
+    "method": [
+      "GET",
+      "PUT",
+      "POST",
+      "DELETE"
+    ],
+    "origin": [
+      "https://*.cloudworkstations.dev",
+      "https://cloudworkstations.dev",
+      "https://9000-firebase-studio-1758954558315.cluster-dwvm25yncracsxpd26rcd5ja3m.cloudworkstations.dev",
+      "https://studio--studio-6719476275-3891a.us-central1.hosted.app",
+      "http://localhost:3000",
+      "http://localhost:9002",
+      "https://sumtrading.us"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Content-Disposition",
+      "Access-Control-Allow-Origin",
+      "Firebase-Storage-Resumable-Upload-Protocol"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]
