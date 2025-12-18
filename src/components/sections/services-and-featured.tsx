@@ -11,6 +11,7 @@ import { collection, query, where, limit } from 'firebase/firestore';
 import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import Carousel3D from '@/components/ui/carousel-3d';
 import {
   Accordion,
   AccordionContent,
@@ -80,85 +81,15 @@ export default function ServicesAndFeatured({ dict, lang }: { dict: any; lang: s
             </div>
 
             {isLoading ? (
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <Skeleton key={i} className="h-32 w-full rounded-xl bg-muted" />
-                ))}
-              </div>
-            ) : featuredCars.length > 0 ? (
-              <div className="space-y-4">
-                {featuredCars.map((car, index) => (
-                  <motion.div
-                    key={car.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  >
-                    <Link href={`/${lang}/cars/${car.id}`}>
-                      {/* Idea 2: Glassmorphism - Adapted for Light Mode */}
-                      <div className="group bg-white border border-border/60 shadow-sm rounded-xl p-4 hover:shadow-xl hover:border-primary/30 transition-all duration-300 cursor-pointer">
-                        <div className="flex gap-4">
-                          {/* Image */}
-                          <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
-                            {car.images && car.images.length > 0 ? (
-                              <Image
-                                src={car.images[0].url}
-                                alt={`${car.make} ${car.model}`}
-                                fill
-                                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center">
-                                <Search className="w-8 h-8 text-muted-foreground" />
-                              </div>
-                            )}
-                            {car.status === 'Sold' && (
-                              <Badge className="absolute top-2 right-2 bg-destructive">
-                                Vendido
-                              </Badge>
-                            )}
-                          </div>
-
-                          {/* Info */}
-                          <div className="flex-1 min-w-0 flex flex-col justify-between">
-                            <div>
-                              <h3 className="font-bold text-base sm:text-lg mb-1 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                                {car.year} {car.make} {car.model}
-                              </h3>
-                              <div className="text-sm text-muted-foreground space-y-1 mb-2">
-                                <p>{car.mileage?.toLocaleString() || '0'} km</p>
-                              </div>
-                            </div>
-
-                            {/* Idea 18: Trust Badges */}
-                            <div className="flex items-center gap-3 mb-2">
-                              <div className="flex items-center gap-1 text-[10px] text-green-600 bg-green-100 px-1.5 py-0.5 rounded border border-green-200">
-                                <ShieldCheck className="w-3 h-3" />
-                                <span>Verificado</span>
-                              </div>
-                              <div className="flex items-center gap-1 text-[10px] text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded border border-blue-200">
-                                <FileCheck className="w-3 h-3" />
-                                <span>Título Limpio</span>
-                              </div>
-                            </div>
-
-                            <div className="flex items-center justify-between mt-auto">
-                              <span className="text-xl sm:text-2xl font-bold text-primary">
-                                ${car.price?.toLocaleString() || '0'}
-                              </span>
-                              <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
+              <div className="h-[380px] flex items-center justify-center">
+                <div className="space-y-4 w-full max-w-[400px]">
+                  <Skeleton className="h-[200px] w-full rounded-xl bg-muted" />
+                  <Skeleton className="h-6 w-3/4 rounded bg-muted" />
+                  <Skeleton className="h-4 w-1/2 rounded bg-muted" />
+                </div>
               </div>
             ) : (
-              <div className="text-center py-12 text-muted-foreground">
-                <p>No hay vehículos destacados disponibles.</p>
-              </div>
+              <Carousel3D cars={featuredCars} lang={lang} dict={dict} />
             )}
 
             <motion.div

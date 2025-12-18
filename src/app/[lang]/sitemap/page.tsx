@@ -11,22 +11,22 @@ type SitemapLink = {
 };
 
 const SitemapColumn = ({ title, links }: { title: string; links: SitemapLink[] }) => (
-    <Card>
-        <CardHeader>
-            <CardTitle>{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-            <ul className="space-y-3">
-            {links.map((page) => (
-                <li key={page.href}>
-                <Link href={page.href} className="text-primary hover:underline">
-                    {page.label}
-                </Link>
-                </li>
-            ))}
-            </ul>
-        </CardContent>
-    </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+    </CardHeader>
+    <CardContent>
+      <ul className="space-y-3">
+        {links.map((page) => (
+          <li key={page.href}>
+            <Link href={page.href} className="text-primary hover:underline">
+              {page.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </CardContent>
+  </Card>
 );
 
 
@@ -54,12 +54,27 @@ export default async function SitemapPage({ params }: { params: Promise<{ lang: 
 
   return (
     <div className="container py-8 md:py-12 pt-28 md:pt-44">
-        <PageHeader title={content.title} description={content.description} />
+      <PageHeader title={content.title} description={content.description} />
 
-        <div className="max-w-md mx-auto grid grid-cols-1 gap-8">
-            <SitemapColumn title={content.main_pages} links={mainPages} />
-            <SitemapColumn title={content.legal_pages} links={legalPages} />
-        </div>
+      <div className="max-w-md mx-auto grid grid-cols-1 gap-8">
+        <SitemapColumn title={content.main_pages} links={mainPages} />
+        <SitemapColumn title={content.legal_pages} links={legalPages} />
+      </div>
+
+      {/* XML Sitemap Link for SEO */}
+      <div className="text-center mt-8 text-sm text-muted-foreground">
+        <p>
+          {lang === 'es' ? 'Sitemap XML para buscadores:' : 'XML Sitemap for search engines:'}{' '}
+          <a
+            href="/sitemap.xml"
+            className="text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            /sitemap.xml
+          </a>
+        </p>
+      </div>
     </div>
   );
 }

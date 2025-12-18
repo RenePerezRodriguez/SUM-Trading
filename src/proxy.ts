@@ -7,12 +7,12 @@ import Negotiator from 'negotiator'
 function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {}
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
-  
+
   // @ts-ignore locales are readonly
   const locales: string[] = i18n.locales
-  
+
   let languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales)
-  
+
   return matchLocale(languages, locales, i18n.defaultLocale)
 }
 
@@ -23,6 +23,8 @@ export function proxy(request: NextRequest) {
     [
       '/manifest.json',
       '/favicon.ico',
+      '/sitemap.xml',
+      '/robots.txt',
       // your other files in public
     ].includes(pathname)
   )
@@ -44,5 +46,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico|favicon|docs).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico|favicon|docs|sitemap.xml|robots.txt|.*\\..*).*)'
+  ],
 }

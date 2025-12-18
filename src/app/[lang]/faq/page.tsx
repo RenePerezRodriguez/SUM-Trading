@@ -13,24 +13,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const dict = await getDictionary(lang);
     const content = dict.faq_page;
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-    
+
     return {
-      title: content.meta_title,
-      description: content.meta_description,
-      keywords: ['preguntas frecuentes', 'FAQ importación autos', 'costos importación', 'proceso compra subasta', 'documentación vehículos', 'tiempos entrega', 'logística importación'],
-      alternates: {
-        canonical: `${baseUrl}/${lang}/faq`,
-        languages: {
-          'en': `${baseUrl}/en/faq`,
-          'es': `${baseUrl}/es/faq`,
-        },
-      },
-      openGraph: {
         title: content.meta_title,
         description: content.meta_description,
-        url: `${baseUrl}/${lang}/faq`,
-        type: 'website',
-      },
+        keywords: lang === 'es'
+            ? ['preguntas frecuentes importación', 'FAQ autos subasta', 'costos importar carro USA', 'documentos importación vehículos', 'tiempos entrega autos', 'dudas compra Copart']
+            : ['car import FAQ', 'auction car questions', 'import costs USA', 'vehicle documentation', 'delivery times', 'Copart buying FAQ'],
+        alternates: {
+            canonical: `${baseUrl}/${lang}/faq`,
+            languages: {
+                'en': `${baseUrl}/en/faq`,
+                'es': `${baseUrl}/es/faq`,
+            },
+        },
+        openGraph: {
+            title: content.meta_title,
+            description: content.meta_description,
+            url: `${baseUrl}/${lang}/faq`,
+            type: 'website',
+        },
     };
 }
 
@@ -57,7 +59,7 @@ export default async function FaqPage({ params }: Props) {
             }
         ]
     };
-    
+
     return (
         <>
             <script

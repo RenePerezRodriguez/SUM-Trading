@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2025-12-18
+
+### 🚚 Towing Rates Management System
+
+#### Added
+- ✨ **Admin CRUD Manager** - Full interface to create/edit/delete destinations, states, cities and prices directly (`/admin/towing-rates`).
+- 📊 **Smart Excel Parser** - Auto-detection of headers and column groups for bulk towing rates upload.
+- 🕒 **Version History** - Automatic archiving of rate versions with instant rollback capability.
+- ☁️ **Firestore Integration** - Migrated from static JSON to dynamic Firestore collection `towing-rates`.
+- ⚡ **Public API** - New `/api/towing-rates` endpoint for real-time calculator updates.
+
+#### Changed
+- 🗑️ **Data Architecture** - Removed dependency on `towing-rates.json` file.
+- 🎨 **Admin UI** - Enhanced "Towing Rates" dashboard with Add Destination/State/City dialogs and delete confirmations.
+- 🔧 **AppHosting** - Configured `CLARITY_API_TOKEN` secret for analytics.
+
+---
+
 ## [1.2.1] - 2025-11-30
 
 ### 🐛 Critical Bug Fixes & Stabilization

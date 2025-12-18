@@ -19,7 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: dict.services_page.title,
         description: dict.services_page.description,
-        keywords: ['servicios importación', 'arrastre vehículos', 'asesoría Copart', 'compra autos USA', 'logística importación', 'tarifas arrastre'],
+        keywords: lang === 'es'
+            ? ['servicios importación autos', 'arrastre vehículos USA', 'asesoría Copart México', 'tarifas transporte autos', 'logística importación carros', 'cotización envío vehículos']
+            : ['car import services', 'vehicle towing USA', 'Copart consulting', 'car shipping rates', 'import logistics', 'salvage car transport'],
         alternates: {
             canonical: `${baseUrl}/${lang}/services`,
             languages: {

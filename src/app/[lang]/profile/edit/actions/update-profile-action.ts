@@ -6,8 +6,8 @@ import { revalidateTag } from 'next/cache';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-06-20',
-  typescript: true,
+    apiVersion: '2025-12-15.clover',
+    typescript: true,
 });
 
 const findOrCreateStripeCustomer = async (userId: string, email: string, name: string, phone?: string, country?: string) => {
@@ -19,7 +19,7 @@ const findOrCreateStripeCustomer = async (userId: string, email: string, name: s
     if (existingCustomers.data.length > 0) {
         return existingCustomers.data[0];
     }
-    
+
     const customersByEmail = await stripe.customers.list({ email: email, limit: 1 });
     if (customersByEmail.data.length > 0) {
         return await stripe.customers.update(customersByEmail.data[0].id, {
@@ -66,7 +66,7 @@ export async function updateProfileAction(data: UpdateProfileData): Promise<{ su
             displayName: displayName,
             ...(phone && { phoneNumber: phone }),
         });
-        
+
         // 2. Update Firestore document
         const userDocRef = firestore.collection('users').doc(userId);
         const updates: any = {
@@ -76,9 +76,9 @@ export async function updateProfileAction(data: UpdateProfileData): Promise<{ su
             ...(phone && { phoneNumber: phone }),
             ...(country && { country: country }),
         };
-        
+
         await userDocRef.update(updates);
-        
+
         // 3. Update Stripe Customer
         await findOrCreateStripeCustomer(userId, userRecord.email!, displayName, phone, country);
 

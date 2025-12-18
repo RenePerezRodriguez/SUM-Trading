@@ -22,6 +22,7 @@
 ### User Experience
 - 🤖 **AI Chatbot** - Intelligent assistant powered by Google Gemini 2.5 Pro with neuromarketing UX
 - ⭐ **Favorites System** - Save and manage favorite vehicles
+- 🚚 **Towing Rates Manager** - Admin panel with full CRUD & Excel upload for managing shipping costs
 - 🚘 **Virtual Garage** - Track purchased vehicles and history
 - 💳 **Payment History** - Complete transaction records
 - 📧 **Email Notifications** - Order confirmations and updates

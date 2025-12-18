@@ -9,11 +9,11 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-  } from "@/components/ui/accordion"
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Button } from '@/components/ui/button';
 import { Menu, LogIn, Search, Star, User } from 'lucide-react';
 import Link from 'next/link';
@@ -28,32 +28,32 @@ import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 
 const partners = [
-  { 
-    name: 'Copart', 
+  {
+    name: 'Copart',
     logo: '/images/copart-logo.svg',
     href: 'https://www.copart.com/'
   },
-  { 
-    name: 'Manheim', 
+  {
+    name: 'Manheim',
     logo: 'https://mcom-header-footer.manheim.com/assets/common/OMIY_lockup.svg',
     href: 'https://site.manheim.com/en/locations.html'
   },
-  { 
-    name: 'IAA', 
+  {
+    name: 'IAA',
     logo: 'https://cdn.freelogovectors.net/wp-content/uploads/2022/07/iaa-logo-freelogovectors.net_.png',
     href: 'https://www.iaai.com/'
   },
 ];
-  
+
 const catalogItems = (lang: Locale, dict: any) => [
-    {
-      title: dict.navigation.sum_trading_catalog,
-      href: `/${lang}/cars`
-    },
-    {
-      title: dict.navigation.copart_catalog,
-      href: `/${lang}/search`,
-    }
+  {
+    title: dict.navigation.sum_trading_catalog,
+    href: `/${lang}/cars`
+  },
+  {
+    title: dict.navigation.copart_catalog,
+    href: `/${lang}/search`,
+  }
 ]
 
 type MobileMenuProps = {
@@ -70,7 +70,7 @@ export function MobileMenu({ lang, dict, iconColorClass }: MobileMenuProps) {
   const router = useRouter();
   const { user } = useUser();
   const { openModal } = useAuthModalStore();
-  
+
   const mainCatalogPath = `/${lang}/search`;
   const isCatalogActive = pathname?.startsWith(mainCatalogPath);
 
@@ -121,52 +121,52 @@ export function MobileMenu({ lang, dict, iconColorClass }: MobileMenuProps) {
             </Link>
           </SheetTitle>
         </SheetHeader>
-        
+
         <form onSubmit={handleSearchSubmit} className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-                placeholder={dict.hero.search_placeholder}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-11 h-12 text-base border-2 focus-visible:ring-2"
-            />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Input
+            placeholder={dict.hero.search_placeholder}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-11 h-12 text-base border-2 focus-visible:ring-2"
+          />
         </form>
 
         <div className="flex-1 flex flex-col space-y-1">
-            {navItems.map((item) => (
-                 <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={cn(
-                    'text-lg transition-colors hover:text-primary font-medium py-3 px-2 rounded-md hover:bg-accent block',
-                    pathname === item.href
-                        ? 'text-primary bg-accent/50'
-                        : 'text-foreground/80'
-                    )}
-                >
-                    {item.label}
-                </Link>
-            ))}
-          
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className={cn(
+                'text-lg transition-colors hover:text-primary font-medium py-3 px-2 rounded-md hover:bg-accent block',
+                pathname === item.href
+                  ? 'text-primary bg-accent/50'
+                  : 'text-foreground/80'
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+
           <Accordion type="single" collapsible defaultValue={isCatalogActive ? "item-1" : ""}>
             <AccordionItem value="item-1" className="border-b-0">
-                <AccordionTrigger 
-                    className="py-3 px-2 hover:no-underline -ml-0 flex-1 text-left text-lg font-medium transition-colors hover:text-primary rounded-md hover:bg-accent"
+              <AccordionTrigger
+                className="py-3 px-2 hover:no-underline -ml-0 flex-1 text-left text-lg font-medium transition-colors hover:text-primary rounded-md hover:bg-accent"
+              >
+                <Link
+                  href={mainCatalogPath}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMobileMenuOpen(false)
+                  }}
+                  className={cn(
+                    'flex-1 text-left',
+                    pathname === mainCatalogPath && !searchParams.toString() && 'text-primary'
+                  )}
                 >
-                    <Link
-                        href={mainCatalogPath}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setMobileMenuOpen(false)
-                        }}
-                        className={cn(
-                            'flex-1 text-left',
-                            pathname === mainCatalogPath && !searchParams.toString() && 'text-primary'
-                        )}
-                        >
-                        {dict.navigation.catalog}
-                    </Link>
+                  {dict.navigation.catalog}
+                </Link>
               </AccordionTrigger>
               <AccordionContent>
                 <div className="pl-4 flex flex-col space-y-2 pt-2">
@@ -177,7 +177,7 @@ export function MobileMenu({ lang, dict, iconColorClass }: MobileMenuProps) {
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         "text-muted-foreground hover:text-primary transition-colors",
-                         currentUrl.endsWith(item.href) && "text-primary font-semibold"
+                        currentUrl.endsWith(item.href) && "text-primary font-semibold"
                       )}
                     >
                       {item.title}
@@ -192,60 +192,61 @@ export function MobileMenu({ lang, dict, iconColorClass }: MobileMenuProps) {
             href={`/${lang}/contact`}
             onClick={() => setMobileMenuOpen(false)}
             className={cn(
-            'text-lg transition-colors hover:text-primary font-medium py-3 px-2 rounded-md hover:bg-accent block',
-            pathname === `/${lang}/contact`
+              'text-lg transition-colors hover:text-primary font-medium py-3 px-2 rounded-md hover:bg-accent block',
+              pathname === `/${lang}/contact`
                 ? 'text-primary bg-accent/50'
                 : 'text-foreground/80'
             )}
-            >
-                {dict.navigation.contact}
-            </Link>
+          >
+            {dict.navigation.contact}
+          </Link>
 
         </div>
 
         <SheetFooter className="mt-auto border-t pt-4">
-            {user ? (
-                 <div className="flex flex-col gap-2">
-                    <Button variant="ghost" asChild onClick={() => setMobileMenuOpen(false)} className="w-full justify-start text-lg p-2 h-auto">
-                        <Link href={`/${lang}/garage`}>
-                            <Star className="mr-3 h-5 w-5" />
-                            {dict.garage_page.title}
-                        </Link>
-                    </Button>
-                    <Button variant="ghost" asChild onClick={() => setMobileMenuOpen(false)} className="w-full justify-start text-lg p-2 h-auto">
-                        <Link href={`/${lang}/profile`}>
-                            <User className="mr-3 h-5 w-5" />
-                            {dict.navigation.profile}
-                        </Link>
-                    </Button>
-                 </div>
-            ) : (
-                <div className="flex flex-col gap-2">
-                     <Button variant="ghost" onClick={handleLoginClick} className="w-full justify-start text-lg p-2 h-auto">
-                        <LogIn className="mr-3 h-5 w-5" />
-                        {dict.navigation.login}
-                    </Button>
-                    <Button asChild onClick={() => setMobileMenuOpen(false)} className="w-full text-lg p-2 h-auto">
-                         <Link href={`/${lang}/register`}>{dict.navigation.register}</Link>
-                    </Button>
-                </div>
-            )}
-            
-            <div className="mt-6 pt-4 border-t">
-                <p className="text-xs text-muted-foreground mb-3 font-medium">Broker Certificado:</p>
-                <div className="flex items-center gap-4 opacity-80 grayscale hover:grayscale-0 transition-all">
-                    {partners.map(p => (
-                        <Image 
-                          key={p.name} 
-                          src={p.logo} 
-                          alt={p.name} 
-                          width={60} 
-                          height={20} 
-                          className="h-5 w-auto object-contain"
-                        />
-                    ))}
-                </div>
+          {user ? (
+            <div className="flex flex-col gap-2">
+              <Button variant="ghost" asChild onClick={() => setMobileMenuOpen(false)} className="w-full justify-start text-lg p-2 h-auto">
+                <Link href={`/${lang}/garage`}>
+                  <Star className="mr-3 h-5 w-5" />
+                  {dict.garage_page.title}
+                </Link>
+              </Button>
+              <Button variant="ghost" asChild onClick={() => setMobileMenuOpen(false)} className="w-full justify-start text-lg p-2 h-auto">
+                <Link href={`/${lang}/profile`}>
+                  <User className="mr-3 h-5 w-5" />
+                  {dict.navigation.profile}
+                </Link>
+              </Button>
             </div>
+          ) : (
+            <div className="flex flex-col gap-2">
+              <Button variant="ghost" onClick={handleLoginClick} className="w-full justify-start text-lg p-2 h-auto">
+                <LogIn className="mr-3 h-5 w-5" />
+                {dict.navigation.login}
+              </Button>
+              <Button asChild onClick={() => setMobileMenuOpen(false)} className="w-full text-lg p-2 h-auto">
+                <Link href={`/${lang}/register`}>{dict.navigation.register}</Link>
+              </Button>
+            </div>
+          )}
+
+          <div className="mt-6 pt-4 border-t">
+            <p className="text-xs text-muted-foreground mb-3 font-medium">Broker Certificado:</p>
+            <div className="flex items-center gap-4 opacity-80 grayscale hover:grayscale-0 transition-all">
+              {partners.map(p => (
+                <Image
+                  key={p.name}
+                  src={p.logo}
+                  alt={p.name}
+                  width={60}
+                  height={20}
+                  className="h-5 object-contain"
+                  style={{ height: '20px', width: 'auto' }}
+                />
+              ))}
+            </div>
+          </div>
         </SheetFooter>
       </SheetContent>
     </Sheet>

@@ -148,8 +148,9 @@ export default function Header({ lang, dict }: { lang: Locale; dict: any }) {
                   alt={p.name}
                   width={50}
                   height={15}
+                  style={{ width: 'auto', height: '12px' }}
                   className={cn(
-                    "h-3 w-auto object-contain",
+                    "object-contain",
                     (p.name !== 'Copart' && p.name !== 'IAA') && "brightness-0 invert"
                   )}
                 />

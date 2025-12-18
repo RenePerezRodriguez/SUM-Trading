@@ -74,7 +74,7 @@ function CopartCheckoutContent() {
             const firstLot = lotNumbers[0];
             router.replace(firstLot ? `/${lang}/copart/${firstLot}` : `/${lang}/search`);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isUserLoading, user]);
 
 
@@ -101,44 +101,44 @@ function CopartCheckoutContent() {
 
     useEffect(() => {
         if (isUserLoading || isProfileLoading || !dict || !userProfile) return;
-        
+
         if (user && !userProfile?.country) {
             const fullUrl = `/${lang}/checkout/copart?${searchParams.toString()}`;
             localStorage.setItem('redirectAfterProfileCompletion', fullUrl);
-router.replace(`/${lang}/auth/complete-profile`);
+            router.replace(`/${lang}/auth/complete-profile`);
             return;
         }
 
         const fetchVehicleData = async () => {
-             if (lotNumbers.length === 0) {
+            if (lotNumbers.length === 0) {
                 setIsLoading(false);
                 return;
-             }
-             const vehiclesFromCache: NormalizedVehicle[] = lotNumbers.map(lot => getResultByLot(lot)).filter(Boolean as any);
-             const missingLots = lotNumbers.filter(lot => !vehiclesFromCache.some(v => v.lot_number === lot));
+            }
+            const vehiclesFromCache: NormalizedVehicle[] = lotNumbers.map(lot => getResultByLot(lot)).filter(Boolean as any);
+            const missingLots = lotNumbers.filter(lot => !vehiclesFromCache.some(v => v.lot_number === lot));
 
-             let allVehicles: NormalizedVehicle[] = [...vehiclesFromCache];
+            let allVehicles: NormalizedVehicle[] = [...vehiclesFromCache];
 
-             if (missingLots.length > 0) {
-                 const response = await fetch(`/api/copart-vehicles?lots=${missingLots.join(',')}`);
-                 if (!response.ok) throw new Error('Error al obtener datos de los vehículos.');
-                 const fetchedVehicles = await response.json();
-                 addResults(fetchedVehicles);
-                 allVehicles = [...allVehicles, ...fetchedVehicles];
-             }
-             
-             const sortedVehicles = lotNumbers
+            if (missingLots.length > 0) {
+                const response = await fetch(`/api/copart-vehicles?lots=${missingLots.join(',')}`);
+                if (!response.ok) throw new Error('Error al obtener datos de los vehículos.');
+                const fetchedVehicles = await response.json();
+                addResults(fetchedVehicles);
+                allVehicles = [...allVehicles, ...fetchedVehicles];
+            }
+
+            const sortedVehicles = lotNumbers
                 .map(lot => allVehicles.find(v => v.lot_number === lot))
                 .filter((v): v is NormalizedVehicle => v !== undefined);
-             setVehicles(sortedVehicles);
-             return sortedVehicles;
+            setVehicles(sortedVehicles);
+            return sortedVehicles;
         }
 
         const handleActiveConsultation = (vehiclesForUpdate: NormalizedVehicle[]) => {
             // Only auto-update if the consultation is fully active (paid)
             const isPaid = userProfile?.copartConsultation?.paymentId && !userProfile.copartConsultation.paymentId.startsWith('inquiry_');
             const isActiveStatus = userProfile?.copartConsultation?.status === 'active' || userProfile?.copartConsultation?.status === 'in-progress';
-            
+
             if (!user || !isPaid || !isActiveStatus) return;
 
             startUpdatingTransition(async () => {
@@ -155,7 +155,7 @@ router.replace(`/${lang}/auth/complete-profile`);
                             imageUrl: item.imageUrl || null
                         }))
                     });
-    
+
                     if (result.success) {
                         clearItems();
                         router.push(`/${lang}/checkout/update-success`);
@@ -184,14 +184,14 @@ router.replace(`/${lang}/auth/complete-profile`);
                 setIsLoading(false);
             });
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, userProfile, isUserLoading, isProfileLoading, dict]);
-    
+
     if (!dict || isUserLoading || isProfileLoading || isLoading) {
         const t = dict?.copart_checkout_page;
         let message = t?.loading_vehicle_desc || "Cargando...";
-        if(isUpdatingLead) message = "Actualizando tu consulta activa...";
-        if(isLoading) message = "Verificando tu consulta y vehículos...";
+        if (isUpdatingLead) message = "Actualizando tu consulta activa...";
+        if (isLoading) message = "Verificando tu consulta y vehículos...";
 
         return (
             <div className="container py-12 pt-44 text-center">
@@ -201,7 +201,7 @@ router.replace(`/${lang}/auth/complete-profile`);
             </div>
         );
     }
-    
+
     if (isUpdatingLead) {
         return (
             <div className="container py-12 pt-44 text-center">
@@ -213,10 +213,10 @@ router.replace(`/${lang}/auth/complete-profile`);
     }
 
     const t = dict.copart_checkout_page;
-    
+
     if (error) {
         return (
-             <div className="container py-12 pt-44 text-center max-w-2xl mx-auto">
+            <div className="container py-12 pt-44 text-center max-w-2xl mx-auto">
                 <Alert variant="destructive">
                     <ServerCrash className="h-4 w-4" />
                     <AlertTitle>{t.error_title}</AlertTitle>
@@ -235,7 +235,7 @@ router.replace(`/${lang}/auth/complete-profile`);
 
     if (isPaid && isActiveStatus && vehicles.length > 0) {
         return (
-             <div className="container py-12 pt-44 text-center">
+            <div className="container py-12 pt-44 text-center">
                 <Loader2 className="mx-auto h-12 w-12 text-primary animate-spin" />
                 <h2 className="mt-4 text-2xl font-semibold">Consulta activa encontrada. Actualizando...</h2>
             </div>
@@ -275,7 +275,7 @@ router.replace(`/${lang}/auth/complete-profile`);
             />
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto items-start">
                 <div className="space-y-8">
-                     <Card>
+                    <Card>
                         <CardHeader>
                             <CardTitle>{t.vehicles_title}</CardTitle>
                         </CardHeader>
@@ -283,7 +283,7 @@ router.replace(`/${lang}/auth/complete-profile`);
                             {vehicles.map(vehicle => (
                                 <div key={vehicle.lot_number} className="flex items-center gap-4 pt-4 first:pt-0">
                                     <div className="w-32 h-24 bg-secondary rounded-md flex-shrink-0 relative overflow-hidden">
-                                    <Image src={vehicle.imageUrl || `https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/${vehicle.lot_number}.JPG`} alt={vehicle.title || 'Vehicle'} fill className="object-cover" />
+                                        <Image src={vehicle.imageUrl || `https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/${vehicle.lot_number}.JPG`} alt={vehicle.title || 'Vehicle'} fill className="object-cover" sizes="128px" />
                                     </div>
                                     <div>
                                         <p className="font-bold">{vehicle.title}</p>
@@ -316,7 +316,7 @@ router.replace(`/${lang}/auth/complete-profile`);
                                     <AccordionItem key={index} value={`item-${index}`}>
                                         <AccordionTrigger>{faq.question}</AccordionTrigger>
                                         <AccordionContent className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground">
-                                          <p dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                                            <p dangerouslySetInnerHTML={{ __html: faq.answer }} />
                                         </AccordionContent>
                                     </AccordionItem>
                                 ))}
@@ -328,13 +328,13 @@ router.replace(`/${lang}/auth/complete-profile`);
                 <div className="order-first lg:order-last space-y-4">
                     {!showPaymentForm ? (
                         <Card>
-                             <CardHeader>
+                            <CardHeader>
                                 <CardTitle>Opciones</CardTitle>
-                             </CardHeader>
-                             <CardContent className="flex flex-col gap-4">
-                                <Button 
-                                    onClick={handleWhatsAppClick} 
-                                    size="lg" 
+                            </CardHeader>
+                            <CardContent className="flex flex-col gap-4">
+                                <Button
+                                    onClick={handleWhatsAppClick}
+                                    size="lg"
                                     className="w-full justify-start text-base whitespace-normal h-auto py-4"
                                     disabled={isWhatsAppLoading}
                                 >
@@ -345,19 +345,19 @@ router.replace(`/${lang}/auth/complete-profile`);
                                     )}
                                     <span className="text-left">{t.want_advice_button}</span>
                                 </Button>
-                                <Button 
-                                    onClick={() => setShowPaymentForm(true)} 
-                                    size="lg" 
+                                <Button
+                                    onClick={() => setShowPaymentForm(true)}
+                                    size="lg"
                                     className="w-full justify-start text-base whitespace-normal h-auto py-4"
                                 >
                                     <CreditCard className="mr-3 h-5 w-5 flex-shrink-0" />
                                     <span className="text-left">{t.want_to_pay_button}</span>
                                 </Button>
-                             </CardContent>
+                            </CardContent>
                         </Card>
                     ) : (
-                        <CopartCheckoutForm 
-                            userProfile={userProfile} 
+                        <CopartCheckoutForm
+                            userProfile={userProfile}
                             vehicles={vehicles}
                             dict={dict}
                             lang={lang}

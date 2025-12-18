@@ -12,13 +12,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-  
+
   return {
     title: lang === 'es' ? 'Catálogo de Vehículos Disponibles | SUM Trading' : 'Available Vehicles Catalog | SUM Trading',
-    description: lang === 'es' 
+    description: lang === 'es'
       ? 'Explora nuestro catálogo completo de vehículos importados de subastas USA. Autos verificados, precios competitivos, entrega garantizada. Encuentra tu próximo auto.'
       : 'Explore our complete catalog of vehicles imported from USA auctions. Verified cars, competitive prices, guaranteed delivery. Find your next car.',
-    keywords: ['catálogo autos', 'vehículos disponibles', 'autos importados USA', 'inventario SUM Trading', 'comprar auto subasta', 'autos verificados', 'carros en venta'],
+    keywords: lang === 'es'
+      ? ['catálogo autos subasta', 'vehículos importados USA', 'carros disponibles Copart', 'inventario autos americanos', 'comprar auto salvage', 'autos título limpio']
+      : ['auction car catalog', 'vehicles for sale USA', 'Copart inventory', 'salvage cars available', 'clean title cars', 'imported vehicles catalog'],
     alternates: {
       canonical: `${baseUrl}/${lang}/cars`,
       languages: {
@@ -28,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: lang === 'es' ? 'Catálogo de Vehículos | SUM Trading' : 'Vehicle Catalog | SUM Trading',
-      description: lang === 'es' 
+      description: lang === 'es'
         ? 'Explora nuestro catálogo de vehículos importados de subastas USA'
         : 'Explore our catalog of vehicles imported from USA auctions',
       url: `${baseUrl}/${lang}/cars`,
@@ -46,6 +48,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CarsPage({ params }: Props) {
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  
+
   return <CarCatalogClient dict={dict} lang={lang} />;
 }

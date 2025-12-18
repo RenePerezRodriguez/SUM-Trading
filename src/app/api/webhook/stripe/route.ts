@@ -4,7 +4,7 @@ import { headers } from 'next/headers';
 import { getSdks } from '@/firebase/admin-init';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2024-06-20',
+    apiVersion: '2025-12-15.clover',
     typescript: true,
 });
 
@@ -13,7 +13,7 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 async function createPurchaseRecord(session: Stripe.Checkout.Session) {
     const { firestore } = getSdks();
     const { client_reference_id: userId, payment_intent } = session;
-    
+
     if (!userId || !payment_intent) {
         console.error('Missing userId or payment_intent in session');
         return;
@@ -21,7 +21,7 @@ async function createPurchaseRecord(session: Stripe.Checkout.Session) {
 
     try {
         const paymentIntent = await stripe.paymentIntents.retrieve(payment_intent as string);
-        
+
         const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
 
         const purchaseData = {
@@ -38,7 +38,7 @@ async function createPurchaseRecord(session: Stripe.Checkout.Session) {
                 quantity: item.quantity,
             })),
         };
-        
+
         await firestore.collection('users').doc(userId).collection('purchases').doc(paymentIntent.id).set(purchaseData);
         console.log(`Purchase record created for user ${userId}`);
 

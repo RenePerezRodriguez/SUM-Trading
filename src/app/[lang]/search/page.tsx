@@ -62,13 +62,14 @@ function SearchBar({ initialQuery, dict, onSearch, isSearching }: { initialQuery
     return (
         <form onSubmit={handleSearchSubmit} className="relative mt-8 mb-12 max-w-3xl mx-auto space-y-4">
             {/* Selector de cantidad de resultados */}
-            <div className="flex items-center gap-4 justify-center">
-                <Label htmlFor="batch-size" className="text-sm font-medium flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 justify-center">
+                <Label htmlFor="batch-size" className="text-sm font-medium flex items-center gap-2 text-muted-foreground">
                     <Clock className="h-4 w-4" />
-                    Cantidad de resultados:
+                    <span className="hidden sm:inline">Cantidad de resultados:</span>
+                    <span className="sm:hidden">Resultados:</span>
                 </Label>
                 <Select value={batchSize} onValueChange={(value) => setBatchSize(value as '10' | '50' | '100')}>
-                    <SelectTrigger id="batch-size" className="w-[280px]">
+                    <SelectTrigger id="batch-size" className="w-full sm:w-[280px]">
                         <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -120,9 +121,9 @@ function SearchPageContent() {
 
     const [dict, setDict] = useState<any>(null);
     const [isSearching, startTransition] = useTransition();
-    const [copartResults, setCopartResults] = useState<{vehicles: NormalizedVehicle[], pagination: { hasMore: boolean }}>({ vehicles: [], pagination: { hasMore: false } });
+    const [copartResults, setCopartResults] = useState<{ vehicles: NormalizedVehicle[], pagination: { hasMore: boolean } }>({ vehicles: [], pagination: { hasMore: false } });
     const [searchError, setSearchError] = useState<string | null>(null);
-    const [cacheInfo, setCacheInfo] = useState<{isFromCache: boolean, cacheAge?: number, cacheTimestamp?: number} | null>(null);
+    const [cacheInfo, setCacheInfo] = useState<{ isFromCache: boolean, cacheAge?: number, cacheTimestamp?: number } | null>(null);
     const [isRefreshing, setIsRefreshing] = useState(false);
     const [prevQuery, setPrevQuery] = useState<string>('');
 
@@ -132,12 +133,12 @@ function SearchPageContent() {
 
     useEffect(() => {
         if (!query || !dict) {
-          setCopartResults({ vehicles: [], pagination: { hasMore: false } });
-          setSearchError(null);
-          setCacheInfo(null);
-          return;
+            setCopartResults({ vehicles: [], pagination: { hasMore: false } });
+            setSearchError(null);
+            setCacheInfo(null);
+            return;
         };
-        
+
         // Limpiar store si cambió el query
         if (query !== prevQuery && prevQuery !== '') {
             console.log(`[Search] Query changed: "${prevQuery}" → "${query}", clearing store`);
@@ -148,7 +149,7 @@ function SearchPageContent() {
         startTransition(async () => {
             await performSearch(query, false);
         });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query, dict]); // performSearch, clearResults, startTransition son estables
 
     const handleSearch = (newQuery: string, limit: number) => {
@@ -162,24 +163,24 @@ function SearchPageContent() {
     const performSearch = async (searchQuery: string, forceRefresh: boolean = false, retryCount: number = 0) => {
         setSearchError(null);
         setCacheInfo(null);
-        
+
         try {
             // NUEVA ESTRATEGIA OPTIMIZADA:
             // Solo cargar página 1 al inicio
             // Las demás páginas se cargan bajo demanda cuando el usuario navega
             // Prefetch automático de página siguiente en background
-            
+
             const startTime = Date.now();
             const currentPage = parseInt(searchParams.get('page') || '1');
             const currentLimit = parseInt(searchParams.get('limit') || '10');
-            
+
             const response = await fetch(
-              `/api/copart-search?query=${encodeURIComponent(searchQuery)}&page=${currentPage}&limit=${currentLimit}${forceRefresh ? '&forceRefresh=true' : ''}`,
-              {
-                signal: AbortSignal.timeout(960000), // 16 minute timeout (1 min more than backend)
-              }
+                `/api/copart-search?query=${encodeURIComponent(searchQuery)}&page=${currentPage}&limit=${currentLimit}${forceRefresh ? '&forceRefresh=true' : ''}`,
+                {
+                    signal: AbortSignal.timeout(960000), // 16 minute timeout (1 min more than backend)
+                }
             );
-            
+
             if (!response.ok) {
                 if (response.status === 429) {
                     throw new Error('⚠️ Demasiadas solicitudes a Copart. Usaremos datos en caché. Intenta refrescar en unos minutos.');
@@ -196,10 +197,10 @@ function SearchPageContent() {
                 const errorData = await response.json();
                 throw new Error(errorData.message || errorData.details || 'Error al buscar en Copart');
             }
-            
+
             const data = await response.json();
             const duration = ((Date.now() - startTime) / 1000).toFixed(1);
-            
+
             // Guardar info del caché
             const cacheInfo = {
                 isFromCache: data.fromCache || false,
@@ -207,22 +208,22 @@ function SearchPageContent() {
                 cacheTimestamp: data.cacheTimestamp
             };
             setCacheInfo(cacheInfo);
-            
+
             // Normalizar y guardar vehículos
             const normalized = data.vehicles ? data.vehicles.map((v: any) => normalizeScraptpressData(v)) : [];
-            
+
             setCopartResults({
-              vehicles: normalized,
-              pagination: { 
-                hasMore: true, // Siempre asumir que hay más páginas (backend filtra en caso de no haber)
-              }
+                vehicles: normalized,
+                pagination: {
+                    hasMore: true, // Siempre asumir que hay más páginas (backend filtra en caso de no haber)
+                }
             });
-            
+
             // Guardar en store global
             if (normalized.length > 0) {
                 addResults(normalized);
             }
-            
+
             // Toast de éxito
             const source = data.fromCache ? 'caché' : 'scraping nuevo';
             const icon = data.fromCache ? '⚡' : '🔄';
@@ -233,7 +234,7 @@ function SearchPageContent() {
         } catch (e: any) {
             setSearchError(e.message || 'Failed to connect to the search service.');
             setCopartResults({ vehicles: [], pagination: { hasMore: false } });
-            
+
             // Toast de error
             toast({
                 title: "❌ Error en la búsqueda",
@@ -262,7 +263,7 @@ function SearchPageContent() {
     }
 
     const t_search = dict.search_page;
-    
+
     return (
         <div className="container py-12 pt-44">
             {/* Enhanced Header */}
@@ -282,48 +283,48 @@ function SearchPageContent() {
             <SearchBar initialQuery={query} dict={dict} onSearch={handleSearch} isSearching={isSearching} />
 
             <Tabs defaultValue="copart" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 max-w-lg mx-auto h-auto min-h-12 p-1 bg-secondary/50 border-2 border-border">
-                <TabsTrigger value="copart" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.copart_tab_title}</TabsTrigger>
-                <TabsTrigger value="sum" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.sum_tab_title}</TabsTrigger>
-              </TabsList>
-              <TabsContent value="copart" className="mt-6">
-                <p className="text-center text-muted-foreground mb-6">{t_search.copart_description}</p>
-                 
-                {query ? (
-                    isSearching ? (
-                        <SearchLoadingSkeleton />
-                    ) : searchError ? (
-                        <div className="text-center py-16 bg-destructive/10 rounded-lg mt-6">
-                             <Alert variant="destructive">
-                                <ServerCrash className="h-4 w-4" />
-                                <AlertTitle>Error de Conexión</AlertTitle>
-                                <AlertDescription>{searchError}</AlertDescription>
-                            </Alert>
-                        </div>
+                <TabsList className="grid w-full grid-cols-2 max-w-lg mx-auto h-auto min-h-12 p-1 bg-secondary/50 border-2 border-border">
+                    <TabsTrigger value="copart" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.copart_tab_title}</TabsTrigger>
+                    <TabsTrigger value="sum" className="font-semibold data-[state=active]:shadow-md text-xs sm:text-sm whitespace-normal h-full py-2 leading-tight">{t_search.sum_tab_title}</TabsTrigger>
+                </TabsList>
+                <TabsContent value="copart" className="mt-6">
+                    <p className="text-center text-muted-foreground mb-6">{t_search.copart_description}</p>
+
+                    {query ? (
+                        isSearching ? (
+                            <SearchLoadingSkeleton />
+                        ) : searchError ? (
+                            <div className="text-center py-16 bg-destructive/10 rounded-lg mt-6">
+                                <Alert variant="destructive">
+                                    <ServerCrash className="h-4 w-4" />
+                                    <AlertTitle>Error de Conexión</AlertTitle>
+                                    <AlertDescription>{searchError}</AlertDescription>
+                                </Alert>
+                            </div>
+                        ) : (
+                            <>
+                                {cacheInfo && (
+                                    <CacheIndicator
+                                        isFromCache={cacheInfo.isFromCache}
+                                        cacheAge={cacheInfo.cacheAge}
+                                        onRefresh={handleRefreshSearch}
+                                        isRefreshing={isRefreshing}
+                                    />
+                                )}
+                                <CopartResults results={copartResults.vehicles} pagination={copartResults.pagination} query={query} lang={lang} dict={dict} initialPage={parseInt(searchParams.get('page') || '1')} />
+                            </>
+                        )
                     ) : (
-                        <>
-                          {cacheInfo && (
-                            <CacheIndicator 
-                              isFromCache={cacheInfo.isFromCache}
-                              cacheAge={cacheInfo.cacheAge}
-                              onRefresh={handleRefreshSearch}
-                              isRefreshing={isRefreshing}
-                            />
-                          )}
-                          <CopartResults results={copartResults.vehicles} pagination={copartResults.pagination} query={query} lang={lang} dict={dict} initialPage={parseInt(searchParams.get('page') || '1')} />
-                        </>
-                    )
-                ) : (
-                  <div className="text-center py-16 bg-secondary/30 rounded-lg">
-                    <p className="text-lg font-semibold">{t_search.no_query_title}</p>
-                    <p className="text-muted-foreground">{t_search.no_query_subtitle}</p>
-                  </div>
-                )}
-              </TabsContent>
-              <TabsContent value="sum" className="mt-6">
-                  <p className="text-center text-muted-foreground mb-6">{t_search.sum_description}</p>
-                  <SumTradingResults query={query} lang={lang} dict={dict} />
-              </TabsContent>
+                        <div className="text-center py-16 bg-secondary/30 rounded-lg">
+                            <p className="text-lg font-semibold">{t_search.no_query_title}</p>
+                            <p className="text-muted-foreground">{t_search.no_query_subtitle}</p>
+                        </div>
+                    )}
+                </TabsContent>
+                <TabsContent value="sum" className="mt-6">
+                    <p className="text-center text-muted-foreground mb-6">{t_search.sum_description}</p>
+                    <SumTradingResults query={query} lang={lang} dict={dict} />
+                </TabsContent>
             </Tabs>
         </div>
     );

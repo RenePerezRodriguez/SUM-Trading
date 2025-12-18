@@ -108,9 +108,10 @@ export default function PartnersSection({ dict }: { dict: any }) {
                                                     alt={partner.name}
                                                     height={24}
                                                     width={100}
-                                                    className={`object-contain h-6 w-auto transition-all duration-300 ${isManheim
-                                                            ? 'grayscale invert hover:grayscale-0 hover:invert-0'
-                                                            : ''
+                                                    style={{ width: 'auto', height: '24px' }}
+                                                    className={`object-contain transition-all duration-300 ${isManheim
+                                                        ? 'grayscale invert hover:grayscale-0 hover:invert-0'
+                                                        : ''
                                                         }`}
                                                 />
                                                 {/* 3. Status Indicators */}

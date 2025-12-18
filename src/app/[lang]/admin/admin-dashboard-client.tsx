@@ -5,7 +5,7 @@ import { useUser } from '@/firebase';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Car, Users, BarChart2, MessageSquare, ArrowRight, Shield, Package, UserCheck, Inbox } from 'lucide-react';
+import { Car, Users, BarChart2, MessageSquare, ArrowRight, Shield, Package, UserCheck, Inbox, Truck } from 'lucide-react';
 import Link from 'next/link';
 import type { Locale } from '@/lib/i18n-config';
 import { getDashboardStats } from './actions';
@@ -51,6 +51,16 @@ const adminActions = [
         href: '/admin/analytics',
         disabled: false,
         color: 'bg-orange-500/10 text-orange-500 border-orange-500/20'
+    },
+    {
+        icon: Truck,
+        title: "Tarifas de Arrastre",
+        description: "Gestionar tarifas de arrastre. Subir Excel o editar precios manualmente.",
+        cta: "Ir a Tarifas",
+        key: "manage_towing_rates",
+        href: '/admin/towing-rates',
+        disabled: false,
+        color: 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20'
     }
 ];
 

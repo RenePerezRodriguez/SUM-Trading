@@ -93,3 +93,9 @@ runConfig:
       availability:
         - BUILD
         - RUNTIME
+
+    # Microsoft Clarity API Token for analytics export
+    - variable: CLARITY_API_TOKEN
+      secret: CLARITY_API_TOKEN
+      availability:
+        - RUNTIME

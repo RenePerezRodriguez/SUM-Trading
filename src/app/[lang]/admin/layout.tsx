@@ -28,44 +28,45 @@ function AdminHeader({ dict }: { dict: any }) {
     const handleLogout = async () => {
         if (!auth) return;
         try {
-          // First, delete the session cookie on the server
-          await fetch('/api/auth/session', { method: 'DELETE' });
-          // Then, sign out the user from the client
-          await signOut(auth);
+            // First, delete the session cookie on the server
+            await fetch('/api/auth/session', { method: 'DELETE' });
+            // Then, sign out the user from the client
+            await signOut(auth);
 
-          toast({
-            title: t.logout_success_title,
-            description: t.logout_success_desc,
-          });
-          router.push(`/${lang}`);
-          router.refresh();
+            toast({
+                title: t.logout_success_title,
+                description: t.logout_success_desc,
+            });
+            router.push(`/${lang}`);
+            router.refresh();
         } catch (error) {
-          console.error("Error signing out: ", error);
-          toast({
-            variant: "destructive",
-            title: t.logout_error_title,
-            description: t.logout_error_desc,
-          });
+            console.error("Error signing out: ", error);
+            toast({
+                variant: "destructive",
+                title: t.logout_error_title,
+                description: t.logout_error_desc,
+            });
         }
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 h-16 bg-background border-b z-50">
-            <div className="container flex items-center justify-between h-full">
-                <div className="flex items-center gap-3 text-lg font-bold font-headline">
-                    <Logo className="h-7 w-7 text-primary" />
-                    <h1>SUM Trading - Admin</h1>
+        <header className="fixed top-0 left-0 right-0 h-14 sm:h-16 bg-background border-b z-50">
+            <div className="container flex items-center justify-between h-full px-3 sm:px-4">
+                <div className="flex items-center gap-2 sm:gap-3 text-base sm:text-lg font-bold font-headline">
+                    <Logo className="h-6 w-6 sm:h-7 sm:w-7 text-primary" />
+                    <h1 className="hidden sm:block">SUM Trading - Admin</h1>
+                    <h1 className="sm:hidden">Admin</h1>
                 </div>
-                <div className="flex items-center gap-2">
-                    <Button asChild variant="outline">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                    <Button asChild variant="outline" size="sm" className="h-9 px-2 sm:px-3">
                         <Link href={`/${lang}`}>
-                            <Home className="mr-2 h-4 w-4" />
-                            {t.go_to_home}
+                            <Home className="h-4 w-4 sm:mr-2" />
+                            <span className="hidden sm:inline">{t.go_to_home}</span>
                         </Link>
                     </Button>
-                    <Button variant="outline" onClick={handleLogout}>
-                        <LogOut className="mr-2 h-4 w-4" />
-                        {t.logout}
+                    <Button variant="outline" size="sm" onClick={handleLogout} className="h-9 px-2 sm:px-3">
+                        <LogOut className="h-4 w-4 sm:mr-2" />
+                        <span className="hidden sm:inline">{t.logout}</span>
                     </Button>
                 </div>
             </div>
@@ -78,7 +79,7 @@ function AccessDenied({ lang, dict }: { lang: string, dict: any }) {
     const t = dict.admin_layout;
     return (
         <div className="container py-12 pt-32 text-center">
-            <PageHeader 
+            <PageHeader
                 title={t.access_denied_title}
                 description={t.access_denied_desc}
             />
@@ -102,9 +103,9 @@ function LoadingScreen() {
 
 export default function AdminLayout({
     children,
-  }: {
+}: {
     children: React.ReactNode;
-  }) {
+}) {
     const { user, isUserLoading } = useUser();
     const firestore = useFirestore();
     const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
@@ -116,7 +117,7 @@ export default function AdminLayout({
     useEffect(() => {
         getDictionary(lang).then(setDict);
     }, [lang]);
-    
+
     const createSession = useCallback(async (user: any) => {
         try {
             const idToken = await user.getIdToken(true);
@@ -148,7 +149,7 @@ export default function AdminLayout({
             }
             return;
         }
-        
+
         const verifyAdminStatus = async () => {
             if (!firestore) {
                 setIsAuthorized(false);
@@ -158,7 +159,7 @@ export default function AdminLayout({
                 const userDocRef = doc(firestore, 'users', user.uid);
                 const userDoc = await getDoc(userDocRef);
                 const isAdmin = userDoc.exists() && (userDoc.data() as UserProfile).role === 'admin';
-                
+
                 if (isAdmin) {
                     const sessionCreated = await createSession(user);
                     if (sessionCreated) {
@@ -179,7 +180,7 @@ export default function AdminLayout({
                 setIsAuthorized(false);
             }
         };
-        
+
         verifyAdminStatus();
 
     }, [user, isUserLoading, pathname, router, lang, firestore, createSession]);
@@ -189,11 +190,11 @@ export default function AdminLayout({
     }
 
     const isPublicAdminPage = pathname.includes('/admin/login') || pathname.includes('/admin/register');
-    
+
     if (isAuthorized === false && !isPublicAdminPage) {
         return <AccessDenied lang={lang} dict={dict} />;
     }
-    
+
     // Render admin layout for verified admins or for public admin pages
     if (isAuthorized) {
         return (
@@ -205,7 +206,7 @@ export default function AdminLayout({
             </>
         );
     }
-    
+
     // Fallback loading screen
     return <LoadingScreen />;
 }

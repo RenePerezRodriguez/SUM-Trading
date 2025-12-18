@@ -37,14 +37,37 @@ function AnalyticsTable({ metric, dimension, dict }: { metric: ClarityMetric; di
     const t = dict.admin_analytics_page;
     const metricTitle = t.metrics[metric.metricName] || metric.metricName;
     const dimensionHeader = t.dimensions[dimension.toLowerCase() as keyof typeof t.dimensions] || dimension;
-    
+
+    // Helper to get session count with multiple possible field names
+    const getSessionCount = (info: any): string => {
+        const count = info.totalSessionCount || info.sessionsCount || info.sessionCount || '0';
+        const parsed = parseInt(count, 10);
+        return isNaN(parsed) ? '0' : parsed.toLocaleString();
+    };
+
+    // Helper to get user count with multiple possible field names
+    const getUserCount = (info: any): string => {
+        const count = info.distinctUserCount || info.distantUserCount || info.userCount || '0';
+        const parsed = parseInt(count, 10);
+        return isNaN(parsed) ? '0' : parsed.toLocaleString();
+    };
+
+    // Helper to get pages per session with multiple possible field names
+    const getPagesPerSession = (info: any): string => {
+        const value = info.pagesPerSessionPercentage || info.PagesPerSessionPercentage || info.pagesPerSession;
+        if (typeof value === 'number') {
+            return value.toFixed(2);
+        }
+        return '-';
+    };
+
     return (
         <Card>
             <CardHeader>
                 <CardTitle>{metricTitle}</CardTitle>
             </CardHeader>
-            <CardContent>
-                <Table>
+            <CardContent className="overflow-x-auto">
+                <Table className="min-w-[400px]">
                     <TableHeader>
                         <TableRow>
                             <TableHead>{dimensionHeader}</TableHead>
@@ -56,14 +79,10 @@ function AnalyticsTable({ metric, dimension, dict }: { metric: ClarityMetric; di
                     <TableBody>
                         {metric.information.map((info, index) => (
                             <TableRow key={index}>
-                                <TableCell className="font-medium">{info[dimension]}</TableCell>
-                                <TableCell className="text-right">{parseInt(info.totalSessionCount, 10).toLocaleString()}</TableCell>
-                                <TableCell className="text-right">{parseInt(info.distantUserCount, 10).toLocaleString()}</TableCell>
-                                <TableCell className="text-right">
-                                    {typeof info.PagesPerSessionPercentage === 'number' 
-                                        ? info.PagesPerSessionPercentage.toFixed(2) 
-                                        : 'N/A'}
-                                </TableCell>
+                                <TableCell className="font-medium">{info[dimension] || '-'}</TableCell>
+                                <TableCell className="text-right">{getSessionCount(info)}</TableCell>
+                                <TableCell className="text-right">{getUserCount(info)}</TableCell>
+                                <TableCell className="text-right">{getPagesPerSession(info)}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

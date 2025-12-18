@@ -18,11 +18,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-  
+
+  // Localized keywords for better SEO in each market
+  const keywords = lang === 'es'
+    ? ['comprar autos subasta USA', 'importar carros Estados Unidos', 'Copart México', 'IAA subasta', 'Manheim', 'autos salvage', 'título limpio', 'importar vehículos USA', 'subastas de autos', 'carros de subasta', 'SUM Trading']
+    : ['buy salvage cars', 'Copart auction cars', 'IAA auctions', 'Manheim vehicles', 'auction cars for sale', 'import cars from USA', 'salvage title cars', 'clean title vehicles', 'export cars Mexico', 'SUM Trading'];
+
   return {
     title: dict.metadata.title,
     description: dict.metadata.description,
-    keywords: ['vehículos subasta USA', 'importación autos Estados Unidos', 'Copart', 'IAA', 'Manheim', 'autos salvage', 'compra autos subasta', 'SUM Trading', 'importación vehículos', 'autos americanos'],
+    keywords,
     authors: [{ name: 'SUM Trading' }],
     creator: 'SUM Trading',
     publisher: 'SUM Trading',
@@ -77,7 +82,7 @@ export default async function Home({ params }: Props) {
     <>
       {/* Hero - Full bleed */}
       <HeroSection dict={dict} lang={lang} />
-      
+
       {/* Partners (Brokers) - Trust Signal immediately after Hero */}
       <PartnersSection dict={dict} />
 
@@ -92,7 +97,7 @@ export default async function Home({ params }: Props) {
           </div>
         </div>
       </div>
-      
+
       {/* Servicios (How we help) */}
       <ServicesCards dict={dict} lang={lang} />
 

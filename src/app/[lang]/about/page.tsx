@@ -16,24 +16,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang);
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-    
+
     return {
-      title: dict.about_page.title,
-      description: dict.about_page.description,
-      keywords: ['sobre SUM Trading', 'empresa importación autos', 'equipo SUM Trading', 'misión visión', 'valores'],
-      alternates: {
-        canonical: `${baseUrl}/${lang}/about`,
-        languages: {
-          'en': `${baseUrl}/en/about`,
-          'es': `${baseUrl}/es/about`,
-        },
-      },
-      openGraph: {
         title: dict.about_page.title,
         description: dict.about_page.description,
-        url: `${baseUrl}/${lang}/about`,
-        type: 'website',
-      },
+        keywords: lang === 'es'
+            ? ['sobre SUM Trading', 'empresa importación autos', 'quiénes somos', 'equipo SUM Trading', 'compañía autos USA', 'misión visión']
+            : ['about SUM Trading', 'car import company', 'USA auction dealer', 'vehicle import team', 'trusted car importer'],
+        alternates: {
+            canonical: `${baseUrl}/${lang}/about`,
+            languages: {
+                'en': `${baseUrl}/en/about`,
+                'es': `${baseUrl}/es/about`,
+            },
+        },
+        openGraph: {
+            title: dict.about_page.title,
+            description: dict.about_page.description,
+            url: `${baseUrl}/${lang}/about`,
+            type: 'website',
+        },
     };
 }
 
@@ -93,7 +95,7 @@ export default async function AboutPage({ params }: Props) {
             />
             <div className="container pt-44 pb-12">
                 <FadeIn>
-                    <PageHeader 
+                    <PageHeader
                         title={content.title}
                         description={content.description}
                     />
@@ -104,7 +106,7 @@ export default async function AboutPage({ params }: Props) {
                     {stats.map((stat, index) => {
                         const Icon = stat.icon;
                         return (
-                            <FadeInItem 
+                            <FadeInItem
                                 key={index}
                                 className="h-full"
                             >
@@ -128,11 +130,11 @@ export default async function AboutPage({ params }: Props) {
                     <OurMission dict={content} />
                 </FadeIn>
             </div>
-            
+
             <FadeIn>
                 <OurValues dict={content} />
             </FadeIn>
-            
+
             <CtaSection dict={dict} lang={lang} />
         </>
     );

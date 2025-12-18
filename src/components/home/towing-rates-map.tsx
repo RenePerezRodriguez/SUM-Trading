@@ -2,19 +2,25 @@
 
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { Card } from '@/components/ui/card';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { geoCentroid } from 'd3-geo';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FileText, Info } from 'lucide-react';
+import { FileText, Info, Loader2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import {
-    getDestinations,
-    getStatesByDestination,
-    getCitiesByState
-} from '@/lib/towing-data';
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
+
+interface TowingData {
+    destinations: {
+        [destKey: string]: {
+            [stateKey: string]: {
+                name: string;
+                cities: { name: string; price: number }[];
+            };
+        };
+    };
+}
 
 const stateAbbreviations: Record<string, string> = {
     'Alabama': 'AL',
@@ -77,13 +83,57 @@ const getPriceColor = (price: number): string => {
 };
 
 export default function TowingRatesMap({ dict }: { dict?: any }) {
+    const [towingData, setTowingData] = useState<TowingData | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedDestination, setSelectedDestination] = useState<string>('brownsville');
     const [selectedState, setSelectedState] = useState<string | null>(null);
     const pathname = usePathname();
     const lang = pathname.split('/')[1];
 
-    // Get states for the selected destination
-    const statesData = getStatesByDestination(selectedDestination);
+    // Fetch towing rates from API
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/towing-rates');
+                if (response.ok) {
+                    const data = await response.json();
+                    setTowingData(data);
+                    // Set first destination as default
+                    const destinations = Object.keys(data.destinations || {});
+                    if (destinations.length > 0 && !destinations.includes(selectedDestination)) {
+                        setSelectedDestination(destinations[0]);
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching towing rates:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        fetchData();
+    }, []);
+
+    // Derived data
+    const destinations = useMemo(() => {
+        if (!towingData?.destinations) return [];
+        return Object.keys(towingData.destinations).map(key => ({
+            id: key,
+            label: key.charAt(0).toUpperCase() + key.slice(1).replace(/-/g, ' ')
+        }));
+    }, [towingData]);
+
+    const statesData = useMemo(() => {
+        if (!towingData?.destinations?.[selectedDestination]) return [];
+        const destData = towingData.destinations[selectedDestination];
+        return Object.keys(destData).map(key => ({
+            id: key,
+            name: destData[key].name
+        }));
+    }, [towingData, selectedDestination]);
+
+    const getCitiesByState = (destId: string, stateId: string) => {
+        return towingData?.destinations?.[destId]?.[stateId]?.cities || [];
+    };
 
     // Fallback texts if dict is not provided or missing keys
     const t = {
@@ -113,7 +163,7 @@ export default function TowingRatesMap({ dict }: { dict?: any }) {
 
                     {/* Destination Selector */}
                     <div className="flex justify-center gap-4 mb-8 flex-wrap">
-                        {getDestinations().map(dest => (
+                        {destinations.map(dest => (
                             <Button
                                 key={dest.id}
                                 variant={selectedDestination === dest.id ? "default" : "outline"}

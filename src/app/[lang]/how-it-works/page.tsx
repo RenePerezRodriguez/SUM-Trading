@@ -15,24 +15,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { lang } = await params;
     const dict = await getDictionary(lang);
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
-    
+
     return {
-      title: dict.how_it_works_page.title,
-      description: dict.how_it_works_page.description,
-      keywords: ['cómo funciona', 'proceso importación', 'pasos compra', 'guía importación'],
-      alternates: {
-        canonical: `${baseUrl}/${lang}/how-it-works`,
-        languages: {
-          'en': `${baseUrl}/en/how-it-works`,
-          'es': `${baseUrl}/es/how-it-works`,
-        },
-      },
-      openGraph: {
         title: dict.how_it_works_page.title,
         description: dict.how_it_works_page.description,
-        url: `${baseUrl}/${lang}/how-it-works`,
-        type: 'website',
-      },
+        keywords: lang === 'es'
+            ? ['cómo comprar auto subasta', 'proceso importación vehículos', 'pasos para importar carro', 'guía compra Copart', 'tutorial subasta USA']
+            : ['how to buy auction cars', 'car import process', 'Copart buying guide', 'salvage car buying steps', 'auction purchase tutorial'],
+        alternates: {
+            canonical: `${baseUrl}/${lang}/how-it-works`,
+            languages: {
+                'en': `${baseUrl}/en/how-it-works`,
+                'es': `${baseUrl}/es/how-it-works`,
+            },
+        },
+        openGraph: {
+            title: dict.how_it_works_page.title,
+            description: dict.how_it_works_page.description,
+            url: `${baseUrl}/${lang}/how-it-works`,
+            type: 'website',
+        },
     };
 }
 
@@ -65,7 +67,7 @@ export default async function HowItWorksPage({ params }: Props) {
         {
             icon: Shield,
             title: lang === 'es' ? 'Totalmente Seguro' : 'Fully Secure',
-            description: lang === 'es' 
+            description: lang === 'es'
                 ? 'Pagos seguros y documentación legal en cada paso'
                 : 'Secure payments and legal documentation at every step'
         },
@@ -114,7 +116,7 @@ export default async function HowItWorksPage({ params }: Props) {
             />
             <div className="container py-12 pt-44">
                 <FadeIn>
-                    <PageHeader 
+                    <PageHeader
                         title={content.title}
                         description={content.description}
                     />
@@ -125,7 +127,7 @@ export default async function HowItWorksPage({ params }: Props) {
                     {benefits.map((benefit, index) => {
                         const Icon = benefit.icon;
                         return (
-                            <FadeInItem 
+                            <FadeInItem
                                 key={index}
                                 className="h-full"
                             >

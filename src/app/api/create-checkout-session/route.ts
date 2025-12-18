@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-06-20',
+  apiVersion: '2025-12-15.clover',
   typescript: true,
 });
 
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   const headersList = await headers();
   const origin = headersList.get('origin') || 'http://localhost:9002';
-  
+
   const successUrl = `${origin}/${lang}/checkout/success`;
   const cancelUrl = `${origin}/${lang}/buy/${cartDetails.map(c => c.id).join(',')}`;
 

@@ -78,17 +78,17 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar 
-        table={table} 
-        filterColumnId={filterColumnId} 
+      <DataTableToolbar
+        table={table}
+        filterColumnId={filterColumnId}
         filterPlaceholder={filterPlaceholder}
         dict={dict}
       >
         {children}
       </DataTableToolbar>
 
-      <div className="rounded-md border">
-        <Table>
+      <div className="rounded-md border overflow-x-auto">
+        <Table className="min-w-[600px]">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -98,9 +98,9 @@ export function DataTable<TData, TValue>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                     </TableHead>
                   )
                 })}
