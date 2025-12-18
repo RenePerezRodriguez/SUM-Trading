@@ -50,6 +50,7 @@
     "cmdk": "latest",
     "d3-geo": "^3.1.1",
     "date-fns": "latest",
+    "driver.js": "^1.4.0",
     "embla-carousel-react": "^8.6.0",
     "firebase": "12.7.0",
     "firebase-admin": "13.6.0",

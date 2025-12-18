@@ -15,6 +15,8 @@ import { doc, getDoc } from 'firebase/firestore';
 import type { UserProfile } from '@/lib/user-profile';
 import { getDictionary } from '@/lib/dictionaries';
 import type { Locale } from '@/lib/i18n-config';
+import { AdminTour } from '@/components/admin/admin-tour';
+
 
 
 function AdminHeader({ dict }: { dict: any }) {
@@ -58,6 +60,7 @@ function AdminHeader({ dict }: { dict: any }) {
                     <h1 className="sm:hidden">Admin</h1>
                 </div>
                 <div className="flex items-center gap-1.5 sm:gap-2">
+                    <AdminTour />
                     <Button asChild variant="outline" size="sm" className="h-9 px-2 sm:px-3">
                         <Link href={`/${lang}`}>
                             <Home className="h-4 w-4 sm:mr-2" />
