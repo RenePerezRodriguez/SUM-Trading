@@ -30,6 +30,30 @@ export function proxy(request: NextRequest) {
   )
     return
 
+  // Authentication Protection for /admin routes
+  // Check if path involves admin but is not a public auth page (login/register)
+  const isLoginPage = pathname.includes('/admin/login');
+  const isRegisterPage = pathname.includes('/admin/register');
+  const isAdminPath = pathname.includes('/admin');
+
+  if (isAdminPath && !isLoginPage && !isRegisterPage) {
+    const session = request.cookies.get('session');
+    if (!session) {
+      // Redirect to login
+      let locale: string = i18n.defaultLocale;
+      // Try to extract locale from path if present
+      const pathLocale = pathname.split('/')[1];
+      if ((i18n.locales as unknown as string[]).includes(pathLocale)) {
+        locale = pathLocale;
+      } else {
+        // Otherwise guess locale
+        locale = getLocale(request) || i18n.defaultLocale;
+      }
+
+      return NextResponse.redirect(new URL(`/${locale}/admin/login`, request.url));
+    }
+  }
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   )

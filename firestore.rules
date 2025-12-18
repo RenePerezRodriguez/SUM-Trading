@@ -172,5 +172,35 @@ service cloud.firestore {
         // The server-side API route will use the Admin SDK, which bypasses these rules.
         allow read, write: if false;
     }
+
+    /**
+     * @description Manages towing rates data.
+     * @path /towing_rates/{rateId}
+     * @principle Public read access for rates display. Admin-only write access.
+     */
+    match /towing_rates/{rateId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    /**
+     * @description Manages affiliation/membership applications.
+     * @path /affiliations/{affiliationId}
+     * @principle Anyone can submit (create). Only admins can read/update/delete.
+     */
+    match /affiliations/{affiliationId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Manages member directory entries.
+     * @path /members/{memberId}
+     * @principle Public read for directory display. Admin-only write.
+     */
+    match /members/{memberId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

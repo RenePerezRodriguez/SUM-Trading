@@ -15,13 +15,14 @@ export async function POST(request: NextRequest) {
 
     try {
         const sessionCookie = await auth.createSessionCookie(idToken, { expiresIn });
-        
+
         const options = {
             name: 'session',
             value: sessionCookie,
             maxAge: expiresIn,
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax' as const,
             path: '/', // Set path to root
         };
 
@@ -48,7 +49,7 @@ export async function DELETE() {
     try {
         const decodedClaims = await auth.verifySessionCookie(sessionCookie);
         await auth.revokeRefreshTokens(decodedClaims.sub);
-        
+
         // Clear the cookie
         (await cookies()).set('session', '', { maxAge: 0, path: '/' });
 

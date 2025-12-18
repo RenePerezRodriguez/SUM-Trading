@@ -1,8 +1,9 @@
-﻿console.log("DEBUG: Evaluating src/firebase/admin-init.ts");
+﻿// Firebase Admin SDK initialization (Server-side only)
 import { initializeApp, getApps, App, cert, ServiceAccount } from 'firebase-admin/app';
 import { getAuth, Auth } from 'firebase-admin/auth';
 import { getFirestore, Firestore } from 'firebase-admin/firestore';
 import { GoogleAuth } from 'google-auth-library';
+import { logger } from '@/lib/logger';
 
 // IMPORTANT: Do not expose this file on the client-side.
 // It is intended for server-side use only.
@@ -18,7 +19,7 @@ function getServiceAccount(): ServiceAccount | undefined {
     if (!serviceAccountJson) {
         // Only warn in development. in production build, missing this is fine as long as we don't try to use it.
         if (process.env.NODE_ENV === 'development') {
-            console.warn('FIREBASE_SERVICE_ACCOUNT_JSON environment variable is not set. Relying on Application Default Credentials for local development.');
+            logger.warn('FIREBASE_SERVICE_ACCOUNT_JSON environment variable is not set. Relying on Application Default Credentials for local development.');
         }
         return undefined;
     }
@@ -36,16 +37,16 @@ function getFirebaseApp(): App {
                 appInstance = getApps()[0];
             } else {
                 const serviceAccountInfo = getServiceAccount();
-                console.log('[Admin Init] Initializing Firebase Admin App');
+                logger.info('[Admin Init] Initializing Firebase Admin App');
                 appInstance = initializeApp(serviceAccountInfo ? { credential: cert(serviceAccountInfo) } : undefined);
             }
         } catch (error) {
-            console.error('[Admin Init] Failed to initialize Firebase App (likely build environment):', error);
+            logger.error('[Admin Init] Failed to initialize Firebase App (likely build environment):', error);
             // Return a recursive proxy mock to prevent crashes on property access
             // This allows specific properties to be accessed without throwing, but methods might fail if called.
             appInstance = new Proxy({}, {
                 get: (target, prop) => {
-                    console.warn(`[Admin Init] Accessed '${String(prop)}' on failed App instance`);
+                    logger.warn(`[Admin Init] Accessed '${String(prop)}' on failed App instance`);
                     return () => { };
                 }
             }) as App;
@@ -61,10 +62,10 @@ function getFirebaseAuth(): Auth {
             // check if app is a proxy/mock by looking for a known property or just try/catch
             authInstance = getAuth(app);
         } catch (error) {
-            console.error('[Admin Init] Failed to initialize Auth:', error);
+            logger.error('[Admin Init] Failed to initialize Auth:', error);
             authInstance = new Proxy({}, {
                 get: (target, prop) => {
-                    console.warn(`[Admin Init] Accessed '${String(prop)}' on failed Auth instance`);
+                    logger.warn(`[Admin Init] Accessed '${String(prop)}' on failed Auth instance`);
                     return () => { };
                 }
             }) as Auth;
@@ -79,11 +80,11 @@ function getFirebaseFirestore(): Firestore {
             const app = getFirebaseApp();
             firestoreInstance = getFirestore(app);
         } catch (error) {
-            console.error('[Admin Init] Failed to initialize Firestore:', error);
+            logger.error('[Admin Init] Failed to initialize Firestore:', error);
             firestoreInstance = new Proxy({}, {
                 get: (target, prop) => {
                     if (prop === 'collection') return () => ({ where: () => ({ get: async () => ({ docs: [] }) }) });
-                    console.warn(`[Admin Init] Accessed '${String(prop)}' on failed Firestore instance`);
+                    logger.warn(`[Admin Init] Accessed '${String(prop)}' on failed Firestore instance`);
                     return () => { };
                 }
             }) as Firestore;
@@ -97,24 +98,24 @@ function getGoogleAuth(): GoogleAuth {
         try {
             const serviceAccountInfo = getServiceAccount();
             if (serviceAccountInfo) {
-                console.log('[Admin Init] Initializing GoogleAuth with service account credentials');
+                logger.info('[Admin Init] Initializing GoogleAuth with service account credentials');
                 googleAuthInstance = new GoogleAuth({
                     credentials: serviceAccountInfo as any,
                     projectId: (serviceAccountInfo as any).project_id,
                     scopes: ['https://www.googleapis.com/auth/cloud-platform']
                 });
             } else {
-                console.log('[Admin Init] Initializing GoogleAuth with Application Default Credentials');
+                logger.info('[Admin Init] Initializing GoogleAuth with Application Default Credentials');
                 // This might throw if no ADC found
                 googleAuthInstance = new GoogleAuth({
                     scopes: ['https://www.googleapis.com/auth/cloud-platform']
                 });
             }
         } catch (error) {
-            console.error('[Admin Init] Failed to initialize GoogleAuth:', error);
+            logger.error('[Admin Init] Failed to initialize GoogleAuth:', error);
             googleAuthInstance = new Proxy({}, {
                 get: (target, prop) => {
-                    console.warn(`[Admin Init] Accessed '${String(prop)}' on failed GoogleAuth instance`);
+                    logger.warn(`[Admin Init] Accessed '${String(prop)}' on failed GoogleAuth instance`);
                     return async () => "";
                 }
             }) as unknown as GoogleAuth;
@@ -130,10 +131,10 @@ export async function getCloudRunIdToken(targetUrl: string): Promise<string> {
         const authClient = getGoogleAuth();
         const idToken = await authClient.getIdTokenClient(targetUrl);
         const client = await idToken.getAccessToken();
-        console.log('[Admin Init] Cloud Run ID token obtained');
+        logger.info('[Admin Init] Cloud Run ID token obtained');
         return client as any;
     } catch (error) {
-        console.error('[Admin Init] Failed to get ID token:', error);
+        logger.error('[Admin Init] Failed to get ID token:', error);
         // Fallback or re-throw? 
         // If we are in build and this is called (unlikely), valid to return empty
         return "";

@@ -28,6 +28,22 @@ const securityHeaders = [
   {
     key: 'Referrer-Policy',
     value: 'origin-when-cross-origin'
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.googletagmanager.com https://www.clarity.ms https://*.firebaseapp.com https://apis.google.com https://www.gstatic.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: blob: https: http: https://*.copart.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.cloudfunctions.net https://api.stripe.com https://scrap.sumtrading.us https://*.clarity.ms wss://*.firebaseio.com https://cdn.jsdelivr.net https://identitytoolkit.googleapis.com https://securetoken.googleapis.com",
+      "frame-src 'self' https://js.stripe.com https://*.firebaseapp.com https://*.firebase.com https://sum-trading-portal.firebaseapp.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'self'",
+    ].join('; ')
   }
 ]
 
