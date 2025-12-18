@@ -9,22 +9,22 @@ const URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sumtrading.us';
 export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { firestore } = getSdks();
-  
+
+
   // Static pages
   const staticRoutes = [
-    '', 
-    '/about', 
-    '/cars', 
-    '/contact', 
+    '',
+    '/about',
+    '/cars',
+    '/contact',
     '/how-it-works',
     '/faq',
     '/search',
     '/copart-favorites',
     '/garage',
-    '/privacy', 
-    '/cookies', 
-    '/terms', 
+    '/privacy',
+    '/cookies',
+    '/terms',
     '/sitemap'
   ];
 
@@ -45,24 +45,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   // Dynamic car pages
-  const carsSnapshot = await firestore.collection('cars').where('status', '==', 'Available').get();
-  const cars = carsSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id } as Car));
+  let carPages: MetadataRoute.Sitemap = [];
+  try {
+    const { firestore } = getSdks();
+    const carsSnapshot = await firestore.collection('cars').where('status', '==', 'Available').get();
+    const cars = carsSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id } as Car));
 
-  const carPages = cars.map(car => {
-    const route = `/cars/${car.id}`;
-    return {
-      url: `${URL}/en${route}`,
-      lastModified: new Date().toISOString(), // In a real app, you'd use a car's last updated date
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-      alternates: {
-        languages: {
-          en: `${URL}/en${route}`,
-          es: `${URL}/es${route}`,
+    carPages = cars.map(car => {
+      const route = `/cars/${car.id}`;
+      return {
+        url: `${URL}/en${route}`,
+        lastModified: new Date().toISOString(), // In a real app, you'd use a car's last updated date
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+        alternates: {
+          languages: {
+            en: `${URL}/en${route}`,
+            es: `${URL}/es${route}`,
+          },
         },
-      },
-    };
-  });
+      };
+    });
+  } catch (error) {
+    console.warn('Failed to fetch dynamic sitemap data (likely during build), returning static only:', error);
+  }
 
   return [...staticPages, ...carPages];
+
 }

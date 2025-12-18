@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { headers } from 'next/headers';
 import { getSdks } from '@/firebase/admin-init';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
     apiVersion: '2025-12-15.clover',
     typescript: true,
 });

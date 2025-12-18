@@ -95,7 +95,7 @@ export default function Chatbot() {
                         transition={{ duration: 0.2, ease: 'easeOut' }}
                         className="w-[calc(100vw-2rem)] sm:w-[420px] shadow-2xl rounded-2xl overflow-hidden border border-border/40 backdrop-blur-xl ring-1 ring-black/5 origin-bottom-right"
                     >
-                        <Card className="h-[75vh] sm:h-[600px] flex flex-col border-0 bg-white/95 dark:bg-slate-950/95 shadow-none">
+                        <Card className="h-[75vh] sm:h-[600px] flex flex-col border-0 bg-white shadow-none">
                             {/* Header - More elegant gradient */}
                             <CardHeader className="relative bg-gradient-to-r from-red-600 to-rose-600 text-white p-4 flex flex-row items-center justify-between space-y-0 shadow-md z-10 shrink-0">
                                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 mix-blend-overlay" />
@@ -125,7 +125,7 @@ export default function Chatbot() {
                             </CardHeader>
 
                             {/* Messages Area */}
-                            <CardContent className="flex-grow overflow-y-auto p-4 space-y-5 bg-slate-50 dark:bg-slate-900/50 scroll-smooth">
+                            <CardContent className="flex-grow overflow-y-auto p-4 space-y-5 bg-slate-50 scroll-smooth">
                                 {messages.map((msg, index) => (
                                     <motion.div
                                         key={index}
@@ -142,7 +142,7 @@ export default function Chatbot() {
                                                 "max-w-[85%] px-4 py-3 shadow-sm relative group",
                                                 msg.role === 'user'
                                                     ? "bg-gradient-to-br from-red-600 to-rose-600 text-white rounded-2xl rounded-br-sm"
-                                                    : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-700 rounded-2xl rounded-bl-sm"
+                                                    : "bg-white text-slate-800 border border-slate-200 rounded-2xl rounded-bl-sm"
                                             )}
                                         >
                                             {msg.role === 'model' ? (
@@ -169,7 +169,7 @@ export default function Chatbot() {
                                         animate={{ opacity: 1, y: 0 }}
                                         className="flex justify-start w-full"
                                     >
-                                        <div className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm flex items-center gap-3">
+                                        <div className="bg-white border border-slate-200 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm flex items-center gap-3">
                                             <Loader2 className="h-4 w-4 animate-spin text-red-500" />
                                             <span className="text-xs text-slate-500 font-medium">Escribiendo...</span>
                                         </div>
@@ -179,8 +179,8 @@ export default function Chatbot() {
                             </CardContent>
 
                             {/* Footer */}
-                            <CardFooter className="p-3 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
-                                <div className="flex w-full items-center gap-2 bg-slate-50 dark:bg-slate-900 p-1.5 rounded-full border border-slate-200 dark:border-slate-800 focus-within:ring-2 focus-within:ring-red-100 dark:focus-within:ring-red-900/30 transition-all duration-200">
+                            <CardFooter className="p-3 bg-white border-t border-slate-200">
+                                <div className="flex w-full items-center gap-2 bg-slate-50 p-1.5 rounded-full border border-slate-200 focus-within:ring-2 focus-within:ring-red-100 transition-all duration-200">
                                     <Input
                                         ref={inputRef}
                                         placeholder="Escribe tu mensaje..."
@@ -213,6 +213,7 @@ export default function Chatbot() {
                 <Button
                     onClick={() => setIsOpen(!isOpen)}
                     size="lg"
+                    variant="ghost"
                     className={cn(
                         "h-14 w-14 rounded-full shadow-xl transition-all duration-300 relative overflow-hidden",
                         isOpen
