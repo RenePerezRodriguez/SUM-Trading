@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.1] - 2025-12-18
+
+### 🩹 Production Build Hotfix
+
+#### Fixed
+- 🔧 **Build Failure** - Resolved "Neither apiKey nor config.authenticator provided" error by lazy-loading GoogleAuth credentials. This prevents initialization crashes during build time when secrets are unavailable.
+
+---
+
 ## [1.3.0] - 2025-12-18
 
 ### 🚚 Towing Rates Management System

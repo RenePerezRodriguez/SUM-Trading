@@ -27,38 +27,43 @@ let app: App;
 
 // This pattern ensures that we initialize the app only once.
 if (getApps().length === 0) {
-  app = initializeApp(serviceAccountInfo ? { credential: cert(serviceAccountInfo) } : undefined);
+    app = initializeApp(serviceAccountInfo ? { credential: cert(serviceAccountInfo) } : undefined);
 } else {
-  // If the app is already initialized, use the existing one.
-  app = getApps()[0];
+    // If the app is already initialized, use the existing one.
+    app = getApps()[0];
 }
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-// This is the GoogleAuth instance for authenticating with other Google Cloud services.
-// If we have service account credentials, use those. Otherwise use Application Default Credentials.
-let googleAuth: GoogleAuth;
+// Lazy initialization for GoogleAuth
+let googleAuthInstance: GoogleAuth | undefined;
 
-if (serviceAccountInfo) {
-    console.log('[Admin Init] Initializing GoogleAuth with service account credentials');
-    googleAuth = new GoogleAuth({
-        credentials: serviceAccountInfo as any,
-        projectId: (serviceAccountInfo as any).project_id,
-        scopes: ['https://www.googleapis.com/auth/cloud-platform']
-    });
-} else {
-    console.log('[Admin Init] Initializing GoogleAuth with Application Default Credentials');
-    googleAuth = new GoogleAuth({
-        scopes: ['https://www.googleapis.com/auth/cloud-platform']
-    });
+function getGoogleAuth(): GoogleAuth {
+    if (!googleAuthInstance) {
+        if (serviceAccountInfo) {
+            console.log('[Admin Init] Initializing GoogleAuth with service account credentials');
+            googleAuthInstance = new GoogleAuth({
+                credentials: serviceAccountInfo as any,
+                projectId: (serviceAccountInfo as any).project_id,
+                scopes: ['https://www.googleapis.com/auth/cloud-platform']
+            });
+        } else {
+            console.log('[Admin Init] Initializing GoogleAuth with Application Default Credentials');
+            googleAuthInstance = new GoogleAuth({
+                scopes: ['https://www.googleapis.com/auth/cloud-platform']
+            });
+        }
+    }
+    return googleAuthInstance;
 }
 
 // Helper function to get ID token for Cloud Run authentication  
 export async function getCloudRunIdToken(targetUrl: string): Promise<string> {
     try {
         // Use GoogleAuth to get an ID token specifically for the target URL
-        const idToken = await googleAuth.getIdTokenClient(targetUrl);
+        const authClient = getGoogleAuth();
+        const idToken = await authClient.getIdTokenClient(targetUrl);
         const client = await idToken.getAccessToken();
         console.log('[Admin Init] Cloud Run ID token obtained');
         return client as any;
@@ -66,7 +71,8 @@ export async function getCloudRunIdToken(targetUrl: string): Promise<string> {
         console.error('[Admin Init] Failed to get ID token:', error);
         // Fallback to regular access token
         try {
-            const token = await googleAuth.getAccessToken();
+            const authClient = getGoogleAuth();
+            const token = await authClient.getAccessToken();
             console.log('[Admin Init] Using fallback access token');
             return token as string;
         } catch (fallbackError) {
@@ -78,5 +84,12 @@ export async function getCloudRunIdToken(targetUrl: string): Promise<string> {
 
 // This function provides the initialized SDKs for server-side usage.
 export function getSdks() {
-    return { auth, firestore, app, googleAuth };
+    return {
+        auth,
+        firestore,
+        app,
+        get googleAuth() {
+            return getGoogleAuth();
+        }
+    };
 }
