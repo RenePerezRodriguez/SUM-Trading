@@ -1,60 +1,169 @@
 # Manual de Administración - SUM Trading
 
-Bienvenido al panel de administración de SUM Trading. Este manual te guiará por las principales funciones del sistema.
+---
 
-## 1. Acceso y Seguridad
-El panel de administración es accesible solo para usuarios con rol `admin`.
-*   **Login**: `/admin/login`
-*   **Logout**: Usa el botón de "Cerrar Sesión" en la barra superior o en tu menú de perfil.
-*   **Recuperar Contraseña**: Si olvidas tu clave, usa la opción "Recordar Contraseña" en el login.
+## 📑 Índice
+
+1. [Cómo Entrar al Panel](#1-cómo-entrar-al-panel)
+2. [Pantalla Principal (Dashboard)](#2-pantalla-principal-dashboard)
+3. [Gestión de Vehículos](#3-gestión-de-vehículos)
+4. [Gestión de Usuarios](#4-gestión-de-usuarios)
+5. [Leads de Clientes (Solicitudes)](#5-leads-de-clientes-solicitudes)
+6. [Tarifas de Arrastre (Precios de Grúas)](#6-tarifas-de-arrastre-precios-de-grúas)
+7. [Analíticas del Sitio](#7-analíticas-del-sitio)
+   - [Microsoft Clarity](#acceder-a-microsoft-clarity)
+   - [Google Analytics](#acceder-a-google-analytics)
+8. [Botón de Ayuda / Tour](#8-botón-de-ayuda--tour)
+9. [Contacto de Soporte](#9-contacto-de-soporte)
 
 ---
 
-## 2. Gestión de Tarifas de Grúas (Towing Rates)
-Esta es la función más importante. Permite calcular los costos de envío desde subastas.
+## 1. Cómo Entrar al Panel
 
-### Carga Masiva (Excel)
-Para actualizar todos los precios de una vez:
-1.  Ve a la sección **Tarifas de Grúas**.
-2.  Haz clic en **"Subir Excel"**.
-3.  Selecciona el archivo `.xlsx` con el formato correcto (Columnas: City, State, ZIP, Rate, etc.).
-4.  El sistema validará los datos y te mostrará una vista previa.
-5.  Confirma para guardar.
+**Enlace directo:**  
+👉 **[https://sumtrading.us/admin/login](https://sumtrading.us/admin/login)**
 
-### Edición Manual
-Puedes editar una tarifa específica sin subir todo el Excel:
-1.  Busca la tarifa en la tabla (usa los filtros de Ciudad o Estado).
-2.  Haz clic en el botón de **Editar** (lápiz) en la fila correspondiente.
-3.  Modifica el precio y guarda.
+1. Abre el enlace en tu navegador.
+2. Escribe tu correo de administrador y tu contraseña.
+3. Dale clic a "Iniciar Sesión".
+4. Si olvidaste tu contraseña, usa el botón "Olvidé mi contraseña".
+
+**Para Salir:** Busca el botón "Cerrar Sesión" arriba a la derecha.
 
 ---
 
-## 3. Directorio de Miembros
-Aquí gestionas quién aparece en las páginas "Nuestro Equipo" y "Directiva".
+## 2. Pantalla Principal (Dashboard)
 
-### Tipos de Miembros
-*   **Directiva**: Aparecen en la sección principal de liderazgo.
-*   **Equipo**: Personal operativo y de soporte.
-*   **Directorio**: Miembros generales o asociados.
-
-### Crear un Miembro
-1.  Ve a **Usuarios y Miembros**.
-2.  Pestaña "Directorio".
-3.  Botón **"Nuevo Miembro"**.
-4.  Rellena: Nombre, Cargo, Foto (URL o subida), y selecciona el **Tipo** correcto.
-5.  **Orden**: Usa números (1, 2, 3...) para controlar quién sale primero.
+Cuando entras, ves:
+- **Resumen Rápido:** Total de vehículos, usuarios y leads activos.
+- **Tarjetas de Acceso Rápido:** Cada tarjeta te lleva a una sección diferente.
 
 ---
 
-## 4. Afiliaciones (Leeds)
-Gestiona las solicitudes de personas que quieren unirse o contactar.
-1.  Ve a **Leeds de Copart** o **Afiliaciones**.
-2.  Verás una tabla con los nuevos registros.
-3.  Puedes marcar como "Contactado" o eliminar spam.
+## 3. Gestión de Vehículos
+
+**Ruta:** Panel > Gestionar Vehículos
+
+### Agregar Vehículo Nuevo
+1. Clic en **"+ Agregar Vehículo"** (arriba a la derecha).
+2. Llena el formulario: Marca, Modelo, Año, Precio.
+3. Sube fotos y/o video.
+4. Clic en "Guardar".
+
+### Editar Vehículo
+1. Encuentra el auto en la tabla.
+2. Clic en el ícono del **lápiz** (Editar).
+3. Modifica y guarda.
+
+### Cambiar Estado
+En la columna "Estado", haz clic para seleccionar: **Disponible / Reservado / Vendido**.
+
+### Eliminar Vehículos
+1. Selecciona con las casillas.
+2. Clic en el botón rojo **"Eliminar"**.
 
 ---
 
-## 5. Tour Interactivo
-¿Perdido en el panel?
-Haz clic en el botón **"Ayuda / Tour"** (?) en la barra superior derecha.
-El sistema te llevará de la mano mostrándote qué hace cada botón en tu pantalla actual.
+## 4. Gestión de Usuarios
+
+**Ruta:** Panel > Gestionar Usuarios
+
+### Cambiar Rol
+En la columna "Rol", haz clic para cambiar entre **Usuario** y **Admin**.
+
+### Eliminar Usuarios
+1. Selecciona usuarios.
+2. Clic en **"Eliminar"**.
+
+*Nota: No puedes eliminarte a ti mismo.*
+
+---
+
+## 5. Leads de Clientes (Solicitudes)
+
+**Ruta:** Panel > Leads de Clientes
+
+### Pestañas Principales
+- **Leads Copart** = Solicitudes de autos de subasta.
+- **Leads SUM** = Solicitudes de autos del inventario.
+
+### Sub-Pestañas
+- **Activos** = Leads nuevos o en proceso.
+- **Finalizados** = Leads cerrados.
+
+### Cambiar Estado
+Haz clic en la columna "Estado" para cambiar: **Activo → En Progreso → Finalizado**.
+
+**¡Revisa esta sección todos los días!**
+
+---
+
+## 6. Tarifas de Arrastre (Precios de Grúas)
+
+**Ruta:** Panel > Tarifas de Arrastre
+
+### Subir Excel (Carga Masiva)
+1. Clic en **"Subir Excel"**.
+2. Selecciona archivo `.xlsx`.
+3. Revisa la vista previa.
+4. Confirma para guardar.
+
+### Agregar Manualmente
+- **+ Destino** (ej: Nueva York)
+- **+ Estado** (ej: California)
+- **+ Ciudad con Precio** (ej: Los Angeles = $450)
+
+### Historial de Versiones
+1. Clic en **"Historial"**.
+2. Puedes **restaurar** versiones anteriores si cometiste un error.
+
+---
+
+## 7. Analíticas del Sitio
+
+**Ruta:** Panel > Analíticas
+
+Aquí ves estadísticas básicas de visitas. Para ver detalles completos, usa las herramientas externas:
+
+### Acceder a Microsoft Clarity
+
+Microsoft Clarity muestra mapas de calor y grabaciones de usuarios.
+
+1. En el panel de admin, clic en **"Ver en Clarity"** o usa este enlace:  
+   👉 **[https://clarity.microsoft.com/projects/view/](https://clarity.microsoft.com/projects/view/)**
+2. Inicia sesión con la cuenta de Microsoft del proyecto.
+3. Selecciona el proyecto "SUM Trading" si tienes varios.
+4. Verás:
+   - **Dashboard** = Resumen general.
+   - **Heatmaps** = Dónde hacen clic los usuarios.
+   - **Recordings** = Grabaciones de sesiones reales.
+
+### Acceder a Google Analytics
+
+Google Analytics muestra tráfico, fuentes y conversiones.
+
+1. Abre este enlace:  
+   👉 **[https://analytics.google.com/](https://analytics.google.com/)**
+2. Inicia sesión con la cuenta de Google del proyecto.
+3. En el menú izquierdo, selecciona la propiedad "SUM Trading".
+4. Secciones principales:
+   - **Tiempo real** = Visitantes ahora mismo.
+   - **Adquisición** = De dónde vienen (Google, Facebook, directo).
+   - **Engagement** = Páginas más vistas.
+   - **Conversiones** = Formularios completados.
+
+---
+
+## 8. Botón de Ayuda / Tour
+
+Si estás perdido en cualquier sección:
+
+1. Busca el botón **"Ayuda / Tour"** (tiene un signo de interrogación ❓).
+2. Aparece una guía interactiva que te explica cada elemento.
+3. La primera vez que entres a cada sección, el tour arranca automáticamente.
+
+---
+
+## 9. Contacto de Soporte
+
+Si tienes problemas técnicos, contacta al desarrollador o al equipo de TI.
